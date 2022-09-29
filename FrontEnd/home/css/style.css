@@ -1,0 +1,691 @@
+/* Thư viện Owl Carouse => làm slider */
+/* Thư viện Flatpickr => làm calender / Datetimepicker */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+    --main-color: #f44336;
+    --hover-color: #f16960;
+}
+
+.main {
+    overflow: hidden;
+}
+
+.slider-item {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* làm tối image: trước tiên phải cho lớp cha có position: relative */
+.slider-item::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.slider-item-one {
+    background-image: url('../../image/slider-1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.slider-item-two {
+    background-image: url('../../image/slider-2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.slider-item-three {
+    background-image: url('../../image/slider-3.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* ------------Thanh điều hướng---------- */
+.owl-prev {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    /* chỗ nào thêm !important vào là chỗ đó bị mâu thuẫn vs thư viện Owl Carouse => k css đc,
+        vì vậy phải thêm !important vào */
+    font-size: 50px !important; 
+    color: #fff !important;
+}
+
+.owl-next {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 60px !important; 
+    color: #fff !important;
+}
+
+.owl-prev, .owl-next {
+    background: none !important;
+}
+
+.owl-dots {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 46%;
+    right: 37px;
+}
+
+.owl-dot span {
+    width: 10px !important;
+    height: 10px !important;
+    margin: 0 !important;
+    background-color: transparent !important;
+}
+
+.owl-nav {
+    margin-top: 0 !important;
+}
+
+.owl-dot {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #fff !important;
+    border-radius: 50%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin: 4px 0;
+}
+
+.owl-dot.active span {
+    background-color: var(--main-color) !important;
+}
+
+/* --------------------Header------------------ */
+header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.row {
+    display: flex;
+}
+
+.header-logo img {
+    /* position: absolute; */
+    width: 85px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.header-nav>ul {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.header-nav ul li {
+    margin-left: 20px;
+    padding: 6px 0;
+    position: relative;
+}
+
+.header-nav ul li:hover .nav-sub {
+    display: block;
+    animation: subnav 0.2s linear;
+}
+
+.header-nav>ul>li::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: var(--main-color);
+    display: block;
+    margin: auto;
+    transition: 0.4s;
+}
+.header-nav>ul>li:hover::after {
+    width: 100%;
+}
+
+.list_city .city_item_first {
+    position: relative;
+}
+
+.list_city .city_item_first::after {
+    content: '';
+    position: absolute;
+    height: 20px;
+    width: calc(100% + 30px);
+    background-color: transparent;
+    top: 98%;
+    left: 0;
+}
+
+@keyframes subnav {
+    from {
+        top: 100px;
+    }
+}
+
+.header-nav ul li a {
+    color: #fff;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.header-nav > ul > li > a:hover {
+    color: var(--main-color);
+}
+
+.signIn {
+    background-color: var(--main-color);
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.signIn:hover {
+    color: #fff !important ;
+    background-color: var(--hover-color);
+}
+
+/* --------------- */
+.nav-sub {
+    position: absolute;
+    width: 250px;
+    background-color: #fff;
+    top: 140%;
+    padding: 30px 20px;
+    left: -50px;
+    display: none;
+}
+
+/* làm mũi nhọn */
+.nav-sub::before {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(221, 221, 221, 1);
+    content: "";
+    display: block;
+    position: absolute;
+    top: -10px;
+    left: 70px;
+    transform: rotate(45deg);
+    z-index: -1;
+}
+
+.nav-sub ul li a {
+    color: #333;
+    font-weight: normal;
+}
+
+.nav-sub ul li a:hover {
+    color: var(--main-color);
+    padding-left: 12x;
+}
+
+.nav-sub ul li {
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+.nav-sub ul li:hover {
+    padding-left: 15px;
+}
+
+/* ---------------slider content----------------- */
+.wraper {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.wraper1 {
+    max-width: 1140px;
+    width: 71%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.slider-item-text {
+    position: absolute;
+    top: 65%;
+    transform: translateY(-65%);
+}
+
+.slider-item-text p {
+    color: #fff;
+}
+
+.slider-item-text button {
+    padding: 12px 20px;
+    background-color: var(--main-color);
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+.slider-item-text button:hover {
+    background-color: var(--hover-color);
+}
+/* --------------Search-------------- */
+.search {
+    position: absolute;
+    bottom: 150px;
+    z-index: 10;
+    width: 100%;
+    bottom: 130px;
+    /* position: relative;
+    transform: translateY(-200px);
+    z-index: 10; */
+    /* overflow: hidden; */
+}
+
+.search-content-items {
+    justify-content: space-around;
+    background-color: rgba(221, 221, 221, 0.5);
+    padding: 14px 0;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.search-content-item {
+    height: 40px;
+    background-color: #fff;
+    width: 19%;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    position: relative;
+}
+
+.search-content-item input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    padding-left: 36px;
+    border-radius: 5px;
+}
+
+.search-content-item > i {
+    position: absolute;
+    color: var(--main-color);
+    margin-left: 12px;
+    /* left: 12px; */
+    /* z-index: 1; */
+}
+
+.search-content-item:last-child {
+    width: 130px;
+}
+
+.search-content-item:last-child button {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    background-color: var(--main-color);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.search-content-item:last-child button:hover {
+    background-color: var(--hover-color);
+}
+
+.autobox {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    background-color: rgba(221, 221, 221, 0.7);
+    font-size: 15px;
+    border-radius: 5px;
+    /* padding-top: 4px; */
+    /* overflow-y: auto; */
+}
+
+.autobox li {
+    list-style: none;
+    padding: 6px 0 6px 36px;
+    cursor: pointer;
+    display: none;
+}
+
+.autobox li:hover {
+    color: var(--main-color);
+}
+
+.autobox.active li {
+    display: block;
+}
+
+/* ---------------Datetimepicker-------------- */
+.flatpickr-months .flatpickr-month {
+    background-color: var(--main-color) !important;
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+    background-color: var(--main-color) !important;
+}
+
+.flatpickr-weekdays {
+    background-color: var(--main-color) !important;
+}
+
+.flatpickr-weekday {
+    background: var(--main-color) !important;
+    color: #fff !important;
+}
+
+.flatpickr-calendar .arrowTop::after {
+    border-bottom-color: var(--main-color) !important;
+}
+
+.flatpickr-calendar .arrowBottom::after {
+    border-top-color: var(--main-color) !important;
+}
+
+/* -----------------Number of people--------------- */
+.number-people {
+    cursor: pointer;
+}
+
+.number-box {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    background-color: rgba(221, 221, 221, 0.7);
+    border-radius: 5px;
+    display: none;
+}
+
+.number-box.active {
+    display: block;
+}
+
+.number-box li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 12px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.number-box i {
+    color: var(--main-color);
+}
+
+.number-left {
+    width: 65%;
+    font-size: 15px;
+}
+
+.number-right {
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .number-close {
+    font-size: 22px;
+    cursor: pointer;
+    padding-left: 12px;
+} */
+
+.number-close {
+    font-size: 15px;
+    cursor: pointer;
+    padding: 10px 12px 10px 12px;
+    text-align: right;
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+/* ------places------ */
+.heading {
+    margin: 90px 0 30px 0;
+}
+
+.text-small {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--main-color);
+    font-size: 15px;
+}
+
+.text-large {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    transition: all 0.2s ease-in-out;
+}
+
+.image:hover img {
+    transform: scale(1.15);
+}
+
+.text {
+    text-align: center;
+    margin: 10px 0 30px 0;
+    font-size: 13px;
+    line-height: 20px;
+    color: black;
+}
+
+/* ------prominent-places---- */
+.tabs-district {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.tabs-district .line {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 4px;
+    border-radius: 15px;
+    background-color: var(--main-color);
+    transition: all 0.2s ease; 
+}
+
+.tab-item {
+    min-width: 80px;
+    padding: 14px 20px 8px 20px;
+    font-size: 16px;
+    text-align: center;
+    color: var(--main-color);
+    background-color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 5px solid transparent;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.tab-item:hover {
+    opacity: 1;
+    background-color: rgba(194, 53, 100, 0.05);
+    border-color: rgba(194, 53, 100, 0.1);
+}
+  
+.tab-item.active {
+    opacity: 1;
+}
+
+.tabs-content {
+    padding: 20px 0;
+    margin: 0 -10px 40px -10px;
+    /* display: flex ;
+    justify-content: space-between; */
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.tab-rooms {
+    /* padding: 0 10px; */
+    width: calc(100% - 20px);
+    margin: 0 10px;
+    box-shadow: 1px 2px 6px #d5d5d5;
+    cursor: pointer;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.tab-rooms:hover {
+    box-shadow: 1px 3px 12px #b7b6b6;
+}
+
+.tab-rooms-img {
+    /* padding-top: 78%; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 180px;
+}
+
+.tab-rooms-name {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 10px;
+
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.tab-rooms-star {
+    font-size: 12px;
+    margin-left: 10px;
+    color: #d5d5d5;
+}
+
+.tab-rooms-star-rating {
+    color: rgb(255, 188, 57);
+}
+
+.tab-rooms-address {
+    display: flex;
+    margin: 10px;
+    font-size: 14px;
+    color: #5392f9;
+}
+
+.tab-rooms-address-icon {
+    margin-right: 4px;
+}
+
+.tab-rooms-price {
+    font-size: 18px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+.tabs-container {
+    display: none;
+}
+
+.tabs-container.active {
+    display: block ;
+}
+
+/* -------------footer--------- */
+.footer {
+    background-color: #1b1b1b;
+}
+
+.wrap-footer {
+    padding: 60px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-title {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.footer-list {
+    list-style: none;
+}
+
+.footer-list li a {
+    color: rgba(142, 144, 145, 1);
+    text-decoration: none;
+    line-height: 2;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.footer-list li a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+.footer-list-connect {
+    display: flex;
+    align-items: center;
+}
+
+.footer-list-icon {
+    font-size: 18px;
+    margin-right: 12px;
+}
+
+

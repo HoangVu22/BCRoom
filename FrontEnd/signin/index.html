@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form SignIn</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="main">
+        <form action="" method="POST" class="form" id="form-2">
+          <h3 class="heading">Đăng nhập</h3>
+  
+          <div class="spacer"></div>
+  
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" name="email" type="text" placeholder="VD: email@bcroom.com" class="form-control">
+            <span class="form-message"></span>
+          </div>
+  
+          <div class="form-group">
+            <label for="password" class="form-label">Mật khẩu</label>
+            <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+            <span class="form-message"></span>
+          </div>
+  
+          <button class="form-submit">Đăng nhập</button>
+          <div class="or">
+            Hoặc
+          </div>
+
+          <div class="auth-form__socials">
+              <a href="" class="auth-form__socials--facebook btn--with-icon">
+                  <i class="auth-form__socials-icon fa-brands fa-facebook"></i>
+                  <span class="auth-form__socials-title">
+                      Đăng nhập với Facebook
+                  </span>
+              </a>
+              <a href="" class="auth-form__socials--google btn--with-icon">
+                  <i class="auth-form__socials-icon fa-brands fa-google"></i>
+                  <span class="auth-form__socials-title">
+                      Đăng nhập với Google
+                  </span>
+              </a>
+          </div>
+
+          <div class="auth-form__title">
+              <p class="auth-form__policy">Chưa có tài khoản?
+                  <a href="../register/index.html" class="auth-form__policy-link">Đăng ký</a>
+              </p>
+          </div>
+        </form>
+      </div>
+      
+
+      <script src="./js/main.js"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          Validator({
+            form: '#form-2',
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+              Validator.isEmail('#email'),
+              Validator.minLength('#password', 6),
+            ],
+            onSubmit: function (data) {
+              // Call API
+              console.log(data);
+            }
+          });
+        });
+  
+      </script>
+</body>
+</html>

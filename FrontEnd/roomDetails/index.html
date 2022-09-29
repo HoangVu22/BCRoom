@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCRoom</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="../OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <header>
+        <div class="wraper">
+            <div class="header-content row">
+                <div class="header-logo">
+                    <!-- <img src="./image/logo.png" alt=""> -->
+                    <h1 style="font-size: 40px; color: #fff">BCRoom</h1>
+                </div>
+                <div class="header-nav">
+                    <ul class="list_city">
+                        <li><a href="../home/index.html">Home</a></li>
+                        <!-- <li class="city_item_first"><a href="#">Khách sạn</a>
+                            <div class="nav-sub">
+                                <ul>
+                                    <li><a href="">Hà Nội</a></li>
+                                    <li><a href="">Đà Nẵng</a></li>
+                                    <li><a href="">Tp Hồ Chí Minh</a></li>
+                                    <li><a href="">Đà Lạt</a></li>
+                                    <li><a href="">Cần Thơ</a></li>
+                                    <li><a href="">Phú Quốc</a></li>
+                                </ul>
+                            </div>
+                        </li>    -->
+                        <!-- <li><a href="">Khuyến mãi</a></li> -->
+                        <li><a href="">Dịch vụ</a></li>
+                        <li><a href="../rooms/index.html">Liên hệ</a></li>
+                        <!-- <li><a href="">Đặt phòng</a></li> -->
+                        <li><a href="../register/index.html" class="signIn">Register</a></li>
+                        <li><a href="../signin/index.html" class="signIn">Sign in</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="slider owl-carousel owl-theme">
+        <div class="slider-item slider-item-one">
+            <div class="wraper">
+                <div class="slider-item-text">
+                    <!-- <p><span style="font-weight: bold; font-size: 30px">590.000</span><sup>đ</sup>/1 đêm</p> <br> -->
+                    <p><span style="font-weight: bold; font-size: 25px">Đặt Phòng Với Giá Rẻ</span></p> <br>
+                    <p style="font-weight: bold; font-size: 15px">Tận Hưởng Kỳ Nghỉ Tuyệt Vời Bên Của Bạn</p> <br>
+                    <!-- <p>Có ở khắp mọi nơi trên địa bàn Thành Phố Đà Nẵng với những hình ảnh đẹp và thơ mộng...</p> <br> -->
+                    <!-- <button>Xem chi tiết</button> -->
+                </div>
+            </div>
+        </div>
+        <div class="slider-item slider-item-two">
+            <div class="wraper">
+                <div class="slider-item-text">
+                    <p><span style="font-weight: bold; font-size: 25px">Đặt Phòng Với Giá Rẻ</span></p> <br>
+                    <p style="font-weight: bold; font-size: 15px">Tận Hưởng Kỳ Nghỉ Tuyệt Vời Bên Của Bạn</p> <br>
+                    <!-- <p>Có ở khắp mọi nơi trên địa bàn Thành Phố Đà Nẵng với những hình ảnh đẹp và thơ mộng...</p> <br> -->
+                    <!-- <button>Xem chi tiết</button> -->
+                </div>
+            </div>
+        </div>
+        <div class="slider-item slider-item-three">
+            <div class="wraper">
+                <div class="slider-item-text">
+                    <p><span style="font-weight: bold; font-size: 25px">Đặt Phòng Với Giá Rẻ</span></p> <br>
+                    <p style="font-weight: bold; font-size: 15px">Tận Hưởng Kỳ Nghỉ Tuyệt Vời Bên Của Bạn</p> <br>
+                    <!-- <p>Có ở khắp mọi nơi trên địa bàn Thành Phố Đà Nẵng với những hình ảnh đẹp và thơ mộng...</p> <br> -->
+                    <!-- <button>Xem chi tiết</button> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="search">
+        <div class="wraper">
+            <div class="search-content-items row">
+                <div class="search-content-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <input class="input-search" type="text" placeholder="Bạn muốn đi đâu?">
+                    <div class="autobox">
+                        <li>Hà Nội</li>
+                        <li>Đà Nẵng</li>
+                        <li>Hồ Chí Minh</li>
+                        <li>Nha Trang</li>
+                        <li>Đà Lạt</li>
+                        <li>Quảng Nam</li>
+                    </div>
+                </div>
+                <div class="search-content-item">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <input id="myID" type="text" placeholder="Ngày đặt">
+                </div>
+                <div class="search-content-item">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <input id="myID" type="text" placeholder="Ngày trả">
+                </div>
+                <div class="search-content-item">
+                    <i class="fa-solid fa-user-check"></i>
+                    <input class="number-people" type="text" placeholder="Số người">
+                    <div class="number-box">
+                        <li>
+                            <div class="number-left">
+                                <p>Người lớn</p>
+                            </div>
+                            <div class="number-right adult">
+                                <i class="fa-solid fa-minus adultMinus"></i>
+                                <span>0</span>
+                                <i class="fa-solid fa-plus adultPlus"></i>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="number-left">
+                                <p>Trẻ em</p>
+                            </div>
+                            <div class="number-right child">
+                                <i class="fa-solid fa-minus childMinus"></i>
+                                <span>0</span>
+                                <i class="fa-solid fa-plus childPlus"></i>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="number-left">
+                                <p>Phòng</p>
+                            </div>
+                            <div class="number-right room">
+                                <i class="fa-solid fa-minus roomMinus"></i>
+                                <span>0</span>
+                                <i class="fa-solid fa-plus roomPlus"></i>
+                            </div>
+                        </li>
+                        <!-- <i class="fa-solid fa-xmark number-close"></i> -->
+                        <p class="number-close">Xong</p>
+                    </div>
+                </div>
+                <div class="search-content-item">
+                    <button>Tìm kiếm</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-nav wraper2">
+        <ul class="header-path">
+            <li><a href="../home/index.html">Trang chủ</a></li>
+            <li><a href="">Sơn Trà</a></li>
+            <p>
+                <div class="header-path-name">Đặt phòng Khách Sạn Mường Thanh Luxury Sông Hàn</div>
+            </p>
+        </ul>
+    </div>
+    
+    <div class="detail-room wraper2">
+        <div class="detail-room-left ">
+            <img src="../image/detail-room/detailRoom1.jpg" class="detail-room-img" alt="">
+        </div>
+        <div class="detail-room-right">
+            <div class="detail-room-right-top">
+                <img src="../image/detail-room/detailRoom2.jpg" class="detail-room-img" alt="">
+                <img src="../image/detail-room/detailRoom3.jpg" class="detail-room-img" alt="">
+                <img src="../image/detail-room/detailRoom4.jpg" class="detail-room-img" alt="">
+            </div>
+            <div class="detail-room-right-bottom">
+                <img src="../image/detail-room/detailRoom5.jpg" class="detail-room-img" alt="">
+                <img src="../image/detail-room/detailRoom6.jpg" class="detail-room-img" alt="">
+                <img src="../image/detail-room/detailRoom7.jpg" class="detail-room-img" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="gallery">
+        <div class="wraper2">
+            <div class="close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="gallery-inner">
+                <img src="../image/detail-room/detailRoom1.jpg" alt="">
+            </div>
+            <div class="control prev">
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <div class="control next">
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="container wraper2">
+        <div class="detail-info">
+            <h1 class="room-name">Khách Sạn Mường Thanh Luxury Sông Hàn</h1>
+            <div class="rooms-star">
+                <i class="rooms-star-rating fa-solid fa-star"></i>
+                <i class="rooms-star-rating fa-solid fa-star"></i>
+                <i class="rooms-star-rating fa-solid fa-star"></i>
+                <i class="rooms-star-rating fa-solid fa-star"></i>
+                <i class="rooms-star-rating fa-solid fa-star"></i>
+            </div>
+            <div class="see-review">
+                <span class="point">9.0</span>
+                <span>Tuyệt vời - 20 đánh giá</span>
+            </div>
+            <div class="rooms-address">
+                <div class="rooms-address-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <p>Quận Sơn Trà, Đà Nẵng</p>
+            </div>
+
+            <div class="info-room">
+                <div class="border">
+                    <div class="info-room-border"></div>
+                    <div class="info-room-name">CHI TIẾT PHÒNG</div>
+                    <div class="info-room-border"></div>
+                </div>
+            </div>
+
+            <div class="info-container">
+                <h3 class="info-container-name">Room Aminitiese</h3>
+                <p class="info-container-content">Phòng SUPERIOR cao cấp với diện tích 30 m2, được Marina Hotel thiết kế theo phong cách châu Âu hiện đại và sang trọng. Hệ thống nội thất và trang thiết bị điện tử, Tivi truyền hình Hàn quốc (57 kênh) được chăm chút tỉ mỉ, đáp ứng được nhu cầu thư giãn của quý khách hàng sau những giờ phút tất bật tại công sở. Sau khi kết thúc một ngày bận rộn với công việc hay các kế hoạch vui chơi, quý khách hàng có thể trải nghiệm không gian yên tĩnh, cảm nhận sự nhẹ nhàng khi ngắm nhìn thành phố qua những ô cửa kính và ban công rộng trong hệ thống phòng Superior của khách sạn Marina.</p>
+                <h4 class="info-container-device">TRANG THIẾT BỊ:</h4>
+                <ul class="list-device">
+                    <li>Phòng 1 giường đôi 1,8m x 2,1m</li>
+                    <li>Phòng vệ sinh cap cấp hiện đại</li>
+                    <li>TV truyền hình cáp / truyền hình Hàn Quốc HD</li>
+                    <li>Bình siêu tốc</li>
+                    <li>Tủ quần áo, áo tắm</li>
+                    <li>Mấy sấy tóc</li>
+                    <li>Nước khoáng, trà, cà phê miễn phí</li>
+                    <li>Bồn tắm đứng / bồn tắm nằm</li>
+                    <li>Diện tích tiêu chuẩn</li>
+                    <li>Cửa sổ kính lớn/ ban công</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="book-room">  
+            <div class="info-room" style="margin-top: 170px">
+                <div class="info-room-border"></div>
+                <div class="info-room-name">ĐẶT PHÒNG</div>
+                <div class="info-room-border"></div>
+            </div>
+            <div class="price-room">
+                <h5>Các Hạng Phòng Khách Sạn Marina</h5>
+                <div class="form-price">
+                    <span class="price"> 200,000<span style="text-decoration: underline; font-size: 12px;">đ</span></span>
+                    <span class="number-days">- 01 đêm</span>
+                </div>
+            </div>
+
+           <div class="form-room">
+                <form action="">
+                    <div class="form-group">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input id="email" name="email" type="text" placeholder="Vui lòng nhập địa chỉ email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Số điện thoại</label>
+                        <input id="phone" name="phone" type="text" placeholder="Vui lòng nhập số điện thoại" class="form-control">
+                    </div>
+                    <div class="form-group form-calender">
+                        <label for="myID" class="form-label">Thời gian nhận phòng</label>
+                        <input id="myID" name="myID" type="text" placeholder="Chọn thời gian" class="form-control ">
+                        <i class="fa-solid fa-calendar-days form-calender-icon"></i>
+                    </div>
+                    <div class="form-group form-calender">
+                        <label for="myID" class="form-label">Thời gian trả phòng</label>
+                        <input id="myID" name="myID" type="text" placeholder="Chọn thời gian" class="form-control ">
+                        <i class="fa-solid fa-calendar-days form-calender-icon"></i>
+                    </div>
+                    <div class="form-group form-people">
+                        <label for="myPeople" class="form-label">Số Khách</label>
+                        <input id="myPeople" name="myPeople" type="text" placeholder="1" class="form-control ">
+                        <i class="fa-solid fa-user-check form-people-icon"></i>
+                        <!-- <div class="number-box">
+                            <li>
+                                <div class="number-left">
+                                    <p>Người lớn</p>
+                                </div>
+                                <div class="number-right adult">
+                                    <i class="fa-solid fa-minus adultMinus"></i>
+                                    <span>0</span>
+                                    <i class="fa-solid fa-plus adultPlus"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="number-left">
+                                    <p>Trẻ em</p>
+                                </div>
+                                <div class="number-right child">
+                                    <i class="fa-solid fa-minus childMinus"></i>
+                                    <span>0</span>
+                                    <i class="fa-solid fa-plus childPlus"></i>
+                                </div>
+                            </li>
+                            <p class="number-close">Xong</p>
+                        </div> -->
+                    </div>
+            
+                    <button class="form-submit">ĐẶT PHÒNG NGAY</button>
+                </form>
+           </div>
+        </div>
+    </div>
+
+    <!-- <div class="gg-map wraper2">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.1008108968686!2d108.21463421407937!3d16.060257643946095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219c48567b049%3A0xeb2bbf7249e27f21!2zS2jDoWNoIHPhuqFuIE3GsOG7nW5nIFRoYW5oIEx1eHVyeSBTw7RuZyBIw6Bu!5e0!3m2!1svi!2s!4v1663902050323!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div> -->
+
+    <footer class="footer">
+        <div class="wraper">
+            <div class="wrap-footer">
+                <div class="footer-content">
+                    <div class="footer-title">
+                        Về BCRoom
+                    </div>
+                    <ul class="footer-list">
+                        <li><a href="">Về chúng tôi</a></li>
+                        <li><a href="">Liên hệ</a></li>
+                        <li><a href="">Trợ giúp</a></li>
+                        <li><a href="">Quy chế hoạt động</a></li>
+                        <li><a href="">Quy định bảo mật</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-content">
+                    <div class="footer-title">
+                        Đối tác
+                    </div>
+                    <ul class="footer-list">
+                        <li><a href="">Đối tác liên kết</a></li>
+                        <li><a href="">Đối tác kết nối</a></li>
+                        <li><a href="">Quy chế trả góp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-content">
+                    <div class="footer-title">
+                        Điểm du lịch
+                    </div>
+                    <ul class="footer-list">
+                        <li><a href="">Thành phố Đà Nẵng</a></li>
+                        <li><a href="">Sơn Trà</a></li>
+                        <li><a href="">Ngũ Hành Sơn</a></li>
+                        <li><a href="">Thanh Khê</a></li>
+                        <li><a href="">Hải Châu</a></li>
+                        <li><a href="">Liên Chiểu</a></li>
+                        <li><a href="">Cẩm Lệ</a></li>
+                        <li><a href="">Hòa Vang</a></li>
+                        <li><a href="">Hoàng Sa</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-content">
+                    <div class="footer-title">
+                        Theo dõi chúng tôi trên
+                    </div>
+                    <ul class="footer-list">
+                        <li>
+                            <a href="https://www.facebook.com/ngayay.emcua/" class="footer-list-connect">
+                                <div class="footer-list-icon">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </div>
+                                Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="footer-list-connect">
+                                <div class="footer-list-icon">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </div>
+                                Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="footer-list-connect">
+                                <div class="footer-list-icon">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </div>
+                                Youtube
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+        
+    
+
+
+
+
+
+
+
+
+<!-- ---------------------------------------------------------------- -->
+    <script src="./js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+        $(document).ready(function(){
+            $(".owl-carousel").owlCarousel();
+        });
+        $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:10,
+            nav:true,
+            dots:false,
+            autoplay:true, // tự động chạy slide
+            autoplayTimeout: 5000,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:1
+                },
+                1000:{
+                    items:1
+                }
+            }
+        })
+    </script>
+
+    <script>
+        flatpickr("#myID", {
+            dateFormat: "d-m-Y",
+        });
+    </script>
+</body>
+</html>

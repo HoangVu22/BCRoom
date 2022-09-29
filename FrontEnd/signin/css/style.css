@@ -1,0 +1,199 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root {
+    --main-color: #f44336;
+    --hover-color: #f16960;
+}
+html {
+    color: #333;
+    font-size: 62.5%;
+    font-family: 'Open Sans', sans-serif;
+}
+.main {
+    background: #f1f1f1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+.form {
+    width: 360px;
+    min-height: 100px;
+    padding: 32px 24px;
+    text-align: center;
+    background: #fff;
+    border-radius: 2px;
+    margin: 24px;
+    align-self: center;
+    box-shadow: 0 2px 5px 0 rgba(51,62,73,.1);
+}
+.form .heading {
+    font-size: 2rem;
+}
+
+.form-group {
+    display: flex;
+    margin-bottom: 16px;
+    flex-direction: column;
+}
+
+.form-label,
+.form-message {
+    text-align: left;
+}
+
+.form-label {
+    font-weight: 700;
+    padding-bottom: 6px;
+    line-height: 1.8rem;
+    font-size: 1.4rem;
+}
+
+.form-control {
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    outline: none;
+    font-size: 1.4rem;
+}
+
+.form-control:hover {
+    border-color: #1dbfaf;
+}
+
+.form-group.invalid .form-control {
+    border-color: #f33a58;
+}
+
+.form-group.invalid .form-message {
+    color: #f33a58;
+}
+
+.form-message {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    padding: 4px 0 0;
+}
+
+.form-submit {
+    outline: none;
+    background-color: var(--main-color);
+    margin-top: 7px;
+    padding: 12px 16px;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    width: 100%;
+    font-size: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-submit:hover {
+    background-color: var(--hover-color);
+}
+
+.spacer {
+    margin-top: 36px;
+}
+
+.or {
+    margin-top: 20px;
+    font-size: 1.4rem;
+    color: #6c757d;
+}
+
+.auth-form__socials {
+    margin-top: 10px;
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+  
+.auth-form__socials-icon {
+    font-size: 1.8rem;
+}
+  
+.btn--with-icon {
+    text-decoration: none;
+    font-size: 1.3rem;
+    padding: 10px 40px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.auth-form__socials-title {
+    margin: 0 15px;
+}
+  
+.auth-form__socials--facebook
+.auth-form__socials-icon {
+    color: #fff;
+}
+  
+.auth-form__socials--facebook {
+    background-color: rgba(35,35,236,1);
+    color: #fff;
+}
+  
+.auth-form__socials--facebook:hover {
+    background-color: rgb(78, 78, 248);
+}
+  
+.auth-form__socials--google {
+    background-color: #fff;
+    border: 1px solid #333;
+    color: #6c757d;
+    margin-top: 15px;
+}
+  
+.auth-form__socials--google:hover {
+    background-color: #6c757d;
+    color: #fff;
+    border-color: #6c757d;
+}
+
+.auth-form__title {
+    margin-top: 15px;
+}
+  
+.auth-form__policy {
+    font-size: 1.3rem;
+    color: #6c757d;
+}
+  
+.auth-form__policy-link {
+    color: var(--main-color);
+    display: inline-block;
+}
+  
+.auth-form__policy-link:hover {
+    color: var(--hover-color);
+    text-decoration: underline;
+}
+  
+.auth-form__title-last {
+    color: #fff;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+  
+.auth-form__policy-last {
+    font-size: 1.3rem;
+}
+  
+.auth-form__policy--link-last {
+    color: #fff;
+    text-decoration: underline;
+    display: inline-block;
+}
+  
+  

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCRoom</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="../OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <header>
+        <div class="wraper">
+            <div class="header-content row">
+                <div class="header-logo">
+                    <!-- <img src="./image/logo.png" alt=""> -->
+                    <h1 style="font-size: 40px; color: #fff">BCRoom</h1>
+                </div>
+                <div class="header-nav">
+                    <ul class="list_city">
+                        <li><a href="../home/index.html">Home</a></li>
+                        <!-- <li class="city_item_first"><a href="#">Khách sạn</a>
+                            <div class="nav-sub">
+                                <ul>
+                                    <li><a href="">Hà Nội</a></li>
+                                    <li><a href="">Đà Nẵng</a></li>
+                                    <li><a href="">Tp Hồ Chí Minh</a></li>
+                                    <li><a href="">Đà Lạt</a></li>
+                                    <li><a href="">Cần Thơ</a></li>
+                                    <li><a href="">Phú Quốc</a></li>
+                                </ul>
+                            </div>
+                        </li>    -->
+                        <!-- <li><a href="">Khuyến mãi</a></li> -->
+                        <li><a href="../roomDetails/index.html">Dịch vụ</a></li>
+                        <li><a href="">Liên hệ</a></li>
+                        <!-- <li><a href="">Đặt phòng</a></li> -->
+                        <li><a href="../register/index.html" class="signIn">Register</a></li>
+                        <li><a href="../signin/index.html" class="signIn">Sign in</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="slider owl-carousel owl-theme">
+        <div class="slider-item slider-item-one">
+            <div class="wraper">
+                <div class="slider-item-text">
+                    <!-- <p><span style="font-weight: bold; font-size: 30px">590.000</span><sup>đ</sup>/1 đêm</p> <br> -->
+                    <p><span style="font-weight: bold; font-size: 25px">Đặt Phòng Với Giá Rẻ</span></p> <br>
+                    <p style="font-weight: bold; font-size: 15px">Tận Hưởng Kỳ Nghỉ Tuyệt Vời Bên Của Bạn</p> <br>
+                    <!-- <p>Có ở khắp mọi nơi trên địa bàn Thành Phố Đà Nẵng với những hình ảnh đẹp và thơ mộng...</p> <br> -->
+                    <!-- <button>Xem chi tiết</button> -->
+                </div>
+            </div>
+        </div>
+        <div class="slider-item slider-item-two">
+            <div class="wraper">
+                <div class="slider-item-text">
+                    <p><span style="font-weight: bold; font-size: 25px">Đặt Phòng Với Giá Rẻ</span></p> <br>
+                    <p style="font-weight: bold; font-size: 15px">Tận Hưởng Kỳ Nghỉ Tuyệt Vời Bên Của Bạn</p> <br>
+                    <!-- <p>Có ở khắp mọi nơi trên địa bàn Thành Phố Đà Nẵng với những hình ảnh đẹp và thơ mộng...</p> <br> -->
+                    <!-- <button>Xem chi tiết</button> -->
+                </div>
+            </div>
+        </div>
+        <div class="slider-item slider-item-three">
+            <div class="wraper">
+                <div class="slider-item-text">
+                    <p><span style="font-weight: bold; font-size: 25px">Đặt Phòng Với Giá Rẻ</span></p> <br>
+                    <p style="font-weight: bold; font-size: 15px">Tận Hưởng Kỳ Nghỉ Tuyệt Vời Bên Của Bạn</p> <br>
+                    <!-- <p>Có ở khắp mọi nơi trên địa bàn Thành Phố Đà Nẵng với những hình ảnh đẹp và thơ mộng...</p> <br> -->
+                    <!-- <button>Xem chi tiết</button> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="search">
+        <div class="wraper">
+            <div class="search-content-items row">
+                <div class="search-content-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <input class="input-search" type="text" placeholder="Bạn muốn đi đâu?">
+                    <div class="autobox">
+                        <li>Hà Nội</li>
+                        <li>Đà Nẵng</li>
+                        <li>Hồ Chí Minh</li>
+                        <li>Nha Trang</li>
+                        <li>Đà Lạt</li>
+                        <li>Quảng Nam</li>
+                    </div>
+                </div>
+                <div class="search-content-item">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <input id="myID" type="text" placeholder="Ngày đặt">
+                </div>
+                <div class="search-content-item">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <input id="myID" type="text" placeholder="Ngày trả">
+                </div>
+                <div class="search-content-item">
+                    <i class="fa-solid fa-user-check"></i>
+                    <input class="number-people" type="text" placeholder="Số người">
+                    <div class="number-box">
+                        <li>
+                            <div class="number-left">
+                                <p>Người lớn</p>
+                            </div>
+                            <div class="number-right adult">
+                                <i class="fa-solid fa-minus adultMinus"></i>
+                                <span>0</span>
+                                <i class="fa-solid fa-plus adultPlus"></i>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="number-left">
+                                <p>Trẻ em</p>
+                            </div>
+                            <div class="number-right child">
+                                <i class="fa-solid fa-minus childMinus"></i>
+                                <span>0</span>
+                                <i class="fa-solid fa-plus childPlus"></i>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="number-left">
+                                <p>Phòng</p>
+                            </div>
+                            <div class="number-right room">
+                                <i class="fa-solid fa-minus roomMinus"></i>
+                                <span>0</span>
+                                <i class="fa-solid fa-plus roomPlus"></i>
+                            </div>
+                        </li>
+                        <!-- <i class="fa-solid fa-xmark number-close"></i> -->
+                        <p class="number-close">Xong</p>
+                    </div>
+                </div>
+                <div class="search-content-item">
+                    <button>Tìm kiếm</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="result wraper2">
+        <h3>Kết quả tìm kiếm của bạn tại quận Sơn Trà, Đà Nẵng</h3>
+    </div>
+
+    <div class="container-list-room wraper2">
+        <div class="nav-rate">
+            <div class="nav-rate-items">
+                <div class="nav-rate-item">
+                    <h4>Hạng sao</h4>
+                    <div class="nav-rate-star">
+                        <input type="checkbox">
+                        <span>1 sao</span>
+                    </div>
+                    <div class="nav-rate-star">
+                        <input type="checkbox">
+                        <span>2 sao</span>
+                    </div>
+                    <div class="nav-rate-star">
+                        <input type="checkbox">
+                        <span>3 sao</span>
+                    </div>
+                    <div class="nav-rate-star">
+                        <input type="checkbox">
+                        <span>4 sao</span>
+                    </div>
+                    <div class="nav-rate-star">
+                        <input type="checkbox">
+                        <span>5 sao</span>
+                    </div>
+                </div>
+                <div class="nav-rate-item nav-rate-point">
+                    <h4>Điểm đánh giá</h4>
+                    <div class="nav-rate-star">
+                        <input type="checkbox">
+                        <span>Trên cả tuyệt vời 9+</span>
+                    </div>
+                    <div class="nav-rate-star">
+                        <input type="checkbox">
+                        <span>Rất tốt 8+</span>
+                    </div>
+                    <div class="nav-rate-star">
+                        <input type="checkbox">
+                        <span>Tốt 7+</span>
+                    </div>
+                    <div class="nav-rate-star">
+                        <input type="checkbox">
+                        <span>Dễ chịu 6+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-cart">
+            <div class="list-room">
+                <div class="room-cart">
+                    <div class="room-cart-img">
+                        <img src="../image/slider-1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="room-cart-content">
+                    <a href="../roomDetails/index.html">KHÁCH SẠN BOUTIQUE L'AMORE (L'AMORE BOUTIQUE HOTEL)</a>
+                    <div class="room-cart-contentareacity">
+                        <div class="rooms-cart-star">
+                            <i class="room-cart-star fa-solid fa-star"></i>
+                            <i class="room-cart-star fa-solid fa-star"></i>
+                            <i class="room-cart-star fa-solid fa-star"></i>
+                            <i class="room-cart-star fa-solid fa-star"></i>
+                            <i class="room-cart-star fa-solid fa-star"></i>
+                        </div>
+                        <div class="room-cart-icon">
+                            <i class="fa-solid fa-location-dot"></i>     
+                        </div>
+                        <div class="room-cart-address">
+                            <span>Quận Sơn Trà, Đà Nẵng</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="room-cart-money">
+                    vũ
+                </div>
+            </div>
+
+            <div class="list-room">
+                <div class="room-cart">
+                    <div class="room-cart-img">
+                        <img src="../image/slider-1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="room-cart-content">
+                    <a href="../roomDetails/index.html">KHÁCH SẠN BOUTIQUE L'AMORE (L'AMORE BOUTIQUE HOTEL)</a>
+                    <div class="room-cart-contentareacity">
+                        <div class="rooms-cart-star">
+                            <i class="room-cart-star fa-solid fa-star"></i>
+                            <i class="room-cart-star fa-solid fa-star"></i>
+                            <i class="room-cart-star fa-solid fa-star"></i>
+                            <i class="room-cart-star fa-solid fa-star"></i>
+                            <i class="room-cart-star fa-solid fa-star"></i>
+                        </div>
+                        <div class="room-cart-icon">
+                            <i class="fa-solid fa-location-dot"></i>     
+                        </div>
+                        <div class="room-cart-address">
+                            <span>Quận Sơn Trà, Đà Nẵng</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="room-cart-money">
+                    tien
+                </div>
+            </div>
+
+            <div class="list-room">
+                <div class="room-cart">
+                    <div class="room-cart-img">
+                        <img src="../image/slider-1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="room-cart-content">
+                    <a href="../roomDetails/index.html">KHÁCH SẠN BOUTIQUE L'AMORE (L'AMORE BOUTIQUE HOTEL)</a>
+                    <div class="room-cart-contentareacity">
+                        <div class="rooms-cart-star">
+                            <i class="room-cart-star fa-solid fa-star"></i>
+                            <i class="room-cart-star fa-solid fa-star"></i>
+                            <i class="room-cart-star fa-solid fa-star"></i>
+                            <i class="room-cart-star fa-solid fa-star"></i>
+                            <i class="room-cart-star fa-solid fa-star"></i>
+                        </div>
+                        <div class="room-cart-icon">
+                            <i class="fa-solid fa-location-dot"></i>     
+                        </div>
+                        <div class="room-cart-address">
+                            <span>Quận Sơn Trà, Đà Nẵng</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="room-cart-money">
+                    tien
+                </div>
+            </div>
+        </div>
+
+        
+        
+
+
+    </div>
+
+
+    <footer class="footer">
+        <div class="wraper">
+            <div class="wrap-footer">
+                <div class="footer-content">
+                    <div class="footer-title">
+                        Về BCRoom
+                    </div>
+                    <ul class="footer-list">
+                        <li><a href="">Về chúng tôi</a></li>
+                        <li><a href="">Liên hệ</a></li>
+                        <li><a href="">Trợ giúp</a></li>
+                        <li><a href="">Quy chế hoạt động</a></li>
+                        <li><a href="">Quy định bảo mật</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-content">
+                    <div class="footer-title">
+                        Đối tác
+                    </div>
+                    <ul class="footer-list">
+                        <li><a href="">Đối tác liên kết</a></li>
+                        <li><a href="">Đối tác kết nối</a></li>
+                        <li><a href="">Quy chế trả góp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-content">
+                    <div class="footer-title">
+                        Điểm du lịch
+                    </div>
+                    <ul class="footer-list">
+                        <li><a href="">Thành phố Đà Nẵng</a></li>
+                        <li><a href="">Sơn Trà</a></li>
+                        <li><a href="">Ngũ Hành Sơn</a></li>
+                        <li><a href="">Thanh Khê</a></li>
+                        <li><a href="">Hải Châu</a></li>
+                        <li><a href="">Liên Chiểu</a></li>
+                        <li><a href="">Cẩm Lệ</a></li>
+                        <li><a href="">Hòa Vang</a></li>
+                        <li><a href="">Hoàng Sa</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-content">
+                    <div class="footer-title">
+                        Theo dõi chúng tôi trên
+                    </div>
+                    <ul class="footer-list">
+                        <li>
+                            <a href="https://www.facebook.com/ngayay.emcua/" class="footer-list-connect">
+                                <div class="footer-list-icon">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </div>
+                                Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="footer-list-connect">
+                                <div class="footer-list-icon">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </div>
+                                Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="footer-list-connect">
+                                <div class="footer-list-icon">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </div>
+                                Youtube
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+        
+    
+
+
+
+
+
+
+
+
+<!-- ---------------------------------------------------------------- -->
+    <script src="./js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+        $(document).ready(function(){
+            $(".owl-carousel").owlCarousel();
+        });
+        $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:10,
+            nav:true,
+            dots:false,
+            autoplay:true, // tự động chạy slide
+            autoplayTimeout: 5000,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:1
+                },
+                1000:{
+                    items:1
+                }
+            }
+        })
+    </script>
+
+    <script>
+        flatpickr("#myID", {
+            dateFormat: "d-m-Y",
+        });
+    </script>
+</body>
+</html>
