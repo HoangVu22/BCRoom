@@ -501,10 +501,18 @@ ul {
 
 .nav-rate-star {
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .nav-rate-star input {
-    font-size: 30px;
+    width: 15px;
+    height: 15px;
+}
+
+.nav-rate-star input[type = 'checkbox']:hover {
+    border: 1px solid var(--main-color);
+    border-color: var(--main-color);
 }
 
 .nav-rate-star span {
@@ -516,6 +524,77 @@ ul {
 
 .nav-rate-point h4 {
     margin-top: 20px;
+}
+
+.sort {
+    display: flex;
+}
+
+select {
+    outline: 0;
+    border: 0!important;
+    flex: 1;
+    padding-left: 0.8em;
+    color: #333;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.select {
+    position: relative;
+    display: flex;
+    width: 30%;
+    height: 2.5em;
+    line-height: 2.5;
+    overflow: hidden;
+    border-radius: .25em;
+    margin-bottom: 20px;
+    margin-right: 15px;
+    border: 2px solid var(--main-color);
+}
+
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: var(--main-color);
+    cursor: pointer;
+    pointer-events:none;
+    transition: .25s all ease;
+}
+
+.select:hover::after {
+    color: white;
+}
+
+.estimated-cost {
+    border: 2px solid var(--main-color);
+    width: 30%;
+    height: 2.5em;
+    border-radius: .25em;
+}
+
+.estimated-cost:hover {
+    background: var(--main-color);
+}
+
+.estimated-cost-text {
+    font-weight: bold;
+    font-size: 0.9em;
+    text-align: center;
+    line-height: 37px;
+}
+
+.estimated-cost-text a {
+    color: #333;
+}
+
+.estimated-cost-text:hover {
+    color: white;
 }
 
 .list-room {
@@ -537,7 +616,8 @@ ul {
 
 .room-cart-img img {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
+    height: 200px;
     border-radius: 4px;
 }
 
@@ -583,14 +663,6 @@ ul {
     width: 22%;
     padding: 25px;
 }
-
-
-
-
-
-
-
-
 
 
 

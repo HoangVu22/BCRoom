@@ -81,6 +81,7 @@ html {
 .form-submit {
     outline: none;
     background-color: var(--main-color);
+    /* background: linear-gradient(#f37066,#f44336); */
     margin-top: 7px;
     padding: 12px 16px;
     font-weight: 600;
