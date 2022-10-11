@@ -1,3 +1,44 @@
+// ---------header------------
+// var header = document.querySelector('header')
+// var header_logo = document.querySelector('.header-logo h1')
+var headerNavIcon = document.querySelector('.header-nav-icon')
+var headerNavForm = document.querySelector('.header-nav-form')
+var headerFormLogin = headerNavForm.querySelector('.header-form-login')
+var headerFormLogout = document.querySelector('.header-form-logout');
+headerNavForm.onclick = function() {
+    if(headerFormLogout) {
+        if (headerFormLogout.style.display === "block")
+            headerFormLogout.style.display = "none"
+        else {
+            headerFormLogout.style.display = "block"
+        }
+    }
+    else if(headerFormLogin) {
+        if (headerFormLogin.style.display === "block")
+            headerFormLogin.style.display = "none"
+        else {
+            headerFormLogin.style.display = "block"
+        }
+    }
+    handleIconLight()
+}
+
+function handleIconLight() {
+    var iconList = headerNavIcon.querySelectorAll('i')
+    iconList.forEach((item) => {
+        if(headerFormLogout && headerFormLogout.style.display !== "none" || headerFormLogin && headerFormLogin.style.display !=="none") {
+            item.style.color = "#f44336"
+            headerNavIcon.style.borderColor = "#f44336"
+        }
+        else {
+            item.style.color = "unset"
+            headerNavIcon.style.borderColor = "unset"
+        }
+    })
+}
+
+
+
 // Đối tượng `Validator`
 function Validator(options) {
     function getParent(element, selector) {

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCRoom</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <div class="main">
+        <header>
+            <div class="wraper">
+                <div class="header-content row">
+                    <div class="header-logo">
+                        <!-- <img src="./image/logo.png" alt=""> -->
+                        <h1 style="font-size: 40px; color: #f44336">BCRoom</h1>
+                    </div>
+                    <div class="header-nav">
+                        <ul class="list_city">
+                            <li><a href="../home/index.html">Home</a></li>
+                            <li><a href="../roomDetails/index.html">Dịch vụ</a></li>
+                            <li><a href="../search/index.html">Liên hệ</a></li>
+                            <li><a href="../profile/index.html">Trở thành nhà cung cấp</a></li>
+                            <div class="header-nav-form">
+                                <div class="header-nav-icon">
+                                    <i class="fa-solid fa-user user-icon"></i>
+                                    <i class="fa-solid fa-bars"></i>
+                                </div>
+                                <div>
+                                    <!-- <div class="header-form-login">
+                                        <ul>
+                                            <li><a href="../signin/index.html">Đăng nhập</a></li>
+                                            <li><a href="../register/index.html">Đăng ký</a></li>
+                                        </ul>
+                                    </div> -->
+                                    <div style="display: none" class="header-form-logout">
+                                        <div class="content-logout">
+                                            <div class="header-form-avatar">
+                                                <!-- <div class="header-form-img">
+                                                    <img src="../image/avatars/avatar_1.jpg" alt="">
+                                                </div> -->
+                                                <i class="fa-solid fa-circle-user"></i>
+                                                <div class="header-name">
+                                                    <span>NguyenHoangVu</span>
+                                                    <p>Xem hồ sơ</p>
+                                                </div>
+                                            </div>
+                                            <span class="drop-line"></span>
+                                            <div class="header-form-booked">
+                                                <i class="fa-sharp fa-solid fa-clock-rotate-left"></i>
+                                                <span>Đặt phòng của tôi</span>
+                                            </div>
+                                            <div class="header-form-loved">
+                                                <i class="fa-regular fa-heart"></i>
+                                                <span>Danh sách yêu thích</span>
+                                            </div>
+                                            <div class="form-logout">Đăng xuất</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <span class="drop-line1"></span>
+        </header>
+        
+        <div class="profile wraper2">
+            <div class="profile-left">
+                <div class="profile-left-item">
+                    <div class="account-info">
+                        <div class="account-info-img">
+                            <img src="../image/avatars/avatar_1.jpg" alt="">
+                        </div>
+                        <p>Nguyễn Hoàng Vũ</p>
+                    </div>
+                    <div class="account-sidebar">
+                        <div class="account-sidebar-link">
+                            <i class="fa-solid fa-id-card"></i>
+                            <span>Hồ sơ của tôi</span>
+                        </div>
+                        <div class="account-sidebar-link">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                            <span>Đặt phòng của tôi</span>
+                        </div>
+                        <div class="account-sidebar-link">
+                            <i class="fa-regular fa-heart"></i>
+                            <span>Danh sách yêu thích</span>
+                        </div>
+                        <div class="account-sidebar-link">
+                            <i class="fa-solid fa-wallet"></i>
+                            <span>Điểm của tôi</span>
+                        </div>
+                        <div class="account-sidebar-link">
+                            <i class="fa-solid fa-ticket"></i>
+                            <span>Coupon của tôi</span>
+                        </div>
+                        <div class="form-line"></div>
+                        <div class="account-sidebar-link">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>Đăng xuất</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-right">
+                <div class="profile-right-top">
+                    <h2>Hồ sơ của tôi</h2>
+                    <button>Chỉnh sửa</button>
+                </div>
+
+                <div class="profile-right-bottom">
+                    <form class="form-profile">
+                        <div class="form-profile-info">
+                            <label for="">Số điện thoại</label>
+                            <div class="form-profile-name">0932424250</div>
+                        </div>
+                        <div class="form-line"></div>
+                        <div class="form-profile-info">
+                            <label for="">Họ và tên</label>
+                            <div class="form-profile-name">Nguyễn Hoàng Vũ</div>
+                        </div>
+                        <div class="form-line"></div>
+                        <div class="form-profile-info">
+                            <label for="">Email</label>
+                            <div class="form-profile-name">hoangvu22062001@gmail.com</div>
+                        </div>
+                        <div class="form-line"></div>
+                        <div class="form-profile-info">
+                            <label for="">Ngày Sinh</label>
+                            <div class="form-profile-name">22-06-2001</div>
+                        </div>
+                        <div class="form-line"></div>
+                        <div class="form-profile-info">
+                            <label for="">Giới tính</label>
+                            <div class="form-profile-name">Nam</div>
+                        </div>
+                        <div class="form-line"></div>
+                        <div class="form-profile-info">
+                            <label for="">Địa chỉ</label>
+                            <div class="form-profile-name">Đà Nẵng</div>
+                        </div>
+                        <div class="form-line"></div>
+                        <div class="form-profile-info">
+                            <label for="">Tài khoản liên kết</label>
+                            <div class="form-profile-name">
+                                <div class="form-profile-connect">
+                                    <div class="form-profile-icon">
+                                        <img src="https://go2joy.vn/images/icons/facebook.svg" alt="">
+                                        <p>Facebook</p>
+                                    </div>
+                                    <div class="form-profile-link">
+                                        <a href="">Liên kết</a>
+                                    </div>
+                                </div>
+                                <div class="form-profile-connect">
+                                    <div class="form-profile-icon">
+                                        <img src="https://go2joy.vn/images/icons/google.svg" alt="">
+                                        <p>Google</p>
+                                    </div>
+                                    <div class="form-profile-link">
+                                        <a href="">Hủy liên kết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="profile-right-edit">
+                <div class="profile-right-top">
+                    <h2>Hồ sơ của tôi</h2>
+                    <div class="profile-save">
+                        <button>Lưu</button>
+                        <p>Hủy</p>
+                    </div>
+                </div>
+
+                <div class="profile-right-bottom">
+                    <form class="form-profile">
+                        <div class="form-profile-info">
+                            <label for="">Số điện thoại</label>
+                            <div class="form-profile-name">0932424250</div>
+                        </div>
+                        <div class="form-line"></div>
+                        <div class="form-profile-info">
+                            <label for="">Họ và tên</label>
+                            <div class="form-profile-input">
+                                <input class="form-profile-text" type="text" placeholder="Nhập họ tên của bạn">
+                            </div>
+                        </div>
+                        <div class="form-line"></div>
+                        <div class="form-profile-info">
+                            <label for="">Email</label>
+                            <div class="form-profile-input">
+                                <input class="form-profile-text" type="text" placeholder="Nhập email của bạn">
+                            </div>
+                        </div>
+                        <div class="form-line"></div>
+                        <div class="form-profile-info">
+                            <label for="">Ngày Sinh</label>
+                            <div class="form-profile-input">
+                                <input class="form-profile-lable" type="text" placeholder="Nhập ngày">
+                                <input class="form-profile-lable" type="text" placeholder="Nhập tháng">
+                                <input class="form-profile-lable" type="text" placeholder="Nhập năm">
+                            </div>
+                        </div>
+                        <div class="form-line"></div>
+                        <div class="form-profile-info">
+                            <label for="">Giới tính</label>
+                            <div class="form-profile-input">
+                                <select name="" id="" class="form-profile-text">
+                                    <option class="form-gender" value="">Chọn giới tính của bạn</option>
+                                    <option value="">Nam</option>
+                                    <option value="">Nữ</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-line"></div>
+                        <div class="form-profile-info">
+                            <label for="">Địa chỉ</label>
+                            <div class="form-profile-input">
+                                <input class="form-profile-text" type="text" placeholder="Nhập địa chỉ của bạn">
+                            </div>
+                        </div>
+                        <div class="form-line"></div>
+                        <div class="form-profile-info">
+                            <label for="">Tài khoản liên kết</label>
+                            <div class="form-profile-name">
+                                <div class="form-profile-connect">
+                                    <div class="form-profile-icon">
+                                        <img src="https://go2joy.vn/images/icons/facebook.svg" alt="">
+                                        <p>Facebook</p>
+                                    </div>
+                                    <div class="form-profile-link">
+                                        <a href="">Liên kết</a>
+                                    </div>
+                                </div>
+                                <div class="form-profile-connect">
+                                    <div class="form-profile-icon">
+                                        <img src="https://go2joy.vn/images/icons/google.svg" alt="">
+                                        <p>Google</p>
+                                    </div>
+                                    <div class="form-profile-link">
+                                        <a href="">Hủy liên kết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="profile-right-booked">
+                <h2>Đặt phòng của tôi</h2>
+                <img src="https://go2joy.vn/_nuxt/search-not-found.47b1f6f6.png" alt="">
+                <h3>Bạn chưa có đặt phòng</h3>
+                <p>Hãy đặt phòng để tận hưởng nhé</p>
+            </div>
+
+            <div class="profile-right-loved">
+                <h2>Khách sạn yêu thích</h2>
+                <img src="https://go2joy.vn/_nuxt/search-not-found.47b1f6f6.png" alt="">
+                <h3>Chưa có khách sạn yêu thích</h3>
+                <p>Khi bạn tìm thấy khách sạn ưng ý, hãy nhấp vào biểu tượng trái tim để lưu lại.</p>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="./js/main.js"></script>
+</body>
+</html>

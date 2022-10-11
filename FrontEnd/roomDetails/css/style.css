@@ -148,6 +148,7 @@ ul {
 
 .header-nav>ul {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     height: 100%;
 }
@@ -204,6 +205,225 @@ ul {
 
 .header-nav > ul > li > a:hover {
     color: var(--main-color);
+}
+
+/* ------------login------------- */
+.header-nav-icon {
+    display: flex;
+    padding: 10px 20px;
+    border: 1px solid white;
+    border-radius: 50px;
+    margin-left: 20px;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.user-icon {
+    margin-right: 10px;
+}
+
+.list_city .header-nav-form {
+    position: relative;
+}
+
+.list_city .header-nav-form::after {
+    content: '';
+    position: absolute;
+    height: 20px;
+    width: calc(100% + 30px);
+    background-color: transparent;
+    top: 98%;
+    left: 0;
+}
+
+.header-form-login {
+    position: absolute;
+    width: 216px;
+    background-color: #fff;
+    top: 135%;
+    padding: 20px 0;
+    left: -50px;
+    border-radius: 10px;
+    line-height: 26px;
+    box-shadow: 2px 4px 20px #0003;
+    display: none;
+}
+
+.header-form-login::before {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(221, 221, 221, 1);
+    content: "";
+    display: block;
+    position: absolute;
+    top: -6px;
+    left: 96px;
+    transform: rotate(45deg);
+    z-index: -1;
+}
+
+.header-form-login ul li a {
+    font-weight: normal;
+    line-height: 10px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.header-form-login ul li {
+    margin-left: 0!important;
+    text-indent: 20px;
+    height: 40px;
+}
+
+.header-form-login ul li:hover {
+    background-color: #e3e0e077;
+}
+
+.header-form-login ul li a:hover {
+    color: var(--main-color);
+}
+
+/* ----------------logout----------- */
+.header-form-logout {
+    position: absolute;
+    width: 265px;
+    background-color: #fff;
+    top: 135%;
+    padding: 20px 0;
+    margin-right: 20px;
+    left: -100px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 20px #0003;
+    cursor: pointer;
+}
+
+.header-form-logout::before {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(221, 221, 221, 1);
+    content: "";
+    display: block;
+    position: absolute;
+    top: -6px;
+    left: 145px;
+    transform: rotate(45deg);
+    z-index: -1;
+}
+
+.header-form-avatar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 8px 0 8px 20px;
+}
+
+.header-form-avatar i {
+    font-size: 45px;
+    margin-right: 10px;
+    color: #b4b2b2;
+}
+
+.header-form-avatar:hover {
+    background-color: #e3e0e077;
+    
+}
+
+.header-form-avatar:hover .header-name span,
+.header-form-avatar:hover .header-name p {
+    color: var(--main-color)
+}
+
+.header-name {
+    
+    line-height: 22px;
+}
+
+.header-name span {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+.header-name p {
+    font-size: 14px;
+    color: #333;
+}
+
+.header-name:hover {
+    color: var(--main-color);
+}
+
+.header-form-booked {
+    display: flex;
+    align-items: center;
+    font-size: 14.5px;
+    color: #333;
+    line-height: 40px;
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+.header-form-booked i {
+    font-size: 13px;
+    margin-right: 15px;
+}
+
+.header-form-booked:hover {
+    background-color: #e3e0e077;
+    color: var(--main-color);
+}
+
+.drop-line {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #d6d5d5;
+    top: 88px;
+    left: 0;
+
+}
+
+.header-form-loved {
+    font-size: 14.5px;
+    color: #333;
+    line-height: 40px;
+    padding-left: 20px;
+}
+
+.header-form-loved i {
+    margin-right: 10px;
+}
+
+.header-form-loved:hover {
+    background-color: #e3e0e077;
+    color: var(--main-color);
+}
+
+.form-logout {
+    font-size: 14.5px;
+    color: #333;
+    line-height: 40px;
+    padding-left: 20px;
+}
+
+.form-logout:hover {
+    background-color: #e3e0e077;
+    color: var(--main-color);
+}
+
+.signIn {
+    background-color: var(--main-color);
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.signIn:hover {
+    color: #fff !important ;
+    background-color: var(--hover-color);
 }
 
 .signIn {
@@ -728,6 +948,7 @@ ul {
     font-size: 14px;
     line-height: 20px;
     text-indent: 30px;
+    margin-bottom: 40px;
 }
 
 .info-container-device {
@@ -842,6 +1063,7 @@ ul {
     outline: none;
     background: linear-gradient(#f37066,#f44336);
     margin-top: 4px;
+    margin-bottom: 50px;
     padding: 10px 14px;
     font-weight: 600;
     color: #fff;
@@ -856,10 +1078,115 @@ ul {
     background: var(--hover-color);
 }
 
+/* -------------reviews------------ */
+.reviews h2 {
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.review-star {
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.review-star i {
+    font-size: 40px;
+    color: rgb(255, 188, 57);
+    margin-right: 10px;
+}
+
+.review-star1 {
+    font-size: 40px;
+}
+
+.review-star2 {
+    font-size: 32px;
+}
+
+.review-star3 {
+    font-size: 20px;
+}
+
+.wrap-reviews-top {
+    display: flex;
+    /* align-items: center; */
+    /* text-align: center; */
+    line-height: 20px;
+}
+
+.review-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    margin-right: 12px;
+    margin-bottom: 15px;
+}
+
+.review-name {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.review-rate-star {
+    font-size: 10px;
+    color: rgb(255, 188, 57);
+}
+
+.vu {
+    display: flex;
+}
+
+.review-date {
+    font-size: 13px;
+    color: #34495E;
+}
+
+.wrap-reviews-bottom {
+    color: #34495E;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 40px;
+}
+
+.show-more {
+    cursor: pointer;
+    margin-bottom: 60px;
+}
+
+.show-more span:hover, i:hover {
+    color: var(--main-color);
+}
+
+.show-more span {
+    font-size: 17px;
+    color: #333;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-right: 10px;
+}
+
+.show-more i {
+    font-size: 14px;
+}
+
+/* --------------gg map---------- */
 .gg-map {
     width: 100%;
-    height: 10px;
+    margin-bottom: 60px;
 }
+
+.gg-map h2 {
+    font-size: 25px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+
+
+
+
 
 /* -------------footer--------- */
 .footer {
