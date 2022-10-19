@@ -58,8 +58,6 @@
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    /* chỗ nào thêm !important vào là chỗ đó bị mâu thuẫn vs thư viện Owl Carouse => k css đc,
-        vì vậy phải thêm !important vào */
     font-size: 50px !important; 
     color: #fff !important;
 }
@@ -685,6 +683,7 @@ ul {
 .container-nav {
     width: 85%;
     height: 45px;
+    margin-bottom: 14px !important;
 }
 
 .header-path {
@@ -715,6 +714,197 @@ ul {
 .header-path li a:hover {
     color: var(--hover-color-bold);
 }
+
+/* --------------------- */
+.container-list-room {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 80px;
+    margin-top: 16px;
+}
+
+.nav-rate {
+    width: 22%;
+    max-height: 620px;
+    margin-right: 20px;
+    border: 1px solid #d6d5d5;
+}
+
+.nav-rate-items {
+    padding: 14px;
+}
+
+.nav-rate-item h4 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    margin-top: 30px;
+}
+
+.nav-rate-star {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.nav-rate-star input {
+    width: 15px;
+    height: 15px;
+}
+
+.nav-rate-star input[type = 'checkbox']:hover {
+    border: 1px solid var(--main-color);
+    border-color: var(--main-color);
+}
+
+.nav-rate-star span {
+    font-size: 14px;
+    margin-left: 10px;
+    line-height: 32px;
+    color: #283848;
+}
+
+.rate {
+    border-bottom: 1px solid #d6d5d5;
+    padding: 8px 0;
+}
+
+.rate-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rate-title i {
+    font-size: 10px;
+}
+
+.rate-title h4 {
+    font-size: 17px;
+}
+
+.test-star {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    display: none;
+}
+
+.rate-star {
+    position: relative;
+    cursor: pointer;
+}
+
+.rate-icon {
+    font-size: 32px;
+    color: #535353;
+}
+
+.rate-icon:hover {
+    color: var(--main-color);
+}
+
+.star-1 {
+    position: absolute;
+    top: 53%;
+    left: 14px;
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight: bold;
+    color: #34495E;
+}
+
+.square {
+    margin-top: 25px;
+    padding: 8px 0;
+    border-bottom: 1px solid #d6d5d5;
+}
+
+.rate-icon1 {
+    font-size: 36px;
+    color: #535353;
+}
+
+.rate-icon1:hover {
+    color: var(--main-color);
+}
+
+.star-2 {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    font-weight: bold;
+    color: #34495E;
+}
+
+.form-estimate-cost {
+    width: 78%;
+}
+
+.estimate-cost-items {
+    border: 1px solid #d6d5d5;
+    padding: 30px 20px;
+    /* margin: 0 100px; */
+}
+
+.estimate-cost-item {
+    display: flex;
+    justify-content: center;
+    line-height: 40px;
+    margin: 0 100px;
+}
+
+.estimate-cost-item label {
+    width: 50%;
+    color: #333;
+}
+
+.estimate-cost-input {
+    width: 50%;
+    text-align: end;
+}
+
+.estimate-cost-lable {
+    padding: 6px 6px 6px 12px;
+    width: 80%;
+    outline-color: transparent;
+    border-radius: 6px;
+    border: 1px solid #b9b7b7;
+}
+
+.estimate-cost-lable:focus {
+    outline-color: var(--main-color);
+    /* border-radius: 4px; */
+}
+
+.estimate-cost-btn {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.estimate-cost-btn button {
+    border: 1px solid var(--main-color);
+    background: linear-gradient(#f37066,#f44336);
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    filter: drop-shadow(2px 2px 2px #f44336);
+}
+
+.estimate-cost-btn button:hover {
+    background: var(--main-color);
+}
+
+.list-room {
+    margin-top: 20px;
+}
+
+
+
+
 
 
 

@@ -734,20 +734,19 @@ ul {
     margin-top: 7px;   
     margin-bottom: 30px;
     cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .detail-room-left {
     width: 40%;
     height: 326px;
-    /* overflow: hidden; */
     margin-right: 6px;
 }
 
 .detail-room-left img {
     width: 100%;
     height: 100%;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
     transition: 0.25s;
 }
 
@@ -801,7 +800,7 @@ ul {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10;
+    z-index: 100;
     width: 100%;
     height: 100%;
     background: rgb(0, 0, 0, 0.6);
@@ -967,7 +966,7 @@ ul {
 
 .book-room {
     width: 40%;
-    z-index: 100;
+    z-index: 20;
 }
 
 .border {
@@ -1134,10 +1133,6 @@ ul {
     color: rgb(255, 188, 57);
 }
 
-.vu {
-    display: flex;
-}
-
 .review-date {
     font-size: 13px;
     color: #34495E;
@@ -1152,7 +1147,7 @@ ul {
 
 .show-more {
     cursor: pointer;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 .show-more span:hover, i:hover {
@@ -1171,9 +1166,41 @@ ul {
     font-size: 14px;
 }
 
+.comments {
+    margin-bottom: 50px;
+}
+
+.cmt-text {
+    width: 30%;
+    padding: 8px 20px;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+    border: 1px solid #333;
+    margin-right: 8px;
+}
+
+.cmt-text:hover {
+    border: 1px solid var(--main-color);
+}
+
+.btn-cmt {
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: 1px solid var(--main-color);
+    background-color: #fff;
+    color: #fff;
+    background: linear-gradient(#f37066,#f44336);
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.btn-cmt:hover {
+    background: var(--main-color);
+}
+
 /* --------------gg map---------- */
 .gg-map {
-    width: 100%;
     margin-bottom: 60px;
 }
 
@@ -1182,12 +1209,10 @@ ul {
     margin-bottom: 30px;
     color: #333;
 }
-
-
-
-
-
-
+.gg-map iframe{
+    width: 100%;
+    height: 400px;
+}
 /* -------------footer--------- */
 .footer {
     background-color: #1b1b1b;
