@@ -390,7 +390,7 @@ ul {
 
 .form-group {
     display: flex;
-    margin-bottom: 16px;
+    margin-top: 16px;
     flex-direction: column;
 }
 
@@ -413,6 +413,10 @@ ul {
     border-radius: 3px;
     outline: none;
     font-size: 1.4rem;
+}
+
+.form-password {
+    position: relative;
 }
 
 .form-control:hover {
@@ -460,6 +464,30 @@ ul {
     margin-top: 20px;
     font-size: 1.4rem;
     color: #6c757d;
+}
+
+.forget-password {
+    margin-bottom: 16px;
+    margin-top: 6px;
+    text-align: end;
+}
+
+.forget-password a {
+    color: #333;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.forget-password a:hover {
+    text-decoration: underline;
+    color: var(--main-color);
+}
+
+.show-password {
+    position: absolute;
+    right: 15px;
+    top: 56%;
+    font-size: 14px;
 }
 
 .auth-form__socials {

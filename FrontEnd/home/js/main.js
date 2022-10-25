@@ -57,9 +57,12 @@ function hoverEvent(color) {
     })
 }
 
+// -----------------------------
 var headerNavForm = document.querySelector('.header-nav-form')
 var headerFormLogin = headerNavForm.querySelector('.header-form-login')
 var headerFormLogout = document.querySelector('.header-form-logout');
+var login = window.localStorage.getItem("login")
+
 headerNavForm.onclick = function() {
     if(headerFormLogout) {
         if (headerFormLogout.style.display === "block")
@@ -75,6 +78,7 @@ headerNavForm.onclick = function() {
             headerFormLogin.style.display = "block"
         }
     }
+
     handleIconLight()
 }
 
@@ -96,7 +100,6 @@ function handleIconLight() {
 const inputSearch = document.querySelector('.input-search');
 const autoBox = document.querySelector('.autobox');
 inputSearch.onkeyup = (e) => {
-    // console.log(e.target.value);
     autoBox.style.paddingTop = "4px"
     let checkData = e.target.value;
     let dataArray = [];
@@ -109,7 +112,6 @@ inputSearch.onkeyup = (e) => {
         })
         autoBox.classList.add('active');
         showAdress(dataArray);
-        // console.log(dataArray);
         let liItem = autoBox.querySelectorAll('li');
         for(let i=0; i<liItem.length; i++) {
             liItem[i].addEventListener('click', function() {

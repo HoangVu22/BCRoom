@@ -247,8 +247,9 @@ var estimateCostRoom = document.querySelector('.estimate-cost-room');
 var estimateCostLable = document.querySelectorAll('.estimate-cost-lable');
 
 costBtn.onclick = function() {
+    var html = '';
     for (var i=0; i<5; i++) {
-        estimateCostRoom.innerHTML += `<div class="list-room">
+        html += `<div class="list-room">
             <div class="room-cart">
                 <div class="room-cart-img">
                     <img src="../image/slider-1.jpg" alt="">
@@ -280,5 +281,6 @@ costBtn.onclick = function() {
             </div>
         </div>`
     }
+    estimateCostRoom.innerHTML = html;
 }
 

@@ -1,6 +1,4 @@
-// ---------header------------
-// var header = document.querySelector('header')
-// var header_logo = document.querySelector('.header-logo h1')
+// ---------header------------\
 var headerNavIcon = document.querySelector('.header-nav-icon')
 var headerNavForm = document.querySelector('.header-nav-form')
 var headerFormLogin = headerNavForm.querySelector('.header-form-login')
@@ -36,7 +34,7 @@ function handleIconLight() {
         }
     })
 }
-
+// ----------------------------------
 
 
 // Đối tượng `Validator`
@@ -225,3 +223,17 @@ Validator.isConfirmed = function (selector, getConfirmValue, message) {
         }
     }
 }
+
+// --------------- login --------------------
+var submit = document.querySelector(".form-submit")
+var login = document.querySelectorAll(".form-control")
+submit.onclick = ()=>{
+    fetch("http://localhost:3001/login")
+    .then(r=>r.json())
+        .then(data=>{
+        var a =  data.some((value)=>value.email ===login[0].value && value.password === login[1].value)
+        a && window.localStorage.setItem("login", login[0].value)    
+        a && (window.location.href = "http://127.0.0.1:5501/FrontEnd/home/index.html")
+})}
+
+// ---------------------------
