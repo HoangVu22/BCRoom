@@ -58,23 +58,18 @@ function hoverEvent(color) {
 }
 
 var headerNavForm = document.querySelector('.header-nav-form')
+var headerForm = document.querySelector('.header-form')
 var headerFormLogin = headerNavForm.querySelector('.header-form-login')
 var headerFormLogout = document.querySelector('.header-form-logout');
+var login = window.localStorage.getItem("login")
+
 headerNavForm.onclick = function() {
-    if(headerFormLogout) {
-        if (headerFormLogout.style.display === "block")
-            headerFormLogout.style.display = "none"
-        else {
-            headerFormLogout.style.display = "block"
-        }
+    if (headerForm.style.display === "none")
+        headerForm.style.display = "block"
+    else {
+        headerForm.style.display = "none"
     }
-    else if(headerFormLogin) {
-        if (headerFormLogin.style.display === "block")
-            headerFormLogin.style.display = "none"
-        else {
-            headerFormLogin.style.display = "block"
-        }
-    }
+
     handleIconLight()
 }
 

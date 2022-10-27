@@ -249,7 +249,6 @@ ul {
     border-radius: 10px;
     line-height: 26px;
     box-shadow: 2px 4px 20px #0003;
-    display: none;
 }
 
 .header-form-login::before {
