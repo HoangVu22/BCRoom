@@ -814,6 +814,11 @@ ul {
     grid-template-columns: auto auto auto auto;
 }
 
+.tabs-content a {
+    display: contents;
+    color: black;
+}
+
 .tab-rooms {
     /* padding: 0 10px; */
     width: calc(100% - 20px);
