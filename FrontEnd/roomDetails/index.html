@@ -22,46 +22,32 @@
                 <div class="header-nav">
                     <ul class="list_city">
                         <li><a href="../home/index.html">Home</a></li>
-                        <!-- <li class="city_item_first"><a href="#">Khách sạn</a>
-                            <div class="nav-sub">
-                                <ul>
-                                    <li><a href="">Hà Nội</a></li>
-                                    <li><a href="">Đà Nẵng</a></li>
-                                    <li><a href="">Tp Hồ Chí Minh</a></li>
-                                    <li><a href="">Đà Lạt</a></li>
-                                    <li><a href="">Cần Thơ</a></li>
-                                    <li><a href="">Phú Quốc</a></li>
-                                </ul>
-                            </div>
-                        </li>    -->
-                        <!-- <li><a href="">Khuyến mãi</a></li> -->
                         <li><a href="">Dịch vụ</a></li>
-                        <li><a href="../search/index.html">Liên hệ</a></li>
-                        <!-- <li><a href="">Đặt phòng</a></li> -->
-                        <li><a href="">Trở thành nhà cung cấp</a></li>
+                        <li><a href="">Liên hệ</a></li>
+                        <li><a href="../Sup_home/index.html">Trở thành nhà cung cấp</a></li>
                         <div class="header-nav-form">
                             <div class="header-nav-icon">
                                 <i class="fa-solid fa-user user-icon"></i>
                                 <i class="fa-solid fa-bars"></i>
                             </div>
-                            <div>
-                                <!-- <div class="header-form-login">
+                            <div style="display: none" class="header-form">
+                                <div class="header-form-login">
                                     <ul>
                                         <li><a href="../signin/index.html">Đăng nhập</a></li>
                                         <li><a href="../register/index.html">Đăng ký</a></li>
                                     </ul>
-                                </div> -->
+                                </div>
                                 <div style="display: none" class="header-form-logout">
                                     <div class="content-logout">
-                                        <div>
-                                            <a href="../profile/index.html" class="header-form-avatar">  
+                                        <a href="../profile/index.html">
+                                            <div class="header-form-avatar">
                                                 <i class="fa-solid fa-circle-user"></i>
                                                 <div class="header-name">
                                                     <span>NguyenHoangVu</span>
                                                     <p>Xem hồ sơ</p>
                                                 </div>
-                                            </a>
-                                        </div>
+                                            </div>
+                                        </a>
                                         <span class="drop-line"></span>
                                         <div class="header-form-booked">
                                             <i class="fa-sharp fa-solid fa-clock-rotate-left"></i>
@@ -76,8 +62,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <li><a href="../signin/index.html" class="signIn">Sign in</a></li>
-                        <li><a href="../register/index.html" class="signIn">Register</a></li> -->
                     </ul>
                 </div>
             </div>
@@ -135,7 +119,7 @@
                 </div>
                 <div class="search-content-item">
                     <i class="fa-solid fa-calendar-days"></i>
-                    <input id="myID" type="text" placeholder="Ngày đặt">
+                    <input myID type="text" placeholder="Ngày đặt">
                 </div>
                 <div class="search-content-item">
                     <i class="fa-solid fa-calendar-days"></i>
@@ -342,7 +326,7 @@
                         </div>
                     </div>
             
-                    <button class="form-submit">ĐẶT PHÒNG NGAY</button>
+                    <button class="form-submit"><a href="">ĐẶT PHÒNG NGAY</a></button>
                 </form>
            </div>
         </div>
@@ -531,6 +515,7 @@
 
 <!-- ------------------- JS ------------------------------------->
     <script src="./js/main.js"></script>
+    <script src="../commonJS/header.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../OwlCarousel2-2.3.4/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

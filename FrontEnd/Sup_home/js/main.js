@@ -87,7 +87,6 @@ function handleIconLight() {
     })
 }
 
-
 // -------------Search-------------------
 const inputSearch = document.querySelector('.input-search');
 const autoBox = document.querySelector('.autobox');
@@ -105,6 +104,7 @@ inputSearch.onkeyup = (e) => {
         })
         autoBox.classList.add('active');
         showAdress(dataArray);
+        // console.log(dataArray);
         let liItem = autoBox.querySelectorAll('li');
         for(let i=0; i<liItem.length; i++) {
             liItem[i].addEventListener('click', function() {
@@ -214,68 +214,4 @@ roomMinus.addEventListener('click', function() {
 function totalNumber() {
     total = i + j + k;
     inputNumber.value = i + j + " Người, " + k + " phòng";
-}  
-
-// ----------rate-----------
-var rateTitleI = document.querySelectorAll('.rate-title i')
-var testStar = document.querySelectorAll('.test-star')
-var rateStar = document.querySelectorAll('.rate-star')
-let bien=true
-function star(index){
-    if(bien===true){
-        testStar[index].style.display = "flex"
-        bien=false
-    }
-    else if(bien===false)
-    {
-        testStar[index].style.display = "none"
-        bien=true
-    }
 }
-[...rateTitleI].forEach((item,index)=>{
-    item.onclick = ()=>{star(index)}
-})
-
-// ---------------------
-var costBtn = document.querySelector('.cost-btn');
-var estimateCostRoom = document.querySelector('.estimate-cost-room');
-var estimateCostLable = document.querySelectorAll('.estimate-cost-lable');
-
-costBtn.onclick = function() {
-    var html = '';
-    for (var i=0; i<5; i++) {
-        html += `<div class="list-room">
-            <div class="room-cart">
-                <div class="room-cart-img">
-                    <img src="../image/slider-1.jpg" alt="">
-                </div>
-            </div>
-            <div class="room-cart-content">
-                <a href="../roomDetails/index.html">KHÁCH SẠN BOUTIQUE L'AMORE (L'AMORE BOUTIQUE HOTEL)</a>
-                <div class="room-cart-contentareacity">
-                    <div class="rooms-cart-star">
-                        <i class="room-cart-star fa-solid fa-star"></i>
-                        <i class="room-cart-star fa-solid fa-star"></i>
-                        <i class="room-cart-star fa-solid fa-star"></i>
-                        <i class="room-cart-star fa-solid fa-star"></i>
-                        <i class="room-cart-star fa-solid fa-star"></i>
-                    </div>
-                    <div class="room-cart-address">
-                        <i class="fa-solid fa-location-dot room-cart-icon"></i>     
-                        <span>Quận Sơn Trà, Đà Nẵng</span>
-                    </div>
-                </div>
-            </div>
-            <div class="room-cart-money">
-                <div class="room-cart-wrap">
-                    <span class="room-cart-cash">đ ${Math.ceil(parseInt(estimateCostLable[1].value) / parseInt(estimateCostLable[0].value)) || "200,000"}</span>
-                    <span class="room-cart-space">/</span>
-                    <span class="room-cart-night">đêm</span>
-                </div>
-                <button class="room-cart-booked"><a href="../roomDetails/index.html">Đặt phòng</a></button>
-            </div>
-        </div>`
-    }
-    estimateCostRoom.innerHTML = html;
-}
-

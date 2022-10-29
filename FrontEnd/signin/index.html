@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form SignIn</title>
+    <title>BCRoom</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -20,33 +20,32 @@
                     <div class="header-nav">
                         <ul class="list_city">
                             <li><a href="../home/index.html">Home</a></li>
-                            <li><a href="../roomDetails/index.html">Dịch vụ</a></li>
-                            <li><a href="../search/index.html">Liên hệ</a></li>
-                            <li><a href="../profile/index.html">Trở thành nhà cung cấp</a></li>
+                            <li><a href="">Dịch vụ</a></li>
+                            <li><a href="">Liên hệ</a></li>
+                            <li><a href="../Sup_home/index.html">Trở thành nhà cung cấp</a></li>
                             <div class="header-nav-form">
                                 <div class="header-nav-icon">
                                     <i class="fa-solid fa-user user-icon"></i>
                                     <i class="fa-solid fa-bars"></i>
                                 </div>
-                                <div>
-                                    <!-- <div class="header-form-login">
+                                <div style="display: none" class="header-form">
+                                    <div class="header-form-login">
                                         <ul>
                                             <li><a href="../signin/index.html">Đăng nhập</a></li>
                                             <li><a href="../register/index.html">Đăng ký</a></li>
                                         </ul>
-                                    </div> -->
+                                    </div>
                                     <div style="display: none" class="header-form-logout">
                                         <div class="content-logout">
-                                            <div class="header-form-avatar">
-                                                <!-- <div class="header-form-img">
-                                                    <img src="../image/avatars/avatar_1.jpg" alt="">
-                                                </div> -->
-                                                <i class="fa-solid fa-circle-user"></i>
-                                                <div class="header-name">
-                                                    <span>NguyenHoangVu</span>
-                                                    <p>Xem hồ sơ</p>
+                                            <a href="../profile/index.html">
+                                                <div class="header-form-avatar">
+                                                    <i class="fa-solid fa-circle-user"></i>
+                                                    <div class="header-name">
+                                                        <span>NguyenHoangVu</span>
+                                                        <p>Xem hồ sơ</p>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                             <span class="drop-line"></span>
                                             <div class="header-form-booked">
                                                 <i class="fa-sharp fa-solid fa-clock-rotate-left"></i>
@@ -79,13 +78,21 @@
             <span class="form-message"></span>
           </div>
   
-          <div class="form-group">
+          <div class="form-group form-password">
             <label for="password" class="form-label">Mật khẩu</label>
             <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+            <i class="fa-regular fa-eye-slash eyeClose"></i>
+            <i style="display: none;" class="fa-regular fa-eye eye-open"></i>
             <span class="form-message"></span>
+        </div>
+
+          <div class="forget-password">
+            <a href="">Quên mật khẩu?</a>
           </div>
   
-          <button class="form-submit">Đăng nhập</button>
+          <a href="#" style="display: block;">
+            <button class="form-submit">Đăng nhập</button>
+        </a>
           <div class="or">
             Hoặc
           </div>
@@ -116,6 +123,7 @@
       
 
       <script src="./js/main.js"></script>
+      <script src="../commonJS/header.js"></script>
       <script>
         document.addEventListener('DOMContentLoaded', function () {
           Validator({

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCRoom</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="main">
+        <header>
+            <div class="wraper">
+                <div class="header-content row">
+                    <div class="header-logo">
+                        <!-- <img src="./image/logo.png" alt=""> -->
+                        <h1 style="font-size: 40px; color: #f44336">BCRoom</h1>
+                    </div>
+                    <div class="header-nav">
+                        <ul class="list_city">
+                            <li><a href="../Sup_home/index.html">Home</a></li>
+                            <li><a href="">Quản lý đăng phòng</a></li>
+                            <li><a href="">Liên hệ</a></li>
+                            <li><a href="../home/index.html">Trở thành người dùng</a></li>
+                            <div class="header-nav-form">
+                                <div class="header-nav-icon">
+                                    <i class="fa-solid fa-user user-icon"></i>
+                                    <i class="fa-solid fa-bars"></i>
+                                </div>
+                                <div style="display: none" class="header-form">
+                                    <div class="header-form-login">
+                                        <ul>
+                                            <li><a href="../signin/index.html">Đăng nhập</a></li>
+                                            <li><a href="../register/index.html">Đăng ký</a></li>
+                                        </ul>
+                                    </div>
+                                    <div style="display: none" class="header-form-logout">
+                                        <div class="content-logout">
+                                            <a href="../profile/index.html">
+                                                <div class="header-form-avatar">
+                                                    <i class="fa-solid fa-circle-user"></i>
+                                                    <div class="header-name">
+                                                        <span>NguyenHoangVu</span>
+                                                        <p>Xem hồ sơ</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <span class="drop-line"></span>
+                                            <div class="header-form-booked">
+                                                <i class="fa-sharp fa-solid fa-clock-rotate-left"></i>
+                                                <span>Đặt phòng của tôi</span>
+                                            </div>
+                                            <div class="header-form-loved">
+                                                <i class="fa-regular fa-heart"></i>
+                                                <span>Danh sách yêu thích</span>
+                                            </div>
+                                            <div class="form-logout">Đăng xuất</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <span class="drop-line1"></span>
+        </header>
+    </div>
+
+    <div class="nav-steps wraper2">
+        <div class="nav-container">
+            <div class="steps">
+                <div class="step-item active">Thông tin cơ bản</div>
+                <div class="step-item">Hình ảnh</div>
+                <div class="step-item">Thông tin phòng</div>
+                <div class="step-item">Thanh toán</div>
+                <div class="line"></div>
+            </div>
+            <div class="step-content active">
+                <div class="detail-content">
+                    <h1 class="content-introduce">Hãy bắt đầu bằng cách cho chúng tôi biết tên, địa chỉ cùng chi tiết liên hệ của khách sạn.</h1>
+                    <div class="name-hotel">
+                        <p>Tên của khách sạn là gì?</p>
+                        <input class="name-input" type="text" placeholder="Nhập tên của khách sạn...">
+                        <p class="name-notice">Tên này sẽ được hiển thị tới khách khi họ tìm kiếm chỗ nghỉ.</p>
+                        <div class="name-rating">
+                            <p class="name-star">Xếp hạng sao</p>
+                            <select class="star-rating">
+                                <option value="0">Không áp dụng</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="detail-contact">
+                        <p>Chi tiết liên hệ của khách sạn là gì?</p>
+                        <div class="name-person-contact">
+                            <p>Tên người liên hệ </p>
+                            <input class="name-input" type="text" placeholder="Tên người liên hệ...">
+                        </div>
+                        <div class="phone-content">
+                            <p class="name-notice">Số điện thoại liên lạc (để chúng tôi có thể hỗ trợ đăng ký của Quý vị khi cần)</p>
+                            <div class="phone-contact">
+                                <p>Số điện thoại</p>
+                                <input class="phone-input" type="text" placeholder="Nhập số diện thoại của bạn">
+                            </div>
+                        </div>
+                        <div class="question">
+                            <p>Quý vị có sở hữu nhiều khách sạn khác nhau, hoặc là thành viên của một chuỗi hay công ty quản lý bất động sản nào không?</p>
+                            <div class="radio-block">
+                                <div class="radio-1">
+                                    <input class="radio-input" type="radio">
+                                    <span>Có</span>
+                                </div>
+                                <div class="radio-2">
+                                    <input class="radio-input" type="radio">
+                                    <span>không</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="address-hotel">
+                        <div class="address">
+                            <p>Khách sạn tọa lạc ở đâu?</p>
+                            <div class="address-detail">
+                                <p>Địa chỉ phố</p>
+                                <input type="text" placeholder="Ví dụ: 123 Điện Biên Phủ">
+                            </div>
+                            <div class="address-detail">
+                                <p>Dòng địa chỉ 2</p>
+                                <input type="text" placeholder="Số nhà, tầng, tòa nhà, v.v...">
+                            </div>
+                            <div class="address-detail">
+                                <p>Vùng/Quốc gia</p>
+                                <input type="text" placeholder="Việt Nam">
+                            </div>
+                            <div class="address-detail">
+                                <p>Thành phố</p>
+                                <input type="text" placeholder="Đà Nẵng">
+                            </div>
+                        </div>
+                        <div class="address-notice">
+                            <div class="notice-img">
+                                <img src="https://q.bstatic.com/static/img/join/letter-verification-icon.png" alt="">
+                                <legend>Địa chỉ của Quý vị quan trọng</legend>
+                            </div>
+                            <p>Vui lòng cung cấp đầy đủ thông tin về địa chỉ của chỗ nghỉ, bao gồm tên và số tòa nhà v.v. Dựa trên thông tin Quý vị cung cấp, có thể chúng tôi sẽ gửi thư qua đường bưu điện để xác minh địa chỉ.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-content">
+                <div class="detail-content">
+                    <h1>Vu1</h1>
+                </div>
+            </div>
+            <div class="step-content">
+                <div class="detail-content">
+                    <h1>Vu2</h1>
+                </div>
+            </div>
+            <div class="step-content">
+                <div class="detail-content">
+                    <h1>Vu3</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="save-next wraper2">
+            <button class="save-inf">Lưu và Thoát</button>
+            <div class="pre-next">
+                <button>Quay lại</button>
+                <div class="go-to-next">
+                    <button>Tiếp tục</button>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+
+
+
+
+    <!-- ------------------------------------------------------------------ -->
+    <script src="./js/main.js"></script>
+    <script src="../commonJS/header.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Validator({
+            form: '#form-2',
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+                Validator.isEmail('#email'),
+                Validator.minLength('#password', 6),
+            ],
+            onSubmit: function (data) {
+                // Call API
+                console.log(data);
+            }
+            });
+        });
+    </script>
+</body>
+</html>
