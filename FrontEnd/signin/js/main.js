@@ -250,11 +250,23 @@ submit.onclick = () => {
           value.email === login[0].value && value.password === login[1].value
       );
       a && window.localStorage.setItem("login", login[0].value);
-      a &&
-        (window.location.href =
-          "http://127.0.0.1:5501/FrontEnd/home/index.html");
-
+      a && (window.location.href = "http://127.0.0.1:5501/FrontEnd/home/index.html");
     });
 };
 
-// ---------------------------
+// --------------show password -------------
+var password = document.querySelector("#password");
+var eyeOpen = document.querySelector('.eye-open')
+var eyeClose = document.querySelector('.eyeClose')
+eyeOpen.addEventListener("click", function () {
+  eyeOpen.style.display = "none";
+  eyeClose.style.display = "block";
+  password.setAttribute("type", "password");
+});
+
+eyeClose.addEventListener("click", function () {
+  eyeOpen.style.display = "block";
+  eyeClose.style.display = "none";
+  password.setAttribute("type", "text");
+});
+

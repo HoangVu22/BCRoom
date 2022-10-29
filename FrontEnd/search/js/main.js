@@ -235,3 +235,11 @@ function star(index){
 [...rateTitleI].forEach((item,index)=>{
     item.onclick = ()=>{star(index)}
 })
+
+// ------------------function booked-----------
+var roomEleA = document.querySelector('.room-cart-booked a');
+if(!localStorage.getItem('login')) {
+    roomEleA.onclick = () => {
+        roomEleA.href =  "http://127.0.0.1:5501/FrontEnd/signin/index.html"
+    }
+}

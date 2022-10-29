@@ -10,7 +10,6 @@ function handleLogin() {
         headerFormLogin.style.display = "block"
     }
 }
-
 handleLogin()
 
 var formLogout = document.querySelector(".form-logout")

@@ -10,7 +10,8 @@
 html {
     color: #333;
     font-size: 62.5%;
-    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Poppins', sans-serif;
 }
 input {
     outline: none;
@@ -107,7 +108,7 @@ ul {
     color: #333;
     font-weight: bold;
     transition: all 0.2s ease;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .header-nav > ul > li > a:hover {
