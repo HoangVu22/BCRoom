@@ -20,7 +20,7 @@
                     <div class="header-nav">
                         <ul class="list_city">
                             <li><a href="../Sup_home/index.html">Home</a></li>
-                            <li><a href="">Quản lý đăng phòng</a></li>
+                            <li><a href="">Đăng phòng</a></li>
                             <li><a href="">Liên hệ</a></li>
                             <li><a href="../home/index.html">Trở thành người dùng</a></li>
                             <div class="header-nav-form">
@@ -74,7 +74,7 @@
                 <div class="step-item active">Thông tin cơ bản</div>
                 <div class="step-item">Hình ảnh </div>
                 <div class="step-item">Thông tin phòng</div>
-                <div class="step-item">Thanh toán</div>
+                <div class="step-item">Hoàn tất</div>
                 <div class="line"></div>
             </div>
             <div class="step-content active">
@@ -113,42 +113,44 @@
                             <p>Quý vị có sở hữu nhiều khách sạn khác nhau, hoặc là thành viên của một chuỗi hay công ty quản lý bất động sản nào không?</p>
                             <div class="radio-block">
                                 <div class="radio-1">
-                                    <input class="radio-input" type="radio">
+                                    <input name="radio" class="radio-input" type="radio">
                                     <span>Có</span>
                                 </div>
                                 <div class="radio-2">
-                                    <input class="radio-input" type="radio">
+                                    <input name="radio" class="radio-input" type="radio">
                                     <span>không</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="address-hotel">
-                        <div class="address">
-                            <p>Khách sạn tọa lạc ở đâu?</p>
-                            <div class="address-detail">
-                                <p>Địa chỉ phố</p>
-                                <input type="text" placeholder="Ví dụ: 123 Điện Biên Phủ">
+                        <p>Khách sạn tọa lạc ở đâu?</p>
+                        <div class="nav-address">
+                            <div class="address">
+                                <div class="address-detail">
+                                    <p>Địa chỉ phố</p>
+                                    <input type="text" placeholder="Ví dụ: 123 Điện Biên Phủ">
+                                </div>
+                                <div class="address-detail">
+                                    <p>Dòng địa chỉ 2</p>
+                                    <input type="text" placeholder="Số nhà, tầng, tòa nhà, v.v...">
+                                </div>
+                                <div class="address-detail">
+                                    <p>Vùng/Quốc gia</p>
+                                    <input type="text" placeholder="Việt Nam">
+                                </div>
+                                <div class="address-detail">
+                                    <p>Thành phố</p>
+                                    <input type="text" placeholder="Đà Nẵng">
+                                </div>
                             </div>
-                            <div class="address-detail">
-                                <p>Dòng địa chỉ 2</p>
-                                <input type="text" placeholder="Số nhà, tầng, tòa nhà, v.v...">
+                            <div class="address-notice">
+                                <div class="notice-img">
+                                    <img src="https://q.bstatic.com/static/img/join/letter-verification-icon.png" alt="">
+                                    <legend>Địa chỉ của Quý vị quan trọng</legend>
+                                </div>
+                                <p>Vui lòng cung cấp đầy đủ thông tin về địa chỉ của chỗ nghỉ, bao gồm tên và số tòa nhà v.v. Dựa trên thông tin Quý vị cung cấp, có thể chúng tôi sẽ gửi thư qua đường bưu điện để xác minh địa chỉ.</p>
                             </div>
-                            <div class="address-detail">
-                                <p>Vùng/Quốc gia</p>
-                                <input type="text" placeholder="Việt Nam">
-                            </div>
-                            <div class="address-detail">
-                                <p>Thành phố</p>
-                                <input type="text" placeholder="Đà Nẵng">
-                            </div>
-                        </div>
-                        <div class="address-notice">
-                            <div class="notice-img">
-                                <img src="https://q.bstatic.com/static/img/join/letter-verification-icon.png" alt="">
-                                <legend>Địa chỉ của Quý vị quan trọng</legend>
-                            </div>
-                            <p>Vui lòng cung cấp đầy đủ thông tin về địa chỉ của chỗ nghỉ, bao gồm tên và số tòa nhà v.v. Dựa trên thông tin Quý vị cung cấp, có thể chúng tôi sẽ gửi thư qua đường bưu điện để xác minh địa chỉ.</p>
                         </div>
                     </div>
                 </div>
@@ -156,12 +158,60 @@
 
             <div class="step-content">
                 <div class="detail-content">
-                    <h1>Vu1</h1>
+                    <h1>Hình ảnh khách sạn</h1>
+                    <div class="picture-library">
+                        <p>Thư viện ảnh</p>
+                        <div class="drag-image">
+                            <p class="drag-drop">Kéo và thả để tải file lên</p>
+                            <p style="font-size: 13px; cursor: auto;">Hoặc</p>
+                            <button class="choose-file">Chọn file</button> <br>
+                            <input class="drag-drop-input" type="file" hidden>
+                        </div>
+
+                        <div class="image">
+<!--                             
+                            <div class="image-detail">
+                                <img src="../image/detail-room/detailRoom1.jpg" alt="">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                            <div class="image-detail">
+                                <img src="../image/detail-room/detailRoom1.jpg" alt="">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                            <div class="image-detail">
+                                <img src="../image/detail-room/detailRoom1.jpg" alt="">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div> -->
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="step-content">
                 <div class="detail-content">
-                    <h1>Vu2</h1>
+                    <div class="choose-satisfied">
+                        <p>Vui lòng chọn</p>
+                        <div class="name-rating">
+                            <p class="name-star">Loại phòng</p>
+                            <select class="star-rating">
+                                <option value="0">Vui lòng chọn</option>
+                                <option value="1">Phòng đơn</option>
+                                <option value="2">Phòng giường đôi</option>
+                                <option value="3">Phòng 2 giường đơn</option>
+                                <option value="4">Phòng 3 người</option>
+                                <option value="5">Phòng 4 người</option>
+                                <option value="6">Phòng gia đình</option>
+                            </select>
+                        </div>
+                        <div class="name-rating">
+                            <p class="name-star">Chính sách về hút thuốc</p>
+                            <select class="star-rating">
+                                <option value="0">Vui lòng chọn</option>
+                                <option value="1">Không hút thuốc</option>
+                                <option value="2">Hút thuốc</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="step-content">
@@ -191,7 +241,7 @@
     <!-- ------------------------------------------------------------------ -->
     <script src="./js/main.js"></script>
     <script src="../commonJS/header.js"></script>
-    <script>
+    <!-- <script>
         document.addEventListener('DOMContentLoaded', function () {
             Validator({
             form: '#form-2',
@@ -207,6 +257,6 @@
             }
             });
         });
-    </script>
+    </script> -->
 </body>
 </html>
