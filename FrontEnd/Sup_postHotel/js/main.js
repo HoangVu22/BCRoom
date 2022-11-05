@@ -117,3 +117,19 @@ function handleImage() {
   };
 }
 handleImage();
+
+// ---------------- payment -----------------
+var radioYes = document.querySelector('.radio-yes')
+var radioNo = document.querySelector('.radio-no')
+var creditcardSection = document.querySelector('.creditcard-section')
+var cashSection = document.querySelector('.cash-section')
+
+radioYes.onclick = function() {
+  creditcardSection.style.display = 'flex'
+  cashSection.style.display = 'none'
+}
+
+radioNo.onclick = function() {
+  creditcardSection.style.display = 'none'
+  cashSection.style.display = 'block'
+}

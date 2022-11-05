@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCRoom</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="main">
+        <header>
+            <div class="wraper">
+                <div class="header-content row">
+                    <div class="header-logo">
+                        <!-- <img src="./image/logo.png" alt=""> -->
+                        <h1 style="font-size: 40px; color: #f44336">BCRoom</h1>
+                    </div>
+                    <div class="header-nav">
+                        <ul class="list_city">
+                            <li><a href="../Sup_home/index.html">Home</a></li>
+                            <li><a href="../Sup_postHotel/index.html">Đăng phòng</a></li>
+                            <li><a href="">Chỗ nghỉ của tôi</a></li>
+                            <li><a href="../home/index.html">Trở thành người dùng</a></li>
+                            <div class="header-nav-form">
+                                <div class="header-nav-icon">
+                                    <i class="fa-solid fa-user user-icon"></i>
+                                    <i class="fa-solid fa-bars"></i>
+                                </div>
+                                <div style="display: none" class="header-form">
+                                    <div class="header-form-login">
+                                        <ul>
+                                            <li><a href="../signin/index.html">Đăng nhập</a></li>
+                                            <li><a href="../register/index.html">Đăng ký</a></li>
+                                        </ul>
+                                    </div>
+                                    <div style="display: none" class="header-form-logout">
+                                        <div class="content-logout">
+                                            <a href="../profile/index.html">
+                                                <div class="header-form-avatar">
+                                                    <i class="fa-solid fa-circle-user"></i>
+                                                    <div class="header-name">
+                                                        <span>NguyenHoangVu</span>
+                                                        <p>Xem hồ sơ</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <span class="drop-line"></span>
+                                            <div class="header-form-booked">
+                                                <i class="fa-sharp fa-solid fa-clock-rotate-left"></i>
+                                                <span>Đặt phòng của tôi</span>
+                                            </div>
+                                            <div class="header-form-loved">
+                                                <i class="fa-regular fa-heart"></i>
+                                                <span>Danh sách yêu thích</span>
+                                            </div>
+                                            <div class="form-logout">Đăng xuất</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <span class="drop-line1"></span>
+        </header>
+    </div>
+
+    <div class="supplierPages wraper">
+        <div class="container-residence">
+            <div class="container-header">
+                <h1>4 chỗ nghỉ</h1>
+                <div class="btn-toolbar">
+                    <a class="postNew-residence" href="../Sup_postHotel/index.html">
+                        <i class="fa-solid fa-plus"></i>
+                        <p>Thêm chỗ nghỉ mới</p>
+                    </a>
+                </div>
+            </div>
+            <div class="container-search">
+                <div class="search-input">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" name="" id="" placeholder="Tìm chỗ nghỉ...">
+                </div>
+                <div class="container-select">
+                    <div class="status">
+                        <button>Trạng thái</button>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <table>
+                <tr>
+                  <th>TRẠNG THÁI</th>
+                  <th>CHỖ NGHỈ</th>
+                  <th>ID</th>
+                  <th>LƯỢT XEM</th>
+                  <th>HÀNH ĐỘNG</th>
+                </tr>
+                <tr>
+                  <td class="list-content list-status">
+                    <span>BẢN TẠM</span>
+                  </td>
+                  <td class="list-content list-info"> 
+                    <h4>Nguyễn Hoàng Vũ</h4>
+                    <span>123 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</span>
+                  </td>
+                  <td class="list-content list-id">
+                    <p>12345</p>
+                  </td>
+                  <td class="list-content list-view">
+                    <i class="fa-regular fa-eye"></i>
+                    <span>10</span>
+                  </td>
+                  <td class="list-content list-action">
+                    <a href="../Sup_postHotel/index.html">
+                        <i class="fa-solid fa-pencil"></i>
+                    </a>
+                    <i class="fa-solid fa-trash-can"></i>
+                  </td>
+                </tr>
+
+                <tr>
+                    <td class="list-content list-status">
+                        <span>BẢN TẠM</span>
+                    </td>
+                    <td class="list-content list-info"> 
+                      <h4>Nguyễn Hoàng Vũ</h4>
+                      <span>123 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</span>
+                    </td>
+                    <td class="list-content list-id">
+                      <p>12345</p>
+                    </td>
+                    <td class="list-content list-view">
+                      <i class="fa-regular fa-eye"></i>
+                      <span>10</span>
+                    </td>
+                    <td class="list-content list-action">
+                      <a href="../Sup_postHotel/index.html">
+                          <i class="fa-solid fa-pencil"></i>
+                      </a>
+                      <i class="fa-solid fa-trash-can"></i>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="list-content list-status">
+                        <span>BẢN TẠM</span>
+                    </td>
+                    <td class="list-content list-info"> 
+                      <h4>Nguyễn Hoàng Vũ</h4>
+                      <span>123 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</span>
+                    </td>
+                    <td class="list-content list-id">
+                      <p>12345</p>
+                    </td>
+                    <td class="list-content list-view">
+                      <i class="fa-regular fa-eye"></i>
+                      <span>10</span>
+                    </td>
+                    <td class="list-content list-action">
+                      <a href="../Sup_postHotel/index.html">
+                          <i class="fa-solid fa-pencil"></i>
+                      </a>
+                      <i class="fa-solid fa-trash-can"></i>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="list-content list-status">
+                        <span>BẢN TẠM</span>
+                    </td>
+                    <td class="list-content list-info"> 
+                      <h4>Nguyễn Hoàng Vũ</h4>
+                      <span>123 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</span>
+                    </td>
+                    <td class="list-content list-id">
+                      <p>12345</p>
+                    </td>
+                    <td class="list-content list-view">
+                      <i class="fa-regular fa-eye"></i>
+                      <span>10</span>
+                    </td>
+                    <td class="list-content list-action">
+                      <a href="../Sup_postHotel/index.html">
+                          <i class="fa-solid fa-pencil"></i>
+                      </a>
+                      <i class="fa-solid fa-trash-can"></i>
+                    </td>
+                </tr>
+            </table>
+            <!-- <div class="container-nav">
+                <div class="nav-bar">
+                    <div class="">TRẠNG THÁI</div>
+                    <div class="nav-residence">CHỖ NGHỈ</div>
+                    <div class="">ID</div>
+                    <div class="">LƯỢT XEM</div>
+                    <div class="">HÀNH ĐỘNG</div>
+                </div>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="list-content list-status">
+                        <span>BẢN TẠM</span>
+                    </div>
+                    <div class="list-content list-info">
+                        <h4>Nguyễn Hoàng Vũ</h4>
+                        <span>123 Nguyễn Lương Bằng, Liên Chiểu</span>
+                    </div>
+                    <div class="list-content list-id">
+                        <p>12345</p>
+                    </div>
+                    <div class="list-content list-view">
+                        <i class="fa-regular fa-eye"></i>
+                        <span>10</span>
+                    </div>
+                    <div class="list-content list-action">
+                        <a href="../Sup_postHotel/index.html">
+                            <i class="fa-solid fa-pencil"></i>
+                        </a>
+                        <i class="fa-solid fa-trash-can"></i>
+                    </div>
+                </li>
+            </ul> -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="wraper">
+            <div class="wrap-footer">
+                <div class="footer-content">
+                    <div class="footer-title">
+                        Về BCRoom
+                    </div>
+                    <ul class="footer-list">
+                        <li><a href="">Về chúng tôi</a></li>
+                        <li><a href="">Liên hệ</a></li>
+                        <li><a href="">Trợ giúp</a></li>
+                        <li><a href="">Quy chế hoạt động</a></li>
+                        <li><a href="">Quy định bảo mật</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-content">
+                    <div class="footer-title">
+                        Đối tác
+                    </div>
+                    <ul class="footer-list">
+                        <li><a href="">Đối tác liên kết</a></li>
+                        <li><a href="">Đối tác kết nối</a></li>
+                        <li><a href="">Quy chế trả góp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-content">
+                    <div class="footer-title">
+                        Điểm du lịch
+                    </div>
+                    <ul class="footer-list">
+                        <li><a href="">Thành phố Đà Nẵng</a></li>
+                        <li><a href="">Sơn Trà</a></li>
+                        <li><a href="">Ngũ Hành Sơn</a></li>
+                        <li><a href="">Thanh Khê</a></li>
+                        <li><a href="">Hải Châu</a></li>
+                        <li><a href="">Liên Chiểu</a></li>
+                        <li><a href="">Cẩm Lệ</a></li>
+                        <li><a href="">Hòa Vang</a></li>
+                        <li><a href="">Hoàng Sa</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-content">
+                    <div class="footer-title">
+                        Theo dõi chúng tôi trên
+                    </div>
+                    <ul class="footer-list">
+                        <li>
+                            <a href="https://www.facebook.com/ngayay.emcua/" class="footer-list-connect">
+                                <div class="footer-list-icon">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </div>
+                                Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="footer-list-connect">
+                                <div class="footer-list-icon">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </div>
+                                Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="footer-list-connect">
+                                <div class="footer-list-icon">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </div>
+                                Youtube
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ------------------------------------------------------------------ -->
+    <script src="./js/main.js"></script>
+    <script src="../commonJS/header.js"></script>
+</body>
+</html>
