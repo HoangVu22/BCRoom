@@ -82,7 +82,7 @@
             <div class="container-search">
                 <div class="search-input">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" name="" id="" placeholder="Tìm chỗ nghỉ...">
+                    <input type="text" name="" id="search" placeholder="Tìm chỗ nghỉ..." onkeyup="searchResidence()">
                 </div>
                 <div class="container-select">
                     <div class="status">
@@ -92,139 +92,115 @@
                 </div>
             </div>
 
-            <table>
+            <table class="container-nav">
                 <tr>
-                  <th>TRẠNG THÁI</th>
-                  <th>CHỖ NGHỈ</th>
-                  <th>ID</th>
-                  <th>LƯỢT XEM</th>
-                  <th>HÀNH ĐỘNG</th>
+                    <th>TRẠNG THÁI</th>
+                    <th>CHỖ NGHỈ</th>
+                    <th>ID</th>
+                    <th>LƯỢT XEM</th>
+                    <th>HÀNH ĐỘNG</th>
                 </tr>
-                <tr>
-                  <td class="list-content list-status">
-                    <span>BẢN TẠM</span>
-                  </td>
-                  <td class="list-content list-info"> 
-                    <h4>Nguyễn Hoàng Vũ</h4>
-                    <span>123 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</span>
-                  </td>
-                  <td class="list-content list-id">
-                    <p>12345</p>
-                  </td>
-                  <td class="list-content list-view">
-                    <i class="fa-regular fa-eye"></i>
-                    <span>10</span>
-                  </td>
-                  <td class="list-content list-action">
-                    <a href="../Sup_postHotel/index.html">
-                        <i class="fa-solid fa-pencil"></i>
-                    </a>
-                    <i class="fa-solid fa-trash-can"></i>
-                  </td>
-                </tr>
-
-                <tr>
+                <tr class="list-residence">
                     <td class="list-content list-status">
                         <span>BẢN TẠM</span>
                     </td>
                     <td class="list-content list-info"> 
-                      <h4>Nguyễn Hoàng Vũ</h4>
-                      <span>123 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</span>
-                    </td>
-                    <td class="list-content list-id">
-                      <p>12345</p>
-                    </td>
-                    <td class="list-content list-view">
-                      <i class="fa-regular fa-eye"></i>
-                      <span>10</span>
-                    </td>
-                    <td class="list-content list-action">
-                      <a href="../Sup_postHotel/index.html">
-                          <i class="fa-solid fa-pencil"></i>
-                      </a>
-                      <i class="fa-solid fa-trash-can"></i>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="list-content list-status">
-                        <span>BẢN TẠM</span>
-                    </td>
-                    <td class="list-content list-info"> 
-                      <h4>Nguyễn Hoàng Vũ</h4>
-                      <span>123 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</span>
-                    </td>
-                    <td class="list-content list-id">
-                      <p>12345</p>
-                    </td>
-                    <td class="list-content list-view">
-                      <i class="fa-regular fa-eye"></i>
-                      <span>10</span>
-                    </td>
-                    <td class="list-content list-action">
-                      <a href="../Sup_postHotel/index.html">
-                          <i class="fa-solid fa-pencil"></i>
-                      </a>
-                      <i class="fa-solid fa-trash-can"></i>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="list-content list-status">
-                        <span>BẢN TẠM</span>
-                    </td>
-                    <td class="list-content list-info"> 
-                      <h4>Nguyễn Hoàng Vũ</h4>
-                      <span>123 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</span>
-                    </td>
-                    <td class="list-content list-id">
-                      <p>12345</p>
-                    </td>
-                    <td class="list-content list-view">
-                      <i class="fa-regular fa-eye"></i>
-                      <span>10</span>
-                    </td>
-                    <td class="list-content list-action">
-                      <a href="../Sup_postHotel/index.html">
-                          <i class="fa-solid fa-pencil"></i>
-                      </a>
-                      <i class="fa-solid fa-trash-can"></i>
-                    </td>
-                </tr>
-            </table>
-            <!-- <div class="container-nav">
-                <div class="nav-bar">
-                    <div class="">TRẠNG THÁI</div>
-                    <div class="nav-residence">CHỖ NGHỈ</div>
-                    <div class="">ID</div>
-                    <div class="">LƯỢT XEM</div>
-                    <div class="">HÀNH ĐỘNG</div>
-                </div>
-            </div>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <div class="list-content list-status">
-                        <span>BẢN TẠM</span>
-                    </div>
-                    <div class="list-content list-info">
                         <h4>Nguyễn Hoàng Vũ</h4>
-                        <span>123 Nguyễn Lương Bằng, Liên Chiểu</span>
-                    </div>
-                    <div class="list-content list-id">
+                        <span>123 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</span>
+                    </td>
+                    <td class="list-content list-id">
                         <p>12345</p>
-                    </div>
-                    <div class="list-content list-view">
+                    </td>
+                    <td class="list-content list-view">
                         <i class="fa-regular fa-eye"></i>
                         <span>10</span>
-                    </div>
-                    <div class="list-content list-action">
+                    </td>
+                    <td class="list-content list-action">
                         <a href="../Sup_postHotel/index.html">
                             <i class="fa-solid fa-pencil"></i>
                         </a>
                         <i class="fa-solid fa-trash-can"></i>
-                    </div>
-                </li>
-            </ul> -->
+                    </td>
+                </tr>
+
+                <tr class="list-residence">
+                    <td class="list-content list-status">
+                        <span>BẢN TẠM</span>
+                    </td>
+                    <td class="list-content list-info"> 
+                        <h4>abc</h4>
+                        <span>123 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</span>
+                    </td>
+                    <td class="list-content list-id">
+                        <p>12345</p>
+                    </td>
+                    <td class="list-content list-view">
+                        <i class="fa-regular fa-eye"></i>
+                        <span>10</span>
+                    </td>
+                    <td class="list-content list-action">
+                        <a href="../Sup_postHotel/index.html">
+                            <i class="fa-solid fa-pencil"></i>
+                        </a>
+                        <i class="fa-solid fa-trash-can"></i>
+                    </td>
+                </tr>
+
+                <tr class="list-residence">
+                    <td class="list-content list-status">
+                        <span>BẢN TẠM</span>
+                    </td>
+                    <td class="list-content list-info"> 
+                        <h4>def</h4>
+                        <span>123 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</span>
+                    </td>
+                    <td class="list-content list-id">
+                        <p>12345</p>
+                    </td>
+                    <td class="list-content list-view">
+                        <i class="fa-regular fa-eye"></i>
+                        <span>10</span>
+                    </td>
+                    <td class="list-content list-action">
+                        <a href="../Sup_postHotel/index.html">
+                            <i class="fa-solid fa-pencil"></i>
+                        </a>
+                        <i class="fa-solid fa-trash-can"></i>
+                    </td>
+                </tr>
+
+                <tr class="list-residence">
+                    <td class="list-content list-status">
+                        <span>BẢN TẠM</span>
+                    </td>
+                    <td class="list-content list-info"> 
+                        <h4>Nguyễn Hoàng Việt</h4>
+                        <span>123 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng</span>
+                    </td>
+                    <td class="list-content list-id">
+                        <p>12345</p>
+                    </td>
+                    <td class="list-content list-view">
+                        <i class="fa-regular fa-eye"></i>
+                        <span>10</span>
+                    </td>
+                    <td class="list-content list-action">
+                        <a href="../Sup_postHotel/index.html">
+                            <i class="fa-solid fa-pencil"></i>
+                        </a>
+                        <i class="fa-solid fa-trash-can"></i>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="pagination">
+            <li class="page-item previous-page disable"><a class="page-link" href="#">Prev</a></li>
+            <li class="page-item current-page active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
+            <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
         </div>
     </div>
 

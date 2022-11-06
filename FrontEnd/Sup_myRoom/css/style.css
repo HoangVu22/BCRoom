@@ -12,7 +12,8 @@
 html {
     color: #333;
     font-size: 62.5%;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
 }
 
 input {
@@ -386,6 +387,7 @@ ul {
 .supplierPages {
     background-color: #fff;
     padding: 40px 20px 60px 20px;
+    box-shadow: 0 0 5px rgb(0 0 0 / 15%);
     margin-bottom: 50px;
 }
 
@@ -557,6 +559,57 @@ td {
     border-bottom: 1px solid #b4b2b2;
     padding: 20px 0;
 }
+
+/* ---------------pagination------------ */
+.pagination {
+    text-align: center;
+    margin-top: 60px;
+    user-select: none;
+}
+
+.pagination li {
+    display: inline-block;
+    margin: 5px;
+}
+
+.pagination li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 40px;
+}
+
+.previous-page, .next-page {
+    background: var(--main-color);
+    width: 80px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.previous-page:hover {
+    transform: translateX(-5px);
+}
+
+.next-page:hover {
+    transform: translateX(5px);
+}
+
+.current-page {
+    background: #ccc;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.active {
+    background: var(--main-color);
+}
+
+.disable {
+    background: #ccc;
+}
+
 
 /* -------------footer--------- */
 .footer {
