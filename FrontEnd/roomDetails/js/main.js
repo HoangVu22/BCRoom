@@ -91,7 +91,6 @@ function handleIconLight() {
 const inputSearch = document.querySelector('.input-search');
 const autoBox = document.querySelector('.autobox');
 inputSearch.onkeyup = (e) => {
-    // console.log(e.target.value);
     autoBox.style.paddingTop = "4px"
     let checkData = e.target.value;
     let dataArray = [];
@@ -104,7 +103,6 @@ inputSearch.onkeyup = (e) => {
         })
         autoBox.classList.add('active');
         showAdress(dataArray);
-        // console.log(dataArray);
         let liItem = autoBox.querySelectorAll('li');
         for(let i=0; i<liItem.length; i++) {
             liItem[i].addEventListener('click', function() {
@@ -365,3 +363,62 @@ if(!localStorage.getItem('login')) {
 else {
     comments.style.display = "block"
 }
+
+// ------------ loại phòng -----------
+var nameRoom = document.querySelector('.name-room')
+var showDetailRoom = document.querySelector('.show-detail-room')
+var roomClose = document.querySelector('.room-close i')
+
+nameRoom.onclick = function() {
+    if (showDetailRoom.style.display === "none")
+        showDetailRoom.style.display = "block"
+    else {
+        nameRoom.style.display = "none"
+    }
+}
+
+// ---------------- slide room---------
+var imgFeature = document.querySelector('.img-feature')
+var listImage = document.querySelectorAll('.list-image img')
+var prevControl = document.querySelector('.prev-control')
+var nextControl = document.querySelector('.next-control')
+
+var indexCurrent = 0;
+function updateImageByindex(index) {
+    // remove active class
+    document.querySelectorAll('.list-image div').forEach(item => {
+        item.classList.remove('active')
+    })
+
+    indexCurrent = index
+    imgFeature.src = listImage[index].getAttribute('src')
+    listImage[index].parentElement.classList.add('active')
+}
+
+listImage.forEach((imgElement, index) => {
+    imgElement.addEventListener('click', e => {
+        updateImageByindex(index)
+    })
+})
+
+prevControl.addEventListener('click', e => {
+    if(indexCurrent == 0) {
+        indexCurrent = listImage.length - 1
+    }
+    else {
+        indexCurrent--
+    }
+    updateImageByindex(indexCurrent)
+})
+
+nextControl.addEventListener('click', e => {
+    if(indexCurrent == listImage.length - 1) {
+        indexCurrent = 0
+    }
+    else {
+        indexCurrent++
+    }
+    updateImageByindex(indexCurrent)
+})
+
+updateImageByindex(0)

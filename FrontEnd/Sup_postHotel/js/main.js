@@ -133,3 +133,9 @@ radioNo.onclick = function() {
   creditcardSection.style.display = 'none'
   cashSection.style.display = 'block'
 }
+
+// ------------------- next and prev-------
+var saveInf = document.querySelector('.save-inf')
+var preNext = document.querySelector('.pre-next button')
+var goToNext = document.querySelector('.go-to-next button')
+var finish = document.querySelector('.finish button')
