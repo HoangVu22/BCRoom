@@ -11,8 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.Booking)
-      this.belongsTo(models.Service)
+      this.belongsTo(models.Booking, {
+        foreignKey: 'bookingId'
+      })
+      this.belongsTo(models.Service, {
+        foreignKey: 'serviceId'
+      })
     }
   }
   BookingDetail.init({

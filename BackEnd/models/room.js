@@ -11,11 +11,21 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.RoomType)
-      this.belongsTo(models.Hotel)
-      this.hasMany(models.Image)
-      this.belongsTo(models.Booking)
-      this.hasMany(models.RoomRelatedService)
+      this.belongsTo(models.RoomType, {
+        foreignKey: 'typeId'
+      })
+      this.belongsTo(models.Hotel, {
+        foreignKey: 'hotelId'
+      })
+      this.hasMany(models.Image, {
+        foreignKey: 'roomId'
+      })
+      this.hasOne(models.Booking, {
+        foreignKey: 'roomId'
+      })
+      this.hasMany(models.RoomRelatedService, {
+        foreignKey: 'roomId'
+      })
     }
   }
   Room.init({

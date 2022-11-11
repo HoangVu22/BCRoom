@@ -11,8 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.hasMany(models.BookingDetail)
-      this.hasMany(models.RoomRelatedService)
+      this.hasMany(models.BookingDetail, {
+        foreignKey: 'serviceId'
+      })
+      this.hasMany(models.RoomRelatedService, {
+        foreignKey: 'serviceId'
+      })
     }
   }
   Service.init({
