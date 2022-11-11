@@ -645,7 +645,7 @@ ul {
     cursor: pointer;
 }
 
-.number-box, .number-box2 {
+.number-box, .number-box2, .number-box3 {
     position: absolute;
     top: 100%;
     width: 100%;
@@ -654,11 +654,11 @@ ul {
     display: none;
 }
 
-.number-box.active, .number-box2.active {
+.number-box.active, .number-box2.active, .number-box3.active {
     display: block;
 }
 
-.number-box li, .number-box2 li {
+.number-box li, .number-box2 li, .number-box3 li {
     list-style: none;
     display: flex;
     justify-content: space-between;
@@ -667,22 +667,22 @@ ul {
     cursor: pointer;
 }
 
-.number-box i, .number-box2 i {
+.number-box i, .number-box2 i, .number-box3 i {
     color: var(--main-color);
 }
 
-.number-left, .number-left2 {
+.number-left, .number-left2, .number-left3 {
     width: 65%;
     font-size: 15px;
 }
 
-.number-right, .number-right2 {
+.number-right, .number-right2, .number-right3 {
     width: 35%;
     display: flex;
     justify-content: space-between;
 }
 
-.number-close, .number-close2 {
+.number-close, .number-close2, .number-close3 {
     font-size: 15px;
     cursor: pointer;
     padding: 10px 12px 10px 12px;
@@ -958,10 +958,15 @@ ul {
 }
 
 .list-device {
-    text-indent: 30px;
+    display: flex;
+    justify-content: space-around;
     font-size: 14px;
     color: #34495E;
-    line-height: 20px;
+    line-height: 40px;
+}
+
+.amenities li i {
+    margin-right: 10px;
 }
 
 .book-room {
@@ -1203,6 +1208,262 @@ ul {
 .btn-cmt:hover {
     background: var(--main-color);
 }
+
+
+/* -------------loại phòng----- */
+.type-title h1 {
+    font-size: 25px;
+}
+
+.room-date {
+    display: flex;
+    margin-right: 10px;
+}
+
+.room-search {
+    width: 5%;
+    height: 34px;
+    margin-top: 23px;
+    margin-left: 5px;
+    background: linear-gradient(#f37066,#f44336);
+    border: none;
+    border-radius: 5px;
+}
+
+.room-search:hover {
+    background: var(--main-color);
+}
+
+.room-search a i {
+    color: #fff;
+}
+
+.supplierPages {
+    background-color: #fff;
+    padding: 10px 0 40px 20px;
+    box-shadow: 0 0 5px rgb(0 0 0 / 15%);
+    margin-bottom: 50px;
+}
+
+.list-content {
+    margin-top: 20px;
+    font-size: 14.5px;
+}
+
+.list-status span, .list-info span, .list-people span {
+    font-size: 15px;
+}
+
+.list-status a {
+    font-size: 17px;
+    color: #333;
+    font-weight: bold;
+    text-decoration: underline;
+    position: relative;
+}
+
+.list-status a:hover {
+    color: var(--main-color);
+}
+
+.list-status a::after {
+    content: '';
+    position: absolute;
+    height: 20px;
+    width: calc(100% + 30px);
+    background-color: transparent;
+    top: 98%;
+    left: 0;
+}
+
+.show-detail-room {
+    position: absolute;
+    display: flex;
+    width: 80%;
+    background-color: #fff;
+    /* top: 135%; */
+    padding: 20px ;
+    left: 112px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 20px #0003;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.detail-image-room {
+    width: 94%;
+    height: 80%;
+    /* margin: 50px auto; */
+}
+
+.image-room-main {
+    height: 80%;
+    margin-bottom: 4px;
+    position: relative;
+}
+
+.list-image {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-image div {
+    flex: 1;
+    padding: 5px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.img-control {
+    position: absolute;
+    top: 50%;
+    color: #fff;
+    font-size: 30px;
+    transform: translateY(-50%);
+}
+
+.prev-control {
+    left: 10px;
+}
+
+.next-control {
+    right: 10px;
+}
+
+.active {
+    background: var(--main-color);
+}
+
+/* .detail-image-room img {
+    width: 94%;
+    border-radius: 10px;
+} */
+
+.detail-content-room {
+    width: 50%;
+    margin-left: 20px;
+}
+
+.convenient {
+    margin-top: 20px;
+    color: #34495E;
+}
+
+.air-conditioning i, .wifi i, .ears i {
+    font-size: 14px;
+    margin-bottom: 14px;
+    margin-right: 6px;
+}
+
+.air-conditioning span, .wifi span, .ears span {
+    font-size: 14px;
+}
+
+.bathroom h1, .convenient-room h1 {
+    font-size: 17px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.bathroom ul li, .convenient-room ul li {
+    font-size: 14px;
+    color: #34495E;
+    line-height: 24px;
+}
+
+.reserve button {
+    padding: 10px 16px;
+    margin-top: 20px;
+    margin-left: 170px;
+    background: linear-gradient(#f37066,#f44336);
+    border: none;
+    border-radius: 5px;
+}
+
+.reserve > button > a {
+    color: #fff;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.reserve button:hover {
+    background: var(--main-color);
+}
+
+.room-close i {
+    font-size: 22px;
+}
+
+.list-id button {
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 20px;
+    background: linear-gradient(#f37066,#f44336);
+    border: none;
+    border-radius: 5px;
+}
+
+.list-id button a {
+    color: #fff;
+}
+
+.list-id button:hover {
+    background: var(--main-color);
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    font-size: 15px;
+    border-collapse: collapse;
+}
+
+table tr th {
+    text-align: start;
+}
+
+th {
+    border-bottom: 1px solid black;
+}
+
+/* th:not(th:nth-child(2)){
+    width: 15%;
+} */
+
+th:nth-child(1) {
+    width: 35%;
+}
+
+th:nth-child(2) {
+    width: 20%;
+}
+
+th:nth-child(3) {
+    width: 25%;
+}
+
+th:nth-child(4) {
+    width: 20%;
+}
+
+th, td {
+    padding: 10px 0;
+}
+
+td {
+    border-bottom: 1px solid #b4b2b2;
+    padding: 20px 0;
+}
+
+
+
 
 /* --------------gg map---------- */
 .gg-map {

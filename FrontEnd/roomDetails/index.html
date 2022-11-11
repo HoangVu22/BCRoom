@@ -239,7 +239,7 @@
             <div class="info-room">
                 <div class="border">
                     <div class="info-room-border"></div>
-                    <div class="info-room-name">CHI TIẾT PHÒNG</div>
+                    <div class="info-room-name">TỔNG QUAN</div>
                     <div class="info-room-border"></div>
                 </div>
             </div>
@@ -247,18 +247,40 @@
             <div class="info-container">
                 <h3 class="info-container-name">Room Aminitiese</h3>
                 <p class="info-container-content">Phòng SUPERIOR cao cấp với diện tích 30 m2, được Marina Hotel thiết kế theo phong cách châu Âu hiện đại và sang trọng. Hệ thống nội thất và trang thiết bị điện tử, Tivi truyền hình Hàn quốc (57 kênh) được chăm chút tỉ mỉ, đáp ứng được nhu cầu thư giãn của quý khách hàng sau những giờ phút tất bật tại công sở. Sau khi kết thúc một ngày bận rộn với công việc hay các kế hoạch vui chơi, quý khách hàng có thể trải nghiệm không gian yên tĩnh, cảm nhận sự nhẹ nhàng khi ngắm nhìn thành phố qua những ô cửa kính và ban công rộng trong hệ thống phòng Superior của khách sạn Marina.</p>
-                <h4 class="info-container-device">TRANG THIẾT BỊ:</h4>
+                <h4 class="info-container-device">CÁC TIỆN NGHI CỦA KHÁCH SẠN:</h4>
                 <ul class="list-device">
-                    <li>Phòng 1 giường đôi 1,8m x 2,1m</li>
-                    <li>Phòng vệ sinh cap cấp hiện đại</li>
-                    <li>TV truyền hình cáp / truyền hình Hàn Quốc HD</li>
-                    <li>Bình siêu tốc</li>
-                    <li>Tủ quần áo, áo tắm</li>
-                    <li>Mấy sấy tóc</li>
-                    <li>Nước khoáng, trà, cà phê miễn phí</li>
-                    <li>Bồn tắm đứng / bồn tắm nằm</li>
-                    <li>Diện tích tiêu chuẩn</li>
-                    <li>Cửa sổ kính lớn/ ban công</li>
+                    <div class="amenities">
+                        <li>
+                            <i class="fa-solid fa-wifi"></i>
+                            <span>Free wifi</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-sink"></i>
+                            <span>Đồ dùng nhà tắm miễn phí</span>
+                        </li>
+                        <li>
+                            <i class="fa-regular fa-circle-check"></i>
+                            <span>Dịch vụ phòng</span>
+                        </li>
+                        <li>
+                            <i class="fa-regular fa-snowflake"></i>
+                            <span>Điều hòa không khí</span>
+                        </li>
+                    </div>
+                    <div class="amenities">
+                        <li>
+                            <i class="fa-regular fa-circle-check"></i>
+                            <span>Chỗ đỗ xe miễn phí</span>
+                        </li>
+                        <li>
+                            <i class="fa-regular fa-circle-check"></i>
+                            <span>Dọn phòng</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-tv"></i>
+                            <span>Lễ tân 24/7</span>
+                        </li>
+                    </div>
                 </ul>
             </div>
         </div>
@@ -426,6 +448,260 @@
         <div class="comments">
             <input class="cmt-text" type="text" placeholder="Nhập đánh giá của bạn...">
             <button class="btn-cmt">Đánh giá</button>
+        </div>
+    </div>
+
+    <div class="type-rooms wraper2">
+        <div class="type-title">
+            <h1>Loại phòng</h1>
+            <div class="form-room">
+                <form class="room-date" action="">
+                    <div class="form-group form-calender" style="margin-right: 8px;">
+                        <label for="myID" class="form-label">Thời gian nhận phòng</label>
+                        <input id="myID" name="myID" type="text" placeholder="Chọn thời gian" class="form-control ">
+                        <i class="fa-solid fa-calendar-days form-calender-icon"></i>
+                    </div>
+                    <div class="form-group form-calender" style="margin-right: 8px;">
+                        <label for="myID" class="form-label">Thời gian trả phòng</label>
+                        <input id="myID" name="myID" type="text" placeholder="Chọn thời gian" class="form-control ">
+                        <i class="fa-solid fa-calendar-days form-calender-icon"></i>
+                    </div>
+                    <div class="form-group form-people">
+                        <label for="myPeople" class="form-label">Số Khách</label>
+                        <input id="myPeople" name="myPeople" type="text" placeholder="1" class="form-control number-people2">
+                        <i class="fa-solid fa-user-check form-people-icon"></i>
+                        <div class="number-box number-box3">
+                            <li>
+                                <div class="number-left3">
+                                    <p>Người lớn</p>
+                                </div>
+                                <div class="number-right3 adult">
+                                    <i class="fa-solid fa-minus adultMinus"></i>
+                                    <span>0</span>
+                                    <i class="fa-solid fa-plus adultPlus"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="number-left3">
+                                    <p>Trẻ em</p>
+                                </div>
+                                <div class="number-right3 child">
+                                    <i class="fa-solid fa-minus childMinus"></i>
+                                    <span>0</span>
+                                    <i class="fa-solid fa-plus childPlus"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="number-left3">
+                                    <p>Phòng</p>
+                                </div>
+                                <div class="number-right3 room">
+                                    <i class="fa-solid fa-minus roomMinus"></i>
+                                    <span>0</span>
+                                    <i class="fa-solid fa-plus roomPlus"></i>
+                                </div>
+                            </li>
+                            <p class="number-close3">Xong</p>
+                        </div>
+                    </div>
+            
+                    <button class="room-search"><a href=""><i class="fa-solid fa-magnifying-glass"></i></a></button>
+                </form>
+           </div>
+
+           <div class="supplierPages wraper">
+            <div class="container-residence">
+                <table class="container-nav">
+                    <tr>
+                        <th>LOẠI PHÒNG</th>
+                        <th>PHÙ HỢP CHO</th>
+                        <th>GIÁ MỖI ĐÊM</th>
+                        <th>ĐẶT PHÒNG</th>
+                    </tr>
+                    <tr class="list-residence">
+                        <td class="list-content list-status">
+                            <a class="name-room" href="">Phòng giường đơn</a>
+                            <div class="convenient">
+                                <div class="air-conditioning">
+                                    <i class="fa-regular fa-snowflake"></i>
+                                    <span>Điều hòa không khí</span>
+                                </div>
+                                <div class="wifi">
+                                    <i class="fa-solid fa-wifi"></i>
+                                    <span>Wifi miễn phí</span>
+                                </div>
+                                <div class="ears">
+                                    <i class="fa-solid fa-ear-deaf"></i>
+                                    <span>Hệ thống cách âm</span>
+                                </div>
+                            </div>
+                            <div class="show-detail-room" >
+                                <div class="detail-image-room">
+                                    <div class="image-room-main">
+                                        <img src="../image/detail-room/detailRoom2.jpg" class="img-feature">
+                                        <div class="img-control prev-control">
+                                            <i class="fa-solid fa-chevron-left"></i>
+                                        </div>
+                                        <div class="img-control next-control">
+                                            <i class="fa-solid fa-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                    <div class="list-image">
+                                        <div><img src="../image/detail-room/detailRoom4.jpg" alt=""></div>
+                                        <div><img src="../image/detail-room/detailRoom1.jpg" alt=""></div>
+                                        <div><img src="../image/detail-room/detailRoom3.jpg" alt=""></div>
+                                        <div><img src="../image/detail-room/detailRoom5.jpg" alt=""></div>
+                                        <div><img src="../image/detail-room/detailRoom6.jpg" alt=""></div>
+                                    </div>
+                                    <!-- <img src="../image/detail-room/detailRoom3.jpg" alt=""> -->
+                                </div>
+                                <div class="detail-content-room">
+                                    <h1>Phòng giường đơn</h1>
+                                    <div class="convenient">
+                                        <div class="air-conditioning">
+                                            <i class="fa-regular fa-snowflake"></i>
+                                            <span>Điều hòa không khí</span>
+                                        </div>
+                                        <div class="wifi">
+                                            <i class="fa-solid fa-wifi"></i>
+                                            <span>Wifi miễn phí</span>
+                                        </div>
+                                        <div class="ears">
+                                            <i class="fa-solid fa-ear-deaf"></i>
+                                            <span>Hệ thống cách âm</span>
+                                        </div>
+                                    </div>
+                                    <div class="bathroom">
+                                        <h1>Phòng tắm</h1>
+                                        <ul>
+                                            <li>Đồ vệ sinh cá nhân</li>
+                                            <li>Nhà vệ sinh</li>
+                                            <li>Giấy vệ sinh</li>
+                                            <li>Bồn tắm hoặc vòi sen</li>
+                                            <li>Khăn tắm</li>
+                                        </ul>
+                                    </div>
+                                    <div class="convenient-room">
+                                        <h1>Tiện nghi phòng</h1>
+                                        <ul>
+                                            <li>Điều hòa không khí</li>
+                                            <li>Hệ thống cách âm</li>
+                                            <li>Tivi</li>
+                                            <li>Tủ lạnh</li>
+                                            <li>Tủ quần áo</li>
+                                            <li>Bàn ăn</li>
+                                            <li>More...</li>
+                                        </ul>
+                                    </div>
+                                    <div class="reserve">
+                                        <button><a href="">Đặt ngay</a></button>
+                                    </div>
+                                </div>
+                                <div class="room-close">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="list-content list-people">
+                            <span>2 người</span>
+                        </td>
+                        <td class="list-content list-info">
+                            <span>200.000 VNĐ</span>
+                        </td>
+                        <td class="list-content list-id">
+                            <button><a href="">Đặt phòng</a></button>
+                        </td>
+                    </tr>
+    
+                    <tr class="list-residence">
+                        <td class="list-content list-status">
+                            <a href="">Phòng giường đơn</a>
+                            <div class="convenient">
+                                <div class="air-conditioning">
+                                    <i class="fa-regular fa-snowflake"></i>
+                                    <span>Điều hòa không khí</span>
+                                </div>
+                                <div class="wifi">
+                                    <i class="fa-solid fa-wifi"></i>
+                                    <span>Wifi miễn phí</span>
+                                </div>
+                                <div class="ears">
+                                    <i class="fa-solid fa-ear-deaf"></i>
+                                    <span>Hệ thống cách âm</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="list-content list-people">
+                            <span>2 người</span>
+                        </td>
+                        <td class="list-content list-info">
+                            <span>200.000 VNĐ</span>
+                        </td>
+                        <td class="list-content list-id">
+                            <button><a href="">Đặt phòng</a></button>
+                        </td>
+                    </tr>
+    
+                    <tr class="list-residence">
+                        <td class="list-content list-status">
+                            <a href="">Phòng giường đơn</a>
+                            <div class="convenient">
+                                <div class="air-conditioning">
+                                    <i class="fa-regular fa-snowflake"></i>
+                                    <span>Điều hòa không khí</span>
+                                </div>
+                                <div class="wifi">
+                                    <i class="fa-solid fa-wifi"></i>
+                                    <span>Wifi miễn phí</span>
+                                </div>
+                                <div class="ears">
+                                    <i class="fa-solid fa-ear-deaf"></i>
+                                    <span>Hệ thống cách âm</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="list-content list-people">
+                            <span>2 người</span>
+                        </td>
+                        <td class="list-content list-info">
+                            <span>200.000 VNĐ</span>
+                        </td>
+                        <td class="list-content list-id">
+                            <button><a href="">Đặt phòng</a></button>
+                        </td>
+                    </tr>
+    
+                    <tr class="list-residence">
+                        <td class="list-content list-status">
+                            <a href="">Phòng giường đơn</a>
+                            <div class="convenient">
+                                <div class="air-conditioning">
+                                    <i class="fa-regular fa-snowflake"></i>
+                                    <span>Điều hòa không khí</span>
+                                </div>
+                                <div class="wifi">
+                                    <i class="fa-solid fa-wifi"></i>
+                                    <span>Wifi miễn phí</span>
+                                </div>
+                                <div class="ears">
+                                    <i class="fa-solid fa-ear-deaf"></i>
+                                    <span>Hệ thống cách âm</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="list-content list-people">
+                            <span>2 người</span>
+                        </td>
+                        <td class="list-content list-info">
+                            <span>200.000 VNĐ</span>
+                        </td>
+                        <td class="list-content list-id">
+                            <button><a href="">Đặt phòng</a></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
         </div>
     </div>
 

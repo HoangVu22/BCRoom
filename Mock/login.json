@@ -20,5 +20,11 @@
             "email": "tri@gmail.com",
             "password": "123456"
         }
+    ],
+
+    "logout":[
+        {
+            
+        }
     ]
 }
