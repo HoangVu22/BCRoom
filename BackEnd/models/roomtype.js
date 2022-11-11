@@ -11,9 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasMany(models.Room)
     }
   }
   RoomType.init({
+    typeId: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+        defaultValue: DataTypes.UUID
+    },
     typeName: DataTypes.STRING
   }, {
     sequelize,

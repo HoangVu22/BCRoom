@@ -11,9 +11,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.belongsTo(models.Customer)
+      this.hasMany(models.Review)
+      this.hasMany(models.Room)
+      this.hasMany(models.Image)
     }
   }
   Hotel.init({
+    hotelId: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+        defaultValue: DataTypes.UUID
+    },
+    customerId: DataTypes.UUID,
     hotelName: DataTypes.STRING,
     address: DataTypes.STRING
   }, {

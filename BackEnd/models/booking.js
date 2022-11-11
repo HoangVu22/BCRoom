@@ -11,10 +11,24 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasOne(models.Room)
+      this.belongsTo(models.Customer)
+      this.belongsTo(models.Bill)
+      this.hasMany(models.BookingDetail)
     }
   }
   Booking.init({
-    hotelName: DataTypes.STRING
+    bookingId: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+        defaultValue: DataTypes.UUID
+    },
+    customerId: DataTypes.UUID,
+    hotelName: DataTypes.STRING,
+    dateFrom: DataTypes.DATEONLY,
+    dateTo: DataTypes.DATEONLY,
+    adultNumber: DataTypes.INTEGER,
+    kidNumber: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Booking',

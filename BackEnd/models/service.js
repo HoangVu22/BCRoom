@@ -11,10 +11,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasMany(models.BookingDetail)
+      this.hasMany(models.RoomRelatedService)
     }
   }
   Service.init({
-    serviceName: DataTypes.STRING
+    serviceId: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+        defaultValue: DataTypes.UUID
+    },
+    serviceName: DataTypes.STRING,
+    price: DataTypes.DECIMAL(7, 2)
   }, {
     sequelize,
     modelName: 'Service',
