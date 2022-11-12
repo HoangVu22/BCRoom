@@ -443,6 +443,12 @@ ul {
     grid-template-columns: auto auto auto auto;
 }
 
+.picture-hotel {
+    padding: 30px 0px;
+    margin-bottom: 50px;
+    grid-template-columns: auto auto auto auto;
+}
+
 .content-introduce {
     font-size: 16px;
     margin-bottom: 30px;
@@ -601,7 +607,7 @@ ul {
 }
 
 /* ----------------------- */
-.picture-library {
+.picture-library, .picture-detail {
     background-color: #fff;
     font-size: 26px;
     padding: 34px 20px;
@@ -609,11 +615,11 @@ ul {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 }
 
-.picture-library p {
+.picture-library p, .picture-detail p {
     margin-bottom: 20px;
 }
 
-.drag-image {
+.drag-image, .drag-picture {
     text-align: center;
     border: 2px dashed #b4b2b2;
     border-radius: 10px;
@@ -621,12 +627,12 @@ ul {
     padding: 50px 0;
 }
 
-.drag-image p {
+.drag-image p, .drag-picture p {
     font-size: 20px;
     cursor: pointer;
 }
 
-.choose-file {
+.choose-file, .choose-files {
     font-size: 15px !important;
     background: linear-gradient(#f37066,#f44336);
     padding: 10px 20px;
@@ -636,11 +642,11 @@ ul {
     cursor: pointer;
 }
 
-.choose-file:hover {
+.choose-file:hover, .choose-files:hover {
     background: var(--main-color);
 }
 
-.image {
+.image, .picture {
     display: flex;
     justify-content: space-around;
     display: grid;
@@ -651,13 +657,19 @@ ul {
     margin: 0 10px 20px 10px;
 }
 
-.image-detail img {
+.image-detail img, .picture-detail img {
     width: 100%;
     height: 100%;
     border-radius: 10px;
 }
 
 .image .image-detail {
+    position: relative;
+    width: 200px;
+    height: 210px;
+}
+
+.picture .picture-detail {
     position: relative;
     width: 200px;
     height: 210px;
@@ -672,12 +684,25 @@ ul {
     color: #fff;
 }
 
+.picture .picture-detail i {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #fff;
+}
+
 .image .image-detail i:hover {
     opacity: 0.8;
 }
 
+.picture .picture-detail i:hover {
+    opacity: 0.8;
+}
+
 /* ------------------------------------ */
-.choose-satisfied, .choose-size, .basic-price, .cancel-booking, .choose-payment {
+.choose-satisfied, .choose-size, .basic-price, .cancel-booking, .choose-payment, .convenient-select {
     background-color: #fff;
     font-size: 26px;
     padding: 34px 20px;
@@ -767,11 +792,17 @@ ul {
     display: none;
 }
 
-.creditcard-left {
+.convenient-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.creditcard-left, .convenient-left  {
     width: 50%;
 }
 
-.creditcard-right {
+.creditcard-right, .convenient-right {
     width: 50%;
 }
 
@@ -779,6 +810,14 @@ ul {
     display: flex;
     align-items: center;
     font-size: 17px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.convenient-item {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
     margin-bottom: 20px;
     cursor: pointer;
 }
@@ -791,7 +830,7 @@ ul {
     object-fit: fill;
 }
 
-.creditcard-item input {
+.creditcard-item input, .convenient-item input {
     margin-right: 10px;
     width: 15px;
     height: 15px;
