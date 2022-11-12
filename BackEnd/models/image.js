@@ -11,9 +11,22 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+        this.belongsTo(models.Room, {
+            foreignKey: 'roomId'
+        })
+        this.belongsTo(models.Hotel, {
+            foreignKey: 'hotelId'
+        })
     }
   }
   Image.init({
+    imageId: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+        defaultValue: DataTypes.UUID
+    },
+    roomId: DataTypes.UUID,
+    hotelId: DataTypes.UUID,
     url: DataTypes.STRING
   }, {
     sequelize,

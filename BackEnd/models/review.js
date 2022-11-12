@@ -11,9 +11,22 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.belongsTo(models.Customer, {
+        foreignKey: 'customerId'
+      })
+      this.belongsTo(models.Hotel, {
+        foreignKey: 'hotelId'
+      })
     }
   }
   Review.init({
+    reviewId: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+        defaultValue: DataTypes.UUID
+    },
+    customerId: DataTypes.UUID,
+    hotelId: DataTypes.UUID,
     starNumber: DataTypes.INTEGER,
     content: DataTypes.STRING
   }, {

@@ -1,6 +1,6 @@
 'use strict';
 const {
-  Model
+  Model, UUID
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class BookingDetail extends Model {
@@ -11,10 +11,22 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.belongsTo(models.Booking, {
+        foreignKey: 'bookingId'
+      })
+      this.belongsTo(models.Service, {
+        foreignKey: 'serviceId'
+      })
     }
   }
   BookingDetail.init({
-    description: DataTypes.STRING
+    bookingDetailId: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+        defaultValue: DataTypes.UUID,
+    },
+    bookingId: DataTypes.UUID,
+    serviceId: DataTypes.UUID
   }, {
     sequelize,
     modelName: 'BookingDetail',
