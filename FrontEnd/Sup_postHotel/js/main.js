@@ -57,7 +57,71 @@ stepItem.forEach((tab, index) => {
   };
 });
 
-// -------------- drag-drop-----------
+// ---------------picture hotel-----------
+let filePicture = [];
+var dragPicture = document.querySelector(".drag-picture");
+var dragDrop1 = document.querySelector(".drag-drop1");
+var chooseFiles = document.querySelector(".choose-files");
+var dropInput = document.querySelector(".drop-input");
+var pictureDetail = document.querySelectorAll(".picture-detail img");
+var picture = document.querySelector(".picture");
+
+function handlePicture() {
+  chooseFiles.addEventListener("click", function () {
+    dropInput.click();
+  });
+  dropInput.onchange = function (e) {
+    const url1 = URL.createObjectURL(e.target.filePicture[0]);
+    filePicture.push(url1);
+
+    const html = filePicture
+      .map((item) => {
+        return `<div class="picture-detail">
+        <img src="${item}" alt="">
+        <i class="fa-solid fa-xmark delete_picture"></i>
+      </div>`;
+      })
+      .join("");
+
+    picture.innerHTML = html;
+
+    let delete_picture = document.querySelectorAll(".delete_picture");
+    function handleDetelePicture(index) {
+      const filter = filePicture.filter((item1, index2) => {
+        return index2 !== index;
+      });
+      filePicture.splice(index, 1)
+      const newList = filter
+        .map((element) => {
+          return `<div class="picture-detail">
+          <img src="${element}" alt="">
+          <i class="fa-solid fa-xmark delete_picture"></i>
+        </div>`;
+        })
+        .join("");
+
+      picture.innerHTML = newList;
+      delete_picture = document.querySelectorAll(".delete_picture");
+      delete_picture.forEach((item, index) => {
+        item.onclick = () => {
+          handleDetelePicture(index);
+        };
+      });
+    }
+    delete_picture.forEach((item, index) => {
+      item.onclick = () => {
+          handleDetelePicture(index);
+      };
+    });
+    e.target.value = "";
+  };
+}
+handlePicture();
+
+
+
+
+// -------------- drag-drop room-----------
 let files = [];
 var dragImage = document.querySelector(".drag-image");
 var dragDrop = document.querySelector(".drag-drop");
