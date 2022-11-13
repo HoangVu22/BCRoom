@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: DataTypes.UUID
     },
     condition: DataTypes.STRING,
-    expireTime: DataTypes.STRING
+    expireTime: DataTypes.STRING,
+    roomNumber: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Policy',
