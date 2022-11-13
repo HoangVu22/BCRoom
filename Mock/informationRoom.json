@@ -1,0 +1,21 @@
+{
+    "informationRoom":[
+        {   
+            "roomType":"Phòng đơn",
+            "numberAdults": "2",
+            "numberKids": "1",
+            "policy1": "2 ngày",
+            "policy2": "của đêm đầu tiên",
+            "price":"100000"
+        },
+        {   
+            "roomType":"Phòng 2 giường đơn",
+            "numberAdults": "4",
+            "numberKids": "2",
+            "policy1": "1 ngày",
+            "policy2": "của tổng đợt lưu trú",
+            "price":"120000"
+        }
+    ]
+
+}

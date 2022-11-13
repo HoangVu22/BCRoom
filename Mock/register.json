@@ -1,0 +1,23 @@
+{
+    "register": [
+        {   
+            "name":"Hoàng Vũ",
+            "email": "hoangvu@gmail.com",
+            "password": "123456",
+            "passwordAgain": "123456"
+        },
+        {   
+            "name":"Đàm Trí",
+            "email": "damtri@gmail.com",
+            "password": "123456",
+            "passwordAgain": "123456"
+        },
+        {   
+            "name":"Tiên Phong",
+            "email": "tienphong@gmail.com",
+            "password": "123456",
+            "passwordAgain": "123456"
+        }
+    ]
+
+}
