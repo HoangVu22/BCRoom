@@ -9,7 +9,7 @@ const app = express()
 const httpServer = http.createServer(app)
 const port = process.env.SERVER_PORT
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 // connected app with api

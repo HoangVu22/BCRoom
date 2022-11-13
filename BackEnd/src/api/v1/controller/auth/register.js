@@ -3,7 +3,7 @@ const { Customer } = require('../../../../../models')
 
 module.exports = async (request, response) => {
     try {
-        const { name, email, password } = request
+        const { name, email, password } = request.body
 
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(password, salt)

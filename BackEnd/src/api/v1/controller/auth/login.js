@@ -3,7 +3,7 @@ const { Customer }= require('../../../../../models')
 
 module.exports = async (request, response) => {
     try {
-        const { email, password } = request
+        const { email, password } = request.body
        
         const customer = await Customer.findOne({
             where: {
