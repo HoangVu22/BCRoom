@@ -65,18 +65,16 @@ var chooseFiles = document.querySelector(".choose-files");
 var dropInput = document.querySelector(".drop-input");
 var pictureDetail = document.querySelectorAll(".picture-detail img");
 var picture = document.querySelector(".picture");
-
 function handlePicture() {
   chooseFiles.addEventListener("click", function () {
     dropInput.click();
   });
   dropInput.onchange = function (e) {
-    const url1 = URL.createObjectURL(e.target.filePicture[0]);
+    const url1 = URL.createObjectURL(e.target.files[0]);
     filePicture.push(url1);
-
     const html = filePicture
       .map((item) => {
-        return `<div class="picture-detail">
+        return `<div class="image-detail">
         <img src="${item}" alt="">
         <i class="fa-solid fa-xmark delete_picture"></i>
       </div>`;
@@ -93,7 +91,7 @@ function handlePicture() {
       filePicture.splice(index, 1)
       const newList = filter
         .map((element) => {
-          return `<div class="picture-detail">
+          return `<div class="image-detail">
           <img src="${element}" alt="">
           <i class="fa-solid fa-xmark delete_picture"></i>
         </div>`;

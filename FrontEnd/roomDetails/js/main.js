@@ -4,14 +4,11 @@ var header_logo = document.querySelector('.header-logo h1')
 var headerNavIcon = document.querySelector('.header-nav-icon')
 window.onscroll = function () { 
     myFunction() 
-    console.log(window.pageYOffset);
 };
 
 var navs = document.querySelectorAll('.list_city > li > a')
 function myFunction() {
-    console.log(navs);
     var header = document.querySelector('header')
-    console.log(headerNavIcon.style.borderColor);
     if (window.pageYOffset > 0) {
         header_logo.style.color = '#f44336'
         header.style.backgroundColor='#fff'
@@ -284,11 +281,96 @@ function totalNumber2() {
     inputNumber2.value = a + " Người lớn, " + b + " Trẻ em";
 }
 
+// --------------------
+const inputNumber4 = document.querySelector('.number-people4')
+const numberBox4 = document.querySelector('.number-box4')
+const numberClose4 = document.querySelector('.number-close4')
+
+inputNumber4.addEventListener('click', function() {
+    numberBox4.classList.add('active')
+})
+numberClose4.addEventListener('click', function() {
+    numberBox4.classList.remove('active')
+})
+
+document.addEventListener('keydown', function(e) {
+    if(e.keyCode == 27) {
+        numberBox4.classList.remove('active');
+    }
+})
+
+const adultPlus4 = document.querySelector('.adultPlus4')
+const adultMinus4 = document.querySelector('.adultMinus4')
+let adultValue4 = document.querySelector('.adult4 span')
+let c = 0;
+adultPlus4.addEventListener('click', function() {
+    c = c+1;
+    adultValue4.innerHTML = c;
+    totalNumber4()
+})
+adultMinus4.addEventListener('click', function() {
+    if (c <= 0) {
+        c = 0;
+    }
+    else {
+        c = c-1;
+        adultValue4.innerHTML = c;
+        totalNumber4()
+    }
+})
+
+const childPlus4 = document.querySelector('.childPlus4')
+const childMinus4 = document.querySelector('.childMinus4')
+let childValue4 = document.querySelector('.child4 span')
+let d = 0;
+childPlus4.addEventListener('click', function() {
+    d = d+1;
+    childValue4.innerHTML = d;
+    totalNumber4()
+})
+childMinus4.addEventListener('click', function() {
+    if (d <= 0) {
+        d = 0;
+    }
+    else {
+        d = d-1;
+        childValue4.innerHTML = d;
+        totalNumber4()
+    }
+})
+
+const roomPlus4 = document.querySelector('.roomPlus4')
+const roomMinus4 = document.querySelector('.roomMinus4')
+let roomValue4 = document.querySelector('.room4 span')
+let g = 0;
+roomPlus4.addEventListener('click', function() {
+    g = g+1;
+    roomValue4.innerHTML = g;
+    totalNumber4()
+})
+roomMinus4.addEventListener('click', function() {
+    if (g <= 0) {
+        g = 0;
+    }
+    else {
+        g = g-1;
+        roomValue4.innerHTML = g;
+        totalNumber4()
+    }
+})
+
+function totalNumber4() {
+    total = c + d + g;
+    inputNumber4.value = c + d + " Người, " + g + " phòng";
+}
+
+
 // ---------------detail room------------
 var images = document.querySelectorAll('.detail-room-img');
 var prev = document.querySelector('.prev');
 var next = document.querySelector('.next');
 var close = document.querySelector('.close');
+
 var galleryImg = document.querySelector('.gallery-inner img');
 var gallery = document.querySelector('.gallery');
 
@@ -326,10 +408,6 @@ close.onclick = function() {
     gallery.classList.remove('show');
     header.style.display = 'block';
 }
-// close.addEventListener('click', function() {
-//     gallery.classList.remove('show');
-//     // console.log(close, gallery);
-// })
 
 document.addEventListener('keydown', function(e) {
     if(e.keyCode == 27) {
@@ -367,14 +445,10 @@ else {
 // ------------ loại phòng -----------
 var nameRoom = document.querySelector('.name-room')
 var showDetailRoom = document.querySelector('.show-detail-room')
-var roomClose = document.querySelector('.room-close i')
-
-nameRoom.onclick = function() {
+nameRoom.onclick = function(e) {
+    e.preventDefault()
     if (showDetailRoom.style.display === "none")
-        showDetailRoom.style.display = "block"
-    else {
-        nameRoom.style.display = "none"
-    }
+        showDetailRoom.style.display = "flex"
 }
 
 // ---------------- slide room---------
@@ -382,22 +456,23 @@ var imgFeature = document.querySelector('.img-feature')
 var listImage = document.querySelectorAll('.list-image img')
 var prevControl = document.querySelector('.prev-control')
 var nextControl = document.querySelector('.next-control')
+var roomClose = document.querySelector('.room-close i')
 
 var indexCurrent = 0;
 function updateImageByindex(index) {
     // remove active class
     document.querySelectorAll('.list-image div').forEach(item => {
-        item.classList.remove('active')
+        item.classList.remove('active1')
     })
-
     indexCurrent = index
     imgFeature.src = listImage[index].getAttribute('src')
-    listImage[index].parentElement.classList.add('active')
+    listImage[index].parentElement.classList.add('active1')
 }
 
 listImage.forEach((imgElement, index) => {
     imgElement.addEventListener('click', e => {
         updateImageByindex(index)
+        
     })
 })
 
@@ -420,5 +495,9 @@ nextControl.addEventListener('click', e => {
     }
     updateImageByindex(indexCurrent)
 })
+
+roomClose.onclick = function() {
+    showDetailRoom.style.display = 'none'
+}
 
 updateImageByindex(0)

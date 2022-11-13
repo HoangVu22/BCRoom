@@ -58,6 +58,24 @@ function edit() {
 profileSaveBtn.onclick = edit
 profileSaveP.onclick = edit
 
+// ---------------------- 
+const accountsidebarlink = document.querySelectorAll(".account-sidebar-link")
+const profilegenaral = document.querySelectorAll(".profile-genaral")
+accountsidebarlink.forEach((value,index)=>{
+    value.onclick = (e)=>{
+        if(!value.classList.contains("active")){
+            accountsidebarlink.forEach(e=>{
+                e.classList.remove("active")
+            })
+            value.classList.add("active")
+            profilegenaral.forEach(e=>{
+                e.style.display="none"
+            })
+            profilegenaral[index].style.display = "block"
+        }
+    }
+})
+
 
 
 
