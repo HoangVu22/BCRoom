@@ -26,6 +26,9 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.RoomRelatedService, {
         foreignKey: 'roomId'
       })
+      this.hasOne(models.Policy, {
+        foreignKey: 'roomId'
+      })
     }
   }
   Room.init({
