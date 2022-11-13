@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     roleId: DataTypes.UUID,
     username: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
     },
     password: {
         type: DataTypes.STRING,
@@ -42,7 +42,8 @@ module.exports = (sequelize, DataTypes) => {
     }, 
     email: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     }, 
     phone: DataTypes.STRING,
     address: DataTypes.STRING
