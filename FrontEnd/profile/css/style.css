@@ -422,22 +422,16 @@ ul {
     line-height: 50px;
 }
 
-.account-sidebar-link:hover {
-    color: var(--main-color);
-}
-
 .account-sidebar-link i {
     margin-right: 10px;
 }
 
-.profile-right {
-    width: 66%;
-    /* display: none; */
+.profile-right-edit {
+    display: none;
 }
 
-.profile-right-edit {
-    width: 66%;
-    display: none;
+.active {
+    color: var(--main-color);
 }
 
 .profile-right-top {
@@ -592,7 +586,9 @@ ul {
 .profile-right-loved {
     display: none;
 }
-
+.profile-genaral {
+    display: none;
+    width: 66%;}
 .profile-right-booked h2,
 .profile-right-loved h2 {
     margin-bottom: 35px;

@@ -462,17 +462,17 @@ var indexCurrent = 0;
 function updateImageByindex(index) {
     // remove active class
     document.querySelectorAll('.list-image div').forEach(item => {
-        item.classList.remove('active')
+        item.classList.remove('active1')
     })
-
     indexCurrent = index
     imgFeature.src = listImage[index].getAttribute('src')
-    listImage[index].parentElement.classList.add('active')
+    listImage[index].parentElement.classList.add('active1')
 }
 
 listImage.forEach((imgElement, index) => {
     imgElement.addEventListener('click', e => {
         updateImageByindex(index)
+        
     })
 })
 

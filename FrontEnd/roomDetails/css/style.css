@@ -655,6 +655,9 @@ ul {
 
 .number-box4 {
     z-index: 10;
+    background-color: #fff;
+    /* box-shadow: rgb(0 0 0 / 15%) 0px 0px 5px; */
+    box-shadow: rgb(0 0 0 / 20%) 2px 4px 20px;
 }
 
 .number-box.active, .number-box2.active, .number-box4.active {
@@ -1224,7 +1227,7 @@ ul {
     width: 5%;
     height: 34px;
     margin-top: 23px;
-    margin-left: 5px;
+    margin-left: 8px;
     background: linear-gradient(#f37066,#f44336);
     border: none;
     border-radius: 5px;
@@ -1277,17 +1280,20 @@ ul {
 }
 
 .show-detail-room {
-    position: absolute;
+    position: fixed;
     display: flex;
-    width: 80%;
+    width: 70%;
     background-color: #fff;
-    /* top: 135%; */
+    /* top: 10px; */
     padding: 20px ;
-    left: 112px;
+    left: 0;
+    bottom: 34px;
+    right: 0;
     border-radius: 10px;
     box-shadow: 2px 4px 20px #0003;
     cursor: pointer;
     z-index: 100;
+    margin: auto;
 }
 
 .detail-image-room {
@@ -1297,14 +1303,21 @@ ul {
 }
 
 .image-room-main {
-    height: 80%;
+    height: 75%;
     margin-bottom: 4px;
     position: relative;
 }
 
+.image-room-main img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    object-position: center;
+}
+
 .list-image {
     width: 100%;
-    height: 30%;
+    height: 25%;
     display: flex;
     justify-content: space-between;
 }
@@ -1337,9 +1350,9 @@ img {
     right: 10px;
 }
 
-/* .active {
+.active1 {
     background: var(--main-color);
-} */
+} 
 
 /* .detail-image-room img {
     width: 94%;
@@ -1393,8 +1406,16 @@ img {
     text-decoration: none;
 }
 
+.reserve > button > a:hover {
+    color: #fff;
+}
+
 .reserve button:hover {
     background: var(--main-color);
+}
+
+.room-close {
+     height: 30px;
 }
 
 .room-close i {
@@ -1432,10 +1453,6 @@ table tr th {
 th {
     border-bottom: 1px solid black;
 }
-
-/* th:not(th:nth-child(2)){
-    width: 15%;
-} */
 
 th:nth-child(1) {
     width: 35%;
@@ -1522,4 +1539,12 @@ td {
 .footer-list-icon {
     font-size: 18px;
     margin-right: 12px;
+}
+.hello {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 74px;
+    z-index: 100;
 }
