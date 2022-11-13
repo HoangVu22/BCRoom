@@ -16,6 +16,13 @@
 `
     FLUSH PRIVILEGES;
 `
+## CREATE A DATABASE
+
+- Create a new empty database is naming 'bcroom_dev'
+
+`
+    CREATE DATABASE bcroom_dev;
+`
 
 ## Running Migrations
 
@@ -27,4 +34,24 @@
 
 `
     npx sequelize-cli db:seed:all
+`
+
+if already run this command 1 time, use:
+
+`
+    npx sequelize-cli db:seed --seed <newest file's name>
+`
+
+## TO START TESTING API
+
+- make sure you are in BackEnd folder
+
+`
+    cd BackEnd    
+`
+
+- run dev server
+
+`
+    npx run dev
 `
