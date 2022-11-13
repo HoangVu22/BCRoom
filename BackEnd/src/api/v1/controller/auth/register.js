@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt')
-const { Customer } = require('../../../../../models')
+const { Customer, Role } = require('../../../../../models')
 
 module.exports = async (request, response) => {
     try {
@@ -21,10 +21,18 @@ module.exports = async (request, response) => {
             })
         }
 
+        const customerRole = await Role.findOne({
+            where: {
+                roleName: 'customer'
+            },
+            attributes: ['roleId']  
+        })
+
         const customer = await Customer.create({
             username: name,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            roleId: customerRole.roleId
         })
 
         return response.status(200).json({
