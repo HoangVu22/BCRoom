@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     hotelId: {
         type: DataTypes.UUID,
         primaryKey: true,
-        defaultValue: DataTypes.UUID
+        defaultValue: DataTypes.UUIDV$
     },
     customerId: DataTypes.UUID,
     hotelName: DataTypes.STRING,

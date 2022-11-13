@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     policyId: {
         primaryKey: true,
         type: DataTypes.UUID,
-        defaultValue: DataTypes.UUID
+        defaultValue: DataTypes.UUIDV4
     },
     condition: DataTypes.STRING,
     expireTime: DataTypes.STRING,

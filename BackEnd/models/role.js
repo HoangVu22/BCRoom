@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     roleId: {
         primaryKey: true,
         type: DataTypes.UUID,
-        defaultValue: DataTypes.UUID
+        defaultValue: DataTypes.UUIDV4
     },
     roleName: DataTypes.STRING
   }, {
