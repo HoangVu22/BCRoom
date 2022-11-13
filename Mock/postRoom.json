@@ -1,20 +1,32 @@
 {
     "postRoom": [
         {   
-            "nameHotel":"Adina",
+            "hotelID": "1",
+            "roomType": "1",
             "numberStar": "3",
-            "contactPersonName": "Nguyễn Hường",
-            "phone": "0978323421",
-            "address1":"Phước Mỹ",
-            "address2":"Lô G6-G7 đường Phạm Văn Đồng"
+            "numberAdults": 2,
+            "numberKids": 1,
+            "service": [],
+            "address": "123 Phước Mỹ, Đà Nẵng, Việt Nam",
+            "image": {
+                "imageHotel": [],
+                "imageRoom": []
+            },
+            "price": 200000
         },
         {   
-            "nameHotel":"Centre",
+            "hotelID": "2",
+            "roomType": "2",
             "numberStar": "3",
-            "contactPersonName": "Nguyễn Lộc",
-            "phone": "0978342321",
-            "address1":"Hải Châu",
-            "address2":"18-20 Phạm Phú Thứ"
+            "numberAdults": 2,
+            "numberKids": 1,
+            "service": [],
+            "address": "456 Phước Mỹ, Đà Nẵng, Việt Nam",
+            "image": {
+                "imageHotel": [],
+                "imageRoom": []
+            },
+            "price": 200000
         }
     ]
 

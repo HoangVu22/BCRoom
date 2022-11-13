@@ -5,21 +5,24 @@
             "phone": "0983908908",
             "dateFrom": "10-11-2022",
             "dateTo": "13-11-2022",
-            "numberPeople": "2 Người lớn, 2 Trẻ em"
+            "numberAdults": 2,
+            "numberKids": 1
         },
         {   
             "email":"hoangvu@gmail.com",
             "phone": "0983908908",
             "dateFrom": "10-11-2022",
             "dateTo": "13-11-2022",
-            "numberPeople": "3 Người lớn, 1 Trẻ em"
+            "numberAdults": 2,
+            "numberKids": 1
         },
         {   
             "email":"hoangvu@gmail.com",
             "phone": "0983908908",
             "dateFrom": "10-11-2022",
             "dateTo": "13-11-2022",
-            "numberPeople": "2 Người lớn, 0 Trẻ em"
+            "numberAdults": 2,
+            "numberKids": 1
         }
     ]
 }
