@@ -5,6 +5,13 @@ module.exports = async (request, response) => {
     try {
         const { name, email, password } = request.body
 
+        if (!name || !email || !password) {
+            return response.status(422).json({
+                status: 422,
+                message: 'Invalid input'
+            })
+        }
+
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(password, salt)
 
