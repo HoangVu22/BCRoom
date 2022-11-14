@@ -242,16 +242,20 @@ Validator.isConfirmed = function (selector, getConfirmValue, message) {
 var submit = document.querySelector(".form-submit");
 var login = document.querySelectorAll(".form-control");
 submit.onclick = () => {
-  fetch("http://localhost:3000/login")
-    .then((r) => r.json())
-    .then((data) => {
-      var a = data.some(
-        (value) =>
-          value.email === login[0].value && value.password === login[1].value
-      );
-      a && window.localStorage.setItem("login", login[0].value);
-      a && (window.location.href = "http://localhost:5500/FrontEnd/home/index.html");
-    });
+    fetch('http://localhost:1234/api/v1/auth/login', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({email: 'anhkun@gmail.com', password: '123456'})   
+    })
+        .then(response => response.json())
+        .then(data => {
+            if(data.status === 200) {
+                window.localStorage.setItem('login', data.data)
+                window.location.href = 'http://localhost:5500/FrontEnd/home/index.html' 
+            }
+        })      
 };
 
 // --------------show password -------------
