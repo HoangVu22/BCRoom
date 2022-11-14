@@ -239,15 +239,22 @@ Validator.isConfirmed = function (selector, getConfirmValue, message) {
 };
 
 // --------------- login --------------------
-var submit = document.querySelector(".form-submit");
+const loginButton = document.querySelector(".form-submit.login");
 var login = document.querySelectorAll(".form-control");
-submit.onclick = () => {
+loginButton.onclick = () => {
+    const inputs = document.querySelectorAll('input.form-control')
+    const requestValues = {}
+
+    inputs.forEach(item => {
+        requestValues[item.attributes.name.value] = item.value
+    })
+
     fetch('http://localhost:1234/api/v1/auth/login', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({email: 'anhkun@gmail.com', password: '123456'})   
+        body: JSON.stringify(requestValues)
     })
         .then(response => response.json())
         .then(data => {

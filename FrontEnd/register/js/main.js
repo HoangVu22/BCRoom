@@ -7,10 +7,10 @@ var login = window.localStorage.getItem("login")
 const registerButton = document.querySelector('.form-submit.register')
 
 registerButton.addEventListener('click', () => {
-    const input = document.querySelectorAll('.form-control')
+    const inputs = document.querySelectorAll('.form-control')
     const requestValues = {}
 
-    input.forEach(item => {
+    inputs.forEach(item => {
         if (item.attributes.name.value !== "password_confirmation") {
             requestValues[item.attributes.name.value] = item.value
         }
