@@ -1,4 +1,5 @@
 {
+    "entry": "http://localhost:1234/api/v1/auth/register",
     "register": [
         {   
             "name":"Hoàng Vũ",
