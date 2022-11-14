@@ -4,6 +4,32 @@ var headerForm = document.querySelector('.header-form')
 var headerFormLogin = headerNavForm.querySelector('.header-form-login')
 var headerFormLogout = document.querySelector('.header-form-logout');
 var login = window.localStorage.getItem("login")
+const registerButton = document.querySelector('.form-submit.register')
+
+registerButton.addEventListener('click', () => {
+    const input = document.querySelectorAll('.form-control')
+    const requestValues = {}
+
+    input.forEach(item => {
+        if (item.attributes.name.value !== "password_confirmation") {
+            requestValues[item.attributes.name.value] = item.value
+        }
+    })
+
+    fetch('http://localhost:1234/api/v1/auth/register', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestValues)
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 200) {
+                window.location.href = 'http://localhost:5500/FrontEnd/signin/index.html'
+            }
+        }) 
+})
 
 headerNavForm.onclick = function() {
     if (headerForm.style.display === "none")
