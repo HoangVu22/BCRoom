@@ -8,7 +8,7 @@ const v1 = require('./api/v1')
 
 const app = express()
 const httpServer = http.createServer(app)
-const port = process.env.SERVER_PORT
+const port = process.env.SERVER_PORT || 1234
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
