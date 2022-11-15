@@ -1,6 +1,7 @@
 {
     "postRoom": [
         {   
+            "hotelId": "", 
             "numberRoom": "01",
             "nameHotel": "Nguyễn Hoàng Vũ",
             "phone": "0932424250",
@@ -20,7 +21,8 @@
             },
             "price": 200000
         },
-        {   
+        {  
+            "hotelId": "", 
             "numberRoom": "01",
             "nameHotel": "Nguyễn Hoàng Vũ",
             "phone": "0932424250",
