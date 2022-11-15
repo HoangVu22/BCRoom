@@ -33,7 +33,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     customerId: DataTypes.UUID,
     hotelName: DataTypes.STRING,
-    address: DataTypes.STRING
+    address: DataTypes.STRING,
+    starNumber: DataTypes.INTEGER,
+    phone: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Hotel',
