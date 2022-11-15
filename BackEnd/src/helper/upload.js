@@ -16,7 +16,8 @@ module.exports = (app) => {
                 })
             }
 
-            const blob = firebase.bucket.file(uuidv4() + '_' + request.file.originalname)
+            const directory = 'avatars/'
+            const blob = firebase.bucket.file(directory + uuidv4() + '_' + request.file.originalname)
             const blobWriter = blob.createWriteStream({
                 metadata: {
                     contentType: request.file.mimetype
