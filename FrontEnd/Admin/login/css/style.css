@@ -43,7 +43,7 @@ section .noi-dung .form h2{
     font-weight: 500;
     font-size: 1.5em;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     border-bottom: 4px solid var(--main-color);
     display: inline-block;
     letter-spacing: 1px;
@@ -84,7 +84,7 @@ section .noi-dung .form .input-form input[type="submit"]{
               0 16px 16px rgba(0,0,0,0.12);
 }
 section .noi-dung .form .input-form input[type="submit"]:hover{
-    background: var(--main-color);
+    background: var(--hover-color);
 }
 section .noi-dung .form .nho-dang-nhap{
     margin-bottom: 10px;
