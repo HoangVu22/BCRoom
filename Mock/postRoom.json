@@ -1,13 +1,19 @@
 {
     "postRoom": [
         {   
-            "hotelID": "1",
+            "numberRoom": "01",
+            "nameHotel": "Nguyễn Hoàng Vũ",
+            "phone": "0932424250",
+            "numberStar": 3,
+            "address": "123 Phước Mỹ, Đà Nẵng, Việt Nam",
             "roomType": "1",
-            "numberStar": "3",
             "numberAdults": 2,
             "numberKids": 1,
             "service": [],
-            "address": "123 Phước Mỹ, Đà Nẵng, Việt Nam",
+            "policy": {
+                "condition": "",
+                "expireTime": ""
+            },
             "image": {
                 "imageHotel": [],
                 "imageRoom": []
@@ -15,13 +21,19 @@
             "price": 200000
         },
         {   
-            "hotelID": "2",
+            "numberRoom": "01",
+            "nameHotel": "Nguyễn Hoàng Vũ",
+            "phone": "0932424250",
             "roomType": "2",
-            "numberStar": "3",
+            "numberStar": 3,
             "numberAdults": 2,
             "numberKids": 1,
             "service": [],
             "address": "456 Phước Mỹ, Đà Nẵng, Việt Nam",
+            "policy": {
+                "condition": "",
+                "expireTime": ""
+            },
             "image": {
                 "imageHotel": [],
                 "imageRoom": []
