@@ -1,6 +1,5 @@
 const firebase = require('../../../../connection/firebase')
 const { v4: uuidv4 } = require('uuid')
-const upload = require('../../../../helper/upload')
 
 module.exports = async (request, response) => {
     try {

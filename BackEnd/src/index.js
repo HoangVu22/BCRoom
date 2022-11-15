@@ -5,8 +5,6 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const v1 = require('./api/v1')
-const upload = require('./helper/upload');
-const multer = require('multer');
 
 const app = express()
 const httpServer = http.createServer(app)
