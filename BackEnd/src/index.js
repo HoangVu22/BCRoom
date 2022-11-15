@@ -5,7 +5,8 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const v1 = require('./api/v1')
-const upload = require('./helper/upload')
+const upload = require('./helper/upload');
+const multer = require('multer');
 
 const app = express()
 const httpServer = http.createServer(app)
@@ -17,9 +18,6 @@ app.use(cors())
 
 // connected app with api
 v1(app)
-
-// upload file to firebase
-upload(app)
 
 httpServer.listen(port, () => {
     console.log('Server is running at port ' + port)
