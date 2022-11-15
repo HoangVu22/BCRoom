@@ -524,7 +524,6 @@ ul {
     font-size: 16px;
     color: var(--main-color);
     cursor: pointer;
-    text-align: center;
 }
 
 .list-action a i {
@@ -548,11 +547,11 @@ th {
 }
 
 th:not(th:nth-child(2)){
-    width: 25%;
+    width: 15%;
 }
 
 th:nth-child(2) {
-    width: 25%;
+    width: 40%;
 }
 
 th, td {
