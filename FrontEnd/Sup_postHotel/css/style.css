@@ -497,7 +497,7 @@ ul {
     border: 1px solid #b4b2b2;
 }
 
-.name-person-contact p {
+.name-person-contact p, .number-room p {
     font-size: 15px;
     margin-top: 18px;
 }
@@ -507,7 +507,7 @@ ul {
     margin-top: 15px;
 }
 
-.phone-input {
+.phone-input, .room-input {
     padding: 10px 15px;
     margin-top: 14px;
     width: 40%;
