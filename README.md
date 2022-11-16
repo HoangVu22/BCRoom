@@ -57,5 +57,5 @@ if already run this command 1 time, use:
 - run dev server
 
 `
-    npx run dev
+    npm run dev
 `
