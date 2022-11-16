@@ -44,10 +44,14 @@ if already run this command 1 time, use:
 
 ## TO START TESTING API
 
-- make sure you are in BackEnd folder
+- make sure you are in BackEnd folder, and all packages installed
 
 `
-    cd BackEnd    
+    cd BackEnd
+`
+
+`
+    npm install
 `
 
 - run dev server
