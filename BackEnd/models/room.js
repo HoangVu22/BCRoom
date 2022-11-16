@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false
     },
-    price: DataTypes.DECIMAL(7, 2),
+    price: DataTypes.DECIMAL(15, 2),
     adultNumber: DataTypes.INTEGER,
     kidNumber: DataTypes.INTEGER,
     roomNumber: DataTypes.STRING

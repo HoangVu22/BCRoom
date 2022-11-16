@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     bookingId: {
         type: DataTypes.UUID,
     },
-    totalPrice: DataTypes.DECIMAL(7, 2),
+    totalPrice: DataTypes.DECIMAL(15, 2),
     billDate: DataTypes.DATEONLY
   }, {
     sequelize,
