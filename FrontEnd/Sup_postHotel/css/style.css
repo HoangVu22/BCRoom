@@ -880,7 +880,9 @@ ul {
 .pre-next {
     display: flex;
 }
-
+.pre-btn button,.finish button{
+    display: none;
+}
 .pre-next button {
     padding: 8px 20px;
     background-color: #fff;

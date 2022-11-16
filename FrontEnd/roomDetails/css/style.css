@@ -1352,12 +1352,7 @@ img {
 
 .active1 {
     background: var(--main-color);
-} 
-
-/* .detail-image-room img {
-    width: 94%;
-    border-radius: 10px;
-} */
+}
 
 .detail-content-room {
     width: 50%;
@@ -1394,10 +1389,14 @@ img {
 .reserve button {
     padding: 10px 16px;
     margin-top: 20px;
-    margin-left: 170px;
+    margin-left: 160px;
     background: linear-gradient(#f37066,#f44336);
     border: none;
     border-radius: 5px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .reserve > button > a {
@@ -1429,6 +1428,7 @@ img {
     background: linear-gradient(#f37066,#f44336);
     border: none;
     border-radius: 5px;
+    color: #fff;
 }
 
 .list-id button a {
@@ -1479,6 +1479,159 @@ td {
     padding: 20px 0;
 }
 
+/* ----------thanh toán--------- */
+.detail-content {
+    position: absolute;
+    width: 100%;
+}
+
+.creditcard-left,.creditcard-right {
+    width: 50%;
+    align-items: center;
+    text-align: center;
+}
+
+.choose-payment {
+    background-color: #fff;
+    font-size: 26px;
+    padding: 34px 20px;
+    margin-top: 20px;
+    box-shadow: 2px 4px 20px #0003;
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    display: none;
+}
+
+.choose-payment p {
+    margin-bottom: 15px;
+}
+
+.question-payment {
+    font-size: 15px;
+}
+
+.radio-block-1 label {
+    font-size: 15px;
+}
+
+.radio-block-1 {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio-input {
+    width: 15px;
+    height: 15px;
+}
+
+.reserve1 {
+    text-align: end;
+}
+
+.radio-yes {
+    padding: 4px 20px;
+    border: 1px solid #b4b2b2;
+    width: 20%;
+    margin-right: 20px;
+    border-radius: 5px;
+    border: 1px solid #b4b2b2;
+    cursor: pointer;
+}
+
+.creditcard-item{
+    justify-content: center
+}
+
+.creditcard-item input {
+    width: 20%;
+}
+
+.creditcard-item img {
+    width: 40%;
+}
+
+.creditcard-item label {
+    width: 30%;
+}
+
+.radio-no {
+    padding: 4px 20px;
+    border: 1px solid #b4b2b2;
+    width: 20%;
+    border-radius: 5px;
+    border: 1px solid #b4b2b2;
+    cursor: pointer;
+}
+
+.creditcard-section {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    display: none;
+}
+
+.convenient-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.creditcard-left, .convenient-left  {
+    width: 50%;
+}
+
+.creditcard-right, .convenient-right {
+    width: 50%;
+}
+
+.creditcard-item {
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.convenient-item {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.creditcard-item img {
+    width: 20%;
+    height: 40px;
+    margin-right: 15px;
+    border-radius: 5px;
+    object-fit: fill;
+}
+
+.creditcard-item input, .convenient-item input {
+    margin-right: 10px;
+    width: 15px;
+    height: 15px;
+}
+
+.cash-section {
+    font-size: 15px;
+    font-weight: bold;
+    color: #6b6b6b;
+    display: none;
+}
+
+.payclose {
+    position: absolute;
+    top: 20px;
+    right: 5%;
+    color: #333;
+    font-size: 22px;
+}
 
 
 

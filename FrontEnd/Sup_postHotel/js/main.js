@@ -41,6 +41,7 @@ requestIdleCallback(function () {
   line.style.left = itemActive.offsetLeft + "px";
   line.style.width = itemActive.offsetWidth + "px";
 });
+let count = 0;
 
 stepItem.forEach((tab, index) => {
   const room = stepContent[index]; // mỗi lần click vào tab thì lấy ra thằng room tương ứng
@@ -48,12 +49,28 @@ stepItem.forEach((tab, index) => {
   tab.onclick = function () {
     document.querySelector(".step-item.active").classList.remove("active");
     document.querySelector(".step-content.active").classList.remove("active");
-
     line.style.left = this.offsetLeft + "px";
     line.style.width = this.offsetWidth + "px";
-
     this.classList.add("active");
     room.classList.add("active");
+    count = index;
+    if (count === 0) {
+      preBtn.style.display = "none";
+      goToNext.style.display = "block"
+      finish.style.display = "none"
+
+    }else
+    if (count === 1) {
+      preBtn.style.display = "block";
+      goToNext.style.display = "block"
+      finish.style.display = "none"
+
+    }else
+    if (count === 2) {
+      preBtn.style.display = "block";
+      goToNext.style.display = "none"
+      finish.style.display = "block"
+    }
   };
 });
 
@@ -70,54 +87,55 @@ function handlePicture() {
     dropInput.click();
   });
   dropInput.onchange = function (e) {
-    const url1 = URL.createObjectURL(e.target.files[0]);
-    filePicture.push(url1);
-    const html = filePicture
-      .map((item) => {
-        return `<div class="image-detail">
-        <img src="${item}" alt="">
-        <i class="fa-solid fa-xmark delete_picture"></i>
-      </div>`;
-      })
-      .join("");
-
-    picture.innerHTML = html;
-
-    let delete_picture = document.querySelectorAll(".delete_picture");
-    function handleDetelePicture(index) {
-      const filter = filePicture.filter((item1, index2) => {
-        return index2 !== index;
-      });
-      filePicture.splice(index, 1)
-      const newList = filter
-        .map((element) => {
+    if (e.target.files[0].type.includes('image')) {
+      const url1 = URL.createObjectURL(e.target.files[0]);
+      filePicture.push(url1);
+      const html = filePicture
+        .map((item) => {
           return `<div class="image-detail">
-          <img src="${element}" alt="">
+          <img src="${item}" alt="">
           <i class="fa-solid fa-xmark delete_picture"></i>
         </div>`;
         })
         .join("");
-
-      picture.innerHTML = newList;
-      delete_picture = document.querySelectorAll(".delete_picture");
+  
+      picture.innerHTML = html;
+  
+      let delete_picture = document.querySelectorAll(".delete_picture");
+      function handleDetelePicture(index) {
+        const filter = filePicture.filter((item1, index2) => {
+          return index2 !== index;
+        });
+        filePicture.splice(index, 1)
+        const newList = filter
+          .map((element) => {
+            return `<div class="image-detail">
+            <img src="${element}" alt="">
+            <i class="fa-solid fa-xmark delete_picture"></i>
+          </div>`;
+          })
+          .join("");
+  
+        picture.innerHTML = newList;
+        delete_picture = document.querySelectorAll(".delete_picture");
+        delete_picture.forEach((item, index) => {
+          item.onclick = () => {
+            handleDetelePicture(index);
+          };
+        });
+      }
       delete_picture.forEach((item, index) => {
         item.onclick = () => {
-          handleDetelePicture(index);
+            handleDetelePicture(index);
         };
       });
+      e.target.value = "";
+    } else {
+      alert("Vui lòng chọn ảnh!")
     }
-    delete_picture.forEach((item, index) => {
-      item.onclick = () => {
-          handleDetelePicture(index);
-      };
-    });
-    e.target.value = "";
   };
 }
 handlePicture();
-
-
-
 
 // -------------- drag-drop room-----------
 let files = [];
@@ -133,71 +151,119 @@ function handleImage() {
     dragDropInput.click();
   });
   dragDropInput.onchange = function (e) {
-    const url = URL.createObjectURL(e.target.files[0]);
-    files.push(url);
-
-    const html = files
-      .map((item) => {
-        return `<div class="image-detail">
-        <img src="${item}" alt="">
-        <i class="fa-solid fa-xmark remove_image"></i>
-      </div>`;
-      })
-      .join("");
-
-    image.innerHTML = html;
-
-    let remove_image = document.querySelectorAll(".remove_image");
-    function handleRemoveImage(index) {
-      const filter = files.filter((item1, index1) => {
-        return index1 !== index;
-      });
-      files.splice(index, 1)
-      const newList = filter
-        .map((element) => {
+    if (e.target.files[0].type.includes('image')) {
+      const url = URL.createObjectURL(e.target.files[0]);
+      files.push(url);
+  
+      const html = files
+        .map((item) => {
           return `<div class="image-detail">
-          <img src="${element}" alt="">
+          <img src="${item}" alt="">
           <i class="fa-solid fa-xmark remove_image"></i>
         </div>`;
         })
         .join("");
-
-      image.innerHTML = newList;
-      remove_image = document.querySelectorAll(".remove_image");
+  
+      image.innerHTML = html;
+  
+      let remove_image = document.querySelectorAll(".remove_image");
+      function handleRemoveImage(index) {
+        const filter = files.filter((item1, index1) => {
+          return index1 !== index;
+        });
+        files.splice(index, 1)
+        const newList = filter
+          .map((element) => {
+            return `<div class="image-detail">
+            <img src="${element}" alt="">
+            <i class="fa-solid fa-xmark remove_image"></i>
+          </div>`;
+          })
+          .join("");
+  
+        image.innerHTML = newList;
+        remove_image = document.querySelectorAll(".remove_image");
+        remove_image.forEach((item, index) => {
+          item.onclick = () => {
+            handleRemoveImage(index);
+          };
+        });
+      }
       remove_image.forEach((item, index) => {
         item.onclick = () => {
           handleRemoveImage(index);
         };
       });
+      e.target.value = "";
+    } else {
+      alert("Vui lòng chọn ảnh!")
     }
-    remove_image.forEach((item, index) => {
-      item.onclick = () => {
-        handleRemoveImage(index);
-      };
-    });
-    e.target.value = "";
   };
 }
 handleImage();
 
 // ---------------- payment -----------------
-var radioYes = document.querySelector('.radio-yes')
-var radioNo = document.querySelector('.radio-no')
-var creditcardSection = document.querySelector('.creditcard-section')
-var cashSection = document.querySelector('.cash-section')
+// var radioYes = document.querySelector('.radio-yes')
+// var radioNo = document.querySelector('.radio-no')
+// var creditcardSection = document.querySelector('.creditcard-section')
+// var cashSection = document.querySelector('.cash-section')
 
-radioYes.onclick = function() {
-  creditcardSection.style.display = 'flex'
-  cashSection.style.display = 'none'
-}
+// radioYes.onclick = function() {
+//   creditcardSection.style.display = 'flex'
+//   cashSection.style.display = 'none'
+// }
 
-radioNo.onclick = function() {
-  creditcardSection.style.display = 'none'
-  cashSection.style.display = 'block'
-}
+// radioNo.onclick = function() {
+//   creditcardSection.style.display = 'none'
+//   cashSection.style.display = 'block'
+// }
 
 // ------------------- next and prev-------
 var saveInf = document.querySelector('.save-inf')
-var preNext = document.querySelector('.pre-next button')
+var preBtn = document.querySelector('.pre-btn button')
 var goToNext = document.querySelector('.go-to-next button')
 var finish = document.querySelector('.finish button')
+
+goToNext.onclick = function() {
+  preBtn.style.display = "block";
+  finish.style.display = "none"
+    count=count+1;
+    stepItem.forEach((e) => {
+      if(e.classList.contains("active"))
+          e.classList.remove("active")
+    })
+    stepContent.forEach((e) => {
+      if(e.classList.contains("active"))
+      {
+        e.classList.remove("active")
+        line.style.left = stepItem[count].offsetLeft + "px";
+        line.style.width = stepItem[count].offsetWidth + "px";
+      }
+    })
+    stepItem[count].classList.add("active")
+    stepContent[count].classList.add("active")
+    if (count === 2) {
+      goToNext.style.display = "none"
+      finish.style.display = "block"
+    }
+}
+preBtn.onclick = function() {
+  finish.style.display = "none"
+  goToNext.style.display = "block"
+    count=count-1;
+    stepItem.forEach((e) => {
+      if(e.classList.contains("active"))
+        e.classList.remove("active")
+        line.style.left = stepItem[count].offsetLeft + "px";
+        line.style.width = stepItem[count].offsetWidth + "px";
+    })
+    stepContent.forEach((e) => {
+      if(e.classList.contains("active"))
+      e.classList.remove("active")
+    })
+    stepItem[count].classList.add("active")
+    stepContent[count].classList.add("active")
+    if (count === 0) {
+      preBtn.style.display = "none";
+    }
+}

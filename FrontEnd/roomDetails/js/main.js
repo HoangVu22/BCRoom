@@ -501,3 +501,32 @@ roomClose.onclick = function() {
 }
 
 updateImageByindex(0)
+
+// ---------------- payment -----------------
+var radioYes = document.querySelector('.radio-yes')
+var radioNo = document.querySelector('.radio-no')
+var creditcardSection = document.querySelector('.creditcard-section')
+var cashSection = document.querySelector('.cash-section')
+var payclose = document.querySelector('.payclose')
+var choosePayment = document.querySelector('.choose-payment')
+var reserve = document.querySelector('.reserve button')
+
+radioYes.onclick = function() {
+  creditcardSection.style.display = 'flex'
+  cashSection.style.display = 'none'
+}
+
+radioNo.onclick = function() {
+  creditcardSection.style.display = 'none'
+  cashSection.style.display = 'block'
+}
+
+payclose.onclick = function() {
+    choosePayment.style.display = 'none'
+}
+
+reserve.onclick = function(e) {
+    // e.preventDefault()
+    console.log(choosePayment.style.display);
+    choosePayment.style.display = "block"
+}
