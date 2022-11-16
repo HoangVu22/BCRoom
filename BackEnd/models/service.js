@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: DataTypes.UUIDV4
     },
     serviceName: DataTypes.STRING,
-    price: DataTypes.DECIMAL(7, 2)
+    fee: DataTypes.DECIMAL(7, 2)
   }, {
     sequelize,
     modelName: 'Service',
