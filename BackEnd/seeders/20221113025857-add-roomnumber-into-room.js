@@ -12,7 +12,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.addColumn('Policies', 'roomNumber', {
+    await queryInterface.addColumn('Rooms', 'roomNumber', {
         type: Sequelize.DataTypes.STRING
     })
   },
@@ -24,6 +24,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.removeColumn('Policies', 'roomNumber')
+    await queryInterface.removeColumn('Rooms', 'roomNumber')
   }
 };
