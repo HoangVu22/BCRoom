@@ -27,6 +27,8 @@ module.exports = async (request, response) => {
             })
         }
 
+        response.cookie('userId', customer.customerId)
+
         return response.status(200).json({
             status: 200,
             data: customer
