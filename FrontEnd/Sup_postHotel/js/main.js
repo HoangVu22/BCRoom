@@ -323,7 +323,10 @@ finish.addEventListener('click', (e) => {
             basicInformationRoom.services = [...basicInformationRoom.services || [], service.value]
         }
     })
-    sendRequestToCreatRoomHotel({ ...basicInformationHotel, ...basicInformationRoom })
+
+    const hotelId = localStorage.getItem('selectedHotelId')
+
+    sendRequestToCreatRoomHotel({ ...basicInformationHotel, ...basicInformationRoom, hotelId })
 })
 
 function sendRequestToCreatRoomHotel(data) {
@@ -341,4 +344,56 @@ function sendRequestToCreatRoomHotel(data) {
         .catch(error => {
             console.log(error)
         })
+}
+
+// render services
+const convenientLeft = document.querySelector('.convenient-left')
+const convenientRight = document.querySelector('.convenient-right')
+
+function renderServices(data) {
+    const numberItemPerColumn = Math.ceil(data.length / 2) - 1
+    let htmls = []
+
+    data.forEach((item, index) => {
+        htmls.push(`
+            <div class="convenient-item">
+                <input id="${item.serviceId}" value="${item.serviceId}" type="checkbox">
+                <label for="${item.serviceId}">${item.serviceName} (${item.fee} đồng)</label>
+            </div>`
+            )
+        if (index <= numberItemPerColumn) {
+            convenientLeft.innerHTML = htmls.join('')
+        }
+        
+        if (index === numberItemPerColumn) {
+            htmls = []
+        }
+
+        if (index > numberItemPerColumn) {
+            convenientRight.innerHTML = htmls.join('')
+        }
+    })
+}
+
+function getAllServices() {
+    fetch('http://localhost:1234/api/v1/services/all_services')
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 200) {
+                renderServices(data.data)
+            }
+        })
+}
+
+getAllServices()
+
+// render room types
+const roomTypeSelect = document.querySelector('select.room-type')
+
+function renderRoomTypes(data) {
+
+}
+
+function getAllRoomTypes() {
+
 }
