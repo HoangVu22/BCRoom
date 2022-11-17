@@ -4,5 +4,6 @@ module.exports = {
     uploadSingleFile: require('./upload/uploadSingleFile'),
     getHotelsByAddress: require('./hotel/getHotelByAddress'),
     createNewRoomInHotel: require('./core/createNewRoomInHotel'),
-    getAllServices: require('./services/getAllServices')
+    getAllServices: require('./services/getAllServices'),
+    getAllRoomTypes: require('./roomTypes/getAllRoomTypes')
 }

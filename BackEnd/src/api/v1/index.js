@@ -4,11 +4,12 @@ const uploadRouter = require('./router/upload')
 const hotelRouter = require('./router/hotel')
 const coreRouter = require('./router/core')
 const serviceRouter = require('./router/services')
+const roomTypeRouter = require('./router/roomTypes')
 
 module.exports = (app) => {
     const rootApiEntryPoint = '/api/v1'
 
-    const routers = [authRouter, uploadRouter, hotelRouter, coreRouter, serviceRouter]
+    const routers = [authRouter, uploadRouter, hotelRouter, coreRouter, serviceRouter, roomTypeRouter]
 
     routers.forEach(router => {
         app.use(rootApiEntryPoint + router.entry, router.router)
