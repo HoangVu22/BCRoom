@@ -82,11 +82,11 @@
                     <h1 class="content-introduce">Hãy bắt đầu bằng cách cho chúng tôi biết tên, địa chỉ cùng chi tiết liên hệ của khách sạn.</h1>
                     <div class="name-hotel">
                         <p>Tên của khách sạn là gì?</p>
-                        <input data-request="nameHotel" class="name-input" type="text" placeholder="Nhập tên của khách sạn...">
+                        <input data-request="nameHotel" class="request-value name-input" type="text" placeholder="Nhập tên của khách sạn...">
                         <p class="name-notice">Tên này sẽ được hiển thị tới khách khi họ tìm kiếm chỗ nghỉ.</p>
                         <div class="name-rating">
                             <p class="name-star">Xếp hạng sao</p>
-                            <select data-request="starNumber" class="star-rating">
+                            <select data-request="starNumber" class="request-value star-rating">
                                 <option value="0">Không áp dụng</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -121,8 +121,8 @@
                             <p class="name-notice">Số điện thoại liên lạc (để chúng tôi có thể hỗ trợ đăng ký của Quý vị khi cần)</p>
                             <div class="phone-contact">
                                 <p>Số điện thoại</p>
-                                <p>123456789</p>
-                                <!-- <input class="phone-input" type="text" placeholder="Nhập số diện thoại của bạn"> -->
+                                <!-- <p>123456789</p> -->
+                                <input data-request="phone" class="request-value phone-input" type="text" placeholder="Nhập số diện thoại của bạn">
                             </div>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                             <div class="address">
                                 <div class="address-detail">
                                     <p>Địa chỉ</p>
-                                    <input data-request="address" type="text" placeholder="Ví dụ: 123 Điện Biên Phủ">
+                                    <input data-request="address" class="request-value" type="text" placeholder="Ví dụ: 123 Điện Biên Phủ">
                                 </div>
                                 <!-- <div class="address-detail">
                                     <p>Dòng địa chỉ 2</p>
@@ -140,11 +140,11 @@
                                 </div> -->
                                 <div class="address-detail">
                                     <p>Vùng/Quốc gia</p>
-                                    <input data-request="address" type="text" value="Việt Nam" disabled>
+                                    <input data-request="address" class="request-value" type="text" value="Việt Nam" disabled>
                                 </div>
                                 <div class="address-detail">
                                     <p>Thành phố</p>
-                                    <input data-request="address" type="text" value="Đà Nẵng" disabled>
+                                    <input data-request="address" class="request-value" type="text" value="Đà Nẵng" disabled>
                                 </div>
                             </div>
                             <div class="address-notice">
@@ -182,7 +182,7 @@
                         <p>Vui lòng chọn</p>
                         <div class="name-rating">
                             <p class="name-star">Loại phòng</p>
-                            <select class="star-rating">
+                            <select data-request="roomType" class="room-type star-rating request-value">
                                 <option value="0">Vui lòng chọn</option>
                                 <option value="1">Phòng đơn</option>
                                 <option value="2">Phòng giường đôi</option>
@@ -195,16 +195,16 @@
                         <div class="choose-users">
                             <div class="">
                                 <p>Số lượng người lớn ?</p>
-                                <input type="number" placeholder="0">
+                                <input data-request="adultNumber" class="request-value" type="number" placeholder="0">
                             </div>
                             <div class="">
                                 <p>Số lượng trẻ em ?</p>
-                                <input type="number" placeholder="0">
+                                <input data-request="kidNumber" class="request-value" type="number" placeholder="0">
                             </div>
                         </div>
                         <div class="number-room">
                             <p>Số phòng</p>
-                            <input class="room-input" type="text" placeholder="Vui lòng nhập số phòng">
+                            <input data-request="numberRoom" class="room-input request-value" type="text" placeholder="Vui lòng nhập số phòng">
                         </div>
                     </div>
                     <div class="picture-library">
@@ -291,7 +291,7 @@
                         <p>Chính sách hoàn trả</p>
                         <div class="cancel">
                             <p class="name-star">Khách hàng có thể hủy đặt phòng trước bao nhiêu ngày để được miễn phí?</p>
-                            <select class="star-rating">
+                            <select data-request="policy" data-second-sub-request="expireTime" class="star-rating request-value">
                                 <option value="0">Vui lòng chọn</option>
                                 <option value="1">Cùng ngày nhận phòng</option>
                                 <option value="2">1 ngày</option>
@@ -303,7 +303,7 @@
                         </div>
                         <div class="cancel">
                             <p class="name-star">nếu không khách hàng sẽ trả 100%</p>
-                            <select class="star-rating">
+                            <select data-request="policy" data-second-sub-request="condition" class="star-rating request-value">
                                 <option value="0">Vui lòng chọn</option>
                                 <option value="1">Của đêm đầu tiên</option>
                                 <option value="2">Của tổng đợt lưu trú</option>
@@ -317,7 +317,7 @@
                         </div>
                         <div class="price-input">
                             <span>VNĐ / đêm</span>
-                            <input type="number" name="" id="" placeholder="0">
+                            <input data-request="price" class="request-value" type="number" name="" id="" placeholder="0">
                         </div>
                     </div>
                 </div>
@@ -395,7 +395,7 @@
                     <button class="next-button">Tiếp tục</button>
                 </div>
                 <div class="finish">
-                    <button>Hoàn tất</button>
+                    <button class="finish-button">Hoàn tất</button>
                 </div>
             </div>
         </div>

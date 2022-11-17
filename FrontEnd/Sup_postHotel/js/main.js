@@ -54,7 +54,6 @@ stepItem.forEach((tab, index) => {
     this.classList.add("active");
     room.classList.add("active");
     count = index;
-    console.log(count)
     if (count === 0) {
       preBtn.style.display = "none";
       goToNext.style.display = "block"
@@ -266,31 +265,55 @@ preBtn.onclick = function() {
 // request create new hotel and room
 let basicInformationHotel = {}
 let basicInformationRoom = {}
-let step = 1 
 
-const nextButton = document.querySelector('.next-button')
-const previousButton = document.querySelector('.previous-button')
+goToNext.addEventListener('click', (e) => {
+    e.preventDefault()
+    const basicInformationHotelComponent = document.querySelector('#basic-information-hotel')
+    const requestInputs = basicInformationHotelComponent.querySelectorAll('input.request-value, select.request-value')
+    basicInformationHotel = [...requestInputs].reduce((prev, next) => {
+        let value = next.value
 
-stepItem.forEach(item => {
-    item.addEventListener('click', (e) => {
-        const innerText = e.target.innerText
-        if (innerText === 'Thông tin phòng') {
-            step = 2
+        if (next.dataset.request.includes('Number')) {
+            value = Number(next.value)
         }
-        if (innerText === 'Thông tin cơ bản') {
-            step = 1
+
+        if (next.dataset.request === 'address') {
+            return {
+                ...prev,
+                [next.dataset.request]: prev[next.dataset.request] + ', ' + value
+            }
         }
-    })
+
+        return {
+            ...prev,
+            [next.dataset.request]: value
+        }
+    }, {})
 })
 
-nextButton.addEventListener('click', (e) => {
+finish.addEventListener('click', (e) => {
     e.preventDefault()
-    if (step === 1) {
-        const basicInformationHotelComponent = document.querySelector('#basic-information-hotel')
-        console.log('hotel')
-    }
-    if (step === 2) {
-        const basicInformationRoomComponent = document.querySelector('#basic-information-room')
-        console.log('room')
-    }
+    const basicInformationRoomComponent = document.querySelector('#basic-information-room')
+    const requestInputs = basicInformationRoomComponent.querySelectorAll('input.request-value, select.request-value')
+    basicInformationRoom = [...requestInputs].reduce((prev, next) => {
+        let value = next.value
+
+        if (next.dataset.request.includes('Number')) {
+            value = Number(next.value)
+        }
+
+        if (next.dataset.request === 'policy') {
+            return {
+                ...prev,
+                [next.dataset.request]: {
+                    ...prev[next.dataset.request],
+                    [next.dataset.secondSubRequest]: value
+                }
+            }
+        }
+        return {
+            ...prev,
+            [next.dataset.request]: value
+        }
+    }, {})
 })
