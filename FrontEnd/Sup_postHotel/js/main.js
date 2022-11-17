@@ -316,4 +316,15 @@ finish.addEventListener('click', (e) => {
             [next.dataset.request]: value
         }
     }, {})
+
+    const services = document.querySelectorAll('.convenient-item input[type=checkbox]')
+    services.forEach(service => {
+        if (service.checked) {
+            basicInformationRoom.services = [...basicInformationRoom.services || [], service.value]
+        }
+    })
+    console.log({
+        ...basicInformationHotel,
+        ...basicInformationRoom
+    })
 })
