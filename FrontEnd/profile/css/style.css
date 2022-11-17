@@ -375,7 +375,7 @@ ul {
 }
 
 .profile-left {
-    width: 34%;
+    width: 28%;
     max-height: 800px;
     margin-right: 40px;
     border-radius: 20px;
@@ -586,9 +586,12 @@ ul {
 .profile-right-loved {
     display: none;
 }
+
 .profile-genaral {
     display: none;
-    width: 66%;}
+    width: 72%;
+}
+
 .profile-right-booked h2,
 .profile-right-loved h2 {
     margin-bottom: 35px;
@@ -610,4 +613,84 @@ ul {
 .profile-right-booked p,
 .profile-right-loved p {
     color: rgb(99 99 102);
+}
+
+/* -----------------phòng đã đặt------------ */
+.container-residence h2 {
+    font-size: 34px;
+}
+
+.list-content {
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.list-status span {
+    font-size: 15px;
+    border-radius: 5px;
+    line-height: 30px;
+}
+
+.list-status span:first-child {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.list-wait span {
+    color: #3578E5;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 12px;
+}
+
+.list-cancel i {
+    color: var(--main-color);
+    font-weight: 600;
+    padding: 12px 12px;
+    border: 1px solid var(--main-color);
+    border-radius: 50%;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.list-cancel i:hover {
+    color: #fff;
+    background-color: var(--main-color);
+}
+
+table {
+    width: 72%;
+    margin-top: 20px;
+    font-size: 15px;
+    color: #333;
+    border-collapse: collapse;
+}
+
+table tr th {
+    text-align: start;
+}
+
+th {
+    border-bottom: 1px solid black;
+}
+
+/* th:not(th:nth-child(1)){
+    width: 25%;
+} */
+
+th:nth-child(1) {
+    width: 25%;
+}
+
+th:nth-child(3) {
+    width: 14%;
+}
+
+th, td {
+    padding: 10px 0;
+}
+
+td {
+    border-bottom: 1px solid #b4b2b2;
+    padding: 20px 0;
 }
