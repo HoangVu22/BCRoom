@@ -54,6 +54,7 @@ stepItem.forEach((tab, index) => {
     this.classList.add("active");
     room.classList.add("active");
     count = index;
+    console.log(count)
     if (count === 0) {
       preBtn.style.display = "none";
       goToNext.style.display = "block"
@@ -61,12 +62,6 @@ stepItem.forEach((tab, index) => {
 
     }else
     if (count === 1) {
-      preBtn.style.display = "block";
-      goToNext.style.display = "block"
-      finish.style.display = "none"
-
-    }else
-    if (count === 2) {
       preBtn.style.display = "block";
       goToNext.style.display = "none"
       finish.style.display = "block"
@@ -242,7 +237,7 @@ goToNext.onclick = function() {
     })
     stepItem[count].classList.add("active")
     stepContent[count].classList.add("active")
-    if (count === 2) {
+    if (count === 1) {
       goToNext.style.display = "none"
       finish.style.display = "block"
     }
@@ -267,3 +262,35 @@ preBtn.onclick = function() {
       preBtn.style.display = "none";
     }
 }
+
+// request create new hotel and room
+let basicInformationHotel = {}
+let basicInformationRoom = {}
+let step = 1 
+
+const nextButton = document.querySelector('.next-button')
+const previousButton = document.querySelector('.previous-button')
+
+stepItem.forEach(item => {
+    item.addEventListener('click', (e) => {
+        const innerText = e.target.innerText
+        if (innerText === 'Thông tin phòng') {
+            step = 2
+        }
+        if (innerText === 'Thông tin cơ bản') {
+            step = 1
+        }
+    })
+})
+
+nextButton.addEventListener('click', (e) => {
+    e.preventDefault()
+    if (step === 1) {
+        const basicInformationHotelComponent = document.querySelector('#basic-information-hotel')
+        console.log('hotel')
+    }
+    if (step === 2) {
+        const basicInformationRoomComponent = document.querySelector('#basic-information-room')
+        console.log('room')
+    }
+})
