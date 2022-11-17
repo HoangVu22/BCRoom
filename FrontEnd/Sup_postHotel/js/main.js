@@ -387,7 +387,7 @@ function getAllServices() {
     fetch('http://localhost:1234/api/v1/services/all_services')
         .then(response => response.json())
         .then(data => {
-            if (data.status === 200) {
+            if (data.code === 200) {
                 renderServices(data.data)
             }
         })
@@ -407,7 +407,7 @@ function getAllRoomTypes() {
     fetch('http://localhost:1234/api/v1/roomtypes/all_roomtypes')
         .then(response => response.json())
         .then(data => {
-            if (data.status === 200) {
+            if (data.code === 200) {
                 renderRoomTypes(data.data)
             }
         })

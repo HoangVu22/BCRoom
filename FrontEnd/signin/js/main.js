@@ -258,7 +258,7 @@ loginButton.onclick = () => {
     })
         .then(response => response.json())
         .then(data => {
-            if(data.status === 200) {
+            if(data.code === 200) {
                 window.localStorage.setItem('login', data.data)
                 window.location.href = 'http://localhost:5500/FrontEnd/home/index.html' 
             }
