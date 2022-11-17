@@ -78,15 +78,15 @@
                 <div class="line"></div>
             </div>
             <div class="step-content active">
-                <div class="detail-content">
+                <div id="basic-information-hotel" class="detail-content">
                     <h1 class="content-introduce">Hãy bắt đầu bằng cách cho chúng tôi biết tên, địa chỉ cùng chi tiết liên hệ của khách sạn.</h1>
                     <div class="name-hotel">
                         <p>Tên của khách sạn là gì?</p>
-                        <input class="name-input" type="text" placeholder="Nhập tên của khách sạn...">
+                        <input data-request="nameHotel" class="name-input" type="text" placeholder="Nhập tên của khách sạn...">
                         <p class="name-notice">Tên này sẽ được hiển thị tới khách khi họ tìm kiếm chỗ nghỉ.</p>
                         <div class="name-rating">
                             <p class="name-star">Xếp hạng sao</p>
-                            <select class="star-rating">
+                            <select data-request="starNumber" class="star-rating">
                                 <option value="0">Không áp dụng</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -132,7 +132,7 @@
                             <div class="address">
                                 <div class="address-detail">
                                     <p>Địa chỉ</p>
-                                    <input type="text" placeholder="Ví dụ: 123 Điện Biên Phủ">
+                                    <input data-request="address" type="text" placeholder="Ví dụ: 123 Điện Biên Phủ">
                                 </div>
                                 <!-- <div class="address-detail">
                                     <p>Dòng địa chỉ 2</p>
@@ -140,11 +140,11 @@
                                 </div> -->
                                 <div class="address-detail">
                                     <p>Vùng/Quốc gia</p>
-                                    <input type="text" value="Việt Nam" disabled>
+                                    <input data-request="address" type="text" value="Việt Nam" disabled>
                                 </div>
                                 <div class="address-detail">
                                     <p>Thành phố</p>
-                                    <input type="text" value="Đà Nẵng" disabled>
+                                    <input data-request="address" type="text" value="Đà Nẵng" disabled>
                                 </div>
                             </div>
                             <div class="address-notice">
@@ -176,7 +176,7 @@
                 </div>
             </div>
             <div class="step-content">
-                <div class="detail-content">
+                <div id="basic-information-room" class="detail-content">
                     <h1 class="content-introduce">Hãy nhập thông tin của phòng.</h1>
                     <div class="choose-satisfied">
                         <p>Vui lòng chọn</p>
@@ -377,10 +377,10 @@
             <button class="save-inf">Lưu và Thoát</button>
             <div class="pre-next">
                 <div class="pre-btn"> 
-                    <button>Quay lại</button>
+                    <button class="previous-button">Quay lại</button>
                 </div>
                 <div class="go-to-next">
-                    <button>Tiếp tục</button>
+                    <button class="next-button">Tiếp tục</button>
                 </div>
                 <div class="finish">
                     <button>Hoàn tất</button>
