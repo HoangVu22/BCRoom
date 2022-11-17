@@ -39,7 +39,8 @@ module.exports = async (request, response) => {
                 code: 200,
                 status: 'success',
                 data: {
-                    fileUrl 
+                    fileUrl,
+                    filename: directory + '/' + uuid + '_' + file.originalname 
                 }
             })
         })
