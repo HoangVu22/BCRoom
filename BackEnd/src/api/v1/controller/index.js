@@ -3,5 +3,6 @@ module.exports = {
     register: require('./auth/register'),
     uploadSingleFile: require('./upload/uploadSingleFile'),
     getHotelsByAddress: require('./hotel/getHotelByAddress'),
-    createNewRoomInHotel: require('./core/createNewRoomInHotel')
+    createNewRoomInHotel: require('./core/createNewRoomInHotel'),
+    getAllServices: require('./services/getAllServices')
 }
