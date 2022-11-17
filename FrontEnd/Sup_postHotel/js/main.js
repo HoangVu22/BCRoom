@@ -323,8 +323,22 @@ finish.addEventListener('click', (e) => {
             basicInformationRoom.services = [...basicInformationRoom.services || [], service.value]
         }
     })
-    console.log({
-        ...basicInformationHotel,
-        ...basicInformationRoom
-    })
+    sendRequestToCreatRoomHotel({ ...basicInformationHotel, ...basicInformationRoom })
 })
+
+function sendRequestToCreatRoomHotel(data) {
+    fetch('http://localhost:1234/api/v1/core/new_room', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}
