@@ -6,8 +6,7 @@ admin.initializeApp({
     storageBucket: 'gs://bcroom-11df2.appspot.com/'
 })
 
-const bucket = admin.storage().bucket()
-
 module.exports = {
-    bucket
+    storage: admin.storage(),
+    bucket: admin.storage().bucket()
 }

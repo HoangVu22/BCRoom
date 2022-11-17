@@ -13,9 +13,17 @@ module.exports = async (request, response) => {
                 message: 'No file included in request'
             })
         }
-
-        const blob = firebase.bucket.file(directory + '/' + uuidv4() + '_' + file.originalname)
-        const blobWriter = upload(directory, request.file)
+        
+        const uuid = uuidv4()
+        const blob = firebase.bucket.file(directory + '/' + uuid + '_' + file.originalname)
+        const blobWriter = blob.createWriteStream({
+            metadata: {
+                contentType: file.mimetype,
+                metadata: {
+                    firebaseStorageDownloadTokens: uuid
+                }
+            }
+        })
         
         blobWriter.on('error', (error) => {
             return response.status(400).json({
@@ -26,12 +34,12 @@ module.exports = async (request, response) => {
         })
 
         blobWriter.on('finish', () => {
-            const publicUrl = 'https://storage.googleapis.com/' + firebase.bucket.name + '/' + blob.name
+            const fileUrl = process.env.FIREBASE_FILE_DOMAIN + firebase.bucket.name + '/o/' + encodeURIComponent(blob.name) + '?alt=media&token=' + uuid
             return response.status(200).json({
                 code: 200,
                 status: 'success',
                 data: {
-                    publicUrl
+                    fileUrl 
                 }
             })
         })
