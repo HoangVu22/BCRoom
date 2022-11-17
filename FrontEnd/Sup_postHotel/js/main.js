@@ -326,7 +326,15 @@ finish.addEventListener('click', (e) => {
 
     const hotelId = localStorage.getItem('selectedHotelId')
 
-    sendRequestToCreatRoomHotel({ ...basicInformationHotel, ...basicInformationRoom, hotelId })
+    sendRequestToCreatRoomHotel({
+        ...basicInformationHotel, 
+        ...basicInformationRoom, 
+        hotelId, 
+        images: { 
+            imageHotel: [], 
+            imageRoom: []
+        } 
+    })
 })
 
 function sendRequestToCreatRoomHotel(data) {
@@ -391,9 +399,18 @@ getAllServices()
 const roomTypeSelect = document.querySelector('select.room-type')
 
 function renderRoomTypes(data) {
-
+    const htmls = data.map(item => `<option value="${item.typeId}">${item.typeName}</option>`)
+    roomTypeSelect.innerHTML = htmls.join('')
 }
 
 function getAllRoomTypes() {
-
+    fetch('http://localhost:1234/api/v1/roomtypes/all_roomtypes')
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 200) {
+                renderRoomTypes(data.data)
+            }
+        })
 }
+
+getAllRoomTypes()
