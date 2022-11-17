@@ -506,8 +506,6 @@ ul {
     color: #333;
 }
 
-
-
 .list-id {
     font-size: 15px;
 }
@@ -547,13 +545,13 @@ th {
     border-bottom: 1px solid black;
 }
 
-th:not(th:nth-child(2)){
+/* th:not(th:nth-child(2)){
     width: 25%;
 }
 
 th:nth-child(2) {
     width: 25%;
-}
+} */
 
 th, td {
     padding: 10px 0;
