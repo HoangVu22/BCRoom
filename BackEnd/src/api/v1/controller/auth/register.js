@@ -7,7 +7,8 @@ module.exports = async (request, response) => {
 
         if (!name || !email || !password) {
             return response.status(422).json({
-                status: 422,
+                code: 422,
+                status: 'failed',
                 message: 'Invalid input'
             })
         }
@@ -23,7 +24,8 @@ module.exports = async (request, response) => {
 
         if (existingCustomer) {
             return response.status(409).json({
-                status: 409,
+                code: 409,
+                status: 'failed',
                 message: 'This email is already being used by another' 
             })
         }
@@ -43,13 +45,15 @@ module.exports = async (request, response) => {
         })
 
         return response.status(200).json({
-            status: 200,
+            code: 200,
+            status: 'success',
             data: customer
         })
     } catch (error) {
         console.log(error)
         return response.status(500).json({
-            status: 500,
+            code: 500,
+            status: 'failed',
             message: error
         })
     }

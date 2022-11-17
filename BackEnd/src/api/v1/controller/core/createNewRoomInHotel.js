@@ -80,13 +80,15 @@ module.exports = async (request, response) => {
         }
 
         return response.status(200).json({
-            status: 200,
-            message: 'Success'
+            code: 200,
+            status: 'success',
+            message: 'create record successfully'
         });
     } catch (error) {
         console.log(error);
         return response.status(500).json({
-            status: 500,
+            code: 500,
+            status: 'failed',
             message: error
         });
     }

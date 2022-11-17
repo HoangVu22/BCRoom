@@ -13,7 +13,8 @@ module.exports = async (request, response) => {
 
         if (!customer) {
             return response.status(404).json({
-                status: 404,
+                code: 404,
+                status: 'failed',
                 message: 'email or password is incorrect'
             })
         }
@@ -22,7 +23,8 @@ module.exports = async (request, response) => {
 
         if (!comparePassword) {
             return response.status(404).json({
-                status: 404,
+                code: 404,
+                status: 'failed',
                 message: 'email or password is incorrect'
             })
         }
@@ -30,13 +32,15 @@ module.exports = async (request, response) => {
         response.cookie('userId', customer.customerId)
 
         return response.status(200).json({
-            status: 200,
+            code: 200,
+            status: 'success',
             data: customer
         })
     } catch (error) {
         console.log(error)
         return response.status(500).json({
-            status: 500,
+            code: 500,
+            status: 'success',
             message: error
         })
     }

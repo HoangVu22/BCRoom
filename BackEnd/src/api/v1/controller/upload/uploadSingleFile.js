@@ -8,7 +8,8 @@ module.exports = async (request, response) => {
 
         if (!request.file) {
             return response.status(400).json({
-                status: 400,
+                code: 400,
+                status: 'failed',
                 message: 'No file included in request'
             })
         }
@@ -18,7 +19,8 @@ module.exports = async (request, response) => {
         
         blobWriter.on('error', (error) => {
             return response.status(400).json({
-                status: 400,
+                code: 400,
+                status: 'failed',
                 message: error
             })
         })
@@ -26,7 +28,8 @@ module.exports = async (request, response) => {
         blobWriter.on('finish', () => {
             const publicUrl = 'https://storage.googleapis.com/' + firebase.bucket.name + '/' + blob.name
             return response.status(200).json({
-                status: 200,
+                code: 200,
+                status: 'success',
                 data: {
                     publicUrl
                 }
@@ -36,7 +39,8 @@ module.exports = async (request, response) => {
         blobWriter.end(file.buffer)
     } catch (error) {
         return response.status(500).json({
-            status: 500,
+            code: 500,
+            status: 'failed',
             message: error
         }) 
     }
