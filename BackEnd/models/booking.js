@@ -38,6 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     dateTo: DataTypes.DATEONLY,
     adultNumber: DataTypes.INTEGER,
     kidNumber: DataTypes.INTEGER,
+    status: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Booking',
