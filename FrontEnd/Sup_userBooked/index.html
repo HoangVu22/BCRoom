@@ -22,7 +22,7 @@
                             <li><a href="../Sup_home/index.html">Home</a></li>
                             <li><a href="../Sup_postHotel/index.html">Đăng phòng</a></li>
                             <li><a href="../Sup_myHotel/index.html">Quản lý chỗ nghỉ</a></li>
-                            <li><a href="../Sup_userBooked/index.html">Quản lý đặt phòng</a></li>
+                            <li><a href="">Quản lý đặt phòng</a></li>
                             <li><a href="../home/index.html">Trở thành người dùng</a></li>
                             <div class="header-nav-form">
                                 <div class="header-nav-icon">
@@ -72,115 +72,127 @@
     <div class="supplierPages wraper">
         <div class="container-residence">
             <div class="container-header">
-                <h1>4 Phòng</h1>
-                <div class="btn-toolbar">
+                <h1>Quản lý đặt phòng của khách hàng</h1>
+                <!-- <div class="btn-toolbar">
                     <a class="postNew-residence" href="../Sup_postHotel/index.html">
                         <i class="fa-solid fa-plus"></i>
-                        <p>Thêm mới phòng</p>
+                        <p>Thêm chỗ nghỉ mới</p>
                     </a>
-                </div>
+                </div> -->
             </div>
             <div class="container-search">
                 <div class="search-input">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" name="" id="search" placeholder="Tìm phòng..." onkeyup="searchResidence()">
+                    <input type="text" name="" id="search" placeholder="Tìm chỗ nghỉ..." onkeyup="searchResidence()">
                 </div>
-                <div class="container-select">
+                <!-- <div class="container-select">
                     <div class="status">
                         <button>Trạng thái</button>
                         <i class="fa-solid fa-angle-down"></i>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <table class="container-nav">
                 <tr>
+                    <th>KHÁCH SẠN</th>
+                    <th>TT. KHÁCH HÀNG</th>
+                    <th>NGÀY ĐẶT</th>
+                    <th>NGÀY TRẢ</th>
+                    <th>TỔNG TIỀN</th>
                     <th>TRẠNG THÁI</th>
-                    <th>SỐ PHÒNG</th>
-                    <th>LOẠI PHÒNG</th>
-                    <th style="text-align: center;">HÀNH ĐỘNG</th>
+                    <th>TÙY CHỌN</th>
                 </tr>
                 <tr class="list-residence">
                     <td class="list-content list-status">
-                        <span>BẢN TẠM</span>
+                        <span>Bridge Report</span> <br>
+                        <span>Phòng 01</span> <br>
+                        <span>Phòng giường đôi</span>
+                    </td>
+                    <td class="list-content list-status">
+                        <span>Nguyễn Hoàng Vũ</span> <br>
+                        <span>hoangvu22@gmail.com</span> <br>
+                        <span>0932424250</span> <br>
+                        <span>123 Nguyễn Lương bằng</span>
                     </td>
                     <td class="list-content list-info"> 
-                        <h4>Phòng 01</h4>
+                        <span>11-17-2022</span>
                     </td>
                     <td class="list-content list-id">
-                        <p>Phòng giường đơn</p>
+                        <span>11-18-2022</span>
                     </td>
-                    <td class="list-content list-action">
-                        <a href="../Sup_postHotel/index.html">
-                            <i class="fa-solid fa-pencil"></i>
-                        </a>
+                    <td class="list-content list-price">
+                        <span>400000 VNĐ</span>
+                    </td>
+                    <td class="list-content list-wait">
+                        <span>Đang chờ</span>
+                    </td>
+                    <td class="list-content list-cancel">
+                        <span>Xác nhận</span>
                         <i class="fa-solid fa-trash-can"></i>
                     </td>
                 </tr>
 
                 <tr class="list-residence">
                     <td class="list-content list-status">
-                        <span>BẢN TẠM</span>
+                        <span>Bridge Report</span> <br>
+                        <span>Phòng 01</span> <br>
+                        <span>Phòng giường đôi</span>
+                    </td>
+                    <td class="list-content list-status">
+                        <span>Nguyễn Hoàng Vũ</span> <br>
+                        <span>hoangvu22@gmail.com</span> <br>
+                        <span>0932424250</span> <br>
+                        <span>123 Nguyễn Lương bằng</span>
                     </td>
                     <td class="list-content list-info"> 
-                        <h4>Phòng 02</h4>
+                        <span>11-17-2022</span>
                     </td>
                     <td class="list-content list-id">
-                        <p>Phòng giường đôi</p>
+                        <span>11-18-2022</span>
                     </td>
-                    <td class="list-content list-action">
-                        <a href="../Sup_postHotel/index.html">
-                            <i class="fa-solid fa-pencil"></i>
-                        </a>
+                    <td class="list-content list-price">
+                        <span>400000 VNĐ</span>
+                    </td>
+                    <td class="list-content list-wait">
+                        <span>Đang chờ</span>
+                    </td>
+                    <td class="list-content list-cancel">
+                        <span>Xác nhận</span>
                         <i class="fa-solid fa-trash-can"></i>
                     </td>
                 </tr>
 
                 <tr class="list-residence">
                     <td class="list-content list-status">
-                        <span>BẢN TẠM</span>
+                        <span>Bridge Report</span> <br>
+                        <span>Phòng 01</span> <br>
+                        <span>Phòng giường đôi</span>
                     </td>
-                    <td class="list-content list-info"> 
-                        <h4>Phòng 03</h4>
-                    </td>
-                    <td class="list-content list-id">
-                        <p>Phòng 2 giường đôi</p>
-                    </td>
-                    <td class="list-content list-action">
-                        <a href="../Sup_postHotel/index.html">
-                            <i class="fa-solid fa-pencil"></i>
-                        </a>
-                        <i class="fa-solid fa-trash-can"></i>
-                    </td>
-                </tr>
-
-                <tr class="list-residence">
                     <td class="list-content list-status">
-                        <span>BẢN TẠM</span>
+                        <span>Nguyễn Hoàng Vũ</span> <br>
+                        <span>hoangvu22@gmail.com</span> <br>
+                        <span>0932424250</span> <br>
+                        <span>123 Nguyễn Lương bằng</span>
                     </td>
                     <td class="list-content list-info"> 
-                        <h4>Phòng 04</h4>
+                        <span>11-17-2022</span>
                     </td>
                     <td class="list-content list-id">
-                        <p>Phòng gia đình</p>
+                        <span>11-18-2022</span>
                     </td>
-                    <td class="list-content list-action">
-                        <a href="../Sup_postHotel/index.html">
-                            <i class="fa-solid fa-pencil"></i>
-                        </a>
+                    <td class="list-content list-price">
+                        <span>400000 VNĐ</span>
+                    </td>
+                    <td class="list-content list-wait">
+                        <span>Đang chờ</span>
+                    </td>
+                    <td class="list-content list-cancel">
+                        <span>Xác nhận</span>
                         <i class="fa-solid fa-trash-can"></i>
                     </td>
                 </tr>
             </table>
-        </div>
-
-        <div class="pagination">
-            <li class="page-item previous-page disable"><a class="page-link" href="#">Prev</a></li>
-            <li class="page-item current-page active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">2</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">3</a></li>
-            <li class="page-item current-page"><a class="page-link" href="#">4</a></li>
-            <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
         </div>
     </div>
 

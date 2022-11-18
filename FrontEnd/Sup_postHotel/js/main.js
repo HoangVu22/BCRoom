@@ -347,7 +347,7 @@ function sendRequestToCreatRoomHotel(data) {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            alert('Đăng ký phòng thành công !!!')
         })
         .catch(error => {
             console.log(error)
