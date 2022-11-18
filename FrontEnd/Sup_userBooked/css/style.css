@@ -560,10 +560,6 @@ th:nth-child(1) {
     width: 20%;
 }
 
-/* th:nth-child(3) {
-    width: 14%;
-} */
-
 th, td {
     padding: 10px 0;
 }
