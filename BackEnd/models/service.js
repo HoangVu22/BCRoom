@@ -11,9 +11,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.hasMany(models.BookingDetail, {
-        foreignKey: 'serviceId'
-      })
       this.hasMany(models.RoomRelatedService, {
         foreignKey: 'serviceId'
       })
@@ -26,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: DataTypes.UUIDV4
     },
     serviceName: DataTypes.STRING,
-    fee: DataTypes.DECIMAL(8, 2)
   }, {
     sequelize,
     modelName: 'Service',
