@@ -862,6 +862,10 @@ ul {
     color: rgb(255, 188, 57);
 }
 
+.no-light {
+    color: rgb(218, 220, 221);
+}
+
 .tab-rooms-address {
     display: flex;
     margin: 10px;
