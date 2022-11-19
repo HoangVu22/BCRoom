@@ -1,27 +1,7 @@
 {
     "entry": "http://localhost:1234/api/v1/auth/login",
-    "login":[
-        { 
-            "email": "hoangvu@gmail.com",
-            "password": "123456"
-        },
-        { 
-            "email": "phong@gmail.com",
-            "password": "123456"
-        },
-        { 
-            "email": "hang@gmail.com",
-            "password": "123456"
-        },
-        { 
-            "email": "nguyen@gmail.com",
-            "password": "123456"
-        },
-        { 
-            "email": "tri@gmail.com",
-            "password": "123456"
-        }
-    ]
-
-    
+    "login": {
+        "email": "hoangvu@gmail.com",
+        "password": "123456"
+    }
 }

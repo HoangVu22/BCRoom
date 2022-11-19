@@ -1,28 +1,10 @@
 {
-    "Booking": [
-        {   
-            "email":"hoangvu@gmail.com",
-            "phone": "0983908908",
-            "dateFrom": "10-11-2022",
-            "dateTo": "13-11-2022",
-            "numberAdults": 2,
-            "numberKids": 1
-        },
-        {   
-            "email":"hoangvu@gmail.com",
-            "phone": "0983908908",
-            "dateFrom": "10-11-2022",
-            "dateTo": "13-11-2022",
-            "numberAdults": 2,
-            "numberKids": 1
-        },
-        {   
-            "email":"hoangvu@gmail.com",
-            "phone": "0983908908",
-            "dateFrom": "10-11-2022",
-            "dateTo": "13-11-2022",
-            "numberAdults": 2,
-            "numberKids": 1
-        }
-    ]
+    "entry": "http://localhost:1234/api/v1/core/booking",
+    "Booking": {
+        "roomId": "asdfjalksflaks",
+        "dateFrom": "2022-11-19",
+        "dateTo": "2022-11-20",
+        "kidNumber": 1,
+        "adultNumber": 2
+    }
 }
