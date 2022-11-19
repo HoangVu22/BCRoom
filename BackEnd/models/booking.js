@@ -35,7 +35,10 @@ module.exports = (sequelize, DataTypes) => {
     dateTo: DataTypes.DATEONLY,
     adultNumber: DataTypes.INTEGER,
     kidNumber: DataTypes.INTEGER,
-    status: DataTypes.BOOLEAN
+    status: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    }
   }, {
     sequelize,
     modelName: 'Booking',
