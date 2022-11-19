@@ -42,6 +42,10 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     status: {
         type: DataTypes.BOOLEAN,
+        defaultValue: true 
+    },
+    isBooking: {
+        type: DataTypes.BOOLEAN,
         defaultValue: false
     },
     price: DataTypes.DECIMAL(15, 2),
