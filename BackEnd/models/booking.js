@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
     kidNumber: DataTypes.INTEGER,
     status: {
         type: DataTypes.BOOLEAN,
-        defaultValue: false
+        defaultValue: true 
     }
   }, {
     sequelize,

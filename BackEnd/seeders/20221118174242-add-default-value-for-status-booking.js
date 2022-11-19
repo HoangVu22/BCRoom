@@ -14,7 +14,7 @@ module.exports = {
     */
     await queryInterface.changeColumn('Bookings', 'status', {
         type: Sequelize.DataTypes.BOOLEAN,
-        defaultValue: false
+        defaultValue: true 
     })
   },
 
