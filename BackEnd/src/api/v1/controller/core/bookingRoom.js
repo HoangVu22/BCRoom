@@ -3,7 +3,15 @@ const { Booking, Hotel, Room } = require('../../../../../models')
 module.exports = async (request, response) => {
     try {
         const customerId = request.cookies.userId
-        const { roomId, dateFrom, dateTo, kidNumber, adultNumber } = request.body 
+        const { roomId, dateFrom, dateTo, kidNumber, adultNumber } = request.body
+
+        if (Date.parse(dateTo) - Date.parse(dateFrom) < 0) {
+            return response.status(422).json({
+                code: 422,
+                status: 'failed',
+                message: 'dateTo must be greater than or equal to dateFrom'
+            })
+        }
 
         const hotel = await Hotel.findOne({
             include: {
@@ -15,7 +23,7 @@ module.exports = async (request, response) => {
             attributes: ['hotelName']
         })
 
-        if (hotel.Rooms[0].status) {
+        if (hotel.Rooms[0].isBooking) {
             return response.status(403).json({
                 code: 403,
                 status: 'failed',
