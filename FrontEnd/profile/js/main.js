@@ -140,7 +140,7 @@ formprofileedit.innerHTML = `<div class="form-profile-info">
                             <div class="form-profile-info">
                                 <label for="">Họ và tên</label>
                                 <div class="form-profile-input">
-                                    <input class="form-profile-text"  value=${login.username}  type="text" placeholder="Nhập họ tên của bạn">
+                                    <input class="form-profile-text"  value="${login.username}"  type="text" placeholder="Nhập họ tên của bạn">
                                 </div>
                             </div>
                             <div class="form-line"></div>
