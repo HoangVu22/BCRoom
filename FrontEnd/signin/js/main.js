@@ -3,7 +3,6 @@ var headerNavForm = document.querySelector('.header-nav-form')
 var headerForm = document.querySelector('.header-form')
 var headerFormLogin = headerNavForm.querySelector('.header-form-login')
 var headerFormLogout = document.querySelector('.header-form-logout');
-var login = window.localStorage.getItem("login")
 
 headerNavForm.onclick = function() {
     if (headerForm.style.display === "none")
@@ -258,8 +257,9 @@ loginButton.onclick = () => {
     })
         .then(response => response.json())
         .then(data => {
-            if(data.code === 200) {
-                window.localStorage.setItem('login', data.data)
+          if(data.code === 200) {
+                localStorage.setItem("username", JSON.stringify(data.data.username));
+                window.localStorage.setItem("login", JSON.stringify(data.data));
                 window.location.href = 'http://localhost:5500/FrontEnd/home/index.html' 
             }
         })      

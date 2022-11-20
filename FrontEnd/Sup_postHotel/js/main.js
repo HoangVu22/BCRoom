@@ -4,7 +4,7 @@ var headerForm = document.querySelector(".header-form");
 var headerFormLogin = headerNavForm.querySelector(".header-form-login");
 var headerFormLogout = document.querySelector(".header-form-logout");
 var headerNavIcon = document.querySelector('.header-nav-icon')
-var login = window.localStorage.getItem("login");
+const login = JSON.parse(localStorage.getItem("login"));
 
 headerNavForm.onclick = function () {
   if (headerForm.style.display === "none") headerForm.style.display = "block";
@@ -414,3 +414,5 @@ function getAllRoomTypes() {
 }
 
 getAllRoomTypes()
+const namepersoncontact = document.querySelector(".name-person-contact");
+namepersoncontact.innerHTML = ` <p>Tên người liên hệ :  <span><b>${login.username}</b></span></p>`;
