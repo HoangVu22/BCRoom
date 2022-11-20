@@ -5,7 +5,7 @@ module.exports = async (request, response) => {
     try {
         let { address } = request.params
 
-        address = address.replace('_', ' ')
+        address = address.replaceAll('_', ' ')
         const hotels = await Hotel.findAll({
             where: {
                 address: {
