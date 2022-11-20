@@ -1,11 +1,16 @@
+const { Op } = require('sequelize');
 const { Hotel } = require('../../../../../models')
 
 module.exports = async (request, response) => {
     try {
-        const { address } = request.params
+        let { address } = request.params
+
+        address = address.replace('_', ' ')
         const hotels = await Hotel.findAll({
             where: {
-                address
+                address: {
+                    [Op.like]: '%' + address + '%'
+                }
             }
         })
 
