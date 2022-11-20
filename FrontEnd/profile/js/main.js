@@ -87,7 +87,7 @@ accountinfo.innerHTML = `<div class="account-info-img">
 
 formProfile.innerHTML = `<div class="form-profile-info">
                                 <label for="">Số điện thoại</label>
-                                <div class="form-profile-name">${login.phone || "Vui lòng nhập số điện thoại"}</div>
+                                <div class="form-profile-name">${login.phone || ""}</div>
                             </div>
                             <div class="form-line"></div>
                             <div class="form-profile-info">
@@ -102,7 +102,7 @@ formProfile.innerHTML = `<div class="form-profile-info">
                             <div class="form-line"></div>
                             <div class="form-profile-info">
                                 <label for="">Địa chỉ</label>
-                                <div class="form-profile-name">${login.address || "Vui lòng nhập địa chỉ"}</div>
+                                <div class="form-profile-name">${login.address || ""}</div>
                             </div>
                             <div class="form-line"></div>
                             <div class="form-profile-info">

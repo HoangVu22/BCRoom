@@ -3,7 +3,7 @@ var headerNavForm = document.querySelector('.header-nav-form')
 var headerForm = document.querySelector('.header-form')
 var headerFormLogin = headerNavForm.querySelector('.header-form-login')
 var headerFormLogout = document.querySelector('.header-form-logout');
-var login = window.localStorage.getItem("login")
+// var login = window.localStorage.getItem("login")
 
 headerNavForm.onclick = function() {
     if (headerForm.style.display === "none")

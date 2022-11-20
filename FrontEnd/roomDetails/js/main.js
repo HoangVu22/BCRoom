@@ -576,8 +576,11 @@ const key = 'Xx2LVdpWdk1UyVYRKzN0';
             key: key
           });
           geocoder.on('select', function(item) {
-            map.fitBounds(item.bbox);
-            const marker = new maplibregl.Marker()
+              map.fitBounds(item.bbox);
+              const marker = new maplibregl.Marker()
+            .setLngLat(item.center)
+            .addTo(map);
+            // const marker = new maplibregl.Marker()
           });
           return this._container;
         }
