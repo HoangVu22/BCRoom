@@ -2,7 +2,7 @@ const { Room } = require('../../../../../models')
 
 module.exports = async (request, response) => {
     try {
-        const { hotelId } = request.body
+        const { hotelId } = request.params
 
         return response.status(200).json({
             code: 200,
