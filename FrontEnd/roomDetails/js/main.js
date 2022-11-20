@@ -532,27 +532,60 @@ reserve.onclick = function(e) {
 }
 
 // ------------gg map------------
+// const key = 'Xx2LVdpWdk1UyVYRKzN0';
+//     const map = new maplibregl.Map({
+//         container: 'map', // container id
+//         style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${key}`, // style URL
+//         center: [108.2227778, 16.0766667], // starting position [lng, lat]
+//         zoom: 10,
+//     });
+//       map.addControl(new maplibregl.NavigationControl(), 'top-right');
+//       const marker = new maplibregl.Marker()
+//       .setLngLat( [108.2227778, 16.0766667])
+//       .addTo(map);
+//     map.on('error', function(err) {})
+//     fetch(`https://api.maptiler.com/geolocation/ip.json?key=${key}`)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       const userLngLat = [data.longitude, data.latitude];
+//       map.jumpTo({
+//         center: userLngLat,
+//         zoom: 10
+//       });
+//       const marker = new maplibregl.Marker()
+//         .setLngLat(userLngLat)
+//         .addTo(map);
+//     });
 const key = 'Xx2LVdpWdk1UyVYRKzN0';
-    const map = new maplibregl.Map({
+      const map = new maplibregl.Map({
         container: 'map', // container id
         style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${key}`, // style URL
-        center: [108.2227778, 16.0766667], // starting position [lng, lat]
-        zoom: 10, 
-    });
+        center: [ 108.203403,16.039226], // starting position [lng, lat]
+        zoom: 10, // starting zoom
+      });
       map.addControl(new maplibregl.NavigationControl(), 'top-right');
+      class searchControl {
+        onAdd(map) {
+          this._map = map;
+          this._container = document.createElement('div');
+          this._container.className = 'maplibregl-ctrl';
+          const _input = document.createElement('input');
+          this._container.appendChild(_input);
+          const geocoder = new maptiler.Geocoder({
+            input: _input,
+            key: key
+          });
+          geocoder.on('select', function(item) {
+            map.fitBounds(item.bbox);
+            const marker = new maplibregl.Marker()
+          });
+          return this._container;
+        }
+        onRemove() {
+          this._container.parentNode.removeChild(this._container);
+          this._map = undefined;
+        }
+      }
       const marker = new maplibregl.Marker()
-      .setLngLat( [108.2227778, 16.0766667])
-      .addTo(map);
-    map.on('error', function(err) {})
-    // fetch(`https://api.maptiler.com/geolocation/ip.json?key=${key}`)
-    // .then((response) => response.json())
-    // .then((data) => {
-    //   const userLngLat = [data.longitude, data.latitude];
-    //   map.jumpTo({
-    //     center: userLngLat,
-    //     zoom: 10
-    //   });
-    //   const marker = new maplibregl.Marker()
-    //     .setLngLat(userLngLat)
-    //     .addTo(map);
-    // });
+
+      map.addControl(new searchControl(), 'top-left');
