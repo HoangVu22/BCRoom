@@ -280,7 +280,7 @@ goToNext.addEventListener('click', (e) => {
         if (next.dataset.request === 'address') {
             return {
                 ...prev,
-                [next.dataset.request]: prev[next.dataset.request] + ', ' + value
+                [next.dataset.request]: !prev[next.dataset.request] ? '' + value : prev[next.dataset.request] + ', ' + value
             }
         }
 
