@@ -8,5 +8,6 @@ module.exports = {
     getAllServices: require('./services/getAllServices'),
     getAllRoomTypes: require('./roomTypes/getAllRoomTypes'),
     bookingRoom: require('./core/bookingRoom'),
-    getRoomByHotelId: require('./room/getRoomByHotelId')
+    getRoomByHotelId: require('./room/getRoomByHotelId'),
+    reviewHotel: require('./review/reviewHotel')
 }
