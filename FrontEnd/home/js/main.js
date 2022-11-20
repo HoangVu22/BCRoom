@@ -306,3 +306,4 @@ tabItem.forEach((tab, index) => {
 // }).join('')
 // console.log(list);
 // tabscontent.innerHTML = list
+
