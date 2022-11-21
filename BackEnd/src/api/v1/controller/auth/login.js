@@ -40,7 +40,7 @@ module.exports = async (request, response) => {
         console.log(error)
         return response.status(500).json({
             code: 500,
-            status: 'success',
+            status: 'failed',
             message: error
         })
     }
