@@ -9,5 +9,6 @@ module.exports = {
     getAllRoomTypes: require('./roomTypes/getAllRoomTypes'),
     bookingRoom: require('./core/bookingRoom'),
     getRoomByHotelId: require('./room/getRoomByHotelId'),
-    reviewHotel: require('./review/reviewHotel')
+    reviewHotel: require('./review/reviewHotel'),
+    countHotelsByAddress: require('./hotel/countHotelsByAddress')
 }
