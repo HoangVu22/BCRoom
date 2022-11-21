@@ -6,8 +6,8 @@ const upload = multer({
     storage: multer.memoryStorage() 
 })
 
-router.post('/upload_avatar', upload.single('avatar'), controllers.uploadSingleFile)
-router.delete('/remove_avatar', controllers.removeSingleFile)
+router.post('/upload_thumbnail', upload.single('thumbnail'), controllers.uploadSingleFile)
+router.post('/remove_thumbnail', controllers.removeSingleFile)
 
 module.exports = {
     entry: '/upload',
