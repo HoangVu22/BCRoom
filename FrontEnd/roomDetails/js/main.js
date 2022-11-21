@@ -6,7 +6,6 @@ window.onscroll = function () {
     myFunction() 
 };
 const rooms = JSON.parse(localStorage.getItem("rooms"));
-console.log(rooms);
 const room = rooms.map((value) => {
   return ` <tr class="list-residence">
                         <td class="list-content list-status">
@@ -177,6 +176,7 @@ const containernav = document.querySelector(".conatiner_rooms");
 containernav.innerHTML = `
 <tr> <th>LOẠI PHÒNG</th><th>PHÙ HỢP CHO</th><th>GIÁ MỖI ĐÊM</th><th>ĐẶT PHÒNG</th> </tr>
 ${room.join("")}`;
+
 var navs = document.querySelectorAll('.list_city > li > a')
 function myFunction() {
     var header = document.querySelector('header')

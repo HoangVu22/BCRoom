@@ -13,14 +13,11 @@ const port = process.env.SERVER_PORT || 1234
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-app.use(cors({ credentials: true, origin: 'http://localhost:5500' }))
+app.use(cors({ credentials: true, origin: 'http://localhost:5501' }))
 app.use(cookieParser())
 
 app.all("*",  (req, res, next) =>{
-<<<<<<< HEAD
     // res.header("Access-Control-Allow-Origin", "*");
-=======
->>>>>>> 880c0be7f17249886961345d5e5d92ce5e6deaa1
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.header("Access-Control-Allow-Headers", "Content-Type");
     res.header('Access-Control-Allow-Credentials', true);
