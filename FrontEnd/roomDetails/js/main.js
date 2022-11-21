@@ -177,6 +177,7 @@ const containernav = document.querySelector(".conatiner_rooms");
 containernav.innerHTML = `
 <tr> <th>LOẠI PHÒNG</th><th>PHÙ HỢP CHO</th><th>GIÁ MỖI ĐÊM</th><th>ĐẶT PHÒNG</th> </tr>
 ${room.join("")}`;
+
 var navs = document.querySelectorAll('.list_city > li > a')
 function myFunction() {
     var header = document.querySelector('header')
@@ -453,87 +454,87 @@ function totalNumber2() {
 }
 
 // --------------------
-const inputNumber4 = document.querySelector('.number-people4')
-const numberBox4 = document.querySelector('.number-box4')
-const numberClose4 = document.querySelector('.number-close4')
+// const inputNumber4 = document.querySelector('.number-people4')
+// const numberBox4 = document.querySelector('.number-box4')
+// const numberClose4 = document.querySelector('.number-close4')
 
-inputNumber4.addEventListener('click', function() {
-    numberBox4.classList.add('active')
-})
-numberClose4.addEventListener('click', function() {
-    numberBox4.classList.remove('active')
-})
+// inputNumber4.addEventListener('click', function() {
+//     numberBox4.classList.add('active')
+// })
+// numberClose4.addEventListener('click', function() {
+//     numberBox4.classList.remove('active')
+// })
 
-document.addEventListener('keydown', function(e) {
-    if(e.keyCode == 27) {
-        numberBox4.classList.remove('active');
-    }
-})
+// document.addEventListener('keydown', function(e) {
+//     if(e.keyCode == 27) {
+//         numberBox4.classList.remove('active');
+//     }
+// })
 
-const adultPlus4 = document.querySelector('.adultPlus4')
-const adultMinus4 = document.querySelector('.adultMinus4')
-let adultValue4 = document.querySelector('.adult4 span')
-let c = 0;
-adultPlus4.addEventListener('click', function() {
-    c = c+1;
-    adultValue4.innerHTML = c;
-    totalNumber4()
-})
-adultMinus4.addEventListener('click', function() {
-    if (c <= 0) {
-        c = 0;
-    }
-    else {
-        c = c-1;
-        adultValue4.innerHTML = c;
-        totalNumber4()
-    }
-})
+// const adultPlus4 = document.querySelector('.adultPlus4')
+// const adultMinus4 = document.querySelector('.adultMinus4')
+// let adultValue4 = document.querySelector('.adult4 span')
+// let c = 0;
+// adultPlus4.addEventListener('click', function() {
+//     c = c+1;
+//     adultValue4.innerHTML = c;
+//     totalNumber4()
+// })
+// adultMinus4.addEventListener('click', function() {
+//     if (c <= 0) {
+//         c = 0;
+//     }
+//     else {
+//         c = c-1;
+//         adultValue4.innerHTML = c;
+//         totalNumber4()
+//     }
+// })
 
-const childPlus4 = document.querySelector('.childPlus4')
-const childMinus4 = document.querySelector('.childMinus4')
-let childValue4 = document.querySelector('.child4 span')
-let d = 0;
-childPlus4.addEventListener('click', function() {
-    d = d+1;
-    childValue4.innerHTML = d;
-    totalNumber4()
-})
-childMinus4.addEventListener('click', function() {
-    if (d <= 0) {
-        d = 0;
-    }
-    else {
-        d = d-1;
-        childValue4.innerHTML = d;
-        totalNumber4()
-    }
-})
+// const childPlus4 = document.querySelector('.childPlus4')
+// const childMinus4 = document.querySelector('.childMinus4')
+// let childValue4 = document.querySelector('.child4 span')
+// let d = 0;
+// childPlus4.addEventListener('click', function() {
+//     d = d+1;
+//     childValue4.innerHTML = d;
+//     totalNumber4()
+// })
+// childMinus4.addEventListener('click', function() {
+//     if (d <= 0) {
+//         d = 0;
+//     }
+//     else {
+//         d = d-1;
+//         childValue4.innerHTML = d;
+//         totalNumber4()
+//     }
+// })
 
-const roomPlus4 = document.querySelector('.roomPlus4')
-const roomMinus4 = document.querySelector('.roomMinus4')
-let roomValue4 = document.querySelector('.room4 span')
-let g = 0;
-roomPlus4.addEventListener('click', function() {
-    g = g+1;
-    roomValue4.innerHTML = g;
-    totalNumber4()
-})
-roomMinus4.addEventListener('click', function() {
-    if (g <= 0) {
-        g = 0;
-    }
-    else {
-        g = g-1;
-        roomValue4.innerHTML = g;
-        totalNumber4()
-    }
-})
+// const roomPlus4 = document.querySelector('.roomPlus4')
+// const roomMinus4 = document.querySelector('.roomMinus4')
+// let roomValue4 = document.querySelector('.room4 span')
+// let g = 0;
+// roomPlus4.addEventListener('click', function() {
+//     g = g+1;
+//     roomValue4.innerHTML = g;
+//     totalNumber4()
+// })
+// roomMinus4.addEventListener('click', function() {
+//     if (g <= 0) {
+//         g = 0;
+//     }
+//     else {
+//         g = g-1;
+//         roomValue4.innerHTML = g;
+//         totalNumber4()
+//     }
+// })
 
-function totalNumber4() {
-    total = c + d + g;
-    inputNumber4.value = c + d + " Người, " + g + " phòng";
-}
+// function totalNumber4() {
+//     total = c + d + g;
+//     inputNumber4.value = c + d + " Người, " + g + " phòng";
+// }
 
 
 // ---------------detail room------------
