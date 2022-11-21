@@ -180,7 +180,41 @@ ${room.join("")}`;
 
 const bookingRoom = document.querySelector(".booking_room");
 bookingRoom.onclick = (e)=>{
-    const idRoom = e.target.dataset.idroom;
+    const roomId = e.target.dataset.idroom;
+    const bookingRequestValues = document.querySelectorAll('.booking-request')
+    const request = [...bookingRequestValues].reduce((prev, next) => {
+        const value = next.value
+        if (next.dataset.request.includes('Number')) {
+            return {
+                ...prev,
+                [next.dataset.request]: parseInt(value)
+            }
+        }
+        return {
+            ...prev,
+            [next.dataset.request]: value 
+        }
+    }, {})
+    request.customerId = JSON.parse(localStorage.getItem('login')).customerId
+    request.roomId = roomId
+    
+    fetchBooking(request)
+}
+
+function fetchBooking(data) {
+    fetch('http://localhost:1234/api/v1/core/booking', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200 || data.code === 403) {
+                alert(data.message)
+            }
+        })
 }
 
 var navs = document.querySelectorAll('.list_city > li > a')
