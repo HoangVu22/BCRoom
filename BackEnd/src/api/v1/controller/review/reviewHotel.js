@@ -3,7 +3,7 @@ const { Review } = require('../../../../../models')
 module.exports = async (request, response) => {
     try {
         const { hotelId, starNumber, content } = request.body
-        const customerId = request.cookies.userId
+        const customerId = request.session.userId 
 
         return response.status(200).json({
             code: 200,

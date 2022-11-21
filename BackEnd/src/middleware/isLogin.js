@@ -2,7 +2,7 @@ const { Customer } = require('../../models')
 
 async function isLogin(request, response, next) {
     try {
-        const customerId = request.cookies.userId
+        const customerId = request.session.userId
 
         if (!customerId) {
             return response.status(401).json({
