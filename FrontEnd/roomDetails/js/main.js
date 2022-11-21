@@ -179,8 +179,9 @@ containernav.innerHTML = `
 ${room.join("")}`;
 
 const bookingRoom = document.querySelector(".booking_room");
-bookingRoom.onclick = (e)=>{
+bookingRoom.onclick = (e) => {
     const idRoom = e.target.dataset.idroom;
+    console.log(idRoom);
 }
 
 var navs = document.querySelectorAll('.list_city > li > a')

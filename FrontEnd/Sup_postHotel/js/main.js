@@ -368,7 +368,7 @@ function renderServices(data) {
         htmls.push(`
             <div class="convenient-item">
                 <input id="${item.serviceId}" value="${item.serviceId}" type="checkbox">
-                <label for="${item.serviceId}">${item.serviceName} (${item.fee} đồng)</label>
+                <label for="${item.serviceId}">${item.serviceName}</label>
             </div>`
             )
         if (index <= numberItemPerColumn) {
