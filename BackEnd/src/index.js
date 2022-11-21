@@ -13,7 +13,7 @@ const port = process.env.SERVER_PORT || 1234
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-app.use(cors({ credentials: true, origin: 'http://localhost:5500' }))
+app.use(cors({ credentials: true, origin: 'http://localhost' }))
 app.use(cookieParser())
 
 app.all("*",  (req, res, next) =>{
