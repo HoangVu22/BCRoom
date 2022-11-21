@@ -6,6 +6,7 @@ window.onscroll = function () {
     myFunction() 
 };
 const rooms = JSON.parse(localStorage.getItem("rooms"));
+
 const room = rooms.map((value) => {
   return ` <tr class="list-residence">
                         <td class="list-content list-status">
@@ -168,7 +169,7 @@ const room = rooms.map((value) => {
                             <span>${value.price} VNĐ</span>
                         </td>
                         <td class="list-content list-id">
-                            <button>Đặt phòng</button>
+                            <button data-idroom = ${value.roomId} class="booking_room">Đặt phòng</button>
                         </td>
                     </tr>`;
 });
@@ -176,6 +177,11 @@ const containernav = document.querySelector(".conatiner_rooms");
 containernav.innerHTML = `
 <tr> <th>LOẠI PHÒNG</th><th>PHÙ HỢP CHO</th><th>GIÁ MỖI ĐÊM</th><th>ĐẶT PHÒNG</th> </tr>
 ${room.join("")}`;
+
+const bookingRoom = document.querySelector(".booking_room");
+bookingRoom.onclick = (e)=>{
+    const idRoom = e.target.dataset.idroom;
+}
 
 var navs = document.querySelectorAll('.list_city > li > a')
 function myFunction() {
