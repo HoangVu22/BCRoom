@@ -333,7 +333,8 @@ finish.addEventListener('click', (e) => {
         images: { 
             imageHotel: [], 
             imageRoom: []
-        } 
+        },
+        customerId: login.customerId
     })
 })
 

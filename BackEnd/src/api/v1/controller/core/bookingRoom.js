@@ -4,7 +4,8 @@ const { bill: billContent } = require('../../../../constant/mailContent');
 
 module.exports = async (request, response) => {
     try {
-        const customerId = request.session.userId
+        // const customerId = request.session.userId
+        const customerId = request.body.customerId
         const { roomId, dateFrom, dateTo, kidNumber, adultNumber } = request.body;
 
         if (Date.parse(dateTo) - Date.parse(dateFrom) < 0) {
