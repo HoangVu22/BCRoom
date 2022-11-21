@@ -26,13 +26,7 @@ app.use(session({
 }))
 
 app.all("*",  (req, res, next) =>{
-<<<<<<< HEAD
-    // res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.header("Access-Control-Allow-Headers", "Content-Type");
-=======
     res.header("Access-Control-Allow-Headers", 'Origin, X-Requested-With, Content-Type, Accept');
->>>>>>> 83cda4b2ce87c7c96c3021f65d2c5fe53904792e
     res.header('Access-Control-Allow-Credentials', true);
     next();
 });
