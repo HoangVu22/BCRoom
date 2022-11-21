@@ -56,9 +56,11 @@ module.exports = async (request, response) => {
             return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
         };
 
+        const totalPriceForBill = parseFloat(hotel.Rooms[0].price) * Math.abs(Date.parse(dateTo) - Date.parse(dateFrom)) / (1000 * 60 * 60 * 24) + parseFloat(hotel.Rooms[0].price) 
+
         const bill = await Bill.create({
             bookingId: booking.bookingId,
-            totalPrice: Room.price,
+            totalPrice: totalPriceForBill, 
             billDate: getCurrentTime()
         });
 
