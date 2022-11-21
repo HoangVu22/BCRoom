@@ -183,22 +183,23 @@ bookingRoom.onclick = (e)=>{
     const roomId = e.target.dataset.idroom;
     const bookingRequestValues = document.querySelectorAll('.booking-request')
     const request = [...bookingRequestValues].reduce((prev, next) => {
-        const value = next.value
+        let value = next.value
         if (next.dataset.request.includes('Number')) {
-            return {
-                ...prev,
-                [next.dataset.request]: parseInt(value)
-            }
+            value = parseInt(value) 
+        }
+        if (next.dataset.request.includes('date')) {
+            value = value.split('-').reverse().join('-')
         }
         return {
             ...prev,
-            [next.dataset.request]: value 
+            [next.dataset.request]: value
         }
     }, {})
+
     request.customerId = JSON.parse(localStorage.getItem('login')).customerId
     request.roomId = roomId
-    
-    fetchBooking(request)
+    console.log(request)    
+    // fetchBooking(request)
 }
 
 function fetchBooking(data) {
