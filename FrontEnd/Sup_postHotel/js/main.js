@@ -333,14 +333,14 @@ finish.addEventListener('click', (e) => {
         images: { 
             imageHotel: [], 
             imageRoom: []
-        } 
+        },
+        customerId: login.customerId
     })
 })
 
 function sendRequestToCreatRoomHotel(data) {
     fetch("http://localhost:1234/api/v1/core/new_room", {
       method: "post",
-      credentials:"include",
       headers: {
         "Content-Type": "application/json",
       },

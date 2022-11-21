@@ -4,7 +4,8 @@ const { bill: billContent } = require('../../../../constant/mailContent');
 
 module.exports = async (request, response) => {
     try {
-        const customerId = request.cookies.userId;
+        // const customerId = request.session.userId
+        const customerId = request.body.customerId
         const { roomId, dateFrom, dateTo, kidNumber, adultNumber } = request.body;
 
         if (Date.parse(dateTo) - Date.parse(dateFrom) < 0) {
@@ -56,9 +57,11 @@ module.exports = async (request, response) => {
             return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
         };
 
+        const totalPriceForBill = parseFloat(hotel.Rooms[0].price) * Math.abs(Date.parse(dateTo) - Date.parse(dateFrom)) / (1000 * 60 * 60 * 24) + parseFloat(hotel.Rooms[0].price) 
+
         const bill = await Bill.create({
             bookingId: booking.bookingId,
-            totalPrice: Room.price,
+            totalPrice: totalPriceForBill, 
             billDate: getCurrentTime()
         });
 

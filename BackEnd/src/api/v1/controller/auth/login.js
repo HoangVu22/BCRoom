@@ -29,7 +29,7 @@ module.exports = async (request, response) => {
             })
         }
 
-        response.cookie('userId', customer.customerId)
+        request.session.userId = customer.customerId
 
         return response.status(200).json({
             code: 200,

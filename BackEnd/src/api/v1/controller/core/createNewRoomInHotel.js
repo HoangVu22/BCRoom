@@ -23,7 +23,8 @@ module.exports = async (request, response) => {
             images,
             price
         } = request.body;
-        const { userId } = request.cookies;
+        // const userId = request.session.userId
+        const userId = request.body.customerId
         let hotel;
 
         if (hotelId) {

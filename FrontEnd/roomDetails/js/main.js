@@ -703,30 +703,6 @@ reserve.onclick = function(e) {
 }
 
 // ------------gg map------------
-// const key = 'Xx2LVdpWdk1UyVYRKzN0';
-//     const map = new maplibregl.Map({
-//         container: 'map', // container id
-//         style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${key}`, // style URL
-//         center: [108.2227778, 16.0766667], // starting position [lng, lat]
-//         zoom: 10,
-//     });
-//       map.addControl(new maplibregl.NavigationControl(), 'top-right');
-//       const marker = new maplibregl.Marker()
-//       .setLngLat( [108.2227778, 16.0766667])
-//       .addTo(map);
-//     map.on('error', function(err) {})
-//     fetch(`https://api.maptiler.com/geolocation/ip.json?key=${key}`)
-//     .then((response) => response.json())
-//     .then((data) => {
-//       const userLngLat = [data.longitude, data.latitude];
-//       map.jumpTo({
-//         center: userLngLat,
-//         zoom: 10
-//       });
-//       const marker = new maplibregl.Marker()
-//         .setLngLat(userLngLat)
-//         .addTo(map);
-//     });
 const key = 'Xx2LVdpWdk1UyVYRKzN0';
       const map = new maplibregl.Map({
         container: 'map', // container id
