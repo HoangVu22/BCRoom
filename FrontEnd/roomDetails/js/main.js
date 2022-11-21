@@ -198,8 +198,7 @@ bookingRoom.onclick = (e)=>{
 
     request.customerId = JSON.parse(localStorage.getItem('login')).customerId
     request.roomId = roomId
-    console.log(request)    
-    // fetchBooking(request)
+    fetchBooking(request)
 }
 
 function fetchBooking(data) {
