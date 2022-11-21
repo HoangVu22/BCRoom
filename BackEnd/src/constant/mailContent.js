@@ -11,7 +11,7 @@ function bill(
     price
 ) {
     return `<div>
-		<h3 style="text-align: center">Thank for ${customerName}booking</h3>
+		<h3 style="text-align: center">Thank for ${customerName} booking</h3>
 		<p style="text-align: center">This is bill</p>
 		<div style="text-align: center">
 			<p style="font-weight: bold">You are booking: </p>
