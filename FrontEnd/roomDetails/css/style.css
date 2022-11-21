@@ -1266,6 +1266,11 @@ ul {
     margin-bottom: 50px;
 }
 
+.name-room {
+    cursor: pointer;
+    font-size: 17px;
+}
+
 .list-content {
     margin-top: 20px;
     font-size: 14.5px;
@@ -1415,6 +1420,7 @@ img {
     font-size: 15px;
     font-weight: bold;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .reserve > button > a {
@@ -1447,6 +1453,7 @@ img {
     border: none;
     border-radius: 5px;
     color: #fff;
+    cursor: pointer;
 }
 
 .list-id button a {
@@ -1548,6 +1555,7 @@ td {
 
 .reserve1 {
     text-align: end;
+    cursor: pointer;
 }
 
 .radio-yes {
