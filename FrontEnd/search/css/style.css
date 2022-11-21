@@ -1033,3 +1033,6 @@ select {
     font-weight: bold;
     color: #34495E;
 }
+.room-cart ,.room-cart-content {
+     pointer-events: none;
+}

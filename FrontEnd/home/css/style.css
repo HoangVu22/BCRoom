@@ -940,3 +940,6 @@ ul {
 
 
 
+.image  , .text{
+pointer-events: none;
+}

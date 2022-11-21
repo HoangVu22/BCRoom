@@ -4,14 +4,11 @@ var header_logo = document.querySelector('.header-logo h1')
 var headerNavIcon = document.querySelector('.header-nav-icon')
 window.onscroll = function () { 
     myFunction() 
-    console.log(window.pageYOffset);
 };
 
 var navs = document.querySelectorAll('.list_city > li > a')
 function myFunction() {
-    console.log(navs);
     var header = document.querySelector('header')
-    console.log(headerNavIcon.style.borderColor);
     if (window.pageYOffset > 0) {
         header_logo.style.color = '#f44336'
         header.style.backgroundColor='#fff'
@@ -80,12 +77,10 @@ function handleIconLight() {
     var iconList = headerNavIcon.querySelectorAll('i')
     iconList.forEach((item) => {
         if(headerForm.style.display !== "none") {
-            console.log(2);
             item.style.color = "#f44336"
             headerNavIcon.style.borderColor = "#f44336"
         }
         else {
-            console.log(headerNavIcon.style.borderColor);
             item.style.color = "unset"
             headerNavIcon.style.borderColor = "unset"
         }
@@ -307,3 +302,32 @@ tabItem.forEach((tab, index) => {
 // console.log(list);
 // tabscontent.innerHTML = list
 
+//  fetch(`http://localhost:1234/api/v1/hotels/count`, {
+//    method: "POST",
+//    headers: {
+//      "Content-Type": "application/json",
+//    },
+//    body: JSON.stringify(recomentList),
+//  })
+// .then(res=>res.json())
+// .then((data)=>{
+//     // khach san
+// })
+
+
+const items = document.querySelectorAll(".items a");
+[...items].forEach(value=>{
+    value.onclick = (e)=>{
+        e.preventDefault()
+        const place = e.target.dataset.place;
+        localStorage.setItem("place",JSON.stringify(place));
+        fetch(`http://localhost:1234/api/v1/hotels/${place}`)
+        .then(res=>res.json())
+        .then(data=>{
+            localStorage.setItem("hotels",JSON.stringify([...data.data]))
+            if(data.code === 200)
+            window.location.href ="http://localhost:5500/FrontEnd/search/index.html";
+        })
+    }
+})
+console.log(items);

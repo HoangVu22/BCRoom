@@ -5,7 +5,178 @@ var headerNavIcon = document.querySelector('.header-nav-icon')
 window.onscroll = function () { 
     myFunction() 
 };
+const rooms = JSON.parse(localStorage.getItem("rooms"));
+console.log(rooms);
+const room = rooms.map((value) => {
+  return ` <tr class="list-residence">
+                        <td class="list-content list-status">
+                            <b class="name-room" href="">Phòng ${
+                              value.roomNumber
+                            }</b>
+                            <div class="convenient">
+                                <div class="room-type">
+                                    <i class="fa-solid fa-bed"></i>
+                                    <span>Phòng giường đôi</span>
+                                </div>
+                                <div class="air-conditioning">
+                                    <i class="fa-regular fa-snowflake"></i>
+                                    <span>Điều hòa không khí</span>
+                                </div>
+                                <div class="wifi">
+                                    <i class="fa-solid fa-wifi"></i>
+                                    <span>Wifi miễn phí</span>
+                                </div>
+                                <div class="ears">
+                                    <i class="fa-solid fa-ear-deaf"></i>
+                                    <span>Hệ thống cách âm</span>
+                                </div>
+                            </div>
+                            <div class="show-detail-room" style="display: none;">
+                                <div class="detail-image-room">
+                                    <div class="image-room-main">
+                                        <img src="../image/detail-room/detailRoom2.jpg" class="img-feature">
+                                        <div class="img-control prev-control">
+                                            <i class="fa-solid fa-chevron-left"></i>
+                                        </div>
+                                        <div class="img-control next-control">
+                                            <i class="fa-solid fa-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                    <div class="list-image">
+                                        <div><img src="../image/detail-room/detailRoom4.jpg" alt=""></div>
+                                        <div><img src="../image/detail-room/detailRoom1.jpg" alt=""></div>
+                                        <div><img src="../image/detail-room/detailRoom3.jpg" alt=""></div>
+                                        <div><img src="../image/detail-room/detailRoom5.jpg" alt=""></div>
+                                        <div><img src="../image/detail-room/detailRoom6.jpg" alt=""></div>
+                                    </div>
+                                </div>
+                                <div class="detail-content-room">
+                                    <h1>Phòng 01</h1>
+                                    <div class="convenient">
+                                        <div class="air-conditioning">
+                                            <i class="fa-regular fa-snowflake"></i>
+                                            <span>Điều hòa không khí</span>
+                                        </div>
+                                        <div class="wifi">
+                                            <i class="fa-solid fa-wifi"></i>
+                                            <span>Wifi miễn phí</span>
+                                        </div>
+                                        <div class="ears">
+                                            <i class="fa-solid fa-ear-deaf"></i>
+                                            <span>Hệ thống cách âm</span>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="bathroom">
+                                        <h1>Phòng tắm</h1>
+                                        <ul>
+                                            <li>Đồ vệ sinh cá nhân</li>
+                                            <li>Nhà vệ sinh</li>
+                                            <li>Giấy vệ sinh</li>
+                                            <li>Bồn tắm hoặc vòi sen</li>
+                                            <li>Khăn tắm</li>
+                                        </ul>
+                                    </div> -->
+                                    <div class="convenient-room">
+                                        <h1>Tiện nghi phòng</h1>
+                                        <ul>
+                                            <li>Điều hòa không khí</li>
+                                            <li>Hệ thống cách âm</li>
+                                            <li>Tivi</li>
+                                            <li>Tủ lạnh</li>
+                                            <li>Tủ quần áo</li>
+                                            <li>Bàn ăn</li>
+                                            <li>More...</li>
+                                        </ul>
+                                    </div>
+                                    <div class="reserve">
+                                        <button>Thanh toán</button>
+                                    </div>
+                                </div>
+                                <div class="room-close">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </div>
 
+                                <div class="detail-content">
+                                    <div class="choose-payment">
+                                        <p>Lựa chọn thanh toán của quý khách</p>
+                                        <p class="question-payment">Quý vị có thể thu tiền qua thẻ tín dụng tại chỗ nghỉ không?</p> 
+                                        <div class="radio-block-1">
+                                            <div class="radio-yes">
+                                                <input id="yes" name="radio" class="radio-input" type="radio">
+                                                <label for="yes">Có</label>
+                                            </div>
+                                            <div class="radio-no">
+                                                <input id="no" name="radio" class="radio-input" type="radio">
+                                                <label for="no">Không</label>
+                                            </div>
+                                        </div>
+                                        <div class="creditcard-section">
+                                            <div class="creditcard-left">
+                                                <div class="creditcard-item">
+                                                    <input id="momo" type="radio" name="radio">
+                                                    <img src="../image/creditcard/momo.png" alt="">
+                                                    <label for="momo">MoMo</label>
+                                                </div>
+                                                <div class="creditcard-item">
+                                                    <input id="paypal" type="radio" name="radio">
+                                                    <img src="../image/creditcard/payPal.png" alt="">
+                                                    <label for="paypal">PayPal</label>
+                                                </div>
+                                                <div class="creditcard-item">
+                                                    <input id="zaloPay" type="radio" name="radio">
+                                                    <img src="../image/creditcard/ZaloPay.png" alt="">
+                                                    <label for="zaloPay">ZaloPay</label>
+                                                </div>
+                                            </div>
+                                            <div class="creditcard-right">
+                                                <div class="creditcard-item">
+                                                    <input id="agribank" type="radio" name="radio">
+                                                    <img src="../image/creditcard/agribank.png" alt="">
+                                                    <label for="agribank">Agribank</label>
+                                                </div>
+                                                <div class="creditcard-item">
+                                                    <input id="vietcombank" type="radio" name="radio">
+                                                    <img src="../image/creditcard/Vietcombank.jpg" alt="">
+                                                    <label for="vietcombank">Vietcombank</label>
+                                                </div>
+                                                <div class="creditcard-item">
+                                                    <input id="techcombank" type="radio" name="radio">
+                                                    <img src="../image/creditcard/Techcombank.png" alt="">
+                                                    <label for="techcombank">Techcombank</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cash-section">
+                                            <p>Chúng tôi sẽ thông báo với khách rằng Quý vị chỉ chấp nhận thanh toán bằng tiền mặt.</p>
+                                        </div>
+
+                                        <div class="reserve reserve1">
+                                            <button>Đặt ngay</button>
+                                        </div>
+                                        <div class="payclose">
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="list-content list-people">
+                            <span>${
+                              value.adultNumber + value.kidNumber
+                            } người</span>
+                        </td>
+                        <td class="list-content list-info">
+                            <span>${value.price} VNĐ</span>
+                        </td>
+                        <td class="list-content list-id">
+                            <button>Đặt phòng</button>
+                        </td>
+                    </tr>`;
+});
+const containernav = document.querySelector(".conatiner_rooms");
+containernav.innerHTML = `
+<tr> <th>LOẠI PHÒNG</th><th>PHÙ HỢP CHO</th><th>GIÁ MỖI ĐÊM</th><th>ĐẶT PHÒNG</th> </tr>
+${room.join("")}`;
 var navs = document.querySelectorAll('.list_city > li > a')
 function myFunction() {
     var header = document.querySelector('header')
@@ -592,3 +763,4 @@ const key = 'Xx2LVdpWdk1UyVYRKzN0';
       const marker = new maplibregl.Marker()
 
       map.addControl(new searchControl(), 'top-left');
+

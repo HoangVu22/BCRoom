@@ -338,20 +338,22 @@ finish.addEventListener('click', (e) => {
 })
 
 function sendRequestToCreatRoomHotel(data) {
-    fetch('http://localhost:1234/api/v1/core/new_room', {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+    fetch("http://localhost:1234/api/v1/core/new_room", {
+      method: "post",
+      credentials:"include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     })
-        .then(response => response.json())
-        .then(data => {
-            alert('Đăng ký phòng thành công !!!')
-        })
-        .catch(error => {
-            console.log(error)
-        })
+      .then((response) => response.json())
+      .then((data) => { 
+        if (data.code === 200) alert("Đăng ký phòng thành công !!!");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("That bai !!!");
+      });
 }
 
 // render services

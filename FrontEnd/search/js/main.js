@@ -4,14 +4,11 @@ var header_logo = document.querySelector('.header-logo h1')
 var headerNavIcon = document.querySelector('.header-nav-icon')
 window.onscroll = function () { 
     myFunction() 
-    console.log(window.pageYOffset);
 };
 
 var navs = document.querySelectorAll('.list_city > li > a')
 function myFunction() {
-    console.log(navs);
     var header = document.querySelector('header')
-    console.log(headerNavIcon.style.borderColor);
     if (window.pageYOffset > 0) {
         header_logo.style.color = '#f44336'
         header.style.backgroundColor='#fff'
@@ -243,3 +240,84 @@ if(!localStorage.getItem('login')) {
         roomEleA.href =  "http://127.0.0.1:5501/FrontEnd/signin/index.html"
     }
 }
+
+const listhotels = document.querySelector(".list_hotels");
+const hotels = JSON.parse(localStorage.getItem("hotels"))
+const place = JSON.parse(localStorage.getItem("place"));
+const result = document.querySelector(".result.wraper2");
+const hotelsRender = hotels.map((value,index)=>{
+    return `<div class="list-room" data-hotel=${value.hotelId} >
+                    <div class="room-cart">
+                        <div class="room-cart-img">
+                            <img src="../image/slider-1.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="room-cart-content">
+                        <p>${value.hotelName}</p>
+                        <div class="room-cart-contentareacity">
+                            <div class="rooms-cart-star">
+                            ${
+                              (value.starNumber === 1 &&
+                                `<p>
+                                  <i class="room-cart-star fa-solid fa-star"></i>
+                                </p>`) ||
+                              (value.starNumber === 2 &&
+                                `<p>
+                                  <i class="room-cart-star fa-solid fa-star"></i>
+                                  <i class="room-cart-star fa-solid fa-star"></i>
+                                </p>`) ||
+                              (value.starNumber === 3 &&
+                                ` <p>
+                                  <i class="room-cart-star fa-solid fa-star"></i>
+                                  <i class="room-cart-star fa-solid fa-star"></i>
+                                  <i class="room-cart-star fa-solid fa-star"></i>
+                                </p>`) ||
+                              (value.starNumber === 4 &&
+                                ` <p>
+                                  <i class="room-cart-star fa-solid fa-star"></i>
+                                  <i class="room-cart-star fa-solid fa-star"></i>
+                                  <i class="room-cart-star fa-solid fa-star"></i>
+                                  <i class="room-cart-star fa-solid fa-star"></i>
+                                </p>`) ||
+                              (value.starNumber === 5 &&
+                                ` <p>
+                                  <i class="room-cart-star fa-solid fa-star"></i>
+                                  <i class="room-cart-star fa-solid fa-star"></i>
+                                  <i class="room-cart-star fa-solid fa-star"></i>
+                                  <i class="room-cart-star fa-solid fa-star"></i>
+                                  <i class="room-cart-star fa-solid fa-star"></i>
+                                </p>`)
+                            }
+                            </div>
+                            <div class="room-cart-address">
+                                <i class="fa-solid fa-location-dot room-cart-icon"></i>     
+                                <span>${value.address}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="room-cart-money">
+                        <div class="room-cart-wrap">
+                            <span class="room-cart-cash">đ 200,000</span>
+                            <span class="room-cart-space">/</span>
+                            <span class="room-cart-night">đêm</span>
+                        </div>
+                        <button class="room-cart-booked"><a href="../roomDetails/index.html">Đặt phòng</a></button>
+                    </div>
+                </div>`;
+})
+listhotels.innerHTML = hotelsRender.join("")
+result.innerHTML = `<h3>Kết quả tìm kiếm của bạn tại quận/huyện ${place.replaceAll("_"," ")}, Đà Nẵng</h3>`;
+const listRoom = document.querySelectorAll(".list-room");
+[...listRoom].forEach(value=>{
+    value.onclick = (e)=>{
+        console.log(e.target.dataset.hotel);
+        fetch(`http://localhost:1234/api/v1/rooms/by_hotel_id/${e.target.dataset.hotel}`)
+        .then(res=>res.json())
+        .then(data=>{
+            localStorage.setItem("rooms", JSON.stringify(data.data));
+            if(data.code===200){
+                window.location.href = "http://localhost:5500/FrontEnd/roomDetails/index.html"
+            }
+        })
+    }
+})
