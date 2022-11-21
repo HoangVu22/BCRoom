@@ -17,9 +17,12 @@ app.use(bodyParser.json())
 app.use(cors({ credentials: true }))
 app.use(cookieParser())
 app.use(session({
-    resave: true,
+    resave: false,
     saveUninitialized: true,
-    secret: 'bcroom',
+    secret: 'bcroom_secret',
+    cookie: {
+        maxAge: 60000
+    }
 }))
 
 app.all("*",  (req, res, next) =>{
