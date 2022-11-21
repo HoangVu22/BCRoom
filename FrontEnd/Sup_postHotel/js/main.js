@@ -340,7 +340,6 @@ finish.addEventListener('click', (e) => {
 function sendRequestToCreatRoomHotel(data) {
     fetch("http://localhost:1234/api/v1/core/new_room", {
       method: "post",
-      credentials:"include",
       headers: {
         "Content-Type": "application/json",
       },
