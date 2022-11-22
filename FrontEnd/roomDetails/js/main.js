@@ -844,7 +844,31 @@ function newReview(data) {
         .then(data => {
             if (data.code === 200) {
                 alert('Thành công')
-                console.log(data)
+                const date = new Date(data.data.createdAt) 
+                const html = `<div id="${data.data.reviewId}" class="wrap-reviews">
+                                <div class="wrap-reviews-top">
+                                    <img class="review-avatar" src="${data.data.avatar}" alt="">
+                                    <div class="review-info">
+                                        <span class="review-name">${data.data.customerName}</span> <br>
+                                        <div class="review-rate-star">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star no-light"></i>
+                                        </div>
+                                        <span class="review-date">${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}</span>
+                                    </div>
+                                </div>
+                                <div class="wrap-reviews-bottom">
+                                    ${data.data.content}
+                                </div>
+                            </div>
+                            `
+                const formReviews = document.querySelector('.form-reviews')
+                const reviewsInHotel = formReviews.querySelectorAll('.wrap-reviews')
+                const renderedReviews = [...reviewsInHotel, html]
+                formReviews.innerHTML = renderedReviews.join('')
             }
         })
 }
