@@ -645,7 +645,7 @@ var comments = document.querySelector('.comments')
 var formSubmitA = document.querySelector('.form-submit a');
 if(!localStorage.getItem('login')) {
     formSubmitA.onclick = () => {
-        formSubmitA.href = "http://127.0.0.1:5501/FrontEnd/signin/index.html"
+        formSubmitA.href = "http://127.0.0.1:5500/FrontEnd/signin/index.html"
     }
     comments.style.display = "none"
 }
@@ -812,9 +812,10 @@ map.addControl(new searchControl(), 'top-left');
 
 const reviewButton = document.querySelector('.btn-cmt')
 
+const hotelId = JSON.parse(localStorage.getItem('targetHotelId'))
 reviewButton.onclick = (e) => {
-    const hotelId = JSON.parse(localStorage.getItem('targetHotelId'))
     const reviewContent = document.querySelector('.cmt-text.review-request').value
+
     const customerId = JSON.parse(localStorage.getItem('login')).customerId
     if (!hotelId) {
         alert('Không tìm thấy hotel muốn review')
@@ -830,7 +831,49 @@ reviewButton.onclick = (e) => {
         content: reviewContent,
         starNumber: ratingcount
     })
+    document.querySelector('.cmt-text.review-request').value = ""
 }
+
+
+function commentsroom() {
+    const formReviews = document.querySelector('.form-reviews')
+    fetch(`http://localhost:1234/api/v1/reviews/reviews_of_hotel/${hotelId}`)
+    .then(res => res.json())
+    .then(data => {
+        if (data.code === 200) {
+            data.data.sort((a, b) => {
+                const dataPrev = new Date(a.createdAt)
+                const dataNext = new Date(b.createdAt)
+                return dataPrev - dataNext
+            })
+            
+            const comment = data.data.reverse().map((e, index) => {
+                const date = new Date(e.createdAt)
+                return  index <6? `<div id="${e.reviewId}" class="wrap-reviews">
+                <div class="wrap-reviews-top">
+                    <img class="review-avatar" src=${(e && e.avatar) || 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-avt-n%E1%BB%AF-t%C3%B3c-ng%E1%BA%AFn-%C4%91%E1%BA%B9p.jpg'} alt="loi">
+                    <div class="review-info">
+                        <span class="review-name">${e.Customer.username}</span> <br>
+                        <div class="review-rate-star">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star no-light"></i>
+                        </div>
+                        <span class="review-date">${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}</span>
+                    </div>
+                </div>
+                <div class="wrap-reviews-bottom">
+                    ${e.content}
+                </div>
+            </div>`: ""
+            })
+            formReviews.innerHTML = comment.join('')
+        }
+    })
+}
+commentsroom()
 
 function newReview(data) {
     fetch('http://localhost:1234/api/v1/reviews/review_hotel', {
@@ -842,33 +885,6 @@ function newReview(data) {
     })
         .then(response => response.json())
         .then(data => {
-            if (data.code === 200) {
-                alert('Thành công')
-                const date = new Date(data.data.createdAt) 
-                const html = `<div id="${data.data.reviewId}" class="wrap-reviews">
-                                <div class="wrap-reviews-top">
-                                    <img class="review-avatar" src="${data.data.avatar}" alt="">
-                                    <div class="review-info">
-                                        <span class="review-name">${data.data.customerName}</span> <br>
-                                        <div class="review-rate-star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star no-light"></i>
-                                        </div>
-                                        <span class="review-date">${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}</span>
-                                    </div>
-                                </div>
-                                <div class="wrap-reviews-bottom">
-                                    ${data.data.content}
-                                </div>
-                            </div>
-                            `
-                const formReviews = document.querySelector('.form-reviews')
-                const reviewsInHotel = formReviews.querySelectorAll('.wrap-reviews')
-                const renderedReviews = [...reviewsInHotel, html]
-                formReviews.innerHTML = renderedReviews.join('')
-            }
+            commentsroom()
         })
 }
