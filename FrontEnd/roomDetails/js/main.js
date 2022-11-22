@@ -805,8 +805,20 @@ const reviewButton = document.querySelector('.btn-cmt')
 
 reviewButton.onclick = (e) => {
     const hotelId = localStorage.getItem('targetHotelId')
-    const requestValues = document.querySelectorAll('.review-request')
-    console.log(requestValues)
+    const reviewContent = document.querySelector('.cmt-text.review-request').value
+    if (!hotelId) {
+        alert('Không tìm thấy hotel muốn review')
+        return;
+    }
+    if (!reviewContent) {
+        alert('Vui lòng nhập nội dung review')
+        return;
+    }
+    newReview({
+        hotelId,
+        content: reviewContent,
+        starNumber: ratingcount
+    })
 }
 
 function newReview(data) {
@@ -815,8 +827,13 @@ function newReview(data) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: {
-
-        }
+        body: JSON.stringify(data)
     })
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200) {
+                alert('Thành công')
+                console.log(data)
+            }
+        })
 }
