@@ -657,16 +657,25 @@ else {
 let ratingcount = 0; 
 var cmtIcon = document.querySelectorAll('.cmt-icon i')
 cmtIcon.forEach((i,ind)=> {
-    i.onclick = function () {
-        cmtIcon.forEach((i) => {
+    i.onclick = function (e) {
+        if (e.target.style.color === 'rgb(255, 188, 57)' && ind === ratingcount-1) {
+            cmtIcon.forEach((i) => {
                 i.style.color = 'rgb(218, 220, 221)'
-        })
-        cmtIcon.forEach((i, index) => {
-            if (ind >= index) {
-                i.style.color = 'rgb(255, 188, 57)'
-            }
-        })
-        ratingcount = ind + 1;
+            })
+        ratingcount = 0;
+            
+        } else {
+            cmtIcon.forEach((i) => {
+                    i.style.color = 'rgb(218, 220, 221)'
+            })
+            cmtIcon.forEach((i, index) => {
+                if (ind >= index) {
+                    i.style.color = 'rgb(255, 188, 57)'
+                }
+            })
+            ratingcount = ind + 1;
+        }
+
     }
 
 })
