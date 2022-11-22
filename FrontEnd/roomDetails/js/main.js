@@ -218,6 +218,7 @@ function fetchBooking(data) {
 }
 
 var navs = document.querySelectorAll('.list_city > li > a')
+console.log(navs);
 function myFunction() {
     var header = document.querySelector('header')
     if (window.pageYOffset > 0) {

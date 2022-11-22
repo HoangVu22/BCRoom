@@ -237,7 +237,7 @@ function star(index){
 var roomEleA = document.querySelector('.room-cart-booked a');
 if(!localStorage.getItem('login')) {
     roomEleA.onclick = () => {
-        roomEleA.href =  "http://127.0.0.1:5501/FrontEnd/signin/index.html"
+        roomEleA.href =  "http://127.0.0.1:5500/FrontEnd/signin/index.html"
     }
 }
 
@@ -249,7 +249,7 @@ const hotelsRender = hotels.map((value,index)=>{
     return `<div class="list-room" data-hotel=${value.hotelId} >
                     <div class="room-cart">
                         <div class="room-cart-img">
-                            <img src="../image/slider-1.jpg" alt="">
+                            <img src="${value.Images[0].url}" alt="">
                         </div>
                     </div>
                     <div class="room-cart-content">
