@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { Hotel } = require('../../../../../models')
+const { Hotel, Image } = require('../../../../../models')
 
 module.exports = async (request, response) => {
     try {
@@ -11,6 +11,10 @@ module.exports = async (request, response) => {
                 address: {
                     [Op.like]: '%' + address + '%'
                 }
+            },
+            include: {
+                model: Image,
+                limit: 1
             }
         })
 
