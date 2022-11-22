@@ -815,6 +815,7 @@ const reviewButton = document.querySelector('.btn-cmt')
 reviewButton.onclick = (e) => {
     const hotelId = localStorage.getItem('targetHotelId')
     const reviewContent = document.querySelector('.cmt-text.review-request').value
+    const customerId = JSON.parse(localStorage.getItem('login')).customerId
     if (!hotelId) {
         alert('Không tìm thấy hotel muốn review')
         return;
@@ -824,6 +825,7 @@ reviewButton.onclick = (e) => {
         return;
     }
     newReview({
+        customerId,
         hotelId,
         content: reviewContent,
         starNumber: ratingcount
