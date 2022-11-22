@@ -1196,6 +1196,7 @@ ul {
     font-size: 20px;
     margin-right: 10px;
     cursor: pointer;
+    color: rgb(218, 220, 221);
 }
 
 .cmt-icon i:hover {
