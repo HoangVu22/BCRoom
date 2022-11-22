@@ -314,9 +314,12 @@ const listRoom = document.querySelectorAll(".list-room");
         fetch(`http://localhost:1234/api/v1/rooms/by_hotel_id/${e.target.dataset.hotel}`)
         .then(res=>res.json())
         .then(data=>{
-            localStorage.setItem("rooms", JSON.stringify(data.data));
-            if(data.code===200){
-                window.location.href = "http://localhost:5500/FrontEnd/roomDetails/index.html"
+            if (data.code === 200) {
+                localStorage.setItem('targetHotelId', JSON.stringify(e.target.dataset.hotel))
+                localStorage.setItem("rooms", JSON.stringify(data.data));
+                if(data.code===200){
+                    window.location.href = "http://localhost:5500/FrontEnd/roomDetails/index.html"
+                }
             }
         })
     }

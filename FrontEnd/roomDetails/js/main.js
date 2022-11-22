@@ -744,39 +744,60 @@ reserve.onclick = function(e) {
 
 // ------------gg map------------
 const key = 'Xx2LVdpWdk1UyVYRKzN0';
-      const map = new maplibregl.Map({
-        container: 'map', // container id
-        style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${key}`, // style URL
-        center: [ 108.203403,16.039226], // starting position [lng, lat]
-        zoom: 10, // starting zoom
-      });
-      map.addControl(new maplibregl.NavigationControl(), 'top-right');
-      class searchControl {
-        onAdd(map) {
-          this._map = map;
-          this._container = document.createElement('div');
-          this._container.className = 'maplibregl-ctrl';
-          const _input = document.createElement('input');
-          this._container.appendChild(_input);
-          const geocoder = new maptiler.Geocoder({
-            input: _input,
-            key: key
-          });
-          geocoder.on('select', function(item) {
-              map.fitBounds(item.bbox);
-              const marker = new maplibregl.Marker()
-            .setLngLat(item.center)
-            .addTo(map);
-            // const marker = new maplibregl.Marker()
-          });
-          return this._container;
-        }
-        onRemove() {
-          this._container.parentNode.removeChild(this._container);
-          this._map = undefined;
-        }
-      }
-      const marker = new maplibregl.Marker()
+const map = new maplibregl.Map({
+container: 'map', // container id
+style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${key}`, // style URL
+center: [ 108.203403,16.039226], // starting position [lng, lat]
+zoom: 10, // starting zoom
+});
+map.addControl(new maplibregl.NavigationControl(), 'top-right');
+class searchControl {
+    onAdd(map) {
+        this._map = map;
+        this._container = document.createElement('div');
+        this._container.className = 'maplibregl-ctrl';
+        const _input = document.createElement('input');
+        this._container.appendChild(_input);
+        const geocoder = new maptiler.Geocoder({
+        input: _input,
+        key: key
+        });
+        geocoder.on('select', function(item) {
+            map.fitBounds(item.bbox);
+            const marker = new maplibregl.Marker()
+        .setLngLat(item.center)
+        .addTo(map);
+        // const marker = new maplibregl.Marker()
+        });
+        return this._container;
+    }
+    onRemove() {
+        this._container.parentNode.removeChild(this._container);
+        this._map = undefined;
+    }
+}
+const marker = new maplibregl.Marker()
 
-      map.addControl(new searchControl(), 'top-left');
+map.addControl(new searchControl(), 'top-left');
 
+// review
+
+const reviewButton = document.querySelector('.btn-cmt')
+
+reviewButton.onclick = (e) => {
+    const hotelId = localStorage.getItem('targetHotelId')
+    const requestValues = document.querySelectorAll('.review-request')
+    console.log(requestValues)
+}
+
+function newReview(data) {
+    fetch('http://localhost:1234/api/v1/reviews/review_hotel', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: {
+
+        }
+    })
+}
