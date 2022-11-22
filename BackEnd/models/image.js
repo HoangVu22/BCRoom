@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
         this.belongsTo(models.Hotel, {
             foreignKey: 'hotelId'
         })
+        this.belongsTo(models.Customer, {
+            foreignKey: 'customerId'
+        })
     }
   }
   Image.init({
@@ -27,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     roomId: DataTypes.UUID,
     hotelId: DataTypes.UUID,
+    customerId: DataTypes.UUID,
     url: DataTypes.STRING
   }, {
     sequelize,
