@@ -22,6 +22,7 @@ module.exports = async (request, response) => {
         });
 
         const result = {
+            reviewId: review.reviewId,
             content: review.content,
             starNumber: review.starNumber,
             createdAt: review.createdAt,
