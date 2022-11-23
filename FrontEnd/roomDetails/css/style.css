@@ -873,12 +873,12 @@ ul {
     display: none;
 }
 
-.container {
+/* .container {
     display: flex;
-}
+} */
 
 .detail-info {
-    width: 60%;
+    width: 100%;
     margin-right: 50px;
 }
 
