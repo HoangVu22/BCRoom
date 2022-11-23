@@ -6,7 +6,7 @@ window.onscroll = function () {
     myFunction() 
 };
 const rooms = JSON.parse(localStorage.getItem("rooms"));
-
+console.log(rooms);
 const room = rooms.map((value) => {
   return ` <tr class="list-residence">
                         <td class="list-content list-status">
@@ -14,22 +14,13 @@ const room = rooms.map((value) => {
                               value.roomNumber
                             }</b>
                             <div class="convenient">
-                                <div class="room-type">
-                                    <i class="fa-solid fa-bed"></i>
-                                    <span>Phòng giường đôi</span>
-                                </div>
-                                <div class="air-conditioning">
-                                    <i class="fa-regular fa-snowflake"></i>
-                                    <span>Điều hòa không khí</span>
-                                </div>
-                                <div class="wifi">
-                                    <i class="fa-solid fa-wifi"></i>
-                                    <span>Wifi miễn phí</span>
-                                </div>
-                                <div class="ears">
-                                    <i class="fa-solid fa-ear-deaf"></i>
-                                    <span>Hệ thống cách âm</span>
-                                </div>
+                            ${value.services.length > 0 && value.services.map(e => {
+                                return `<div class="room-type">
+                                <i class="${e.serviceName === "Wifi" ? 'fa-solid fa-wifi' : e.serviceName === "Hệ thống cách âm" ?
+                                    'fa-solid fa-ear-deaf' : e.serviceName === "Điều hòa không khí" ? 'fa-regular fa-snowflake':'fa-solid fa-bed'}"></i>
+                                <span>${e.serviceName}</span>
+                            </div>`
+                            }).join("")}
                             </div>
                             <div class="show-detail-room" style="display: none;">
                                 <div class="detail-image-room">
@@ -53,10 +44,6 @@ const room = rooms.map((value) => {
                                 <div class="detail-content-room">
                                     <h1>Phòng 01</h1>
                                     <div class="convenient">
-                                        <div class="air-conditioning">
-                                            <i class="fa-regular fa-snowflake"></i>
-                                            <span>Điều hòa không khí</span>
-                                        </div>
                                         <div class="wifi">
                                             <i class="fa-solid fa-wifi"></i>
                                             <span>Wifi miễn phí</span>
@@ -430,68 +417,68 @@ function totalNumber() {
 }  
 
 // --------------------------------------
-const inputNumber2 = document.querySelector('.number-people2')
-const numberBox2 = document.querySelector('.number-box2')
-const numberClose2 = document.querySelector('.number-close2')
+// const inputNumber2 = document.querySelector('.number-people2')
+// const numberBox2 = document.querySelector('.number-box2')
+// const numberClose2 = document.querySelector('.number-close2')
 
-inputNumber2.addEventListener('click', function() {
-    numberBox2.classList.add('active')
-})
+// inputNumber2.addEventListener('click', function() {
+//     numberBox2.classList.add('active')
+// })
 
-numberClose2.addEventListener('click', function() {
-    numberBox2.classList.remove('active')
-})
+// numberClose2.addEventListener('click', function() {
+//     numberBox2.classList.remove('active')
+// })
 
-document.addEventListener('keydown', function(e) {
-    if(e.keyCode == 27) {
-        numberBox2.classList.remove('active');
-    }
-})
+// document.addEventListener('keydown', function(e) {
+//     if(e.keyCode == 27) {
+//         numberBox2.classList.remove('active');
+//     }
+// })
 
-const adultPlus2 = document.querySelector('.adultPlus2')
-const adultMinus2 = document.querySelector('.adultMinus2')
-let adultValue2 = document.querySelector('.adult2 span')
-let a = 0;
-adultPlus2.addEventListener('click', function() {
-    a = a+1;
-    adultValue2.innerHTML = a;
-    totalNumber2()
-})
-adultMinus2.addEventListener('click', function() {
-    if (a <= 0) {
-        a = 0;
-    }
-    else {
-        a = a-1;
-        adultValue2.innerHTML = a;
-        totalNumber2()
-    }
-})
+// const adultPlus2 = document.querySelector('.adultPlus2')
+// const adultMinus2 = document.querySelector('.adultMinus2')
+// let adultValue2 = document.querySelector('.adult2 span')
+// let a = 0;
+// adultPlus2.addEventListener('click', function() {
+//     a = a+1;
+//     adultValue2.innerHTML = a;
+//     totalNumber2()
+// })
+// adultMinus2.addEventListener('click', function() {
+//     if (a <= 0) {
+//         a = 0;
+//     }
+//     else {
+//         a = a-1;
+//         adultValue2.innerHTML = a;
+//         totalNumber2()
+//     }
+// })
 
-const childPlus2 = document.querySelector('.childPlus2')
-const childMinus2 = document.querySelector('.childMinus2')
-let childValue2 = document.querySelector('.child2 span')
-let b = 0;
-childPlus2.addEventListener('click', function() {
-    b = b+1;
-    childValue2.innerHTML = b;
-    totalNumber2()
-})
-childMinus2.addEventListener('click', function() {
-    if (b <= 0) {
-        b = 0;
-    }
-    else {
-        b = b-1;
-        childValue2.innerHTML = b;
-        totalNumber2()
-    }
-})
+// const childPlus2 = document.querySelector('.childPlus2')
+// const childMinus2 = document.querySelector('.childMinus2')
+// let childValue2 = document.querySelector('.child2 span')
+// let b = 0;
+// childPlus2.addEventListener('click', function() {
+//     b = b+1;
+//     childValue2.innerHTML = b;
+//     totalNumber2()
+// })
+// childMinus2.addEventListener('click', function() {
+//     if (b <= 0) {
+//         b = 0;
+//     }
+//     else {
+//         b = b-1;
+//         childValue2.innerHTML = b;
+//         totalNumber2()
+//     }
+// })
 
-function totalNumber2() {
-    total = a + b;
-    inputNumber2.value = a + " Người lớn, " + b + " Trẻ em";
-}
+// function totalNumber2() {
+//     total = a + b;
+//     inputNumber2.value = a + " Người lớn, " + b + " Trẻ em";
+// }
 
 // --------------------
 // const inputNumber4 = document.querySelector('.number-people4')

@@ -249,7 +249,7 @@ const hotelsRender = hotels.map((value,index)=>{
     return `<div class="list-room" data-hotel=${value.hotelId} >
                     <div class="room-cart">
                         <div class="room-cart-img">
-                            <img src="${value.Images[0].url}" alt="">
+                            <img src="${(value.Images && value.Images.length>0 && value.Images[0].url)||'../image/slider-1.jpg'}" alt="">
                         </div>
                     </div>
                     <div class="room-cart-content">
@@ -299,7 +299,7 @@ const hotelsRender = hotels.map((value,index)=>{
                         <div class="room-cart-wrap">
                             <span class="room-cart-cash">đ 200,000</span>
                             <span class="room-cart-space">/</span>
-                            <span class="room-cart-night">đêm</span>
+                            <span class="room-cart-night">ngày</span>
                         </div>
                         <button class="room-cart-booked"><a href="../roomDetails/index.html">Đặt phòng</a></button>
                     </div>
