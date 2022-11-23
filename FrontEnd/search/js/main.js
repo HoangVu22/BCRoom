@@ -310,13 +310,14 @@ result.innerHTML = `<h3>Kết quả tìm kiếm của bạn tại quận/huyện
 const listRoom = document.querySelectorAll(".list-room");
 [...listRoom].forEach(value=>{
     value.onclick = (e)=>{
-        console.log(e.target.dataset.hotel);
         fetch(`http://localhost:1234/api/v1/rooms/by_hotel_id/${e.target.dataset.hotel}`)
         .then(res=>res.json())
         .then(data=>{
             if (data.code === 200) {
                 localStorage.setItem('targetHotelId', JSON.stringify(e.target.dataset.hotel))
                 localStorage.setItem("rooms", JSON.stringify(data.data));
+                localStorage.setItem("hotelRoom", JSON.stringify(data.data[0].hotelId));
+
                 if(data.code===200){
                     window.location.href = "http://localhost:5500/FrontEnd/roomDetails/index.html"
                 }

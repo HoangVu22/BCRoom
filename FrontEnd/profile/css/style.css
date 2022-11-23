@@ -408,9 +408,11 @@ ul {
 }
 
 .account-info-img img {
-    width: 34%;
+    width: 80px;
     border-radius: 50%;
     cursor: pointer;
+    height: 80px;
+    object-fit: cover;
 }
 
 .account-info-img i {
