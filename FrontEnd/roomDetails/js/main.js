@@ -1,3 +1,5 @@
+const hotelId = JSON.parse(localStorage.getItem('targetHotelId'))
+
 // ---------header------------
 var header = document.querySelector('header')
 var header_logo = document.querySelector('.header-logo h1')
@@ -5,8 +7,35 @@ var headerNavIcon = document.querySelector('.header-nav-icon')
 window.onscroll = function () { 
     myFunction() 
 };
+
+// ---------- hotel's images -------------
+const imageHotelContainer = document.querySelector('.detail-room.wraper2')
+function fetchImagesOfHotel() {
+    fetch('http://localhost:1234/api/v1/images/images_of_hotel/' + hotelId)
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200) {
+                if (data.data.length === 0) {
+                    imageHotelContainer.remove()
+                }
+                data.data.forEach((image, index) => {
+                    const html = `<img data-id="${image.imageId}" src="${image.url}" class="detail-room-img" alt="">`
+                    if (index === 0) {
+                        imageHotelContainer.querySelector('.detail-room-left').innerHTML = html
+                    }
+                    if (index === 1 || index === 2 || index === 3) {
+                        imageHotelContainer.querySelector('.detail-room-right .detail-room-right-top').innerHTML += html
+                    }
+                    if (index === 4 || index === 5 || index === 6) {
+                        imageHotelContainer.querySelector('.detail-room-right .detail-room-right-bottom').innerHTML += html
+                    }
+                })
+            }
+        })
+}
+fetchImagesOfHotel()
+
 const rooms = JSON.parse(localStorage.getItem("rooms"));
-console.log(rooms);
 const room = rooms.map((value) => {
   return ` <tr class="list-residence">
                         <td class="list-content list-status">
@@ -800,7 +829,6 @@ map.addControl(new searchControl(), 'top-left');
 
 const reviewButton = document.querySelector('.btn-cmt')
 
-const hotelId = JSON.parse(localStorage.getItem('targetHotelId'))
 reviewButton.onclick = (e) => {
     const reviewContent = document.querySelector('.cmt-text.review-request').value
 
