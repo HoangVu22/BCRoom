@@ -1,108 +1,130 @@
 // ---------header------------
-var headerNavForm = document.querySelector('.header-nav-form')
-var headerForm = document.querySelector('.header-form')
-var headerFormLogin = headerNavForm.querySelector('.header-form-login')
-var headerFormLogout = document.querySelector('.header-form-logout');
+var headerNavForm = document.querySelector(".header-nav-form");
+var headerForm = document.querySelector(".header-form");
+var headerFormLogin = headerNavForm.querySelector(".header-form-login");
+var headerFormLogout = document.querySelector(".header-form-logout");
 const accountinfo = document.querySelector(".account-info");
 const formProfile = document.querySelector(".form-profile");
 
 const login = JSON.parse(localStorage.getItem("login"));
-headerNavForm.onclick = function() {
-    if (headerForm.style.display === "none")
-        headerForm.style.display = "block"
-    else {
-        headerForm.style.display = "none"
-    }
+headerNavForm.onclick = function () {
+  if (headerForm.style.display === "none") headerForm.style.display = "block";
+  else {
+    headerForm.style.display = "none";
+  }
 
-    handleIconLight()
-}
+  handleIconLight();
+};
 
 function handleIconLight() {
-    var iconList = headerNavIcon.querySelectorAll('i')
-    iconList.forEach((item) => {
-        if(headerFormLogout && headerFormLogout.style.display !== "none" || headerFormLogin && headerFormLogin.style.display !=="none") {
-            item.style.color = "#f44336"
-            headerNavIcon.style.borderColor = "#f44336"
-        }
-        else {
-            item.style.color = "unset"
-            headerNavIcon.style.borderColor = "unset"
-        }
-    })
+  var iconList = headerNavIcon.querySelectorAll("i");
+  iconList.forEach((item) => {
+    if (
+      (headerFormLogout && headerFormLogout.style.display !== "none") ||
+      (headerFormLogin && headerFormLogin.style.display !== "none")
+    ) {
+      item.style.color = "#f44336";
+      headerNavIcon.style.borderColor = "#f44336";
+    } else {
+      item.style.color = "unset";
+      headerNavIcon.style.borderColor = "unset";
+    }
+  });
 }
 
 // -------------profile--------------
-var profile = document.querySelector('.profile')
-var profileRight = document.querySelector('.profile-right')
-var profileRightEdit = document.querySelector('.profile-right-edit')
-var profileRightTopBtn = document.querySelector('.profile-right-top button')
-var profileSaveBtn = document.querySelector('.profile-save button')
-var profileSaveP = document.querySelector('.profile-save p')
+var profile = document.querySelector(".profile");
+var profileRight = document.querySelector(".profile-right");
+var profileRightEdit = document.querySelector(".profile-right-edit");
+var profileRightTopBtn = document.querySelector(".profile-right-top button");
+var profileSaveBtn = document.querySelector(".profile-save button");
+var profileSaveP = document.querySelector(".profile-save p");
 
-profileRightTopBtn.onclick = function() {
-    if(profileRightEdit) {
-        if (profileRightEdit.style.display === "block") {
-            profileRightEdit.style.display = "none"
-            profileRight.style.display = "block"
-        }
-        else {
-            profileRightEdit.style.display = "block"
-            profileRight.style.display = "none"
-        }
+profileRightTopBtn.onclick = function () {
+  if (profileRightEdit) {
+    if (profileRightEdit.style.display === "block") {
+      profileRightEdit.style.display = "none";
+      profileRight.style.display = "block";
+    } else {
+      profileRightEdit.style.display = "block";
+      profileRight.style.display = "none";
     }
-}
+  }
+};
 
 function edit() {
-    profileRightEdit.style.display = "none"
-    profileRight.style.display = "block"
+  profileRightEdit.style.display = "none";
+  profileRight.style.display = "block";
 }
 
-profileSaveBtn.onclick = edit
-profileSaveP.onclick = edit
+profileSaveBtn.onclick = edit;
+profileSaveP.onclick = edit;
 
-// ---------------------- 
-const accountsidebarlink = document.querySelectorAll(".account-sidebar-link")
-const profilegenaral = document.querySelectorAll(".profile-genaral")
-accountsidebarlink.forEach((value,index)=>{
-    value.onclick = (e)=>{
-        if(!value.classList.contains("active")){
-            accountsidebarlink.forEach(e=>{
-                e.classList.remove("active")
-            })
-            value.classList.add("active")
-            profilegenaral.forEach(e=>{
-                e.style.display="none"
-            })
-            profilegenaral[index].style.display = "block"
-        }
+// ----------------------
+const accountsidebarlink = document.querySelectorAll(".account-sidebar-link");
+const profilegenaral = document.querySelectorAll(".profile-genaral");
+accountsidebarlink.forEach((value, index) => {
+  value.onclick = (e) => {
+    if (!value.classList.contains("active")) {
+      accountsidebarlink.forEach((e) => {
+        e.classList.remove("active");
+      });
+      value.classList.add("active");
+      profilegenaral.forEach((e) => {
+        e.style.display = "none";
+      });
+      profilegenaral[index].style.display = "block";
     }
-})
+  };
+});
 
-
+function autoLoad() {
+    var changeAvatar = document.querySelector(".change-avatar");
+    var avatarImg = document.querySelector(".avatar-img")
+  function handleChangeAvatar() {
+      changeAvatar.click();
+      changeAvatar.onchange = (e) => {
+          const url = URL.createObjectURL(e.target.files[0])
+          avatarImg.src = url
+      }
+  }
+  var avatarRef = document.querySelector(".fa-solid.fa-camera");
+  console.log(avatarRef);
+  avatarRef.onclick = handleChangeAvatar;
+}
 accountinfo.innerHTML = `<div class="account-info-img">
-                            <img src="../image/avatars/avatar_1.jpg" alt="">
+                            <img  class="avatar-img" src="../image/avatars/avatar_1.jpg" alt="">
+                            <input class="change-avatar" style="display: none" type="file">
                             <i class="fa-solid fa-camera"></i>
                         </div>
                         <p>${login.username}</p>`;
 
 formProfile.innerHTML = `<div class="form-profile-info">
                                 <label for="">Số điện thoại</label>
-                                <div class="form-profile-name">${login.phone || ""}</div>
+                                <div class="form-profile-name">${
+                                  login.phone || ""
+                                }</div>
                             </div>
                             <div class="form-line"></div>
                             <div class="form-profile-info">
                                 <label for="">Họ và tên</label>
-                                <div class="form-profile-name">${login.username || ""}</div>
+                                <div class="form-profile-name">${
+                                  login.username || ""
+                                }</div>
                             </div>
                             <div class="form-line"></div>
                             <div class="form-profile-info">
                                 <label for="">Email</label>
-                                <div class="form-profile-name">${login.email || ""}</div>
+                                <div class="form-profile-name">${
+                                  login.email || ""
+                                }</div>
                             </div>
                             <div class="form-line"></div>
                             <div class="form-profile-info">
                                 <label for="">Địa chỉ</label>
-                                <div class="form-profile-name">${login.address || ""}</div>
+                                <div class="form-profile-name">${
+                                  login.address || ""
+                                }</div>
                             </div>
                             <div class="form-line"></div>
                             <div class="form-profile-info">
@@ -125,9 +147,9 @@ formProfile.innerHTML = `<div class="form-profile-info">
                                         <div class="form-profile-link">
                                             <a href="">Hủy liên kết</a>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>`;
+                                        </div>
+                                        </div>
+                                        </div>`;
 
 const formprofileedit = document.querySelector(".form-profile-edit");
 formprofileedit.innerHTML = `<div class="form-profile-info">
@@ -190,4 +212,4 @@ formprofileedit.innerHTML = `<div class="form-profile-info">
                                     </div>
                                 </div>
                             </div>`;
-
+autoLoad();

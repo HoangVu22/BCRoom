@@ -787,6 +787,20 @@ reserve.onclick = function(e) {
     choosePayment.style.display = "block"
 }
 
+// ---------render tên quận huyện--------
+const place = JSON.parse(localStorage.getItem('place'))
+const hotelRoom = JSON.parse(localStorage.getItem('hotelRoom'))
+
+const headerPath = document.querySelector(".header-path")
+headerPath.innerHTML = `<li><a href="../home/index.html">Trang chủ</a></li>
+            <li><a href="">${place.replaceAll("_"," ")}</a></li>
+            <p>
+                <div class="header-path-name">Đặt phòng Khách Sạn ${hotelRoom}</div>
+            </p>`
+
+
+
+
 // ------------gg map------------
 const key = 'Xx2LVdpWdk1UyVYRKzN0';
 const map = new maplibregl.Map({
@@ -904,3 +918,4 @@ function newReview(data) {
             commentsroom()
         })
 }
+
