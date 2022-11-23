@@ -11,5 +11,6 @@ module.exports = {
     getRoomByHotelId: require('./room/getRoomByHotelId'),
     reviewHotel: require('./review/reviewHotel'),
     countHotelsByAddress: require('./hotel/countHotelsByAddress'),
-    getReviewOfHotel: require('./review/getReviewOfHotel')
+    getReviewOfHotel: require('./review/getReviewOfHotel'),
+    getImagesOfHotel: require('./image/getImagesOfHotel')
 }
