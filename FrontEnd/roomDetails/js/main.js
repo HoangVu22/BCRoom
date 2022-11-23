@@ -1,4 +1,5 @@
 const hotelId = JSON.parse(localStorage.getItem('targetHotelId'))
+const reviewButton = document.querySelector('button.btn-cmt')
 
 // ---------header------------
 var header = document.querySelector('header')
@@ -36,7 +37,6 @@ function fetchImagesOfHotel() {
 fetchImagesOfHotel()
 
 function modalRoom(roomNumber, arrimg, services) {
-    console.log(services)
     return `<div class="show-detail-room" style="display: flex;">
     <div class="detail-image-room">
         <div class="image-room-main">
@@ -583,78 +583,78 @@ var prevControl = document.querySelector('.prev-control')
 var nextControl = document.querySelector('.next-control')
 
 var indexCurrent = 0;
-function updateImageByindex(index) {
-    // remove active class
-    document.querySelectorAll('.list-image div').forEach(item => {
-        item.classList.remove('active1')
-    })
-    indexCurrent = index
-    imgFeature.src = listImage[index].getAttribute('src')
-    listImage[index].parentElement.classList.add('active1')
-}
+// function updateImageByindex(index) {
+//     // remove active class
+//     document.querySelectorAll('.list-image div').forEach(item => {
+//         item.classList.remove('active1')
+//     })
+//     indexCurrent = index
+//     imgFeature.src = listImage[index].getAttribute('src')
+//     listImage[index].parentElement.classList.add('active1')
+// }
 
-listImage.forEach((imgElement, index) => {
-    imgElement.addEventListener('click', e => {
-        updateImageByindex(index)
+// listImage.forEach((imgElement, index) => {
+//     imgElement.addEventListener('click', e => {
+//         updateImageByindex(index)
         
-    })
-})
+//     })
+// })
 
-prevControl.addEventListener('click', e => {
-    if(indexCurrent == 0) {
-        indexCurrent = listImage.length - 1
-    }
-    else {
-        indexCurrent--
-    }
-    updateImageByindex(indexCurrent)
-})
+// prevControl.addEventListener('click', e => {
+//     if(indexCurrent == 0) {
+//         indexCurrent = listImage.length - 1
+//     }
+//     else {
+//         indexCurrent--
+//     }
+//     updateImageByindex(indexCurrent)
+// })
 
-nextControl.addEventListener('click', e => {
-    if(indexCurrent == listImage.length - 1) {
-        indexCurrent = 0
-    }
-    else {
-        indexCurrent++
-    }
-    updateImageByindex(indexCurrent)
-})
+// nextControl.addEventListener('click', e => {
+//     if(indexCurrent == listImage.length - 1) {
+//         indexCurrent = 0
+//     }
+//     else {
+//         indexCurrent++
+//     }
+//     updateImageByindex(indexCurrent)
+// })
 
-roomClose.onclick = function () {
-    console.log(1);
-    showDetailRoom.style.display = 'none'
-}
+// roomClose.onclick = function () {
+//     console.log(1);
+//     showDetailRoom.style.display = 'none'
+// }
 
-updateImageByindex(0)
+// updateImageByindex(0)
 
 // ---------------- payment -----------------
-var radioYes = document.querySelector('.radio-yes')
-var radioNo = document.querySelector('.radio-no')
-var creditcardSection = document.querySelector('.creditcard-section')
-var cashSection = document.querySelector('.cash-section')
-var payclose = document.querySelector('.payclose')
-var choosePayment = document.querySelector('.choose-payment')
-var reserve = document.querySelector('.reserve button')
+// var radioYes = document.querySelector('.radio-yes')
+// var radioNo = document.querySelector('.radio-no')
+// var creditcardSection = document.querySelector('.creditcard-section')
+// var cashSection = document.querySelector('.cash-section')
+// var payclose = document.querySelector('.payclose')
+// var choosePayment = document.querySelector('.choose-payment')
+// var reserve = document.querySelector('.reserve button')
 
-radioYes.onclick = function() {
-  creditcardSection.style.display = 'flex'
-  cashSection.style.display = 'none'
-}
+// radioYes.onclick = function() {
+//   creditcardSection.style.display = 'flex'
+//   cashSection.style.display = 'none'
+// }
 
-radioNo.onclick = function() {
-  creditcardSection.style.display = 'none'
-  cashSection.style.display = 'block'
-}
+// radioNo.onclick = function() {
+//   creditcardSection.style.display = 'none'
+//   cashSection.style.display = 'block'
+// }
 
-payclose.onclick = function() {
-    choosePayment.style.display = 'none'
-}
+// payclose.onclick = function() {
+//     choosePayment.style.display = 'none'
+// }
 
-reserve.onclick = function(e) {
-    // e.preventDefault()
-    console.log(choosePayment.style.display);
-    choosePayment.style.display = "block"
-}
+// reserve.onclick = function(e) {
+//     // e.preventDefault()
+//     console.log(choosePayment.style.display);
+//     choosePayment.style.display = "block"
+// }
 
 // ---------render tên quận huyện--------
 const place = JSON.parse(localStorage.getItem('place'))
@@ -710,8 +710,6 @@ map.addControl(new searchControl(), 'top-left');
 
 // review
 
-const reviewButton = document.querySelector('.btn-cmt')
-
 reviewButton.onclick = (e) => {
     const reviewContent = document.querySelector('.cmt-text.review-request').value
 
@@ -732,7 +730,6 @@ reviewButton.onclick = (e) => {
     })
     document.querySelector('.cmt-text.review-request').value = ""
 }
-
 
 function commentsroom() {
     const formReviews = document.querySelector('.form-reviews')
