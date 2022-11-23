@@ -34,11 +34,13 @@ function fetchImagesOfHotel() {
         })
 }
 fetchImagesOfHotel()
-function modalRoom(arrimg) {
+
+function modalRoom(roomNumber, arrimg, services) {
+    console.log(services)
     return `<div class="show-detail-room" style="display: flex;">
     <div class="detail-image-room">
         <div class="image-room-main">
-            <img src=${arrimg[0].url} class="img-feature">
+            <img class="showing-image" src=${arrimg[0]?.url} class="img-feature">
             <div class="img-control prev-control">
                 <i class="fa-solid fa-chevron-left"></i>
             </div>
@@ -49,31 +51,19 @@ function modalRoom(arrimg) {
         <div class="list-image">
             ${arrimg.map(e => {
                 return `<div><img src=${e.url} alt=""></div>`
-            })}
+            }).join('')}
         </div>
     </div>
     <div class="detail-content-room">
-        <h1>Phòng 01</h1>
+        <h1>${roomNumber}</h1>
         <div class="convenient">
-            <div class="wifi">
-                <i class="fa-solid fa-wifi"></i>
-                <span>Wifi miễn phí</span>
-            </div>
-            <div class="ears">
-                <i class="fa-solid fa-ear-deaf"></i>
-                <span>Hệ thống cách âm</span>
-            </div>
+            ${[...services].map(service => {
+                return `<div class="room-type">
+                            <i class="${service.children[0].className}"></i>
+                            <span>${service.children[1].textContent}</span>
+                        </div>`
+            }).join('')}
         </div>
-        <!-- <div class="bathroom">
-            <h1>Phòng tắm</h1>
-            <ul>
-                <li>Đồ vệ sinh cá nhân</li>
-                <li>Nhà vệ sinh</li>
-                <li>Giấy vệ sinh</li>
-                <li>Bồn tắm hoặc vòi sen</li>
-                <li>Khăn tắm</li>
-            </ul>
-        </div> -->
         <div class="convenient-room">
             <h1>Tiện nghi phòng</h1>
             <ul>
@@ -174,7 +164,6 @@ const room = rooms.map((value) => {
                             </div>`
                             }).join("")}
                             </div>
-                        <div class="roomidhotel"></div>
                         </td>
                         <td class="list-content list-people">
                             <span>${
@@ -196,36 +185,38 @@ ${room.join("")}`;
 var nameRoom = document.querySelector('.name-room')
 
 nameRoom.onclick = function(e) {
-    // e.preventDefault()
     const idroom = e.target.dataset.idroom;
+    console.log(e.target.parentNode)
+    const roomNumber = e.target.parentNode.querySelector('b.name-room').textContent
+    const servicesInRoom = e.target.parentNode.querySelector('.convenient').children
     fetch(`http://localhost:1234/api/v1/images/images_of_room/${idroom}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data.data);
-            if (data.code === 200 && data.data.length>0) {
-                const roomidhotel = document.querySelector(".roomidhotel")
-                roomidhotel.innerHTML = modalRoom(data.data)
+            if (data.code === 200) {
+                const modalContainer = document.querySelector('.modal-container')
+                modalContainer.style.display = 'block'
+                modalContainer.innerHTML = modalRoom(roomNumber, data.data, servicesInRoom)
+                const closeModalButton = document.querySelector('.room-close')
+                const imagesInModal = modalContainer.querySelector('.list-image').children
+                const imagesInModalArray = [...imagesInModal]
+                imagesInModalArray.forEach(image => {
+                    image.onclick = (e) => {
+                        document.querySelector('.showing-image').src = e.target.src
+                    }
+                })
+                
+                closeModalButton.onclick = (e) => {
+                    const modalShowRoomDetail = document.querySelector('.show-detail-room')
+                    modalShowRoomDetail.remove()
+                    modalContainer.style.display = 'none'
+                }
             } else {
                 alert("ko co anh")
             }
     })
-    // if (showDetailRoom.style.display === "none")
-    //     showDetailRoom.style.display = "flex"
 }
 var showDetailRoom = document.querySelector('.show-detail-room')
 var roomClose = document.querySelector('.room-close i')
-
-const getshowdetailroom = setInterval(() => {
-    console.log(1);
-        if(!showDetailRoom && !roomClose )
-        {
-            showDetailRoom = document.querySelector('.show-detail-room')
-            roomClose = document.querySelector('.room-close i')
-            // clearInterval(getshowdetailroom)
-        }
-
-    },100)
-    
     
 const bookingRoom = document.querySelector(".booking_room");
 bookingRoom.onclick = (e)=>{
@@ -476,154 +467,6 @@ function totalNumber() {
     total = i + j + k;
     inputNumber.value = i + j + " Người, " + k + " phòng";
 }  
-
-// --------------------------------------
-// const inputNumber2 = document.querySelector('.number-people2')
-// const numberBox2 = document.querySelector('.number-box2')
-// const numberClose2 = document.querySelector('.number-close2')
-
-// inputNumber2.addEventListener('click', function() {
-//     numberBox2.classList.add('active')
-// })
-
-// numberClose2.addEventListener('click', function() {
-//     numberBox2.classList.remove('active')
-// })
-
-// document.addEventListener('keydown', function(e) {
-//     if(e.keyCode == 27) {
-//         numberBox2.classList.remove('active');
-//     }
-// })
-
-// const adultPlus2 = document.querySelector('.adultPlus2')
-// const adultMinus2 = document.querySelector('.adultMinus2')
-// let adultValue2 = document.querySelector('.adult2 span')
-// let a = 0;
-// adultPlus2.addEventListener('click', function() {
-//     a = a+1;
-//     adultValue2.innerHTML = a;
-//     totalNumber2()
-// })
-// adultMinus2.addEventListener('click', function() {
-//     if (a <= 0) {
-//         a = 0;
-//     }
-//     else {
-//         a = a-1;
-//         adultValue2.innerHTML = a;
-//         totalNumber2()
-//     }
-// })
-
-// const childPlus2 = document.querySelector('.childPlus2')
-// const childMinus2 = document.querySelector('.childMinus2')
-// let childValue2 = document.querySelector('.child2 span')
-// let b = 0;
-// childPlus2.addEventListener('click', function() {
-//     b = b+1;
-//     childValue2.innerHTML = b;
-//     totalNumber2()
-// })
-// childMinus2.addEventListener('click', function() {
-//     if (b <= 0) {
-//         b = 0;
-//     }
-//     else {
-//         b = b-1;
-//         childValue2.innerHTML = b;
-//         totalNumber2()
-//     }
-// })
-
-// function totalNumber2() {
-//     total = a + b;
-//     inputNumber2.value = a + " Người lớn, " + b + " Trẻ em";
-// }
-
-// --------------------
-// const inputNumber4 = document.querySelector('.number-people4')
-// const numberBox4 = document.querySelector('.number-box4')
-// const numberClose4 = document.querySelector('.number-close4')
-
-// inputNumber4.addEventListener('click', function() {
-//     numberBox4.classList.add('active')
-// })
-// numberClose4.addEventListener('click', function() {
-//     numberBox4.classList.remove('active')
-// })
-
-// document.addEventListener('keydown', function(e) {
-//     if(e.keyCode == 27) {
-//         numberBox4.classList.remove('active');
-//     }
-// })
-
-// const adultPlus4 = document.querySelector('.adultPlus4')
-// const adultMinus4 = document.querySelector('.adultMinus4')
-// let adultValue4 = document.querySelector('.adult4 span')
-// let c = 0;
-// adultPlus4.addEventListener('click', function() {
-//     c = c+1;
-//     adultValue4.innerHTML = c;
-//     totalNumber4()
-// })
-// adultMinus4.addEventListener('click', function() {
-//     if (c <= 0) {
-//         c = 0;
-//     }
-//     else {
-//         c = c-1;
-//         adultValue4.innerHTML = c;
-//         totalNumber4()
-//     }
-// })
-
-// const childPlus4 = document.querySelector('.childPlus4')
-// const childMinus4 = document.querySelector('.childMinus4')
-// let childValue4 = document.querySelector('.child4 span')
-// let d = 0;
-// childPlus4.addEventListener('click', function() {
-//     d = d+1;
-//     childValue4.innerHTML = d;
-//     totalNumber4()
-// })
-// childMinus4.addEventListener('click', function() {
-//     if (d <= 0) {
-//         d = 0;
-//     }
-//     else {
-//         d = d-1;
-//         childValue4.innerHTML = d;
-//         totalNumber4()
-//     }
-// })
-
-// const roomPlus4 = document.querySelector('.roomPlus4')
-// const roomMinus4 = document.querySelector('.roomMinus4')
-// let roomValue4 = document.querySelector('.room4 span')
-// let g = 0;
-// roomPlus4.addEventListener('click', function() {
-//     g = g+1;
-//     roomValue4.innerHTML = g;
-//     totalNumber4()
-// })
-// roomMinus4.addEventListener('click', function() {
-//     if (g <= 0) {
-//         g = 0;
-//     }
-//     else {
-//         g = g-1;
-//         roomValue4.innerHTML = g;
-//         totalNumber4()
-//     }
-// })
-
-// function totalNumber4() {
-//     total = c + d + g;
-//     inputNumber4.value = c + d + " Người, " + g + " phòng";
-// }
-
 
 // ---------------detail room------------
 var images = document.querySelectorAll('.detail-room-img');
