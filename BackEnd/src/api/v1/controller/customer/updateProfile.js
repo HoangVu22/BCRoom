@@ -12,7 +12,7 @@ module.exports = async (request, response) => {
         if (address) updateValues.address = address
         if (phone) updateValues.phone = phone
 
-        const updatedCustomer = await Customer.update(updateValues, {
+        await Customer.update(updateValues, {
             where: {
                 customerId
             }
@@ -21,7 +21,7 @@ module.exports = async (request, response) => {
         return response.status(200).json({
             code: 200,
             status: 'success',
-            data: updatedCustomer,
+            data: await Customer.findByPk(customerId),
             message: 'Update customer profile successfully'
         })
     } catch (error) {
