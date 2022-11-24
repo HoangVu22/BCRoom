@@ -13,5 +13,6 @@ module.exports = {
     countHotelsByAddress: require('./hotel/countHotelsByAddress'),
     getReviewOfHotel: require('./review/getReviewOfHotel'),
     getImagesOfHotel: require('./image/getImagesOfHotel'),
-    getImagesOfRoom: require('./image/getImagesOfRoom')
+    getImagesOfRoom: require('./image/getImagesOfRoom'),
+    updateProfile: require('./customer/updateProfile')
 }
