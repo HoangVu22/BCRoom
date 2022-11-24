@@ -454,7 +454,7 @@ ul {
     margin-bottom: 30px;
 }
 
-.name-hotel, .detail-contact, .address-hotel {
+.name-hotel, .detail-contact, .address-hotel, .description {
     background-color: #fff;
     font-size: 26px;
     padding: 34px 20px;
@@ -471,7 +471,7 @@ ul {
     border: 1px solid #b4b2b2;
 }
 
-.name-input:focus, .star-rating:focus, .phone-input:focus, .choose-users input:focus, .address-detail input:focus {
+.name-input:focus, .star-rating:focus, .phone-input:focus, .choose-users input:focus, .address-detail input:focus, .description textarea:focus {
     border: 1px solid #0071c2;
     box-shadow: 0px 0px 3px #0071c2;
 }
@@ -523,6 +523,17 @@ ul {
     line-height: 20px;
 }
 
+.description p {
+    margin-bottom: 20px;
+}
+
+.description textarea {
+    border: 1px solid #b4b2b2;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+ 
 .radio-block {
     display: flex;
 }
