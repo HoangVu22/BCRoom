@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Customer, {
         foreignKey: 'customerId'
       })
+      this.hasOne(models.Image, {
+        foreignKey: 'voucherId'
+      })
     }
   }
   Voucher.init({
