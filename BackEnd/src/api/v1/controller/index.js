@@ -14,5 +14,6 @@ module.exports = {
     getReviewOfHotel: require('./review/getReviewOfHotel'),
     getImagesOfHotel: require('./image/getImagesOfHotel'),
     getImagesOfRoom: require('./image/getImagesOfRoom'),
-    updateProfile: require('./customer/updateProfile')
+    updateProfile: require('./customer/updateProfile'),
+    getHotelById: require('./hotel/getHotelById')
 }

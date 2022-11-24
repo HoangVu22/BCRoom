@@ -658,17 +658,19 @@ var indexCurrent = 0;
 
 // ---------render tên quận huyện--------
 const place = JSON.parse(localStorage.getItem('place'))
-const hotelRoom = JSON.parse(localStorage.getItem('hotelRoom'))
 
-const headerPath = document.querySelector(".header-path")
-headerPath.innerHTML = `<li><a href="../home/index.html">Trang chủ</a></li>
-            <li><a href="">${place.replaceAll("_"," ")}</a></li>
-            <p>
-                <div class="header-path-name">Đặt phòng Khách Sạn ${hotelRoom}</div>
-            </p>`
-
-
-
+fetch('http://localhost:1234/api/v1/hotels/get_by_id/' + hotelId)
+    .then(response => response.json())
+    .then(data => {
+        if (data.code === 200) {
+            const headerPath = document.querySelector(".header-path")
+            headerPath.innerHTML = `<li><a href="../home/index.html">Trang chủ</a></li>
+                            <li><a href="">${place.replaceAll("_"," ")}</a></li>
+                            <p>
+                                <div class="header-path-name">Đặt phòng Khách Sạn > ${data.data.hotelName}</div>
+                            </p>`
+        }
+    })
 
 // ------------gg map------------
 const key = 'Xx2LVdpWdk1UyVYRKzN0';
