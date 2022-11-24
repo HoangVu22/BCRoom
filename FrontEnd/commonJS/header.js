@@ -21,8 +21,8 @@ if(headerFormLogout) {
 }
 
 function userName(){
-    const user = JSON.parse(localStorage.getItem("username"));
+    const user = JSON.parse(localStorage.getItem("login"));
     const headerName = document.querySelector(".header-name");
-    headerName.innerHTML = ` <span>${user}</span> <p>Xem hồ sơ</p>`;
+    headerName.innerHTML = ` <span>${user.username}</span> <p>Xem hồ sơ</p>`;
 }
 userName();
