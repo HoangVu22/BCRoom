@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.belongsTo(models.Customer, {
+        foreignKey: 'customerId'
+      })
     }
   }
   Voucher.init({
@@ -20,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4
     },
+    customerId: DataTypes.UUID,
     voucherName: {
         type: DataTypes.STRING,
         allowNull: false
