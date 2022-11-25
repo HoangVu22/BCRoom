@@ -526,7 +526,7 @@ ul {
     cursor: pointer;
 }
 
-.list-action a i {
+.list-action div i.modify {
     color: #0071c2;
     margin-right: 10px;
 }

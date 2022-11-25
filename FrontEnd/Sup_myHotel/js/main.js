@@ -65,6 +65,15 @@ function fetchHotels() {
                 hotelsResponse.forEach(hotel => {
                     hotelsContainer.innerHTML += renderHotel(hotel)
                 })
+
+                const residences = document.querySelectorAll('tr.list-residence')
+                residences.forEach(residence => {
+                    const modifyButton = residence.querySelector('.list-content.list-action div i')
+                    modifyButton.onclick = (e) => {
+                        localStorage.setItem('targetHotelId', e.target.dataset.value)
+                        window.location.href = 'http://localhost:5500/FrontEnd/Sup_myRoom/index.html'
+                    }
+                })
             }
         })
 }
@@ -88,11 +97,13 @@ function renderHotel(data) {
                         <i class="fa-regular fa-eye"></i>
                         <span>${data.roomCount}</span>
                     </td>
-                    <td class="list-content list-action">
-                        <a href="../Sup_postHotel/index.html">
-                            <i class="fa-solid fa-pencil"></i>
-                        </a>
-                        <i class="fa-solid fa-trash-can"></i>
+                    <td style="display: flex" class="list-content list-action">
+                        <div>
+                            <i data-value="${data.hotelId}" class="fa-solid fa-pencil modify"></i>
+                        </div>
+                        <div>
+                            <i data-value="${data.hotelId}" class="fa-solid fa-trash-can remove"></i>
+                        </div>
                     </td>
                 </tr>`
 }
