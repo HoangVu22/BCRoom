@@ -249,3 +249,22 @@ profileSaveBtn.onclick = () => {
     }
   })
 }
+
+// -------------ẩn hiện điều kiện của Coupon-----------
+var conditionBtn = document.querySelector('.condition button')
+var conditionContent = document.querySelector('.condition-content')
+var roomClose = document.querySelector('.room-close i')
+
+conditionBtn.onclick = function () {
+  if (conditionContent.style.display === "block")
+    conditionContent.style.display = "none";
+  else {
+    conditionContent.style.display = "block";
+  }
+}
+
+roomClose.onclick = function () {
+  conditionContent.style.display = 'none'
+}
+
+// ---------------------------------------------------
