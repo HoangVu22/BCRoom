@@ -787,3 +787,19 @@ function newReview(data) {
         })
 }
 
+// -------------form show more comment-----------
+var showMoreSpan = document.querySelector('.show-more span')
+var formShowMore = document.querySelector('.form-show-more')
+var cmtClose = document.querySelector('.cmt-close')
+
+showMoreSpan.onclick = function () {
+    if (formShowMore.style.display === "block")
+      formShowMore.style.display = "none";
+    else {
+      formShowMore.style.display = "block";
+    }
+}
+cmtClose.onclick = function () {
+    formShowMore.style.display = 'none'
+  }
+
