@@ -249,3 +249,51 @@ profileSaveBtn.onclick = () => {
     }
   })
 }
+
+// -------------ẩn hiện điều kiện của Coupon-----------
+var conditionBtn = document.querySelector('.condition .condition-btn')
+var conditionContent = document.querySelector('.condition-content')
+conditionBtn.onclick = function () {
+  conditionContent.style.display = "block"
+  conditionContent.innerHTML = handleRenderVoucher()
+  var roomClose = document.querySelector('.room-close i')
+  roomClose.onclick = function () {
+    conditionContent.innerHTML = ''
+    conditionContent.style.display = "none"
+  }
+}
+
+function handleRenderVoucher() {
+  return `<div class="my-coupon">
+  <div class="coupon-img">
+      <img src="../image/places/HoaVang.jpg" alt="">
+  </div>
+  <div class="coupon-content">
+      <div class="coupon-content-top">
+          <p>GIẢM 50% - TỐI ĐA 50K</p>
+      </div>
+      <div class="coupon-content-bottom">
+          <div class="closing-date">
+              <span>Giảm 50%</span>
+              <p>Hết hạn 1/1/2023</p>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="coupon-description">
+  <ul>
+      <li>Chúc mừng bạn đã nhận được <b>Coupon 50%</b> (tối đa 50.000đ), <b>hạn sử dụng trong 7 ngày kể từ ngày nhận coupon.</b></li>
+      <li>Áp dụng tại các <b>khách sạn trong danh sách.</b></li>
+      <li>Coupon không được áp dụng cùng với chương trình Giảm giá đặc biệt.</li>
+      <li>Thời gian đặt phòng: <b>Từ Thứ Hai đến Chủ Nhật.</b></li>
+      <li>Coupon không được quy đổi thành tiền mặt, không được phép chuyển nhượng dưới bất kỳ hình thức nào.</li>
+      <li>BCRoom có quyền từ chối trả phí khuyến mãi nếu phát hiện gian lận hoặc vi phạm các điều khoản của chương trình khuyến mãi này.</li>
+  </ul>
+</div>
+<div class="room-close">
+  <i class="fa-solid fa-xmark"></i>
+</div>`
+}
+
+
+// ---------------------------------------------------
