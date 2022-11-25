@@ -1,4 +1,4 @@
-const { Customer, Hotel, Room, Booking, RoomType } = require('../../../../../models')
+const { Customer, Hotel, Room, Booking, RoomType, Bill } = require('../../../../../models')
 
 module.exports = async (request, response) => {
     try {
@@ -12,9 +12,11 @@ module.exports = async (request, response) => {
                 model: Room,
                 include: [{
                     model: Booking,
-                    include: {
+                    include: [{
                         model: Customer
-                    }
+                    }, {
+                        model: Bill
+                    }]
                 }, {
                     model: RoomType
                 }],
@@ -43,7 +45,9 @@ module.exports = async (request, response) => {
                         username: room.Booking.Customer.username,
                         email: room.Booking.Customer.email,
                         address: room.Booking.Customer.address,
-                        phone: room.Booking.Customer.phone
+                        phone: room.Booking.Customer.phone,
+                        billId: room.Booking.Bill.billId,
+                        totalPrice: room.Booking.Bill.totalPrice
                     })
                 }
             })
