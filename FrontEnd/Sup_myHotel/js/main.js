@@ -4,7 +4,7 @@ var headerForm = document.querySelector(".header-form");
 var headerFormLogin = headerNavForm.querySelector(".header-form-login");
 var headerFormLogout = document.querySelector(".header-form-logout");
 var headerNavIcon = document.querySelector('.header-nav-icon')
-var login = window.localStorage.getItem("login");
+var login = JSON.parse(localStorage.getItem('login')) 
 
 headerNavForm.onclick = function () {
   if (headerForm.style.display === "none") headerForm.style.display = "block";
@@ -53,44 +53,46 @@ const searchResidence = () => {
   }
 }
 
+function fetchHotels() {
+    fetch('http://localhost:1234/api/v1/owners/' + login.customerId + '/hotels')
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200) {
+                const hotelsResponse = data.data
+                const hotelsContainer = document.querySelector('.container-nav')
+                const numberOfRoomsTitle = document.querySelector('.container-header h1')
+                numberOfRoomsTitle.innerText = `${hotelsResponse.length} khách sạn`
+                hotelsResponse.forEach(hotel => {
+                    hotelsContainer.innerHTML += renderHotel(hotel)
+                })
+            }
+        })
+}
+fetchHotels()
 
-
-// ----------------- pagination---------
-// function getPageList(totalPages, page, maxLength) {
-//   function range(start, end) {
-//     return Array.from(Array(end - start + 1), (_, i) => i + start);
-//   }
-
-//   var sideWidth = maxLength < 9 ? 1 : 2;
-//   var leftWidth = (maxLength - sideWidth * 2 - 3) >> 1;
-//   var rightWidth = (maxLength - sideWidth * 2 - 3) >> 1;
-
-//   if(totalPages <= maxLength - sideWidth - 1 - rightWidth) {
-//     return range(1, maxLength - sideWidth - 1).concat(0, range(totalPages - sideWidth + 1, totalPages))
-//   }
-
-//   if(page >= totalPages - sideWidth - 1 - rightWidth) {
-//     return range(1, sideWidth).concat(0, range(totalPages - sideWidth - 1 -rightWidth - leftWidth, totalPages));
-//   }
-
-//   return range(1, sideWidth).concat(0, range(page - leftWidth, page + rightWidth), 0, range(totalPages - sideWidth + 1, totalPages));
-// }
-
-// $(function() {
-//   var numberOfItems = $(".container-residence").length;
-//   var limitPerPage = 4;
-//   var totalPages = Math.ceil(numberOfItems / limitPerPage);
-//   var paginationSize = 7;
-//   var currentPage;
-
-//   function showPage(whichPage) {
-//     if(whichPage < 1 || whichPage > totalPages) return false;
-//     currentPage = whichPage;
-
-//     $(".container-residence").hide().slice((currentPage - 1) * limitPerPage, currentPage * limitPerPage).show();
-//     $(".pagination li").slice(1, -1).remove();
-//     getPageList(totalPages, currentPage, paginationSize).forEach(item => {
-//       $("<li>").addClass("page-item").addClass(item ? "current-page").tonggleClass("active", item === currentPage.append($("<a>").addClass()))
-//     });
-//   }
-// });
+function renderHotel(data) {
+    return `<tr data-value="${data.hotelId}" class="list-residence">
+                    <td class="list-content list-status">
+                        <span>BẢN TẠM</span>
+                    </td>
+                    <td class="list-content list-info"> 
+                        <a href="../Sup_myRoom/index.html">
+                            <h4>${data.hotelName}</h4>
+                            <span>${data.address}</span>
+                        </a>
+                    </td>
+                    <td class="list-content list-id">
+                        <p>${data.hotelId}</p>
+                    </td>
+                    <td class="list-content list-view">
+                        <i class="fa-regular fa-eye"></i>
+                        <span>${data.roomCount}</span>
+                    </td>
+                    <td class="list-content list-action">
+                        <a href="../Sup_postHotel/index.html">
+                            <i class="fa-solid fa-pencil"></i>
+                        </a>
+                        <i class="fa-solid fa-trash-can"></i>
+                    </td>
+                </tr>`
+}

@@ -241,80 +241,6 @@ tabItem.forEach((tab, index) => {
   };
 });
 
-// -------------show on scroll----------------
-// var animation = document.querySelectorAll('.show-on-scroll');
-// function toggleAnimation(e) {
-//     var rect = e.getClientRects()[0]
-//     var heightScreen = window.innerHeight
-//     // check xem element có bên trong màn hình hay k
-//     if(!(rect.bottom < 0 || rect.top > heightScreen)) {
-//         // bên trong thì cho vào đây
-//         e.classList.add('start')
-//     }
-//     else{
-//         // ngoài thì vào đây
-//         e.classList.remove('start')
-//     }
-// }
-
-// function checkAnimation() {
-//     animation.forEach(el => {
-//         toggleAnimation(el)
-//     })
-// }
-// window.onscroll = checkAnimation
-
-
-
-// -------------
-// var tabscontent = document.querySelector('.tabs-content')
-// const user = [
-//     {
-//         id: 1,
-//         name: "tung",
-//         old: 21
-//     },
-//     {
-//         id: 2,
-//         name: "vu",
-//         old: 21
-//     },
-//     {
-//         id: 3,
-//         name: "khanh",
-//         old: 21
-//     },
-//     {
-//         id: 4,
-//         name: "thien",
-//         old: 21
-//     }
-// ]
-
-// var list = user.map((item)=> {
-//     return (
-//         `<div class="abc">
-//             <div>${item.name}</div>
-//             <div>${item.old}</div>
-//         </div>`
-//     )
-// }).join('')
-// console.log(list);
-// tabscontent.innerHTML = list
-
-//  fetch(`http://localhost:1234/api/v1/hotels/count`, {
-//    method: "POST",
-//    headers: {
-//      "Content-Type": "application/json",
-//    },
-//    body: JSON.stringify(recomentList),
-//  })
-// .then(res=>res.json())
-// .then((data)=>{
-//     // khach san
-// })
-
-
 const items = document.querySelectorAll(".items a");
 [...items].forEach(value=>{
     value.onclick = (e)=>{
@@ -325,9 +251,9 @@ const items = document.querySelectorAll(".items a");
         .then(res=>res.json())
         .then(data=>{
             localStorage.setItem("hotels",JSON.stringify([...data.data]))
-            if(data.code === 200)
-            window.location.href ="http://localhost:5500/FrontEnd/search/index.html";
+            if(data.code === 200) {
+                window.location.href ="http://localhost:5500/FrontEnd/search/index.html";
+            }
         })
     }
 })
-console.log(items);
