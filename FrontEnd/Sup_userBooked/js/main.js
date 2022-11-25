@@ -83,17 +83,17 @@ function renderBooking(data) {
                     <td class="list-content list-status">
                         <span>${data.username}</span> <br>
                         <span>${data.email}</span> <br>
-                        <span>${data.phone}</span> <br>
-                        <span>${data.address}</span>
+                        <span>${data.phone || ''}</span> <br>
+                        <span>${data.address || ''}</span>
                     </td>
                     <td class="list-content list-info"> 
-                        <span>${dateFrom.getDate() + '/' + dateFrom.getMonth() + 1 + '/' + dateFrom.getFullYear()}</span>
+                        <span>${dateFrom.getDate()}/${dateFrom.getMonth() + 1}/${dateFrom.getFullYear()}</span>
                     </td>
                     <td class="list-content list-id">
-                        <span>${dateTo.getDate() + '/' + dateTo.getMonth() + 1 + '/' + dateTo.getFullYear()}</span>
+                        <span>${dateTo.getDate()}/${dateTo.getMonth() + 1}/${dateTo.getFullYear()}</span>
                     </td>
                     <td class="list-content list-price">
-                        <span>${data.totalPrice} VNĐ</span>
+                        <span>${data.totalPrice || 0} VNĐ</span>
                     </td>
                     <td class="list-content list-wait">
                         <span>${data.status ? 'Đã xác nhận' : 'Đang chờ'}</span>
