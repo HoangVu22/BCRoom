@@ -4,7 +4,7 @@ var headerForm = document.querySelector(".header-form");
 var headerFormLogin = headerNavForm.querySelector(".header-form-login");
 var headerFormLogout = document.querySelector(".header-form-logout");
 var headerNavIcon = document.querySelector('.header-nav-icon')
-var login = window.localStorage.getItem("login");
+var login = JSON.parse(localStorage.getItem('login')) 
 
 headerNavForm.onclick = function () {
   if (headerForm.style.display === "none") headerForm.style.display = "block";
@@ -51,4 +51,56 @@ const searchResidence = () => {
       }
     }
   }
+}
+
+function fetchBookingsOfHotel() {
+    fetch('http://localhost:1234/api/v1/owners/' + login.customerId + '/bookings_of_hotels')
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200) {
+                console.log(data)
+                const bookingResponse = data.data
+                const bookingContainer = document.querySelector('.container-nav')
+
+                bookingResponse.forEach(booking => {
+                    bookingContainer.innerHTML += renderBooking(booking)
+                })
+            }
+        })
+}
+fetchBookingsOfHotel()
+
+function renderBooking(data) {
+    const dateFrom = new Date(data.dateFrom)
+    const dateTo = new Date(data.dateTo)
+
+    return `<tr data-value="${data.bookingId}" class="list-residence">
+                    <td class="list-content list-status">
+                        <span>${data.hotelName}</span> <br>
+                        <span>${data.roomNumber}</span> <br>
+                        <span>${data.typeName}</span>
+                    </td>
+                    <td class="list-content list-status">
+                        <span>${data.username}</span> <br>
+                        <span>${data.email}</span> <br>
+                        <span>${data.phone}</span> <br>
+                        <span>${data.address}</span>
+                    </td>
+                    <td class="list-content list-info"> 
+                        <span>${dateFrom.getDate() + '/' + dateFrom.getMonth() + 1 + '/' + dateFrom.getFullYear()}</span>
+                    </td>
+                    <td class="list-content list-id">
+                        <span>${dateTo.getDate() + '/' + dateTo.getMonth() + 1 + '/' + dateTo.getFullYear()}</span>
+                    </td>
+                    <td class="list-content list-price">
+                        <span>${data.totalPrice} VNĐ</span>
+                    </td>
+                    <td class="list-content list-wait">
+                        <span>${data.status ? 'Đã xác nhận' : 'Đang chờ'}</span>
+                    </td>
+                    <td class="list-content list-cancel">
+                        <span>Xác nhận</span>
+                        <i class="fa-solid fa-trash-can"></i>
+                    </td>
+                </tr>`
 }
