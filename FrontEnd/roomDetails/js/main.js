@@ -36,6 +36,7 @@ function fetchImagesOfHotel() {
             ).innerHTML += html;
           }
         });
+        Detailroom()
       }
     });
 }
@@ -45,9 +46,7 @@ function modalRoom(roomNumber, arrimg, services) {
   return `<div class="show-detail-room" style="display: flex;">
     <div class="detail-image-room">
         <div class="image-room-main">
-            <img class="showing-image" src=${
-              arrimg[0]?.url
-            } class="img-feature">
+            <img class="showing-image img-feature" src=${arrimg[0]?.url}>
             <div class="img-control prev-control">
                 <i class="fa-solid fa-chevron-left"></i>
             </div>
@@ -242,13 +241,58 @@ nameRoom.onclick = function (e) {
           modalShowRoomDetail.remove();
           modalContainer.style.display = "none";
         };
+        var listImage = document.querySelectorAll(".list-image img");
+        var prevControl = document.querySelector(".prev-control");
+        var imgFeature = document.querySelector(".img-feature");
+        var nextControl = document.querySelector(".next-control");
+        var roomClose = document.querySelector(".room-close i");
+        var showDetailRoom = document.querySelector(".show-detail-room");
+
+        var indexCurrent = 0;
+        function updateImageByindex(index = 0) {
+          // remove active class
+          document.querySelectorAll(".list-image div").forEach((item) => {
+            item.classList.remove("active1");
+          });
+          indexCurrent = index;
+          imgFeature.src = listImage[index].getAttribute("src");
+          listImage[index].parentElement.classList.add("active1");
+        }
+
+        listImage.forEach((imgElement, index) => {
+          imgElement.addEventListener("click", (e) => {
+            updateImageByindex(index);
+          });
+        });
+
+        prevControl.addEventListener("click", (e) => {
+          if (indexCurrent == 0) {
+            indexCurrent = listImage.length - 1;
+          } else {
+            indexCurrent--;
+          }
+          updateImageByindex(indexCurrent);
+        });
+
+        nextControl.addEventListener("click", (e) => {
+          if (indexCurrent == listImage.length - 1) {
+            indexCurrent = 0;
+          } else {
+            indexCurrent++;
+          }
+          updateImageByindex(indexCurrent);
+        });
+
+        roomClose.onclick = function () {
+          showDetailRoom.style.display = "none";
+        };
+        Payment();
+        updateImageByindex(0);
       } else {
         alert("ko co anh");
       }
     });
 };
-var showDetailRoom = document.querySelector(".show-detail-room");
-var roomClose = document.querySelector(".room-close i");
 
 const bookingRoom = document.querySelector(".booking_room");
 bookingRoom.onclick = (e) => {
@@ -493,7 +537,8 @@ function totalNumber() {
 }
 
 // ---------------detail room------------
-var images = document.querySelectorAll(".detail-room-img");
+function Detailroom() {
+  var images = document.querySelectorAll(".detail-room-img");
 var prev = document.querySelector(".prev");
 var next = document.querySelector(".next");
 var close = document.querySelector(".close");
@@ -553,6 +598,7 @@ next.addEventListener("click", function () {
     showGallery();
   }
 });
+}
 
 // -----------function booked------
 var comments = document.querySelector(".comments");
@@ -596,12 +642,12 @@ cmtIcon.forEach((i, ind) => {
 // ------------ loại phòng -----------
 
 // ---------------- slide room---------
-var imgFeature = document.querySelector(".img-feature");
-var listImage = document.querySelectorAll(".list-image img");
-var prevControl = document.querySelector(".prev-control");
-var nextControl = document.querySelector(".next-control");
+// var imgFeature = document.querySelector(".img-feature");
+// var listImage = document.querySelectorAll(".list-image img");
+// var prevControl = document.querySelector(".prev-control");
+// var nextControl = document.querySelector(".next-control");
 
-var indexCurrent = 0;
+// var indexCurrent = 0;
 // function updateImageByindex(index) {
 //     // remove active class
 //     document.querySelectorAll('.list-image div').forEach(item => {
@@ -640,41 +686,40 @@ var indexCurrent = 0;
 // })
 
 // roomClose.onclick = function () {
-//     console.log(1);
 //     showDetailRoom.style.display = 'none'
 // }
 
 // updateImageByindex(0)
 
 // ---------------- payment -----------------
-// var radioYes = document.querySelector('.radio-yes')
-// var radioNo = document.querySelector('.radio-no')
-// var creditcardSection = document.querySelector('.creditcard-section')
-// var cashSection = document.querySelector('.cash-section')
-// var payclose = document.querySelector('.payclose')
-// var choosePayment = document.querySelector('.choose-payment')
-// var reserve = document.querySelector('.reserve button')
+function Payment() {
+  var radioYes = document.querySelector(".radio-yes");
+  var radioNo = document.querySelector(".radio-no");
+  var creditcardSection = document.querySelector(".creditcard-section");
+  var cashSection = document.querySelector(".cash-section");
+  var payclose = document.querySelector(".payclose");
+  var choosePayment = document.querySelector(".choose-payment");
+  var reserve = document.querySelector(".reserve button");
 
-// radioYes.onclick = function() {
-//   creditcardSection.style.display = 'flex'
-//   cashSection.style.display = 'none'
-// }
+  radioYes.onclick = function () {
+    creditcardSection.style.display = "flex";
+    cashSection.style.display = "none";
+  };
 
-// radioNo.onclick = function() {
-//   creditcardSection.style.display = 'none'
-//   cashSection.style.display = 'block'
-// }
+  radioNo.onclick = function () {
+    creditcardSection.style.display = "none";
+    cashSection.style.display = "block";
+  };
 
-// payclose.onclick = function() {
-//     choosePayment.style.display = 'none'
-// }
+  payclose.onclick = function () {
+    choosePayment.style.display = "none";
+  };
 
-// reserve.onclick = function(e) {
-//     // e.preventDefault()
-//     console.log(choosePayment.style.display);
-//     choosePayment.style.display = "block"
-// }
-
+  reserve.onclick = function (e) {
+    // e.preventDefault()
+    choosePayment.style.display = "block";
+  };
+}
 // ---------render tên quận huyện--------
 const place = JSON.parse(localStorage.getItem("place"));
 
@@ -719,7 +764,6 @@ class searchControl {
     geocoder.on("select", function (item) {
       map.fitBounds(item.bbox);
       const marker = new maplibregl.Marker().setLngLat(item.center).addTo(map);
-      // const marker = new maplibregl.Marker()
     });
     return this._container;
   }
@@ -732,8 +776,7 @@ const marker = new maplibregl.Marker();
 
 map.addControl(new searchControl(), "top-left");
 
-// review
-
+// --------------------review--------------
 reviewButton.onclick = (e) => {
   const reviewContent = document.querySelector(
     ".cmt-text.review-request"
@@ -754,9 +797,14 @@ reviewButton.onclick = (e) => {
     content: reviewContent,
     starNumber: ratingcount,
   });
+  cmt =[{
+    customerId,
+    hotelId,
+    content: reviewContent,
+    starNumber: ratingcount,
+  }]
   document.querySelector(".cmt-text.review-request").value = "";
 };
-
 function commentsroom() {
   const formReviews = document.querySelector(".form-reviews");
   fetch(`http://localhost:1234/api/v1/reviews/reviews_of_hotel/${hotelId}`)
@@ -800,6 +848,48 @@ function newReview(data) {
     .then((response) => response.json())
     .then((data) => {
       commentsroom();
+      fetch(`http://localhost:1234/api/v1/reviews/reviews_of_hotel/${hotelId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.code === 200) {
+            if (data.data.length < 7) {
+              showMoreSpan.style.display = "none";
+            } else {
+              showMoreSpan.onclick = function () {
+                formShowMore.style.display = "block";
+                data.data.sort((a, b) => {
+                  const dataPrev = new Date(a.createdAt);
+                  const dataNext = new Date(b.createdAt);
+                  return dataPrev - dataNext;
+                });
+      
+                const comment = data.data.reverse().map((e, index) => {
+                  const date = new Date(e.createdAt);
+                  return handleRenderCommentList(
+                    e.reviewId,
+                    e.avatar,
+                    e.Customer.username,
+                    date.getDate(),
+                    date.getMonth() + 1,
+                    date.getFullYear(),
+                    e.content
+                  );
+                });
+                formShowMore.innerHTML =
+                  `<div class="cmt-close">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>`+`<h3>Tất cả đánh giá</h3>` +
+                            comment.join("")
+                  ;
+                var cmtClose = document.querySelector(".cmt-close");
+                cmtClose.onclick = function () {
+                  formShowMore.innerHTML = "";
+                  formShowMore.style.display = "none";
+                };
+              };
+            }
+          }
+        });
     });
 }
 
@@ -834,14 +924,12 @@ fetch(`http://localhost:1234/api/v1/reviews/reviews_of_hotel/${hotelId}`)
               e.content
             );
           });
-
           formShowMore.innerHTML =
-            `<h3>Tất cả đánh giá</h3>` +
-            comment.join("") +
             `<div class="cmt-close">
                           <i class="fa-solid fa-xmark"></i>
-                      </div>`;
-
+                      </div>`+`<h3>Tất cả đánh giá</h3>` +
+                      comment.join("")
+            ;
           var cmtClose = document.querySelector(".cmt-close");
           cmtClose.onclick = function () {
             formShowMore.innerHTML = "";
