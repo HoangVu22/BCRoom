@@ -99,7 +99,6 @@ function renderBooking(data) {
                         <span>${data.status ? 'Đã xác nhận' : 'Đang chờ'}</span>
                     </td>
                     <td class="list-content list-cancel">
-                        <span>Xác nhận</span>
                         <i class="fa-solid fa-trash-can"></i>
                     </td>
                 </tr>`
