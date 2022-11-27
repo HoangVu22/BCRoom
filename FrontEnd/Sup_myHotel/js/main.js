@@ -69,9 +69,22 @@ function fetchHotels() {
                 const residences = document.querySelectorAll('tr.list-residence')
                 residences.forEach(residence => {
                     const hotelInfoTarget = residence.querySelector('.list-content.list-info div h4')
+                    const deleteHotelButton = residence.querySelector('.list-content.list-action div .remove')
                     hotelInfoTarget.onclick = (e) => {
                         localStorage.setItem('targetHotelId', e.target.dataset.value)
                         window.location.href = 'http://localhost:5500/FrontEnd/Sup_myRoom/index.html'
+                    }
+                    deleteHotelButton.onclick = (e) => {
+                        fetch('http://localhost:1234/api/v1/hotels/single/' + e.target.dataset.value, {
+                            method: 'delete'
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.code === 200) {
+                                    window.location.reload()
+                                    return false
+                                }
+                            })
                     }
                 })
             }

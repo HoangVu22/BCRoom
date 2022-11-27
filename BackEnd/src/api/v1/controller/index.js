@@ -18,5 +18,6 @@ module.exports = {
     getHotelById: require('./hotel/getHotelById'),
     getAllBookingOfHotel: require('./owner/getAllBookingOfHotel'),
     getAllOwnHotels: require('./owner/getAllOwnHotels'),
-    deleteRoom: require('./room/deleteRoom')
+    deleteRoom: require('./room/deleteRoom'),
+    deleteHotel: require('./hotel/deleteHotel')
 }
