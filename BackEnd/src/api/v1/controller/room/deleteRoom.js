@@ -9,10 +9,10 @@ module.exports = async (request, response) => {
             }
         })
 
-        if (room.Booking) {
+        if (room.dataValues.Booking !== null) {
             await Bill.destroy({
                 where: {
-                    bookingId: room.Booking.bookingId
+                    bookingId: room.dataValues.Booking.bookingId
                 }
             })
         }
