@@ -525,7 +525,7 @@ ul {
     text-align: center;
 }
 
-.list-action a i {
+.list-action div .modify {
     color: #0071c2;
     margin-right: 10px;
 }

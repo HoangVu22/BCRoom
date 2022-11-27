@@ -68,8 +68,8 @@ function fetchHotels() {
 
                 const residences = document.querySelectorAll('tr.list-residence')
                 residences.forEach(residence => {
-                    const modifyButton = residence.querySelector('.list-content.list-action div i')
-                    modifyButton.onclick = (e) => {
+                    const hotelInfoTarget = residence.querySelector('.list-content.list-info div h4')
+                    hotelInfoTarget.onclick = (e) => {
                         localStorage.setItem('targetHotelId', e.target.dataset.value)
                         window.location.href = 'http://localhost:5500/FrontEnd/Sup_myRoom/index.html'
                     }
@@ -85,10 +85,10 @@ function renderHotel(data) {
                         <span>BẢN TẠM</span>
                     </td>
                     <td class="list-content list-info"> 
-                        <a href="../Sup_myRoom/index.html">
-                            <h4>${data.hotelName}</h4>
+                        <div href="../Sup_myRoom/index.html">
+                            <h4 data-value="${data.hotelId}">${data.hotelName}</h4>
                             <span>${data.address}</span>
-                        </a>
+                        </div>
                     </td>
                     <td class="list-content list-id">
                         <p>${data.hotelId}</p>
