@@ -41,6 +41,12 @@ module.exports = async (request, response) => {
                         }
                     })
                 }
+
+                await Image.destroy({
+                    where: {
+                        roomId: room.dataValues.roomId
+                    }
+                })
     
                 await Policy.destroy({
                     where: {
