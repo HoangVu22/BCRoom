@@ -17,6 +17,20 @@ function fetchRooms() {
                 roomsResponse.forEach(room => {
                     roomsContainer.innerHTML += renderRoom(room)
                 })
+
+                const deleteRoomButton = document.querySelectorAll('.list-content.list-action div i.delete')
+                deleteRoomButton.forEach(button => {
+                    button.onclick = (e) => {
+                        fetch('http://localhost:1234/api/v1/rooms/single/' + e.target.dataset.value, {
+                            method: 'delete'
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.code === 200) {
+                                }
+                            })
+                    }
+                })
             }
         })
 }
@@ -38,7 +52,7 @@ function renderRoom(data) {
                             <i data-value="${data.roomId}" class="fa-solid fa-pencil modify"></i>
                         </div>
                         <div>
-                            <i data-value="${data.roomId}" class="fa-solid fa-trash-can"></i>
+                            <i data-value="${data.roomId}" class="fa-solid fa-trash-can delete"></i>
                         </div>
                     </td>
                 </tr>`
