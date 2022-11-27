@@ -33,6 +33,9 @@ function renderRoom(data) {
                     <td class="list-content list-id">
                         <p>${data.roomType.typeName}</p>
                     </td>
+                    <td class="list-content list-roomId">
+                        <p>${data.roomId}</p>
+                    </td>
                     <td style="display: flex; justify-content: center" class="list-content list-action">
                         <div>
                             <i data-value="${data.roomId}" class="fa-solid fa-pencil modify"></i>
