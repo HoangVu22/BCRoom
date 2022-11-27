@@ -5,6 +5,20 @@ var headerFormLogin = headerNavForm.querySelector(".header-form-login");
 var headerFormLogout = document.querySelector(".header-form-logout");
 var headerNavIcon = document.querySelector('.header-nav-icon');
 const login = JSON.parse(localStorage.getItem("login"));
+const targetHotelId = localStorage.getItem('targetHotelId')
+const newHotelButton = document.querySelector('.new-hotel-btn')
+
+function loadPage() {
+    const targetHotelIdSpan = document.querySelector('.target-hotel-id')
+    targetHotelIdSpan.innerText = targetHotelId
+}
+loadPage()
+
+newHotelButton.onclick = () => {
+    localStorage.removeItem('targetHotelId')
+    const targetHotelIdSpan = document.querySelector('.target-hotel-id')
+    targetHotelIdSpan.innerText = ""
+}
 
 headerNavForm.onclick = function () {
     if (headerForm.style.display === "none") headerForm.style.display = "block";
@@ -329,7 +343,7 @@ finish.addEventListener('click', (e) => {
         }
     });
 
-    const hotelId = localStorage.getItem('selectedHotelId');
+    const hotelId = localStorage.getItem('targetHotelId') 
     sendRequestToCreatRoomHotel({
         ...basicInformationHotel,
         ...basicInformationRoom,

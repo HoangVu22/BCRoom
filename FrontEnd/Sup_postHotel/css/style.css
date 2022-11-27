@@ -454,7 +454,7 @@ ul {
     margin-bottom: 30px;
 }
 
-.name-hotel, .detail-contact, .address-hotel, .description {
+.name-hotel, .detail-contact, .address-hotel, .description, .target-hotel {
     background-color: #fff;
     font-size: 26px;
     padding: 34px 20px;
@@ -901,7 +901,7 @@ ul {
     color: #fff;
 }
 
-.go-to-next button, .finish button {
+.go-to-next button, .finish button, .new-hotel-btn {
     padding: 8px 20px;
     background: linear-gradient(#f37066,#f44336);
     border: 1px solid var(--main-color);

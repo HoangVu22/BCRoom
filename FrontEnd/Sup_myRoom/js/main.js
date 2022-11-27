@@ -90,3 +90,13 @@ const searchResidence = () => {
     }
   }
 }
+
+// ----------- post new room --------------
+const newRoomButton = document.querySelector('.btn-toolbar')
+
+newRoomButton.onclick = () => {
+    const targetHotelId = localStorage.getItem('targetHotelId')
+    if (targetHotelId) {
+        window.location.href = 'http://localhost:5500/FrontEnd/Sup_postHotel/index.html'
+    }
+}
