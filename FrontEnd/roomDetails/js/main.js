@@ -201,9 +201,9 @@ const containernav = document.querySelector(".conatiner_rooms");
 containernav.innerHTML = `
 <tr> <th>LOẠI PHÒNG</th><th>PHÙ HỢP CHO</th><th>GIÁ MỖI ĐÊM</th><th>ĐẶT PHÒNG</th> </tr>
 ${room.join("")}`;
-var nameRooms = document.querySelector(".name-room");
+var nameRooms = document.querySelectorAll(".name-room");
 
-nameRooms.forEach(nameRoom => {
+[...nameRooms].forEach(nameRoom => {
     nameRoom.onclick = function (e) {
         const idroom = e.target.dataset.idroom;
         const roomNumber =

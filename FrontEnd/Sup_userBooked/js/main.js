@@ -95,9 +95,6 @@ function renderBooking(data) {
                     <td class="list-content list-price">
                         <span>${data.totalPrice || 0} VNĐ</span>
                     </td>
-                    <td class="list-content list-wait">
-                        <span>${data.status ? 'Đã xác nhận' : 'Đang chờ'}</span>
-                    </td>
                     <td class="list-content list-cancel">
                         <i class="fa-solid fa-trash-can"></i>
                     </td>

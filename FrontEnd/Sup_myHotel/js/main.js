@@ -94,7 +94,6 @@ function renderHotel(data) {
                         <p>${data.hotelId}</p>
                     </td>
                     <td class="list-content list-view">
-                        <i class="fa-regular fa-eye"></i>
                         <span>${data.roomCount}</span>
                     </td>
                     <td style="display: flex" class="list-content list-action">

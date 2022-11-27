@@ -411,6 +411,7 @@ ul {
     padding: 12px 20px;
     font-size: 15px;
     color: #fff;
+    cursor: pointer;
 }
 
 .postNew-residence i {
@@ -510,6 +511,10 @@ ul {
     font-size: 15px;
 }
 
+.list-roomId {
+    font-size: 15px;
+}
+
 .list-view {
     font-size: 16px;
 }
@@ -552,6 +557,10 @@ th {
 th:nth-child(2) {
     width: 25%;
 } */
+
+th:nth-child(4) {
+    width: 25%;
+}
 
 th, td {
     padding: 10px 0;

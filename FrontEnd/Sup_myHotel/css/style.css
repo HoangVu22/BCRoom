@@ -506,7 +506,9 @@ ul {
     color: #333;
 }
 
-
+.list-info h4 {
+    cursor: pointer;
+}
 
 .list-id {
     font-size: 15px;
@@ -516,8 +518,8 @@ ul {
     font-size: 16px;
 }
 
-.list-view i {
-    margin-right: 5px;
+.list-view span {
+    margin-left: 50%;
 }
 
 .list-action {
