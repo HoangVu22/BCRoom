@@ -27,6 +27,8 @@ function fetchRooms() {
                             .then(response => response.json())
                             .then(data => {
                                 if (data.code === 200) {
+                                    window.location.reload()
+                                    return false
                                 }
                             })
                     }
