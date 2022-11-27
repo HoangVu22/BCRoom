@@ -17,5 +17,6 @@ module.exports = {
     updateProfile: require('./customer/updateProfile'),
     getHotelById: require('./hotel/getHotelById'),
     getAllBookingOfHotel: require('./owner/getAllBookingOfHotel'),
-    getAllOwnHotels: require('./owner/getAllOwnHotels')
+    getAllOwnHotels: require('./owner/getAllOwnHotels'),
+    deleteRoom: require('./room/deleteRoom')
 }
