@@ -22,7 +22,14 @@ if(headerFormLogout) {
 
 function userName(){
     const user = JSON.parse(localStorage.getItem("login"));
-    const headerName = document.querySelector(".header-name");
-    headerName.innerHTML = ` <span>${user.username}</span> <p>Xem hồ sơ</p>`;
+    const headerName = document.querySelector(".avatar-login");
+    headerName.innerHTML = ` <div class="header-form-avatar">
+    <!-- <i class="fa-solid fa-circle-user"></i> -->
+    <img src="${user && user.avatarUrl}" alt="">
+    <div class="header-name">
+        <span>${user && user.username}</span>
+        <p>Xem hồ sơ</p>
+    </div>
+</div>`;
 }
 userName();

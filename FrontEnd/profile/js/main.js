@@ -25,7 +25,7 @@ headerNavForm.onclick = function () {
 
     handleIconLight();
 };
-
+const headerNavIcon = document.querySelector(".header-nav-icon")
 function handleIconLight () {
     var iconList = headerNavIcon.querySelectorAll("i");
     iconList.forEach((item) => {
@@ -88,7 +88,8 @@ accountsidebarlink.forEach((value, index) => {
     };
 });
 
-function autoLoad () {
+function autoLoad() {
+    const login = JSON.parse(localStorage.getItem('login'))
     var changeAvatar = document.querySelector(".change-avatar");
     var avatarImg = document.querySelector(".avatar-img");
     function handleChangeAvatar () {
@@ -116,6 +117,12 @@ function autoLoad () {
                                 if (data.code === 200) {
                                     const avatarImg = document.querySelector('img.avatar-img')
                                     avatarImg.src = data.data.url
+                                    const objAvatar = {
+                                        ...login,
+                                        avatarUrl:data.data.url
+                                    }
+                                    localStorage.setItem("login", JSON.stringify(objAvatar))
+                                    userName(objAvatar)
                                 }
                             })
                     }
@@ -241,11 +248,19 @@ function profileUpdatefn (obj) {
   </div>
 </div>`;
 }
-function userName (obj) {
+function userName(obj) {
     const user = JSON.parse(localStorage.getItem("login"));
-    const headerName = document.querySelector(".header-name");
-    headerName.innerHTML = ` <span>${obj && obj.username || user.username}</span> <p>Xem hồ sơ</p>`;
+    const headerName = document.querySelector(".avatar-login");
+    headerName.innerHTML = `  <div class="header-form-avatar">
+    <!-- <i class="fa-solid fa-circle-user"></i> -->
+    <img src="${(obj && obj.avatarUrl) || user.avatarUrl}" alt="">
+    <div class="header-name">
+        <span>${(obj&& obj.userName) || user.username}</span>
+        <p>Xem hồ sơ</p>
+    </div>
+</div>`;
 }
+
 formprofileedit.innerHTML = profileUpdatefn();
 autoLoad();
 
