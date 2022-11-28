@@ -128,7 +128,7 @@ function autoLoad () {
 
 function accountInfomation (obj) {
     return `<div class="account-info-img">
-  <img  class="avatar-img" src="../image/avatars/avatar_1.jpg" alt="">
+  <img  class="avatar-img" src="" alt="">
   <input class="change-avatar" style="display: none" type="file">
   <i class="fa-solid fa-camera"></i>
 </div>
