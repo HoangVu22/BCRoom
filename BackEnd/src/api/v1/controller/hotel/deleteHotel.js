@@ -27,7 +27,7 @@ module.exports = async (request, response) => {
         })
         
         if (rooms) {
-            rooms.map(async room => {
+            await Promise.all(rooms.map(async room => {
                 if (room.dataValues.Booking !== null) {
                     await Bill.destroy({
                         where: {
@@ -59,15 +59,15 @@ module.exports = async (request, response) => {
                         roomId: room.dataValues.roomId
                     }
                 })
-    
+                console.log('room')
                 await Room.destroy({
                     where: {
                         roomId: room.dataValues.roomId
                     }
                 })
-            })
+            }))
         }
-
+        console.log('hotel')
         await Hotel.destroy({
             where: {
                 hotelId
