@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt')
-const { Customer }= require('../../../../../models')
+const { Customer, Image }= require('../../../../../models')
 
 module.exports = async (request, response) => {
     try {
@@ -8,6 +8,12 @@ module.exports = async (request, response) => {
         const customer = await Customer.findOne({
             where: {
                 email
+            }
+        })
+
+        const avatar = await Image.findOne({
+            where: {
+                customerId: customer.customerId
             }
         })
 
@@ -34,7 +40,10 @@ module.exports = async (request, response) => {
         return response.status(200).json({
             code: 200,
             status: 'success',
-            data: customer
+            data: {
+                ...customer,
+                avatarUrl: avatar.url
+            } 
         })
     } catch (error) {
         console.log(error)
