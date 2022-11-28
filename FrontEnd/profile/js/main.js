@@ -8,28 +8,28 @@ const formProfile = document.querySelector(".form-profile");
 
 const login = JSON.parse(localStorage.getItem("login"));
 headerNavForm.onclick = function () {
-  if (headerForm.style.display === "none") headerForm.style.display = "block";
-  else {
-    headerForm.style.display = "none";
-  }
+    if (headerForm.style.display === "none") headerForm.style.display = "block";
+    else {
+        headerForm.style.display = "none";
+    }
 
-  handleIconLight();
+    handleIconLight();
 };
 
-function handleIconLight() {
-  var iconList = headerNavIcon.querySelectorAll("i");
-  iconList.forEach((item) => {
-    if (
-      (headerFormLogout && headerFormLogout.style.display !== "none") ||
-      (headerFormLogin && headerFormLogin.style.display !== "none")
-    ) {
-      item.style.color = "#f44336";
-      headerNavIcon.style.borderColor = "#f44336";
-    } else {
-      item.style.color = "unset";
-      headerNavIcon.style.borderColor = "unset";
-    }
-  });
+function handleIconLight () {
+    var iconList = headerNavIcon.querySelectorAll("i");
+    iconList.forEach((item) => {
+        if (
+            (headerFormLogout && headerFormLogout.style.display !== "none") ||
+            (headerFormLogin && headerFormLogin.style.display !== "none")
+        ) {
+            item.style.color = "#f44336";
+            headerNavIcon.style.borderColor = "#f44336";
+        } else {
+            item.style.color = "unset";
+            headerNavIcon.style.borderColor = "unset";
+        }
+    });
 }
 
 // -------------profile--------------
@@ -41,20 +41,20 @@ var profileSaveBtn = document.querySelector(".profile-save button");
 var profileSaveP = document.querySelector(".profile-save p");
 
 profileRightTopBtn.onclick = function () {
-  if (profileRightEdit) {
-    if (profileRightEdit.style.display === "block") {
-      profileRightEdit.style.display = "none";
-      profileRight.style.display = "block";
-    } else {
-      profileRightEdit.style.display = "block";
-      profileRight.style.display = "none";
+    if (profileRightEdit) {
+        if (profileRightEdit.style.display === "block") {
+            profileRightEdit.style.display = "none";
+            profileRight.style.display = "block";
+        } else {
+            profileRightEdit.style.display = "block";
+            profileRight.style.display = "none";
+        }
     }
-  }
 };
 
-function edit() {
-  profileRightEdit.style.display = "none";
-  profileRight.style.display = "block";
+function edit () {
+    profileRightEdit.style.display = "none";
+    profileRight.style.display = "block";
 }
 
 // profileSaveBtn.onclick = edit;
@@ -64,71 +64,91 @@ profileSaveP.onclick = edit;
 const accountsidebarlink = document.querySelectorAll(".account-sidebar-link");
 const profilegenaral = document.querySelectorAll(".profile-genaral");
 accountsidebarlink.forEach((value, index) => {
-  value.onclick = (e) => {
-    if (!value.classList.contains("active")) {
-      accountsidebarlink.forEach((e) => {
-        e.classList.remove("active");
-      });
-      value.classList.add("active");
-      profilegenaral.forEach((e) => {
-        e.style.display = "none";
-      });
-      profilegenaral[index].style.display = "block";
-    }
-  };
+    value.onclick = (e) => {
+        if (!value.classList.contains("active")) {
+            accountsidebarlink.forEach((e) => {
+                e.classList.remove("active");
+            });
+            value.classList.add("active");
+            profilegenaral.forEach((e) => {
+                e.style.display = "none";
+            });
+            profilegenaral[index].style.display = "block";
+        }
+    };
 });
 
-function autoLoad() {
+function autoLoad () {
     var changeAvatar = document.querySelector(".change-avatar");
-    var avatarImg = document.querySelector(".avatar-img")
-  function handleChangeAvatar() {
-      changeAvatar.click();
-    changeAvatar.onchange = (e) => {
-          const url = URL.createObjectURL(e.target.files[0])
-          avatarImg.src = url
-      }
-  }
-  var avatarRef = document.querySelector(".fa-solid.fa-camera");
-  avatarRef.onclick = handleChangeAvatar;
+    var avatarImg = document.querySelector(".avatar-img");
+    function handleChangeAvatar () {
+        changeAvatar.click();
+        changeAvatar.onchange = (e) => {
+            const formData = new FormData()
+            formData.append('avatar', e.target.files[0])
+            formData.append('directory', 'avatars')
+            fetch('http://localhost:1234/api/v1/upload/upload_avatar', {
+                method: 'post',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.code === 200) {
+                        fetch('http://localhost:1234/api/v1/customers/update_avatar', {
+                            method: 'post',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ customerId: login.customerId, avatarUrl: data.data.fileUrl })
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.code === 200) {
+                                    const avatarImg = document.querySelector('img.avatar-img')
+                                    avatarImg.src = data.data.url
+                                }
+                            })
+                    }
+                })
+        };
+    }
+    var avatarRef = document.querySelector(".fa-solid.fa-camera");
+    avatarRef.onclick = handleChangeAvatar;
 }
 
-function accountInfomation(obj) {
-  return `<div class="account-info-img">
+function accountInfomation (obj) {
+    return `<div class="account-info-img">
   <img  class="avatar-img" src="../image/avatars/avatar_1.jpg" alt="">
   <input class="change-avatar" style="display: none" type="file">
   <i class="fa-solid fa-camera"></i>
 </div>
 <p>${obj && obj.username || login.username}</p>`;
 }
-accountinfo.innerHTML = accountInfomation()
+accountinfo.innerHTML = accountInfomation();
 
-function formProfilefn(obj) {
-  return `<div class="form-profile-info">
+function formProfilefn (obj) {
+    return `<div class="form-profile-info">
   <label for="">Số điện thoại</label>
-  <div class="form-profile-name">${
-    obj && obj.phone || login.phone || ""
-  }</div>
+  <div class="form-profile-name">${obj && obj.phone || login.phone || ""
+        }</div>
 </div>
 <div class="form-line"></div>
 <div class="form-profile-info">
   <label for="">Họ và tên</label>
-  <div class="form-profile-name">${
-    obj && obj.username || login.username || ""
-  }</div>
+  <div class="form-profile-name">${obj && obj.username || login.username || ""
+        }</div>
 </div>
 <div class="form-line"></div>
 <div class="form-profile-info">
   <label for="">Email</label>
-  <div class="form-profile-name">${
-    obj && obj.email ||login.email || ""
-  }</div>
+  <div class="form-profile-name">${obj && obj.email || login.email || ""
+        }</div>
 </div>
 <div class="form-line"></div>
 <div class="form-profile-info">
   <label for="">Địa chỉ</label>
-  <div class="form-profile-name">${
-    obj && obj.address ||login.address || ""
-  }</div>
+  <div class="form-profile-name">${obj && obj.address || login.address || ""
+        }</div>
 </div>
 <div class="form-line"></div>
 <div class="form-profile-info">
@@ -155,11 +175,11 @@ function formProfilefn(obj) {
           </div>
           </div>`;
 }
-formProfile.innerHTML = formProfilefn()
+formProfile.innerHTML = formProfilefn();
 
 const formprofileedit = document.querySelector(".form-profile-edit");
-function profileUpdatefn(obj) {
-  return `<div class="form-profile-info">
+function profileUpdatefn (obj) {
+    return `<div class="form-profile-info">
   <label for="">Số điện thoại</label>
   <div class="form-profile-input">
       <input class="form-profile-text"  type="number" placeholder="Nhập số điện thoại của bạn" value="${obj && obj.phone || login.phone}">
@@ -211,60 +231,60 @@ function profileUpdatefn(obj) {
   </div>
 </div>`;
 }
-function userName(obj){
-  const user = JSON.parse(localStorage.getItem("login"));
-  const headerName = document.querySelector(".header-name");
-  headerName.innerHTML = ` <span>${obj && obj.username || user.username}</span> <p>Xem hồ sơ</p>`;
+function userName (obj) {
+    const user = JSON.parse(localStorage.getItem("login"));
+    const headerName = document.querySelector(".header-name");
+    headerName.innerHTML = ` <span>${obj && obj.username || user.username}</span> <p>Xem hồ sơ</p>`;
 }
-formprofileedit.innerHTML = profileUpdatefn()
+formprofileedit.innerHTML = profileUpdatefn();
 autoLoad();
 
-const profileUpdate = document.querySelector(".profile_update")
+const profileUpdate = document.querySelector(".profile_update");
 profileSaveBtn.onclick = () => {
-  const inputChange = formprofileedit.querySelectorAll("input")
-  const objProfile = {
-    "phone":inputChange[0].value,
-    "username": inputChange[1].value,
-    "email": inputChange[2].value,
-    "address": inputChange[3].value,
-    "customerId": login.customerId
-  }
-  fetch("http://localhost:1234/api/v1/customers/update_profile", {
-    method:"POST",
-    headers: {
-      'Content-Type':"application/json"
-    },
-    body: JSON.stringify(objProfile)
-  })
-    .then(res => res.json())
-    .then(data => {
-      if (data.code === 200) {
-        localStorage.setItem('login',JSON.stringify(data.data))
-        const profile = data.data
-        formprofileedit.innerHTML = profileUpdatefn(profile)
-        formProfile.innerHTML = formProfilefn(profile)
-        accountinfo.innerHTML = accountInfomation(profile)
-        userName(profile); 
-        edit()
-    }
-  })
-}
+    const inputChange = formprofileedit.querySelectorAll("input");
+    const objProfile = {
+        "phone": inputChange[0].value,
+        "username": inputChange[1].value,
+        "email": inputChange[2].value,
+        "address": inputChange[3].value,
+        "customerId": login.customerId
+    };
+    fetch("http://localhost:1234/api/v1/customers/update_profile", {
+        method: "POST",
+        headers: {
+            'Content-Type': "application/json"
+        },
+        body: JSON.stringify(objProfile)
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.code === 200) {
+                localStorage.setItem('login', JSON.stringify(data.data));
+                const profile = data.data;
+                formprofileedit.innerHTML = profileUpdatefn(profile);
+                formProfile.innerHTML = formProfilefn(profile);
+                accountinfo.innerHTML = accountInfomation(profile);
+                userName(profile);
+                edit();
+            }
+        });
+};
 
 // -------------ẩn hiện điều kiện của Coupon-----------
-var conditionBtn = document.querySelector('.condition .condition-btn')
-var conditionContent = document.querySelector('.condition-content')
+var conditionBtn = document.querySelector('.condition .condition-btn');
+var conditionContent = document.querySelector('.condition-content');
 conditionBtn.onclick = function () {
-  conditionContent.style.display = "block"
-  conditionContent.innerHTML = handleRenderVoucher()
-  var roomClose = document.querySelector('.room-close i')
-  roomClose.onclick = function () {
-    conditionContent.innerHTML = ''
-    conditionContent.style.display = "none"
-  }
-}
+    conditionContent.style.display = "block";
+    conditionContent.innerHTML = handleRenderVoucher();
+    var roomClose = document.querySelector('.room-close i');
+    roomClose.onclick = function () {
+        conditionContent.innerHTML = '';
+        conditionContent.style.display = "none";
+    };
+};
 
-function handleRenderVoucher() {
-  return `<div class="my-coupon">
+function handleRenderVoucher () {
+    return `<div class="my-coupon">
   <div class="coupon-img">
       <img src="../image/places/HoaVang.jpg" alt="">
   </div>
@@ -292,7 +312,7 @@ function handleRenderVoucher() {
 </div>
 <div class="room-close">
   <i class="fa-solid fa-xmark"></i>
-</div>`
+</div>`;
 }
 
 
