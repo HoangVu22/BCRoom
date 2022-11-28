@@ -1,3 +1,14 @@
+/*
+*main.js
+*
+*v3.1
+*
+*11/28/2022
+*
+*Nguyen Hoang Vu, Huynh Van Tien Phong
+*/
+
+
 const hotelId = JSON.parse(localStorage.getItem("targetHotelId"));
 const reviewButton = document.querySelector("button.btn-cmt");
 
@@ -812,18 +823,19 @@ function commentsroom () {
                     const dataNext = new Date(b.createdAt);
                     return dataPrev - dataNext;
                 });
-
+                console.log(data.data);
                 const comment = data.data.reverse().map((e, index) => {
                     const date = new Date(e.createdAt);
                     return index < 6
                         ? handleRenderCommentList(
                             e.reviewId,
-                            e.avatar,
+                            e.Customer.Image.url,
                             e.Customer.username,
                             date.getDate(),
                             date.getMonth() + 1,
                             date.getFullYear(),
-                            e.content
+                            e.content,
+                            e.starNumber
                         )
                         : "";
                 });
@@ -858,17 +870,17 @@ function newReview (data) {
                                     const dataNext = new Date(b.createdAt);
                                     return dataPrev - dataNext;
                                 });
-
                                 const comment = data.data.reverse().map((e, index) => {
                                     const date = new Date(e.createdAt);
                                     return handleRenderCommentList(
                                         e.reviewId,
-                                        e.avatar,
+                                        e.Customer.Image.url,
                                         e.Customer.username,
                                         date.getDate(),
                                         date.getMonth() + 1,
                                         date.getFullYear(),
-                                        e.content
+                                        e.content,
+                                        e.starNumber
                                     );
                                 });
                                 formShowMore.innerHTML =
@@ -886,6 +898,7 @@ function newReview (data) {
                         }
                     }
                 });
+                commentsroom();
         });
 }
 
@@ -912,12 +925,13 @@ fetch(`http://localhost:1234/api/v1/reviews/reviews_of_hotel/${hotelId}`)
                         const date = new Date(e.createdAt);
                         return handleRenderCommentList(
                             e.reviewId,
-                            e.avatar,
+                            e.Customer.Image.url,
                             e.Customer.username,
                             date.getDate(),
                             date.getMonth() + 1,
                             date.getFullYear(),
-                            e.content
+                            e.content,
+                            e.starNumber
                         );
                     });
                     formShowMore.innerHTML =
@@ -935,7 +949,13 @@ fetch(`http://localhost:1234/api/v1/reviews/reviews_of_hotel/${hotelId}`)
             }
         }
     });
-
+function starPoint(stars) {
+    let star = []
+    for (let i = 0; i < stars; i++) {
+        star.push(`<i class="fa-solid fa-star"></i>`)
+    }
+    return star.join("")
+}
 function handleRenderCommentList (
     reviewid,
     avatar,
@@ -943,7 +963,8 @@ function handleRenderCommentList (
     date,
     month,
     year,
-    content
+    content,
+    star
 ) {
     return `
     <div id=${reviewid} class="wrap-reviews">
@@ -954,11 +975,7 @@ function handleRenderCommentList (
             <div class="review-info">
                 <span class="review-name">${username}</span> <br>
                 <div class="review-rate-star">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star no-light"></i>
+                ${starPoint(star)}
                 </div>
                 <span class="review-date">${date}/${month}/${year}</span>
             </div>
