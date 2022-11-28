@@ -7,6 +7,16 @@ const accountinfo = document.querySelector(".account-info");
 const formProfile = document.querySelector(".form-profile");
 
 const login = JSON.parse(localStorage.getItem("login"));
+
+fetch('http://localhost:1234/api/v1/images/avatar_of_customer/' + login.customerId)
+    .then(response => response.json())
+    .then(data => {
+        if (data.code === 200) {
+            const avatarImg = document.querySelector('img.avatar-img')
+            avatarImg.src = data.data ? data.data.url : 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-avt-n%E1%BB%AF-t%C3%B3c-ng%E1%BA%AFn-%C4%91%E1%BA%B9p.jpg'
+        }
+    })
+
 headerNavForm.onclick = function () {
     if (headerForm.style.display === "none") headerForm.style.display = "block";
     else {
