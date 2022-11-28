@@ -41,7 +41,7 @@ module.exports = async (request, response) => {
             code: 200,
             status: 'success',
             data: {
-                ...customer,
+                ...customer.dataValues,
                 avatarUrl: avatar.url
             } 
         })
