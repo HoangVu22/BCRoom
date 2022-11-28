@@ -35,11 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     hotelId: DataTypes.UUID,
     customerId: DataTypes.UUID,
     voucherId: DataTypes.UUID,
-    url: DataTypes.STRING,
-    status: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true
-    }
+    url: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Image',

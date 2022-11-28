@@ -52,11 +52,7 @@ module.exports = (sequelize, DataTypes) => {
         unique: true
     }, 
     phone: DataTypes.STRING,
-    address: DataTypes.STRING,
-    status: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true
-    }
+    address: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Customer',

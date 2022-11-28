@@ -51,11 +51,7 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.DECIMAL(15, 2),
     adultNumber: DataTypes.INTEGER,
     kidNumber: DataTypes.INTEGER,
-    roomNumber: DataTypes.STRING,
-    status: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true
-    }
+    roomNumber: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Room',
