@@ -24,7 +24,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     condition: DataTypes.STRING,
     expireTime: DataTypes.STRING,
-    roomNumber: DataTypes.STRING
+    roomNumber: DataTypes.STRING,
+    status: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
+    }
   }, {
     sequelize,
     modelName: 'Policy',
