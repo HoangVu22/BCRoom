@@ -26,7 +26,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.UUID,
     },
     totalPrice: DataTypes.DECIMAL(15, 2),
-    billDate: DataTypes.DATEONLY
+    billDate: DataTypes.DATEONLY,
+    status: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
+    }
   }, {
     sequelize,
     modelName: 'Bill',

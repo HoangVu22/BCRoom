@@ -28,7 +28,11 @@ module.exports = (sequelize, DataTypes) => {
     customerId: DataTypes.UUID,
     hotelId: DataTypes.UUID,
     starNumber: DataTypes.INTEGER,
-    content: DataTypes.STRING
+    content: DataTypes.STRING,
+    status: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
+    }
   }, {
     sequelize,
     modelName: 'Review',
