@@ -6,7 +6,8 @@ module.exports = async (request, response) => {
 
         const rooms = await Room.findAll({
             where: {
-                hotelId
+                hotelId,
+                status: true
             },
             include: {
                 model: RoomRelatedService
