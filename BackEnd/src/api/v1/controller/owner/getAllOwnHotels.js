@@ -6,7 +6,8 @@ module.exports = async (request, response) => {
         
         const hotels = await Hotel.findAll({
             where: {
-                customerId
+                customerId,
+                status: true
             },
             attributes: ['hotelId', 'customerId', 'hotelName', 'address']
         })
