@@ -27,6 +27,27 @@ function bill(
 	</div>`
 }
 
+function cancleBill (
+    customerName,
+    roomNumber, 
+    hotelName, 
+    dateFrom, 
+    dateTo, 
+) {
+    return `<div>
+		<h3 style="text-align: center">Xin lỗi ${customerName}</h3>
+		<p style="text-align: center">Vì một số vấn đề nên đặt phòng của bạn đã bị hủy</p>
+		<div style="text-align: center">
+			<p style="font-weight: bold">Chi tiết đơn đặt: </p>
+			<p>Room number: <span>${roomNumber}</span></p>
+			<p>Hotel: <span>${hotelName}</span></p>
+			<p>From date: <span>${dateFrom}</span> To: <span>${dateTo}</span></p>
+		</div>
+		<h4 style="text-align: center">Một lần nữa, xin lỗi quý khách<h4>
+	</div>`
+}
+
 module.exports = {
-    bill
+    bill,
+    cancleBill
 }
