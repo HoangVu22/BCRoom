@@ -302,28 +302,30 @@ var nameRooms = document.querySelectorAll(".name-room");
     };
 });
 
-const bookingRoom = document.querySelector(".booking_room");
-bookingRoom.onclick = (e) => {
-    const roomId = e.target.dataset.idroom;
-    const bookingRequestValues = document.querySelectorAll(".booking-request");
-    const request = [...bookingRequestValues].reduce((prev, next) => {
-        let value = next.value;
-        if (next.dataset.request.includes("Number")) {
-            value = parseInt(value);
-        }
-        if (next.dataset.request.includes("date")) {
-            value = value.split("-").reverse().join("-");
-        }
-        return {
-            ...prev,
-            [next.dataset.request]: value,
-        };
-    }, {});
-
-    request.customerId = JSON.parse(localStorage.getItem("login")).customerId;
-    request.roomId = roomId;
-    fetchBooking(request);
-};
+const bookingRooms = document.querySelectorAll(".booking_room");
+bookingRooms.forEach(bookingRoom => {
+    bookingRoom.onclick = (e) => {
+        const roomId = e.target.dataset.idroom;
+        const bookingRequestValues = document.querySelectorAll(".booking-request");
+        const request = [...bookingRequestValues].reduce((prev, next) => {
+            let value = next.value;
+            if (next.dataset.request.includes("Number")) {
+                value = parseInt(value);
+            }
+            if (next.dataset.request.includes("date")) {
+                value = value.split("-").reverse().join("-");
+            }
+            return {
+                ...prev,
+                [next.dataset.request]: value,
+            };
+        }, {});
+    
+        request.customerId = JSON.parse(localStorage.getItem("login")).customerId;
+        request.roomId = roomId;
+        fetchBooking(request);
+    };
+})
 
 function fetchBooking (data) {
     fetch("http://localhost:1234/api/v1/core/booking", {
