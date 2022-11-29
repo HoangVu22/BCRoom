@@ -10,7 +10,8 @@ module.exports = async (request, response) => {
             where: {
                 address: {
                     [Op.like]: '%' + address + '%'
-                }
+                },
+                status: true
             },
             include: {
                 model: Image,
