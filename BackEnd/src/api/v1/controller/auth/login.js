@@ -42,7 +42,7 @@ module.exports = async (request, response) => {
             status: 'success',
             data: {
                 ...customer.dataValues,
-                avatarUrl: avatar || avatar.url
+                avatarUrl: avatar && avatar.url
             } 
         })
     } catch (error) {
