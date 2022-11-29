@@ -21,5 +21,6 @@ module.exports = {
     deleteRoom: require('./room/deleteRoom'),
     deleteHotel: require('./hotel/deleteHotel'),
     updateAvatar: require('./customer/updateAvatar'),
-    getAvatarOfCustomer: require('./image/getAvatarOfCustomer')
+    getAvatarOfCustomer: require('./image/getAvatarOfCustomer'),
+    changeStatusHotel: require('./hotel/changeStatusHotel')
 }
