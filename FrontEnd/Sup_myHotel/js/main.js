@@ -75,12 +75,12 @@ function fetchHotels() {
                         window.location.href = 'http://localhost:5500/FrontEnd/Sup_myRoom/index.html'
                     }
                     deleteHotelButton.onclick = (e) => {
-                        fetch('http://localhost:1234/api/v1/hotels/single/' + e.target.dataset.value, {
-                            method: 'delete'
+                        fetch('http://localhost:1234/api/v1/hotels/change_status/' + e.target.dataset.value, {
+                            method: 'post'
                         })
                             .then(response => response.json())
                             .then(data => {
-                                if (data.code === 200) {
+                              if (data.code === 200) {
                                     window.location.reload()
                                     return false
                                 }
