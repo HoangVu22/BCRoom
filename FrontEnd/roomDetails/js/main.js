@@ -210,7 +210,7 @@ const room = rooms.map((value) => {
 });
 const containernav = document.querySelector(".conatiner_rooms");
 containernav.innerHTML = `
-<tr> <th>LOẠI PHÒNG</th><th>PHÙ HỢP CHO</th><th>GIÁ MỖI ĐÊM</th><th>ĐẶT PHÒNG</th> </tr>
+<tr> <th>SỐ PHÒNG</th><th>PHÙ HỢP CHO</th><th>GIÁ MỖI ĐÊM</th><th>ĐẶT PHÒNG</th> </tr>
 ${room.join("")}`;
 var nameRooms = document.querySelectorAll(".name-room");
 
