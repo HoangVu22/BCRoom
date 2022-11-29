@@ -66,12 +66,19 @@ function fetchBookingsOfHotel() {
                     bookingContainer.innerHTML += renderBooking(booking)
                 })
 
-                const cancleBookingButton = document.querySelectorAll('.list-content.list-cancle i')
+              const cancleBookingButton = document.querySelectorAll('.list-content.list-cancel i')
                 cancleBookingButton.forEach(button => {
-                    button.onclick = (e) => {
-                        fetch('http://localhost:1234/api/v1/owners/cancle_booking/' + e.target.dataset.value)
+                  button.onclick = (e) => {
+                      fetch('http://localhost:1234/api/v1/owners/cancle_booking/' + e.target.dataset.value, {
+                        method: 'post',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }, 
+                        body: JSON.stringify({ customerId: login.customerId })
+                        })
                             .then(response => response.json())
-                            .then(data => {
+                        .then(data => {
+                              console.log(data)
                                 if (data.code === 200) {
                                     window.location.reload()
                                     return false

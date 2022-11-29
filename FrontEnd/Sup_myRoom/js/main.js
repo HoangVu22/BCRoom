@@ -21,8 +21,8 @@ function fetchRooms() {
                 const deleteRoomButton = document.querySelectorAll('.list-content.list-action div i.delete')
                 deleteRoomButton.forEach(button => {
                     button.onclick = (e) => {
-                        fetch('http://localhost:1234/api/v1/rooms/single/' + e.target.dataset.value, {
-                            method: 'delete'
+                        fetch('http://localhost:1234/api/v1/rooms/change_status/' + e.target.dataset.value, {
+                            method: 'post'
                         })
                             .then(response => response.json())
                             .then(data => {
