@@ -12,6 +12,9 @@ module.exports = async (request, response) => {
                 model: Room,
                 include: [{
                     model: Booking,
+                    where: {
+                        status: true
+                    },
                     include: [{
                         model: Customer
                     }, {

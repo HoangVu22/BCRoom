@@ -65,6 +65,20 @@ function fetchBookingsOfHotel() {
                 bookingResponse.forEach(booking => {
                     bookingContainer.innerHTML += renderBooking(booking)
                 })
+
+                const cancleBookingButton = document.querySelectorAll('.list-content.list-cancle i')
+                cancleBookingButton.forEach(button => {
+                    button.onclick = (e) => {
+                        fetch('http://localhost:1234/api/v1/owners/cancle_booking/' + e.target.dataset.value)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.code === 200) {
+                                    window.location.reload()
+                                    return false
+                                }
+                            })
+                    }
+                })
             }
         })
 }
@@ -96,7 +110,7 @@ function renderBooking(data) {
                         <span>${data.totalPrice || 0} VNĐ</span>
                     </td>
                     <td class="list-content list-cancel">
-                        <i class="fa-solid fa-trash-can"></i>
+                        <i data-value="${data.bookingId}" class="fa-solid fa-trash-can"></i>
                     </td>
                 </tr>`
 }
