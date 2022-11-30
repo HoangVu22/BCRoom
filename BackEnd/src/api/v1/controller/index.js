@@ -25,5 +25,6 @@ module.exports = {
     changeStatusHotel: require('./hotel/changeStatusHotel'),
     changeStatusRoom: require('./room/changeStatusRoom'),
     cancleBooking: require('./owner/cancleBooking'),
-    updateInformationHotel: require('./owner/updateInformationHotel')
+    updateInformationHotel: require('./owner/updateInformationHotel'),
+    updateInformationRoom: require('./owner/updateInformationRoom')
 }
