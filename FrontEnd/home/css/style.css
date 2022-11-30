@@ -133,6 +133,19 @@ header {
     width: 85px;
 }
 
+.header-logo {
+    position: relative;
+}
+
+.header-logo p {
+    position: absolute;
+    top: 80%;
+}
+
+.header-logo h1 {
+    font-family: cursive;
+}
+
 .header-content {
     display: flex;
     justify-content: space-between;
