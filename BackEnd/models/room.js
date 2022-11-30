@@ -52,10 +52,6 @@ module.exports = (sequelize, DataTypes) => {
     adultNumber: DataTypes.INTEGER,
     kidNumber: DataTypes.INTEGER,
     roomNumber: DataTypes.STRING,
-    status: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true
-    }
   }, {
     sequelize,
     modelName: 'Room',
