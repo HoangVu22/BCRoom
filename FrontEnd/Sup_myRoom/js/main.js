@@ -17,7 +17,19 @@ function fetchRooms() {
                 roomsResponse.forEach(room => {
                     roomsContainer.innerHTML += renderRoom(room)
                 })
-
+              // ----------------------
+                const countModify = document.querySelectorAll(".modify")
+                countModify.forEach(e => {
+                  e.onclick = (event => {
+                    const idModify = event.target.dataset.value;
+                    // window.location.href = "http://localhost:5500/FrontEnd/Sup_postHotel/index.html"
+                    console.log(idModify);
+  
+  
+                    
+                  })
+                })  
+                console.log(countModify);
                 const deleteRoomButton = document.querySelectorAll('.list-content.list-action div i.delete')
                 deleteRoomButton.forEach(button => {
                     button.onclick = (e) => {

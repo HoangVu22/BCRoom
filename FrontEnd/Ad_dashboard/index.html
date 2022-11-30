@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BCRoom</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div class="main">
+    <header>
+      <div class="wraper">
+        <div class="header-content row">
+          <div class="header-logo">
+            <!-- <img src="./image/logo.png" alt=""> -->
+            <h1 style="font-size: 40px; font-weight: 600; color: #f44336">BCRoom</h1>
+          </div>
+          <div class="header-nav">
+            <ul class="list_city">
+              <i class="fa-regular fa-bell"></i>
+              <li><a href="../Sup_home/index.html">Trở thành nhà cung cấp</a></li>
+              <li><a href="../home/index.html">Trở thành người dùng</a></li>
+              <div class="header-nav-form">
+                <div class="header-nav-icon">
+                  <i class="fa-solid fa-user user-icon"></i>
+                  <i class="fa-solid fa-bars"></i>
+                </div>
+                <div style="display: none" class="header-form">
+                  <div class="header-form-login">
+                    <ul>
+                      <li><a href="../signin/index.html">Đăng nhập</a></li>
+                      <li><a href="../register/index.html">Đăng ký</a></li>
+                    </ul>
+                  </div>
+                  <div style="display: none" class="header-form-logout">
+                    <div class="content-logout">
+                      <a href="../profile/index.html">
+                        <div class="header-form-avatar">
+                          <i class="fa-solid fa-circle-user"></i>
+                          <div class="header-name">
+                            <span>NguyenHoangVu</span>
+                            <p>Xem hồ sơ</p>
+                          </div>
+                        </div>
+                      </a>
+                      <span class="drop-line"></span>
+                      <div class="header-form-booked">
+                        <i class="fa-sharp fa-solid fa-clock-rotate-left"></i>
+                        <span>Đặt phòng của tôi</span>
+                      </div>
+                      <div class="header-form-loved">
+                        <i class="fa-regular fa-heart"></i>
+                        <span>Danh sách yêu thích</span>
+                      </div>
+                      <div class="form-logout">Đăng xuất</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <span class="drop-line1"></span>
+    </header>
+  </div>
+
+  <div class="nav-bar">
+    <div class="navigate-left">
+      <ul class="list_nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="">Quản lý người dùng</a></li>
+        <li><a href="../Ad_supplierManagement/index.html">Quản lý nhà cung cấp</a></li>
+        <li><a href="../Ad_postManagement/index.html">Quản lý phòng</a></li>
+        <li><a href="../Ad_dashboard/index.html">Dashboard</a></li>
+      </ul>
+    </div>
+    <div style="flex: 1;">
+      <div >
+        <div class="accountDashboard" style="width:60%; display: flex;padding-left: 23px;padding-top: 23px;">
+          <canvas id="manageruser"></canvas>
+          <div class="column is-4">
+            <div class="calendar">
+              <div class="calendar-nav">
+                <div class="calendar-nav-left">
+                  <button class="button is-link">
+                    <i class="fa fa-chevron-left"></i>
+                  </button>
+                </div>
+                <div>March 2022</div>
+                <div class="calendar-nav-right">
+                  <button class="button is-link">
+                    <i class="fa fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="calendar-container">
+                <div class="calendar-header">
+                  <div class="calendar-date">Sun</div>
+                  <div class="calendar-date">Mon</div>
+                  <div class="calendar-date">Tue</div>
+                  <div class="calendar-date">Wed</div>
+                  <div class="calendar-date">Thu</div>
+                  <div class="calendar-date">Fri</div>
+                  <div class="calendar-date">Sat</div>
+                </div>
+                <div class="calendar-body">
+                  <div class="calendar-date is-disabled"><button class="date-item">26</button></div>
+                  <div class="calendar-date is-disabled"><button class="date-item">27</button></div>
+                  <div class="calendar-date is-disabled"><button class="date-item">28</button></div>
+                  <div class="calendar-date"><button class="date-item">1</button></div>
+                  <div class="calendar-date"><button class="date-item">2</button></div>
+                  <div class="calendar-date"><button class="date-item">3</button></div>
+                  <div class="calendar-date"><button class="date-item is-today">4</button></div>
+                  <div class="calendar-date"><button class="date-item" disabled="">5</button></div>
+                  <div class="calendar-date"><button class="date-item">6</button></div>
+                  <div class="calendar-date"><button class="date-item">7</button></div>
+                  <div class="calendar-date"><button class="date-item badge">8</button></div>
+                  <div class="calendar-date"><button class="date-item">9</button></div>
+                  <div class="calendar-date"><button class="date-item">10</button></div>
+                  <div class="calendar-date"><button class="date-item">11</button></div>
+                  <div class="calendar-date"><button class="date-item">12</button></div>
+                  <div class="calendar-date"><button class="date-item">13</button></div>
+                  <div class="calendar-date"><button class="date-item">14</button></div>
+                  <div class="calendar-date"><button class="date-item">15</button></div>
+                  <div class="calendar-date calendar-range range-start"><button class="date-item is-active">16</button>
+                  </div>
+                  <div class="calendar-date calendar-range"><button class="date-item">17</button></div>
+                  <div class="calendar-date calendar-range"><button class="date-item">18</button></div>
+                  <div class="calendar-date calendar-range"><button class="date-item">19</button></div>
+                  <div class="calendar-date calendar-range range-end"><button class="date-item is-active">20</button>
+                  </div>
+                  <div class="calendar-date"><button class="date-item">21</button></div>
+                  <div class="calendar-date"><button class="date-item">22</button></div>
+                  <div class="calendar-date"><button class="date-item">23</button></div>
+                  <div class="calendar-date"><button class="date-item">24</button></div>
+                  <div class="calendar-date"><button class="date-item">25</button></div>
+                  <div class="calendar-date"><button class="date-item">26</button></div>
+                  <div class="calendar-date"><button class="date-item">27</button></div>
+                  <div class="calendar-date"><button class="date-item">28</button></div>
+                  <div class="calendar-date"><button class="date-item">29</button></div>
+                  <div class="calendar-date"><button class="date-item">30</button></div>
+                  <div class="calendar-date"><button class="date-item">31</button></div>
+                  <div class="calendar-date is-disabled"><button class="date-item">1</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bookingDashboard" style="width:60%; display: none;padding-left: 23px;padding-top: 23px;">
+          <canvas width="600px" height="300px" id="countBooking"></canvas>
+          <div class="column is-4">
+            <div class="calendar">
+              <div class="calendar-nav">
+                <div class="calendar-nav-left">
+                  <button class="button is-link">
+                    <i class="fa fa-chevron-left"></i>
+                  </button>
+                </div>
+                <div>March 2022</div>
+                <div class="calendar-nav-right">
+                  <button class="button is-link">
+                    <i class="fa fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="calendar-container">
+                <div class="calendar-header">
+                  <div class="calendar-date">Sun</div>
+                  <div class="calendar-date">Mon</div>
+                  <div class="calendar-date">Tue</div>
+                  <div class="calendar-date">Wed</div>
+                  <div class="calendar-date">Thu</div>
+                  <div class="calendar-date">Fri</div>
+                  <div class="calendar-date">Sat</div>
+                </div>
+                <div class="calendar-body">
+                  <div class="calendar-date is-disabled"><button class="date-item">26</button></div>
+                  <div class="calendar-date is-disabled"><button class="date-item">27</button></div>
+                  <div class="calendar-date is-disabled"><button class="date-item">28</button></div>
+                  <div class="calendar-date"><button class="date-item">1</button></div>
+                  <div class="calendar-date"><button class="date-item">2</button></div>
+                  <div class="calendar-date"><button class="date-item">3</button></div>
+                  <div class="calendar-date"><button class="date-item is-today">4</button></div>
+                  <div class="calendar-date"><button class="date-item" disabled="">5</button></div>
+                  <div class="calendar-date"><button class="date-item">6</button></div>
+                  <div class="calendar-date"><button class="date-item">7</button></div>
+                  <div class="calendar-date"><button class="date-item badge">8</button></div>
+                  <div class="calendar-date"><button class="date-item">9</button></div>
+                  <div class="calendar-date"><button class="date-item">10</button></div>
+                  <div class="calendar-date"><button class="date-item">11</button></div>
+                  <div class="calendar-date"><button class="date-item">12</button></div>
+                  <div class="calendar-date"><button class="date-item">13</button></div>
+                  <div class="calendar-date"><button class="date-item">14</button></div>
+                  <div class="calendar-date"><button class="date-item">15</button></div>
+                  <div class="calendar-date calendar-range range-start"><button class="date-item is-active">16</button>
+                  </div>
+                  <div class="calendar-date calendar-range"><button class="date-item">17</button></div>
+                  <div class="calendar-date calendar-range"><button class="date-item">18</button></div>
+                  <div class="calendar-date calendar-range"><button class="date-item">19</button></div>
+                  <div class="calendar-date calendar-range range-end"><button class="date-item is-active">20</button>
+                  </div>
+                  <div class="calendar-date"><button class="date-item">21</button></div>
+                  <div class="calendar-date"><button class="date-item">22</button></div>
+                  <div class="calendar-date"><button class="date-item">23</button></div>
+                  <div class="calendar-date"><button class="date-item">24</button></div>
+                  <div class="calendar-date"><button class="date-item">25</button></div>
+                  <div class="calendar-date"><button class="date-item">26</button></div>
+                  <div class="calendar-date"><button class="date-item">27</button></div>
+                  <div class="calendar-date"><button class="date-item">28</button></div>
+                  <div class="calendar-date"><button class="date-item">29</button></div>
+                  <div class="calendar-date"><button class="date-item">30</button></div>
+                  <div class="calendar-date"><button class="date-item">31</button></div>
+                  <div class="calendar-date is-disabled"><button class="date-item">1</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dashboardBtn">
+        <button class="accountBtn">Tài khoản</button>
+        <button class="bookingBtn">Booking</button>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+  <!-- ------------------------------------------------------------------ -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="./js/main.js"></script>
+  <script src="../commonJS/header.js"></script>
+
+</body>
+
+</html>
