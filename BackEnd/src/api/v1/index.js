@@ -10,11 +10,12 @@ const reviewRouter = require('./router/review')
 const imageRouter = require('./router/image')
 const customerRouter = require('./router/customer')
 const ownerRouter = require('./router/owner')
+const adminRouter = require('./router/admin')
 
 module.exports = (app) => {
     const rootApiEntryPoint = '/api/v1'
 
-    const routers = [authRouter, uploadRouter, hotelRouter, coreRouter, serviceRouter, roomTypeRouter, roomRouter, reviewRouter, imageRouter, customerRouter, ownerRouter]
+    const routers = [authRouter, uploadRouter, hotelRouter, coreRouter, serviceRouter, roomTypeRouter, roomRouter, reviewRouter, imageRouter, customerRouter, ownerRouter, adminRouter]
 
     routers.forEach(router => {
         app.use(rootApiEntryPoint + router.entry, router.router)
