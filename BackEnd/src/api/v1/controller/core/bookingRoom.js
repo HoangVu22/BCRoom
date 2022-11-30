@@ -77,7 +77,8 @@ module.exports = async (request, response) => {
             booking.dateTo,
             booking.kidNumber,
             booking.adultNumber,
-            hotel.Rooms[0].price);
+            totalPriceForBill
+        );
 
         await sendMail(customer.email, 'Booking Bill', mailContent);
 
