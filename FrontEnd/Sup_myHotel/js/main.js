@@ -71,6 +71,7 @@ function fetchHotels() {
                 e.onclick = (event => {
                   const idModify = event.target.dataset.value;
                   const hotel = hotelsResponse.filter(value => value.hotelId === idModify)
+                  console.log(hotelsResponse);
                   sessionStorage.setItem("hotelUpdate",JSON.stringify(hotel[0]))
                   window.location.href = "http://localhost:5500/FrontEnd/Sup_postHotel/index.html";
                 })

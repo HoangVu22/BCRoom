@@ -36,4 +36,4 @@ function userName(){
 userName();
 // update hotel
 sessionStorage.removeItem("hotelUpdate");
-// sessionStorage.removeItem("updateRoom");
+sessionStorage.removeItem("updateRoom");

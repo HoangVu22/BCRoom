@@ -9,7 +9,7 @@ const targetHotelId = localStorage.getItem('targetHotelId')
 const newHotelButton = document.querySelector('.new-hotel-btn')
 const hotelUpdate = JSON.parse(sessionStorage.getItem("hotelUpdate"))
 const updateRoomHotel = JSON.parse(sessionStorage.getItem("updateRoom"));
-
+ let images=[]
 function loadPage() {
     const targetHotelIdSpan = document.querySelector('.target-hotel-id')
     targetHotelIdSpan.innerText = targetHotelId
@@ -122,7 +122,7 @@ function handlePicture () {
                         picture.innerHTML = hotelImageHtmls.join('');
                         hotelPictures.push({ url: data.data.fileUrl, name: data.data.filename });
                         const deleteImageButtons = document.querySelectorAll('.image-detail i');
-
+                        hotelPictures = [...hotelPictures,...images]
                         deleteImageButtons.forEach(button => {
                             button.onclick = (e) => {
                                 fetch('http://localhost:1234/api/v1/upload/remove_thumbnail', {
@@ -149,8 +149,7 @@ function handlePicture () {
         }
     };
 }
-handlePicture();
-
+``
 // -------------- drag-drop room-----------
 let files = [];
 var dragImage = document.querySelector(".drag-image");
@@ -186,6 +185,7 @@ function handleImage () {
 
                         roomImageHtmls.push(html);
                         image.innerHTML = roomImageHtmls.join('');
+
                         roomPictures.push({ url: data.data.fileUrl, name: data.data.filename });
 
                         const deleteImageButtons = document.querySelectorAll('.image-detail i');
@@ -448,10 +448,19 @@ function updateHotel() {
     const textDescription = document.querySelector("#text-description")
     const inputAddress = document.querySelector(".input-address")
     nameInput.value = hotelUpdate.hotelName
-    starRating.value = "3"
-    phoneinput.value = "1214234"
+    starRating.value = hotelUpdate.starNumber;
+    phoneinput.value = hotelUpdate.phone;
     textDescription.value = "123123"
     inputAddress.value = hotelUpdate.address
+    const imagesHotels = hotelUpdate.images? hotelUpdate.images.map((value)=>{
+        return `<div data-name="${value.imageName}" data-url="${value.url}" class="image-detail">
+                            <img src="${value.url}" alt="">
+                            <i data-name="${value.imageName}" data-fileurl="${value.url}" class="fa-solid fa-xmark remove_image"></i>
+                </div>`;
+    }):[]
+    hotelPictures = [...hotelPictures, ...imagesHotels];
+    picture.innerHTML = hotelPictures.join("");
+    
     update.onclick = () => {
         const basicInformationHotelComponent = document.querySelector('#basic-information-hotel');
         const requestInputs = basicInformationHotelComponent.querySelectorAll('input.request-value, select.request-value');
@@ -486,6 +495,7 @@ function updateHotel() {
         }
         ).then(e => e.json())
             .then(data => {
+                console.log(data);
                 if (data.code === 200) {
                     sessionStorage.setItem("hotelUpdate", JSON.stringify(data.data))
                     updateHotel()
@@ -530,3 +540,4 @@ convenientItem.forEach(value=>{
 console.log(convenientItem);
 }
 updateRoomHotel && updateRoom();
+handlePicture();

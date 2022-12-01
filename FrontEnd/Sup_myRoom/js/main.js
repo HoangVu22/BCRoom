@@ -26,8 +26,8 @@ function fetchRooms() {
                       (value) => value.roomId === idModify
                     );
                     sessionStorage.setItem("updateRoom", JSON.stringify(room[0]));
+                    console.log(roomsResponse);
                     window.location.href = "http://localhost:5500/FrontEnd/Sup_postHotel/index.html"
-                    
                   })
                 })  
                 console.log(countModify);
