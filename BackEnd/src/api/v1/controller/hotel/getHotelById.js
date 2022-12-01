@@ -1,4 +1,4 @@
-const { Hotel } = require('../../../../../models')
+const { Hotel, Image } = require('../../../../../models')
 
 module.exports = async (request, response) => {
     try {
@@ -14,10 +14,20 @@ module.exports = async (request, response) => {
             })
         }
 
+        const images = await Image.findAll({
+            where: {
+                hotelId
+            },
+            attributes: ['url', 'imageName', 'hotelId', 'imageId']
+        })
+
         return response.status(200).json({
             code: 200,
             status: 'success',
-            data: hotel
+            data: {
+                ...hotel.dataValues,
+                images
+            } 
         })
     } catch (error) {
         console.log(error)
