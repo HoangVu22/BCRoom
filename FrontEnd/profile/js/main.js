@@ -110,7 +110,7 @@ function autoLoad() {
                             headers: {
                                 'Content-Type': 'application/json'
                             },
-                            body: JSON.stringify({ customerId: login.customerId, avatarUrl: data.data.fileUrl })
+                            body: JSON.stringify({ customerId: login.customerId, url: data.data.fileUrl, name: data.data.filename })
                         })
                             .then(response => response.json())
                             .then(data => {
@@ -119,7 +119,8 @@ function autoLoad() {
                                     avatarImg.src = data.data.url
                                     const objAvatar = {
                                         ...login,
-                                        avatarUrl:data.data.url
+                                        avatarUrl: data.data.url,
+                                        avatarName: data.data.imageName
                                     }
                                     localStorage.setItem("login", JSON.stringify(objAvatar))
                                     userName(objAvatar)

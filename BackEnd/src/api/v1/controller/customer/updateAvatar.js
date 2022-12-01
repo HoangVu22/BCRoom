@@ -2,7 +2,7 @@ const { Image } = require('../../../../../models')
 
 module.exports = async (request, response) => {
     try {
-        const avatarUrl = request.body.avatarUrl
+        const avatarUrl = request.body.avatar
         const customerId = request.body.customerId
 
         await Image.destroy({
@@ -13,7 +13,8 @@ module.exports = async (request, response) => {
 
         const avatar = await Image.create({
             customerId,
-            url: avatarUrl
+            url: avatar.url,
+            imageName: avatar.name
         })
 
         return response.status(200).json({
