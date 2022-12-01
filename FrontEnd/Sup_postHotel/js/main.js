@@ -7,6 +7,7 @@ var headerNavIcon = document.querySelector('.header-nav-icon');
 const login = JSON.parse(localStorage.getItem("login"));
 const targetHotelId = localStorage.getItem('targetHotelId')
 const newHotelButton = document.querySelector('.new-hotel-btn')
+const hotelUpdate = JSON.parse(sessionStorage.getItem("hotelUpdate"))
 
 function loadPage() {
     const targetHotelIdSpan = document.querySelector('.target-hotel-id')
@@ -231,7 +232,6 @@ handleImage();
 //   creditcardSection.style.display = 'none'
 //   cashSection.style.display = 'block'
 // }
-
 // ------------------- next and prev-------
 var saveInf = document.querySelector('.save-inf');
 var preBtn = document.querySelector('.pre-btn button');
@@ -436,3 +436,65 @@ function getAllRoomTypes () {
 getAllRoomTypes();
 const namepersoncontact = document.querySelector(".name-person-contact");
 namepersoncontact.innerHTML = ` <p>Tên người liên hệ :  <span><b>${login.username}</b></span></p>`;
+
+
+
+const steps = document.querySelectorAll(".step-item")[1]
+function updateHotel() {
+const hotelUpdate = JSON.parse(sessionStorage.getItem("hotelUpdate"))
+    steps.style.display = "none"
+    const update = document.querySelector(".next-button")
+    update.innerText = "Cập nhật"
+    const nameInput = document.querySelector(".name-input");
+    const starRating = document.querySelector(".star-rating")
+    const phoneinput = document.querySelector(".phone-input")
+    const textDescription = document.querySelector("#text-description")
+    const inputAddress = document.querySelector(".input-address")
+    nameInput.value = hotelUpdate.hotelName
+    starRating.value = "3"
+    phoneinput.value = "1214234"
+    textDescription.value = "123123"
+    inputAddress.value = hotelUpdate.address
+    update.onclick = () => {
+        const basicInformationHotelComponent = document.querySelector('#basic-information-hotel');
+        const requestInputs = basicInformationHotelComponent.querySelectorAll('input.request-value, select.request-value');
+        basicInformationHotel = [...requestInputs].reduce((prev, next) => {
+            let value = next.value;
+    
+            if (next.dataset.request.includes('Number')) {
+                value = Number(next.value);
+            }
+    
+            if (next.dataset.request === 'address') {
+                return {
+                    ...prev,
+                    [next.dataset.request]: !prev[next.dataset.request] ? '' + value : prev[next.dataset.request] + ', ' + value
+                };
+            }
+    
+            return {
+                ...prev,
+                [next.dataset.request]: value
+            };
+        }, {});
+        delete basicInformationHotel.nameHotel
+        console.log({...basicInformationHotel,customerId:login.customerId,"hotelName":nameInput.value});
+        fetch(`http://localhost:1234/api/v1/owners/update_hotel_information/${hotelUpdate.hotelId}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({...basicInformationHotel,customerId:login.customerId,"hotelName":nameInput.value})
+        }
+        ).then(e => e.json())
+            .then(data => {
+                if (data.code === 200) {
+                    sessionStorage.setItem("hotelUpdate", JSON.stringify(data.data))
+                    updateHotel()
+                    alert("Cập nhật thành công!")
+                }
+        })
+    }
+}
+hotelUpdate && updateHotel()

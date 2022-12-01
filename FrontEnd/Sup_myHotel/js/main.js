@@ -72,7 +72,9 @@ function fetchHotels() {
                   const idModify = event.target.dataset.value;
                   const hotel = hotelsResponse.filter(value => value.hotelId === idModify)
                   sessionStorage.setItem("hotelUpdate",JSON.stringify(hotel[0]))
-                  window.location.href = "http://localhost:5500/FrontEnd/Sup_postHotel/index.html"                  
+                  window.location.href = "http://localhost:5500/FrontEnd/Sup_postHotel/index.html";
+
+                  
                 })
               })  
               console.log(countModify);
@@ -129,3 +131,5 @@ function renderHotel(data) {
                     </td>
                 </tr>`
 }
+
+
