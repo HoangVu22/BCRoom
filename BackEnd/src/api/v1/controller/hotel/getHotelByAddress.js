@@ -15,7 +15,8 @@ module.exports = async (request, response) => {
             },
             include: {
                 model: Image,
-                limit: 1
+                limit: 1,
+                attributes: ['url', 'imageName', 'hotelId', 'imageId']
             }
         })
 
