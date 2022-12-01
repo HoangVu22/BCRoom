@@ -27,5 +27,6 @@ module.exports = {
     cancleBooking: require('./owner/cancleBooking'),
     updateInformationHotel: require('./owner/updateInformationHotel'),
     updateInformationRoom: require('./owner/updateInformationRoom'),
-    countNewUserInYearWithMonth: require('./admin/countNewUserInYearWithMonth')
+    countNewUserInYearWithMonth: require('./admin/countNewUserInYearWithMonth'),
+    countNewBookingInYearWithMonth: require('./admin/countNewBookingInYearWithMonth')
 }
