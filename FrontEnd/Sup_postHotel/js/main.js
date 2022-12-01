@@ -8,6 +8,7 @@ const login = JSON.parse(localStorage.getItem("login"));
 const targetHotelId = localStorage.getItem('targetHotelId')
 const newHotelButton = document.querySelector('.new-hotel-btn')
 const hotelUpdate = JSON.parse(sessionStorage.getItem("hotelUpdate"))
+const updateRoomHotel = JSON.parse(sessionStorage.getItem("updateRoom"));
 
 function loadPage() {
     const targetHotelIdSpan = document.querySelector('.target-hotel-id')
@@ -381,36 +382,31 @@ const convenientRight = document.querySelector('.convenient-right');
 function renderServices (data) {
     const numberItemPerColumn = Math.ceil(data.length / 2) - 1;
     let htmls = [];
-
-    data.forEach((item, index) => {
+    updateRoomHotel && data.forEach((item, index) => {
         htmls.push(`
-            <div class="convenient-item">
-                <input id="${item.serviceId}" value="${item.serviceId}" type="checkbox">
+            <div class="convenient-item" data-idService = ${item.serviceId}>
+                <input id="${item.serviceId}" value="${item.serviceId}" type="checkbox" >
                 <label for="${item.serviceId}">${item.serviceName}</label>
-            </div>`
-        );
-        if (index <= numberItemPerColumn) {
-            convenientLeft.innerHTML = htmls.join('');
-        }
-
-        if (index === numberItemPerColumn) {
-            htmls = [];
-        }
-
-        if (index > numberItemPerColumn) {
-            convenientRight.innerHTML = htmls.join('');
-        }
-    });
+            </div>`);
+                    if (index <= numberItemPerColumn) {
+                      convenientLeft.innerHTML = htmls.join("");
+                    }
+                    if (index === numberItemPerColumn) {
+                      htmls = [];
+                    }
+                    if (index > numberItemPerColumn) {
+                      convenientRight.innerHTML = htmls.join("");
+                    }
+                  });
 }
 
-function getAllServices () {
-    fetch('http://localhost:1234/api/v1/services/all_services')
-        .then(response => response.json())
-        .then(data => {
+async function getAllServices () {
+   const res = await fetch('http://localhost:1234/api/v1/services/all_services')
+   const data = await res.json()
             if (data.code === 200) {
                 renderServices(data.data);
+                updateRoomHotel && updateRoom();
             }
-        });
 }
 
 getAllServices();
@@ -431,6 +427,7 @@ function getAllRoomTypes () {
                 renderRoomTypes(data.data);
             }
         });
+
 }
 
 getAllRoomTypes();
@@ -439,9 +436,9 @@ namepersoncontact.innerHTML = ` <p>Tên người liên hệ :  <span><b>${login.
 
 
 
-const steps = document.querySelectorAll(".step-item")[1]
 function updateHotel() {
-const hotelUpdate = JSON.parse(sessionStorage.getItem("hotelUpdate"))
+    const steps = document.querySelectorAll(".step-item")[1]
+    const hotelUpdate = JSON.parse(sessionStorage.getItem("hotelUpdate"))
     steps.style.display = "none"
     const update = document.querySelector(".next-button")
     update.innerText = "Cập nhật"
@@ -497,4 +494,39 @@ const hotelUpdate = JSON.parse(sessionStorage.getItem("hotelUpdate"))
         })
     }
 }
-hotelUpdate && updateHotel()
+
+hotelUpdate && updateHotel();
+
+function updateRoom(){
+ const steps = document.querySelectorAll(".step-item")[0];
+const updateRoomHotel = JSON.parse(sessionStorage.getItem("updateRoom"));
+const stepContent = document.querySelectorAll(".step-content");
+stepContent[0].classList.remove("active")
+stepContent[1].classList.add("active");
+ steps.style.display = "none";
+
+ const roomType = document.querySelector(".room-type");
+ const adultNumber = document.querySelector(".adultNumber");
+ const kidNumber = document.querySelector(".kidNumber");
+ const roomInput = document.querySelector(".room-input");
+
+const convenientItem = document.querySelectorAll(".convenient-item");
+const expireTime = document.querySelector(".expireTime");
+const condition = document.querySelector(".condition");
+const price = document.querySelector(".price");
+roomType.value = updateRoomHotel.roomType.typeName;
+adultNumber.value = updateRoomHotel.adultNumber;
+kidNumber.value = updateRoomHotel.kidNumber;
+roomInput.value = updateRoomHotel.roomNumber;
+// expireTime.value = 
+price.value = updateRoomHotel.price
+convenientItem.forEach(value=>{
+    updateRoomHotel.services.forEach(e=>{
+        if(value.dataset.idservice === e.serviceId){
+            value.querySelector("input").checked = true
+        }
+    })
+})
+console.log(convenientItem);
+}
+updateRoomHotel && updateRoom();
