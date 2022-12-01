@@ -441,7 +441,7 @@ namepersoncontact.innerHTML = ` <p>Tên người liên hệ :  <span><b>${login.
 
 const steps = document.querySelectorAll(".step-item")[1]
 function updateHotel() {
-
+const hotelUpdate = JSON.parse(sessionStorage.getItem("hotelUpdate"))
     steps.style.display = "none"
     const update = document.querySelector(".next-button")
     update.innerText = "Cập nhật"
@@ -485,15 +485,16 @@ function updateHotel() {
                 headers: {
                     "Content-Type":"application/json"
                 },
-                body:JSON.stringify({
-                    "customerId": "bb020a53-bad4-447d-b18b-c10ff4d73fb4",
-                    "hotelName": "Luxury 2",
-                    "phone": "123456",
-                    "starNumber": 5
-                })
-                // body:JSON.stringify({...basicInformationHotel,customerId:login.customerId,"hotelName":nameInput.value})
+                body:JSON.stringify({...basicInformationHotel,customerId:login.customerId,"hotelName":nameInput.value})
         }
-        )
+        ).then(e => e.json())
+            .then(data => {
+                if (data.code === 200) {
+                    sessionStorage.setItem("hotelUpdate", JSON.stringify(data.data))
+                    updateHotel()
+                    alert("Cập nhật thành công!")
+                }
+        })
     }
 }
 hotelUpdate && updateHotel()
