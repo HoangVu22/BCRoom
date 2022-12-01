@@ -847,29 +847,36 @@ td {
   .accountBtn {
     border: none;
     padding: 10px 20px;
-    background: linear-gradient(#f37066,#f44336);
-    color: #fff;
+    /* background: linear-gradient(#f37066,#f44336); */
+    color: var(--main-color);
+    background-color: #fff;
     font-size: 16px;
+    font-weight: bold;
+    border: 1px solid var(--main-color);
     margin-right: 20px;
     cursor: pointer;
     border-radius: 5px;
   }
 
   .accountBtn:hover {
-    background: var(--main-color);
+    background-color: var(--main-color);
+    color: #fff;
   }
 
   .bookingBtn:hover {
-    background: var(--main-color);
+    background-color: var(--main-color);
+    color: #fff;
   }
 
   .bookingBtn {
     border: none;
     padding: 10px 20px;
-    background: linear-gradient(#f37066,#f44336);
-    color: #fff;
+    /* background: linear-gradient(#f37066,#f44336); */
+    color: var(--main-color);
+    background-color: #fff;
     font-size: 16px;
+    font-weight: bold;
+    border: 1px solid var(--main-color);
     cursor: pointer;
     border-radius: 5px;
-
   }
