@@ -6,6 +6,14 @@ module.exports = async (request, response) => {
 
         const customers = await Customer.findAll()
 
+        if (!customers) {
+            return response.status(404).json({
+                code: 404,
+                status: 'failed',
+                message: 'no customers found'
+            })
+        }
+
         const currentYear = new Date().getFullYear()
 
         const customersRegistedInCurrentYear = customers.filter(customer => new Date(customer.dataValues.createdAt).getFullYear() === currentYear)
@@ -20,7 +28,7 @@ module.exports = async (request, response) => {
         }, {})
 
         let result = []
-        for(let i = 0; i < 12; i++) {
+        for (let i = 0; i < 12; i++) {
             if (countCustomerRegistedWithMonth[i]) {
                 result[i] = countCustomerRegistedWithMonth[i].length
             } else {
