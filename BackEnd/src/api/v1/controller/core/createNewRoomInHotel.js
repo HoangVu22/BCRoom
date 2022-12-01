@@ -43,7 +43,8 @@ module.exports = async (request, response) => {
             await Promise.all(images.imageHotel.map(async (image) => {
                 await Image.create({
                     hotelId: hotel.hotelId,
-                    url: image
+                    url: image.url,
+                    imageName: image.name
                 });
             }));
         }
@@ -75,7 +76,8 @@ module.exports = async (request, response) => {
             await Promise.all(images.imageRoom.map(async (image) => {
                 await Image.create({
                     roomId: newRoom.roomId,
-                    url: image
+                    url: image.url,
+                    imageName: image.name
                 });
             }));
         }

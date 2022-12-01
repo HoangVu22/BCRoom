@@ -112,7 +112,7 @@ function handlePicture () {
                 .then(response => response.json())
                 .then(data => {
                     if (data.code === 200) {
-                        const html = `<div data-name="${data.data.filename}" class="image-detail">
+                        const html = `<div data-name="${data.data.filename}" data-url="${data.data.fileUrl}" class="image-detail">
                         <img src="${data.data.fileUrl}" alt="">
                         <i data-name="${data.data.filename}" data-fileurl="${data.data.fileUrl}" class="fa-solid fa-xmark delete_picture"></i>
                         </div>`;
@@ -120,7 +120,7 @@ function handlePicture () {
                         hotelImageHtmls.push(html);
 
                         picture.innerHTML = hotelImageHtmls.join('');
-                        hotelPictures.push(data.data.fileUrl);
+                        hotelPictures.push({ url: data.data.fileUrl, name: data.data.filename });
                         const deleteImageButtons = document.querySelectorAll('.image-detail i');
 
                         deleteImageButtons.forEach(button => {
@@ -137,7 +137,7 @@ function handlePicture () {
                                         if (data.code === 200) {
                                             const listPictureNode = document.querySelector('.picture.list-hotel-picture');
                                             listPictureNode.removeChild(e.target.parentNode);
-                                            hotelPictures = hotelPictures.filter(url => url !== e.target.dataset.fileurl);
+                                            hotelPictures = hotelPictures.filter(image => image.name !== e.target.dataset.name);
                                         }
                                     });
                             };
@@ -179,14 +179,14 @@ function handleImage () {
                 .then(response => response.json())
                 .then(data => {
                     if (data.code === 200) {
-                        const html = `<div data-name="${data.data.filename}" class="image-detail">
+                        const html = `<div data-name="${data.data.filename}" data-url="${data.data.fileUrl}" class="image-detail">
                             <img src="${data.data.fileUrl}" alt="">
                             <i data-name="${data.data.filename}" data-fileurl="${data.data.fileUrl}" class="fa-solid fa-xmark remove_image"></i>
                         </div>`;
 
                         roomImageHtmls.push(html);
                         image.innerHTML = roomImageHtmls.join('');
-                        roomPictures.push(data.data.fileUrl);
+                        roomPictures.push({ url: data.data.fileUrl, name: data.data.filename });
 
                         const deleteImageButtons = document.querySelectorAll('.image-detail i');
 
@@ -204,7 +204,7 @@ function handleImage () {
                                         if (data.code === 200) {
                                             const listPictureNode = document.querySelector('.image.list-room-image');
                                             listPictureNode.removeChild(e.target.parentNode);
-                                            roomPictures = roomPictures.filter(url => url !== e.target.dataset.fileurl);
+                                            roomPictures = roomPictures.filter(image => image.name !== image.target.dataset.name);
                                         }
                                     });
                             };

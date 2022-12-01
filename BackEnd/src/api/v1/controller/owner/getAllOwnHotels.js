@@ -1,4 +1,4 @@
-const { Hotel, Room } = require('../../../../../models')
+const { Hotel, Room, Image } = require('../../../../../models')
 
 module.exports = async (request, response) => {
     try {
@@ -9,7 +9,11 @@ module.exports = async (request, response) => {
                 customerId,
                 status: true
             },
-            attributes: ['hotelId', 'customerId', 'hotelName', 'address']
+            include: {
+                model: Image,
+                attributes: ['imageId', 'hotelId', 'url', 'imageName']
+            },
+            attributes: ['hotelId', 'customerId', 'hotelName', 'address', 'phone', 'starNumber']
         })
 
         const result = await Promise.all(hotels.map(async hotel => {
@@ -23,6 +27,9 @@ module.exports = async (request, response) => {
                 hotelId: hotel.hotelId,
                 hotelName: hotel.hotelName,
                 address: hotel.address,
+                images: hotel.dataValues.Images,
+                phone: hotel.phone,
+                starNumber: hotel.starNumber,
                 roomCount
             }
         }))
