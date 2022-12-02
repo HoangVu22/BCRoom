@@ -36,6 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     address: DataTypes.STRING,
     starNumber: DataTypes.INTEGER,
     phone: DataTypes.STRING,
+    description: DataTypes.TEXT,
     status: {
         type: DataTypes.BOOLEAN,
         defaultValue: true
