@@ -71,13 +71,11 @@ function fetchHotels() {
                 e.onclick = (event => {
                   const idModify = event.target.dataset.value;
                   const hotel = hotelsResponse.filter(value => value.hotelId === idModify)
+                  console.log(hotelsResponse);
                   sessionStorage.setItem("hotelUpdate",JSON.stringify(hotel[0]))
                   window.location.href = "http://localhost:5500/FrontEnd/Sup_postHotel/index.html";
-
-                  
                 })
               })  
-              console.log(countModify);
                 const residences = document.querySelectorAll('tr.list-residence')
                 residences.forEach(residence => {
                     const hotelInfoTarget = residence.querySelector('.list-content.list-info div h4')

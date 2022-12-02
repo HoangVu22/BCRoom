@@ -32,4 +32,8 @@ function userName(){
     </div>
 </div>`;
 }
+
 userName();
+// update hotel
+sessionStorage.removeItem("hotelUpdate");
+sessionStorage.removeItem("updateRoom");
