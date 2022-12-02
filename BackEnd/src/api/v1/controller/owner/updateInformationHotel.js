@@ -1,11 +1,11 @@
-const { Hotel, Room, Booking } = require('../../../../../models')
+const { Hotel, Room, Booking, Image } = require('../../../../../models')
 
 module.exports = async (request, response) => {
     try {
         const customerId = request.body.customerId
         const hotelId = request.params.hotelId
         
-        const { hotelName, address, starNumber, phone, description } = request.body
+        const { hotelName, address, starNumber, phone, description, images } = request.body
 
         let updateValues = {}
 
@@ -34,6 +34,20 @@ module.exports = async (request, response) => {
                 hotelId
             }
         })
+
+        if (images) {
+            await Image.destroy({
+                where: {
+                    hotelId
+                }
+            })
+
+            await Promise.all(images.map(async image => await Image.create({
+                hotelId,
+                url: image.url,
+                imageName: image.name
+            })))
+        }
 
         const updatedHotel = await Hotel.findOne({
             where: {
