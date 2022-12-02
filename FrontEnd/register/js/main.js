@@ -6,6 +6,13 @@ var headerFormLogout = document.querySelector('.header-form-logout');
 var login = window.localStorage.getItem("login")
 const registerButton = document.querySelector('.form-submit.register')
 
+// check emoji
+function removeInvalidChars(text) {
+  const check =  text.replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g, '');
+  return check.length == text.length ? true : false
+}
+
+
 registerButton.addEventListener('click', () => {
     const inputs = document.querySelectorAll('.form-control')
     const requestValues = {}
@@ -15,6 +22,7 @@ registerButton.addEventListener('click', () => {
             requestValues[item.attributes.name.value] = item.value
         }
     })
+   
 
     fetch('http://localhost:1234/api/v1/auth/register', {
         method: 'post',

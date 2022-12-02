@@ -1,6 +1,6 @@
-var headerFormLogin = headerNavForm.querySelector('.header-form-login')
 var headerFormLogout = document.querySelector('.header-form-logout');
 var headerNavForm = document.querySelector('.header-nav-form')
+var headerFormLogin = headerNavForm.querySelector('.header-form-login')
 function handleLogin() {
     if(localStorage.getItem('login')) {
         headerFormLogout.style.display = "block"
