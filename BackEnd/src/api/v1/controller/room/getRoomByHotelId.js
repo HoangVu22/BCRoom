@@ -1,8 +1,34 @@
-const { Room, RoomRelatedService, Service, RoomType, Policy } = require('../../../../../models')
+const { Op } = require('sequelize');
+const { Room, RoomRelatedService, Service, RoomType, Policy, CustomerViewedHotel, Hotel } = require('../../../../../models');
 
 module.exports = async (request, response) => {
     try {
-        const { hotelId } = request.params
+        const { hotelId } = request.params;
+        const customerId = request.body.customerId;
+
+        const viewed = await CustomerViewedHotel.findOne({
+            where: {
+                hotelId,
+                customerId 
+            }
+        });
+
+        if (!viewed) {
+            if (customerId) {
+                const hotel = await Hotel.findByPk(hotelId);
+                await CustomerViewedHotel.create({
+                    customerId,
+                    hotelId
+                })
+                await Hotel.update({
+                    viewNumber: parseInt(hotel.dataValues.viewNumber) + 1
+                }, {
+                    where: {
+                        hotelId
+                    }
+                });
+            }
+        }
 
         const rooms = await Room.findAll({
             where: {
@@ -16,39 +42,40 @@ module.exports = async (request, response) => {
                 {
                     model: Policy
                 }
-            ] 
-        })
+            ]
+        });
 
-        let result = []
-        async function getServiceInRoom() {
+        let result = [];
+        async function getServiceInRoom () {
             for (const room of rooms) {
-                const services = await Promise.all(room.RoomRelatedServices.map(async record => await Service.findByPk(record.serviceId)))
-                
-                const roomType = await RoomType.findByPk(room.typeId) 
+                const services = await Promise.all(room.RoomRelatedServices.map(async record => await Service.findByPk(record.serviceId)));
 
-                delete room.dataValues.RoomRelatedServices
-                delete room.dataValues.typeId
+                const roomType = await RoomType.findByPk(room.typeId);
+
+                delete room.dataValues.RoomRelatedServices;
+                delete room.dataValues.typeId;
 
                 result.push({
                     ...room.dataValues,
                     roomType,
                     services
-                })
+                });
             }
         }
 
-        await getServiceInRoom()
+        await getServiceInRoom();
 
         return response.status(200).json({
             code: 200,
             status: 'success',
-            data: result 
-        })
+            data: result
+        });
     } catch (error) {
+        console.log(error);
         return response.status(500).json({
             code: 500,
             status: 'failed',
             message: error
-        }) 
+        });
     }
-}
+};

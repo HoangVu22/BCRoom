@@ -13,7 +13,7 @@ function fetchRooms() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({})
+        body: JSON.stringify({ customerId: "" })
     })
         .then(response => response.json())
         .then(data => {
