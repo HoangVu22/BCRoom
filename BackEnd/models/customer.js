@@ -29,6 +29,9 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Voucher, {
         foreignKey: 'customerId'
       })
+      this.hasMany(models.CustomerViewedHotel, {
+        foreignKey: 'customerId'
+      })
     }
   }
   Customer.init({

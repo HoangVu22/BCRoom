@@ -23,6 +23,9 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Image, {
         foreignKey: 'hotelId'
       })
+      this.hasMany(models.CustomerViewedHotel, {
+        foreignKey: 'hotelId'
+      })
     }
   }
   Hotel.init({
