@@ -28,5 +28,7 @@ module.exports = {
     updateInformationHotel: require('./owner/updateInformationHotel'),
     updateInformationRoom: require('./owner/updateInformationRoom'),
     countNewUserInYearWithMonth: require('./admin/countNewUserInYearWithMonth'),
-    countNewBookingInYearWithMonth: require('./admin/countNewBookingInYearWithMonth')
+    countNewBookingInYearWithMonth: require('./admin/countNewBookingInYearWithMonth'),
+    passwordRecovery: require('./customer/passwordRecovery'),
+    resetPassword: require('./core/resetPassword')
 }

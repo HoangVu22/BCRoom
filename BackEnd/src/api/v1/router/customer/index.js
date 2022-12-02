@@ -4,6 +4,7 @@ const { isLogin } = require('../../../../middleware')
 
 router.post('/update_profile', isLogin, controllers.updateProfile)
 router.post('/update_avatar', isLogin, controllers.updateAvatar)
+router.put('/password_recovery/:email', controllers.passwordRecovery)
 
 module.exports = {
     entry: '/customers',

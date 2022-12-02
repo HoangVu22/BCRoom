@@ -47,7 +47,19 @@ function cancleBill (
 	</div>`
 }
 
+function passwordRecovery (email, username, password, link) {
+    return `<div>
+        <h2>Tìm lại mật khẩu</h2>
+        <p>Email: <span>${email}<span></p>
+        <p>Tên tài khoản: <span>${username}</span></p>
+        <p style="font-weight: bold">Đây là mật khẩu của bạn: ${password}</p>
+        <p>Click vào link để xác nhận thay đổi: ${link}</p>
+        <h5>Cố gắng đừng để quên mật khẩu, thân!</h5>
+    </div>`
+}
+
 module.exports = {
     bill,
-    cancleBill
+    cancleBill,
+    passwordRecovery
 }
