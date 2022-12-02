@@ -5,7 +5,7 @@ module.exports = async (request, response) => {
         const customerId = request.body.customerId
         const hotelId = request.params.hotelId
         
-        const { hotelName, address, starNumber, phone } = request.body
+        const { hotelName, address, starNumber, phone, description } = request.body
 
         let updateValues = {}
 
@@ -23,6 +23,10 @@ module.exports = async (request, response) => {
 
         if (phone) {
             updateValues.phone = phone
+        }
+
+        if (description) {
+            updateValues.description = description
         }
 
         await Hotel.update(updateValues, {
