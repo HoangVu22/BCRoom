@@ -13,7 +13,7 @@ module.exports = async (request, response) => {
                 model: Image,
                 attributes: ['imageId', 'hotelId', 'url', 'imageName']
             },
-            attributes: ['hotelId', 'customerId', 'hotelName', 'address', 'phone', 'starNumber']
+            attributes: ['hotelId', 'customerId', 'hotelName', 'address', 'phone', 'starNumber', 'description']
         })
 
         const result = await Promise.all(hotels.map(async hotel => {
@@ -30,6 +30,7 @@ module.exports = async (request, response) => {
                 images: hotel.dataValues.Images,
                 phone: hotel.phone,
                 starNumber: hotel.starNumber,
+                description: hotel.description,
                 roomCount
             }
         }))
