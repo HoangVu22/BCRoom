@@ -281,3 +281,14 @@ eyeClose.addEventListener("click", function () {
   password.setAttribute("type", "text");
 });
 
+// ----------forget password--------
+var forgetPassword = document.querySelector('.forget-password')
+var modalForgetPassword = document.querySelector('.modal-forget-password')
+var forgetClose = document.querySelector('.forget-close')
+forgetPassword.onclick = function () {
+  modalForgetPassword.style.display = 'block'
+}
+
+forgetClose.onclick = function () {
+  modalForgetPassword.style.display = "none";
+};
