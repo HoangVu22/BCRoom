@@ -282,9 +282,28 @@ eyeClose.addEventListener("click", function () {
 });
 
 // ----------forget password--------
-var forgetPassword = document.querySelector('.forget-password')
-var modalForgetPassword = document.querySelector('.modal-forget-password')
-var forgetClose = document.querySelector('.forget-close')
+const forgetPassword = document.querySelector('.forget-password')
+const modalForgetPassword = document.querySelector('.modal-forget-password')
+const forgetClose = document.querySelector('.forget-close')
+const forgetSubmit = document.querySelector('.modal-forget-password button.forget-password-submit')
+
+forgetSubmit.onclick = () => {
+    const emailInput = modalForgetPassword.querySelector('input')
+
+    if (!emailInput.value.trim()) {
+        alert('Email không hợp lệ')
+        return;
+    }
+    
+    fetch('http://localhost:1234/api/v1/customers/password_recovery/' + emailInput.value.trim(), {
+        method: 'put'
+    })
+        .then(response => response.jsom())
+        .then(data => {
+            alert(data.message)
+        })
+}
+
 forgetPassword.onclick = function () {
   modalForgetPassword.style.display = 'block'
 }
