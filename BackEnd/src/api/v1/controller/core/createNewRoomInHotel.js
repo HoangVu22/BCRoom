@@ -70,6 +70,7 @@ module.exports = async (request, response) => {
         }
 
         await Policy.create({
+            roomId: newRoom.roomId,
             condition: policy.condition,
             expireTime: policy.expireTime
         });
