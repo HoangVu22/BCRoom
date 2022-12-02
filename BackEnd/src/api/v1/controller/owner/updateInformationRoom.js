@@ -1,12 +1,13 @@
-const { Room, Images } = require('../../../../../models')
+const { Room, Image, RoomRelatedService } = require('../../../../../models')
 
 module.exports = async (request, response) => {
     try {
         const customerId = request.body.customerId
         const roomId = request.params.roomId
-        const { typeId, description, price, adultNumber, kidNumber, roomNumber, images } = request.body
+        const { typeId, description, price, adultNumber, kidNumber, roomNumber, images, services } = request.body
 
         const room = await Room.findByPk(roomId)
+
         if (!room) {
             return response.status(404).json({
                 code: 404,
@@ -46,6 +47,21 @@ module.exports = async (request, response) => {
                 roomId
             }
         })
+
+        if (services) {
+            await RoomRelatedService.destroy({
+                where: {
+                    roomId: room.dataValues.roomId
+                }
+            })
+
+            await Promise.all(services.map(async service => {
+                await RoomRelatedService.create({
+                    roomId: room.dataValues.roomId,
+                    serviceId: service
+                })
+            }))
+        }
 
         if (images) {
             await Image.destroy({
