@@ -14,6 +14,7 @@ module.exports = async (request, response) => {
             nameHotel,
             phone,
             starNumber,
+            description,
             address,
             roomType,
             adultNumber,
@@ -35,7 +36,8 @@ module.exports = async (request, response) => {
                 hotelName: nameHotel,
                 address,
                 starNumber,
-                phone
+                phone,
+                description
             });
         }
 
