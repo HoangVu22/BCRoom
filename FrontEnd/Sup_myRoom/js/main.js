@@ -8,7 +8,13 @@ var login = JSON.parse(localStorage.getItem('login'))
 
 function fetchRooms() {
     const targetHotelId = localStorage.getItem('targetHotelId')
-    fetch('http://localhost:1234/api/v1/rooms/by_hotel_id/' + targetHotelId)
+    fetch('http://localhost:1234/api/v1/rooms/by_hotel_id/' + targetHotelId, {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})
+    })
         .then(response => response.json())
         .then(data => {
             if (data.code === 200) {

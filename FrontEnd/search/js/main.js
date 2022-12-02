@@ -310,7 +310,14 @@ result.innerHTML = `<h3>Kết quả tìm kiếm của bạn tại quận/huyện
 const listRoom = document.querySelectorAll(".list-room");
 [...listRoom].forEach(value=>{
     value.onclick = (e)=>{
-        fetch(`http://localhost:1234/api/v1/rooms/by_hotel_id/${e.target.dataset.hotel}`)
+        const login = JSON.parse(localStorage.getItem('login'))
+        fetch(`http://localhost:1234/api/v1/rooms/by_hotel_id/${e.target.dataset.hotel}`, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ customerId: login.customerId })
+        })
         .then(res=>res.json())
         .then(data=>{
             if (data.code === 200) {
