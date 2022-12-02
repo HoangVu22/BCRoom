@@ -1,4 +1,4 @@
-const { Room, RoomRelatedService, Service, RoomType } = require('../../../../../models')
+const { Room, RoomRelatedService, Service, RoomType, Policy } = require('../../../../../models')
 
 module.exports = async (request, response) => {
     try {
@@ -9,9 +9,14 @@ module.exports = async (request, response) => {
                 hotelId,
                 status: true
             },
-            include: {
-                model: RoomRelatedService
-            }
+            include: [
+                {
+                    model: RoomRelatedService
+                },
+                {
+                    model: Policy
+                }
+            ] 
         })
 
         let result = []

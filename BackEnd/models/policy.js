@@ -22,9 +22,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4
     },
+    roomId: DataTypes.UUID,
     condition: DataTypes.STRING,
     expireTime: DataTypes.STRING,
-    roomNumber: DataTypes.STRING,
     status: {
         type: DataTypes.BOOLEAN,
         defaultValue: true
