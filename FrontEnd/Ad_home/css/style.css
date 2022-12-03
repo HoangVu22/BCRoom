@@ -517,6 +517,7 @@ ul {
     color: #333;
     font-size: 15px;
     border-radius: 5px;
+    font-weight: bold;
 }
 
 .list-info {
