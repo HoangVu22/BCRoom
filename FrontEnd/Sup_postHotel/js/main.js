@@ -5,22 +5,22 @@ var headerFormLogin = headerNavForm.querySelector(".header-form-login");
 var headerFormLogout = document.querySelector(".header-form-logout");
 var headerNavIcon = document.querySelector('.header-nav-icon');
 const login = JSON.parse(localStorage.getItem("login"));
-const targetHotelId = localStorage.getItem('targetHotelId')
-const newHotelButton = document.querySelector('.new-hotel-btn')
-const hotelUpdate = JSON.parse(sessionStorage.getItem("hotelUpdate"))
+const targetHotelId = localStorage.getItem('targetHotelId');
+const newHotelButton = document.querySelector('.new-hotel-btn');
+const hotelUpdate = JSON.parse(sessionStorage.getItem("hotelUpdate"));
 const updateRoomHotel = JSON.parse(sessionStorage.getItem("updateRoom"));
- let images=[]
-function loadPage() {
-    const targetHotelIdSpan = document.querySelector('.target-hotel-id')
-    targetHotelIdSpan.innerText = targetHotelId
+let images = [];
+function loadPage () {
+    const targetHotelIdSpan = document.querySelector('.target-hotel-id');
+    targetHotelIdSpan.innerText = targetHotelId;
 }
-loadPage()
+loadPage();
 
 newHotelButton.onclick = () => {
-    localStorage.removeItem('targetHotelId')
-    const targetHotelIdSpan = document.querySelector('.target-hotel-id')
-    targetHotelIdSpan.innerText = ""
-}
+    localStorage.removeItem('targetHotelId');
+    const targetHotelIdSpan = document.querySelector('.target-hotel-id');
+    targetHotelIdSpan.innerText = "";
+};
 
 headerNavForm.onclick = function () {
     if (headerForm.style.display === "none") headerForm.style.display = "block";
@@ -122,7 +122,7 @@ function handlePicture () {
                         picture.innerHTML = hotelImageHtmls.join('');
                         hotelPictures.push({ url: data.data.fileUrl, name: data.data.filename });
                         const deleteImageButtons = document.querySelectorAll('.image-detail i');
-                        hotelPictures = [...hotelPictures,...images]
+                        hotelPictures = [...hotelPictures, ...images];
                         deleteImageButtons.forEach(button => {
                             button.onclick = (e) => {
                                 fetch('http://localhost:1234/api/v1/upload/remove_thumbnail', {
@@ -149,7 +149,7 @@ function handlePicture () {
         }
     };
 }
-``
+``;
 // -------------- drag-drop room-----------
 let files = [];
 var dragImage = document.querySelector(".drag-image");
@@ -344,14 +344,14 @@ finish.addEventListener('click', (e) => {
         }
     });
 
-    const hotelId = localStorage.getItem('targetHotelId') 
+    const hotelId = localStorage.getItem('targetHotelId');
     sendRequestToCreatRoomHotel({
         ...basicInformationHotel,
         ...basicInformationRoom,
         hotelId,
         images: {
             imageHotel: hotelPictures,
-            imageRoom: roomPictures 
+            imageRoom: roomPictures
         },
         customerId: login.customerId
     });
@@ -382,32 +382,32 @@ const convenientRight = document.querySelector('.convenient-right');
 function renderServices (data) {
     const numberItemPerColumn = Math.ceil(data.length / 2) - 1;
     let htmls = [];
-      data.forEach((item, index) => {
-          htmls.push(`
+    data.forEach((item, index) => {
+        htmls.push(`
             <div class="convenient-item" data-idService = ${item.serviceId}>
                 <input id="${item.serviceId}" value="${item.serviceId}" type="checkbox" >
                 <label for="${item.serviceId}">${item.serviceName}</label>
             </div>`);
-          if (index <= numberItemPerColumn) {
+        if (index <= numberItemPerColumn) {
             convenientLeft.innerHTML = htmls.join("");
-          }
-          if (index === numberItemPerColumn) {
+        }
+        if (index === numberItemPerColumn) {
             htmls = [];
-          }
-          if (index > numberItemPerColumn) {
+        }
+        if (index > numberItemPerColumn) {
             convenientRight.innerHTML = htmls.join("");
-          }
-        })
-      
+        }
+    });
+
 }
 
 async function getAllServices () {
-   const res = await fetch('http://localhost:1234/api/v1/services/all_services')
-   const data = await res.json()
-            if (data.code === 200) {
-                renderServices(data.data);
-                updateRoomHotel && updateRoom();
-            }
+    const res = await fetch('http://localhost:1234/api/v1/services/all_services');
+    const data = await res.json();
+    if (data.code === 200) {
+        renderServices(data.data);
+        updateRoomHotel && updateRoom();
+    }
 }
 
 getAllServices();
@@ -418,8 +418,8 @@ const roomTypeSelect = document.querySelector('select.room-type');
 function renderRoomTypes (data) {
     const htmls = data.map(item => `<option value="${item.typeId}">${item.typeName}</option>`);
     roomTypeSelect.innerHTML = htmls.join('');
-    
-   
+
+
 }
 
 function getAllRoomTypes () {
@@ -428,12 +428,12 @@ function getAllRoomTypes () {
         .then(data => {
             if (data.code === 200) {
                 renderRoomTypes(data.data);
-                  if (updateRoomHotel) {
+                if (updateRoomHotel) {
                     document.querySelector(".room-type").value =
-                      (updateRoomHotel.roomType &&
-                        updateRoomHotel.roomType.typeId) ||
-                      updateRoomHotel.typeId;
-                  }
+                        (updateRoomHotel.roomType &&
+                            updateRoomHotel.roomType.typeId) ||
+                        updateRoomHotel.typeId;
+                }
             }
         });
 
@@ -445,179 +445,179 @@ namepersoncontact.innerHTML = ` <p>Tên người liên hệ :  <span><b>${login.
 
 
 
-function updateHotel() {
-    const steps = document.querySelectorAll(".step-item")[1]
-    const hotelUpdate = JSON.parse(sessionStorage.getItem("hotelUpdate"))
-    steps.style.display = "none"
-    const update = document.querySelector(".next-button")
-    update.innerText = "Cập nhật"
+function updateHotel () {
+    const steps = document.querySelectorAll(".step-item")[1];
+    const hotelUpdate = JSON.parse(sessionStorage.getItem("hotelUpdate"));
+    steps.style.display = "none";
+    const update = document.querySelector(".next-button");
+    update.innerText = "Cập nhật";
     const nameInput = document.querySelector(".name-input");
-    const starRating = document.querySelector(".star-rating")
-    const phoneinput = document.querySelector(".phone-input")
-    const textDescription = document.querySelector("#text-description")
-    const inputAddress = document.querySelector(".input-address")
-    nameInput.value = hotelUpdate.hotelName
+    const starRating = document.querySelector(".star-rating");
+    const phoneinput = document.querySelector(".phone-input");
+    const textDescription = document.querySelector("#text-description");
+    const inputAddress = document.querySelector(".input-address");
+    nameInput.value = hotelUpdate.hotelName;
     starRating.value = hotelUpdate.starNumber;
     phoneinput.value = hotelUpdate.phone;
     textDescription.value = hotelUpdate.hotelId;
-    inputAddress.value = hotelUpdate.address
-    const imagesHotels = hotelUpdate.images? hotelUpdate.images.map((value)=>{
+    inputAddress.value = hotelUpdate.address;
+    const imagesHotels = hotelUpdate.images ? hotelUpdate.images.map((value) => {
         return `<div data-name="${value.imageName}" data-url="${value.url}" class="image-detail">
                             <img src="${value.url}" alt="">
                             <i data-name="${value.imageName}" data-fileurl="${value.url}" class="fa-solid fa-xmark remove_image"></i>
                 </div>`;
-    }):[]
+    }) : [];
     hotelPictures = [...hotelPictures, ...imagesHotels];
     picture.innerHTML = hotelPictures.join("");
-    
+
     update.onclick = () => {
         const basicInformationHotelComponent = document.querySelector('#basic-information-hotel');
         const requestInputs = basicInformationHotelComponent.querySelectorAll('input.request-value, select.request-value');
         basicInformationHotel = [...requestInputs].reduce((prev, next) => {
             let value = next.value;
-    
+
             if (next.dataset.request.includes('Number')) {
                 value = Number(next.value);
             }
-    
+
             if (next.dataset.request === 'address') {
                 return {
                     ...prev,
                     [next.dataset.request]: !prev[next.dataset.request] ? '' + value : prev[next.dataset.request] + ', ' + value
                 };
             }
-    
+
             return {
                 ...prev,
                 [next.dataset.request]: value
             };
         }, {});
-        delete basicInformationHotel.nameHotel
-        console.log({...basicInformationHotel,customerId:login.customerId,"hotelName":nameInput.value});
+        delete basicInformationHotel.nameHotel;
+        console.log({ ...basicInformationHotel, customerId: login.customerId, "hotelName": nameInput.value });
         fetch(`http://localhost:1234/api/v1/owners/update_hotel_information/${hotelUpdate.hotelId}`,
             {
                 method: "PUT",
                 headers: {
-                    "Content-Type":"application/json"
+                    "Content-Type": "application/json"
                 },
-                body:JSON.stringify({...basicInformationHotel,customerId:login.customerId,"hotelName":nameInput.value})
-        }
+                body: JSON.stringify({ ...basicInformationHotel, customerId: login.customerId, "hotelName": nameInput.value })
+            }
         ).then(e => e.json())
             .then(data => {
                 console.log(data);
                 if (data.code === 200) {
-                    sessionStorage.setItem("hotelUpdate", JSON.stringify(data.data))
-                    updateHotel()
-                    alert("Cập nhật thành công!")
+                    sessionStorage.setItem("hotelUpdate", JSON.stringify(data.data));
+                    updateHotel();
+                    alert("Cập nhật thành công!");
                 }
-        })
-    }
+            });
+    };
 }
 
 hotelUpdate && updateHotel();
 
-function updateRoom(){
- const steps = document.querySelectorAll(".step-item")[0];
-const updateRoomHotel = JSON.parse(sessionStorage.getItem("updateRoom"));
-const stepContent = document.querySelectorAll(".step-content");
-stepContent[0].classList.remove("active")
-stepContent[1].classList.add("active");
- steps.style.display = "none";
- const nextButton = document.querySelector(".next-button");
-nextButton.innerText = "Cập nhật";
- const roomType = document.querySelector(".room-type");
- const adultNumber = document.querySelector(".adultNumber");
- const kidNumber = document.querySelector(".kidNumber");
- const roomInput = document.querySelector(".room-input");
-const convenientItem = document.querySelectorAll(".convenient-item");
-const expireTime = document.querySelector(".expireTime");
-const condition = document.querySelector(".condition");
-const price = document.querySelector(".price");
-console.log(updateRoomHotel.roomType && updateRoomHotel.roomType.typeId);
-roomType.value =updateRoomHotel && updateRoomHotel.typeId;
-adultNumber.value = updateRoomHotel.adultNumber;
-kidNumber.value = updateRoomHotel.kidNumber;
-roomInput.value = updateRoomHotel.roomNumber;
-price.value = updateRoomHotel.price;
-expireTime.value =
-  updateRoomHotel.Policy && updateRoomHotel.Policy.expireTime || "0";
-condition.value = updateRoomHotel.Policy&& updateRoomHotel.Policy.condition || "0";
-convenientItem.forEach(value=>{
-   updateRoomHotel.services && updateRoomHotel.services.length>0 && updateRoomHotel.services.forEach((e) => {
-      if (value.dataset.idservice === e.serviceId) {
-        value.querySelector("input").checked = true;
-      }
+function updateRoom () {
+    const steps = document.querySelectorAll(".step-item")[0];
+    const updateRoomHotel = JSON.parse(sessionStorage.getItem("updateRoom"));
+    const stepContent = document.querySelectorAll(".step-content");
+    stepContent[0].classList.remove("active");
+    stepContent[1].classList.add("active");
+    steps.style.display = "none";
+    const nextButton = document.querySelector(".next-button");
+    nextButton.innerText = "Cập nhật";
+    const roomType = document.querySelector(".room-type");
+    const adultNumber = document.querySelector(".adultNumber");
+    const kidNumber = document.querySelector(".kidNumber");
+    const roomInput = document.querySelector(".room-input");
+    const convenientItem = document.querySelectorAll(".convenient-item");
+    const expireTime = document.querySelector(".expireTime");
+    const condition = document.querySelector(".condition");
+    const price = document.querySelector(".price");
+    console.log(updateRoomHotel.roomType && updateRoomHotel.roomType.typeId);
+    roomType.value = updateRoomHotel && updateRoomHotel.typeId;
+    adultNumber.value = updateRoomHotel.adultNumber;
+    kidNumber.value = updateRoomHotel.kidNumber;
+    roomInput.value = updateRoomHotel.roomNumber;
+    price.value = updateRoomHotel.price;
+    expireTime.value =
+        updateRoomHotel.Policy && updateRoomHotel.Policy.expireTime || "0";
+    condition.value = updateRoomHotel.Policy && updateRoomHotel.Policy.condition || "0";
+    convenientItem.forEach(value => {
+        updateRoomHotel.services && updateRoomHotel.services.length > 0 && updateRoomHotel.services.forEach((e) => {
+            if (value.dataset.idservice === e.serviceId) {
+                value.querySelector("input").checked = true;
+            }
+        });
     });
-})
-nextButton.onclick = ()=>{
+    nextButton.onclick = () => {
 
- const basicInformationRoomComponent = document.querySelector(
-   "#basic-information-room"
- );
- const requestInputs = basicInformationRoomComponent.querySelectorAll(
-   "input.request-value, select.request-value"
- );
- basicInformationRoom = [...requestInputs].reduce((prev, next) => {
-   let value = next.value;
+        const basicInformationRoomComponent = document.querySelector(
+            "#basic-information-room"
+        );
+        const requestInputs = basicInformationRoomComponent.querySelectorAll(
+            "input.request-value, select.request-value"
+        );
+        basicInformationRoom = [...requestInputs].reduce((prev, next) => {
+            let value = next.value;
 
-   if (next.dataset.request.includes("Number")) {
-     value = Number(next.value);
-   }
+            if (next.dataset.request.includes("Number")) {
+                value = Number(next.value);
+            }
 
-   if (next.dataset.request === "policy") {
-     return {
-       ...prev,
-       [next.dataset.request]: {
-         ...prev[next.dataset.request],
-         [next.dataset.secondSubRequest]: value,
-       },
-     };
-   }
-   return {
-     ...prev,
-     [next.dataset.request]: value,
-   };
- }, {});
+            if (next.dataset.request === "policy") {
+                return {
+                    ...prev,
+                    [next.dataset.request]: {
+                        ...prev[next.dataset.request],
+                        [next.dataset.secondSubRequest]: value,
+                    },
+                };
+            }
+            return {
+                ...prev,
+                [next.dataset.request]: value,
+            };
+        }, {});
 
- const services = document.querySelectorAll(
-   ".convenient-item input[type=checkbox]"
- );
- services.forEach((service) => {
-   if (service.checked) {
-     basicInformationRoom.services = [
-       ...(basicInformationRoom.services || []),
-       service.value,
-     ];
-   }
- });
+        const services = document.querySelectorAll(
+            ".convenient-item input[type=checkbox]"
+        );
+        services.forEach((service) => {
+            if (service.checked) {
+                basicInformationRoom.services = [
+                    ...(basicInformationRoom.services || []),
+                    service.value,
+                ];
+            }
+        });
 
- const roomupt = { ...basicInformationRoom, typeId: roomType.value };
+        const roomupt = { ...basicInformationRoom, typeId: roomType.value };
 
-console.log(roomupt);
- fetch(
-   `http://localhost:1234/api/v1/owners/update_room_information/${updateRoomHotel.roomId}`,
-   {
-     method: "PUT",
-     headers: {
-       "Content-Type": "application/json",
-     },
-     body: JSON.stringify({
-       ...roomupt,
-       customerId: login.customerId,
-     }),
-   }
- )
-   .then((e) => e.json())
-   .then((data) => {
-     console.log(data);
-     if (data.code === 200) {
-       sessionStorage.setItem("updateRoom", JSON.stringify(data.data));
-       updateRoom();
-       alert("Cập nhật thành công!");
-     }
-   });
+        console.log(roomupt);
+        fetch(
+            `http://localhost:1234/api/v1/owners/update_room_information/${updateRoomHotel.roomId}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    ...roomupt,
+                    customerId: login.customerId,
+                }),
+            }
+        )
+            .then((e) => e.json())
+            .then((data) => {
+                console.log(data);
+                if (data.code === 200) {
+                    sessionStorage.setItem("updateRoom", JSON.stringify(data.data));
+                    updateRoom();
+                    alert("Cập nhật thành công!");
+                }
+            });
 
-}
+    };
 
 }
 handlePicture();
