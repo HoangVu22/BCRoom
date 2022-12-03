@@ -32,5 +32,6 @@ module.exports = {
     passwordRecovery: require('./customer/passwordRecovery'),
     resetPassword: require('./core/resetPassword'),
     getAllCustomers: require('./admin/getAllCustomers'),
-    changeCustomerStatus: require('./admin/changeCustomerStatus')
+    changeCustomerStatus: require('./admin/changeCustomerStatus'),
+    getAllCustomerWithName: require('./admin/getAllCustomerWithName')
 }
