@@ -444,7 +444,7 @@ const namepersoncontact = document.querySelector(".name-person-contact");
 namepersoncontact.innerHTML = ` <p>Tên người liên hệ :  <span><b>${login.username}</b></span></p>`;
 
 
-
+let oldImagesRequestValue = []
 function updateHotel () {
     const steps = document.querySelectorAll(".step-item")[1];
     const hotelUpdate = JSON.parse(sessionStorage.getItem("hotelUpdate"));
@@ -468,9 +468,21 @@ function updateHotel () {
                 </div>`;
     }) : [];
     hotelPictures = [...hotelPictures, ...imagesHotels];
-    picture.innerHTML = hotelPictures.join("");
+    picture.innerHTML += hotelPictures.join("");
+    const oldImagesOnUI = document.querySelectorAll('.image-detail')
+    oldImagesRequestValue = [...oldImagesOnUI].map(picture => ({
+        url: picture.dataset.url,
+        imageName: picture.dataset.name
+    }))
 
     update.onclick = () => {
+        const imagesOnUI = document.querySelectorAll('.image-detail')
+        const imagesRequestValue = [...imagesOnUI].map(picture => ({
+            url: picture.dataset.url,
+            imageName: picture.dataset.name
+        }))
+        const finalImagesRequestValue = [...oldImagesRequestValue, ...imagesRequestValue]
+
         const basicInformationHotelComponent = document.querySelector('#basic-information-hotel');
         const requestInputs = basicInformationHotelComponent.querySelectorAll('input.request-value, select.request-value');
         basicInformationHotel = [...requestInputs].reduce((prev, next) => {
@@ -500,7 +512,7 @@ function updateHotel () {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ ...basicInformationHotel, customerId: login.customerId, "hotelName": nameInput.value })
+                body: JSON.stringify({ ...basicInformationHotel, customerId: login.customerId, "hotelName": nameInput.value, images: finalImagesRequestValue })
             }
         ).then(e => e.json())
             .then(data => {
