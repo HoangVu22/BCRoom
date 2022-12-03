@@ -117,3 +117,16 @@ function renderCustomer (customerId, status, username, email, roleName, image) {
                     </td>
                 </tr>`
 }
+
+// ---------update account---------
+// var updateAccount = document.querySelector('.update-account')
+// var updateClose = document.querySelector('.update-close')
+// var listAction = document.querySelector('.list-action i a')
+
+// listAction.onclick = function () {
+//     updateAccount.style.display = 'block'
+// }
+
+// updateClose.onclick = function () {
+//     updateAccount.style.display = 'none'
+// }
