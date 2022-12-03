@@ -52,12 +52,38 @@ function fetchCustomers () {
                 const deleteAndActiveButtons = customersContainer.querySelectorAll('.list-content.list-action > i')
                 deleteAndActiveButtons.forEach(button => {
                     button.onclick = (e) => {
-                        const customerId = e.target.parentElement.dataset.customer
+                        const targetCustomerId = e.target.parentElement.dataset.customer
 
                         if (button.classList.contains('delete')) {
-                            fetch()
+                            fetch('http://localhost:1234/api/v1/admin/change_customer_status', {
+                                method: 'put',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ customerId: login.customerId, targetCustomerId, status: false })
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.code === 200) {
+                                        window.location.reload()
+                                        return false
+                                    }
+                                })
                         } else if (button.classList.contains('active')) {
-                            fetch()
+                            fetch('http://localhost:1234/api/v1/admin/change_customer_status', {
+                                method: 'put',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ customerId: login.customerId, targetCustomerId, status: true })
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.code === 200) {
+                                        window.location.reload()
+                                        return false
+                                    }
+                                })
                         }
                     }
                 })
@@ -87,7 +113,7 @@ function renderCustomer (customerId, status, username, email, roleName, image) {
                         <a href="">
                             <i class="fa-solid fa-pencil"></i>
                         </a>
-                        ${status ? '<i class="delete fa-solid fa-trash-can"></i>' : '<i class="active fa fa-check"></i>'}
+                        ${status ? '<i class="delete fa-solid fa-trash-can"></i>' : '<i style="color: green"class="active fa fa-check"></i>'}
                     </td>
                 </tr>`
 }

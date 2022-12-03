@@ -31,5 +31,6 @@ module.exports = {
     countNewBookingInYearWithMonth: require('./admin/countNewBookingInYearWithMonth'),
     passwordRecovery: require('./customer/passwordRecovery'),
     resetPassword: require('./core/resetPassword'),
-    getAllCustomers: require('./admin/getAllCustomers')
+    getAllCustomers: require('./admin/getAllCustomers'),
+    changeCustomerStatus: require('./admin/changeCustomerStatus')
 }
