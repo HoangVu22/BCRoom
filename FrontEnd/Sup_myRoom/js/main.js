@@ -72,10 +72,10 @@ function renderRoom(data) {
                         <p>${data.roomId}</p>
                     </td>
                     <td style="display: flex; justify-content: center" class="list-content list-action">
-                        <div>
+                        <div data-value="${data.roomId}">
                             <i data-value="${data.roomId}" class="fa-solid fa-pencil modify"></i>
                         </div>
-                        <div>
+                        <div data-value="${data.roomId}">
                             <i data-value="${data.roomId}" class="fa-solid fa-trash-can delete"></i>
                         </div>
                     </td>
