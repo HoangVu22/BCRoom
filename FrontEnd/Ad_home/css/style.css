@@ -581,7 +581,7 @@ td {
 .update-account {
     position: fixed;
     width: 40%;
-    height: 400px;
+    height: 500px;
     background-color: #fff;
     top: 54%;
     z-index: 1000;
@@ -613,7 +613,7 @@ td {
     box-shadow: 0px 0px 3px #0071c2;
 }
 
-.update-account button {
+.update-account .update-btn button {
     padding: 10px 20px;
     font-size: 16px;
     background-color: var(--main-color);
@@ -622,7 +622,12 @@ td {
     border: 1px solid var(--main-color);
     border-radius: 8px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 30px;
+}
+
+.update-btn {
+    display: flex;
+    justify-content: center;
 }
 
 .update-account button:hover {
@@ -637,4 +642,31 @@ td {
     font-size: 22px;
     cursor: pointer;
     opacity: 1;
+}
+
+.choose-role {
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.role-account {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.role-customer, .role-admin {
+    display: flex;
+    border: 1px solid #b4b2b2;
+    width: 30%;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.role-customer {
+    margin-right: 50px;
+}
+
+.role-customer input, .role-admin input {
+    margin-right: 10px;
 }

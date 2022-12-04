@@ -82,35 +82,64 @@ function handleIconLight() {
 }
 
 // -------------Search-------------------
-const inputSearch = document.querySelector(".input-search");
-const autoBox = document.querySelector(".autobox");
+const inputSearch = document.querySelector('.input-search');
+const searchBtn = document.querySelector('.search-btn')
+const autoBox = document.querySelector('.autobox');
 inputSearch.onkeyup = (e) => {
-  // console.log(e.target.value);
-  autoBox.style.paddingTop = "4px";
-  let checkData = e.target.value;
-  let dataArray = [];
-  if (checkData) {
-    dataArray = recomentList.filter((data) => {
-      return data.toLocaleLowerCase().startsWith(checkData.toLocaleLowerCase());
-    });
-    dataArray = dataArray.map((data) => {
-      return (data = "<li>" + data + "</li>");
-    });
-    autoBox.classList.add("active");
-    showAdress(dataArray);
-    // console.log(dataArray);
-    let liItem = autoBox.querySelectorAll("li");
-    for (let i = 0; i < liItem.length; i++) {
-      liItem[i].addEventListener("click", function () {
-        inputSearch.value = liItem[i].innerHTML;
-        autoBox.classList.remove("active");
-      });
+    if (e.key === "Enter" && e.keyCode === 13) {
+        if(e.target.value)
+            handleSearch(e.target)
+        else 
+            alert("Vui lòng nhập thông tin cần tìm kiếm!")
     }
-  } else {
-    autoBox.classList.remove("active");
-    autoBox.style.paddingTop = "0px";
-  }
+    autoBox.style.paddingTop = "4px";
+    let checkData = e.target.value;
+    let dataArray = [];
+    if (checkData) {
+        dataArray = recomentList.filter((data) => {
+            return data.toLocaleLowerCase().startsWith(checkData.toLocaleLowerCase());
+        });
+        dataArray = dataArray.map((data) => {
+            return data = '<li>' + data + '</li>';
+        });
+        autoBox.classList.add('active');
+        showAdress(dataArray);
+        let liItem = autoBox.querySelectorAll('li');
+        for (let i = 0; i < liItem.length; i++) {
+            liItem[i].addEventListener('click', function () {
+                inputSearch.value = liItem[i].innerHTML;
+                autoBox.classList.remove('active');
+            });
+        }
+    }
+    else {
+        autoBox.classList.remove('active');
+        autoBox.style.paddingTop = "0px";
+    }
 };
+searchBtn.onclick = () => {
+    if(inputSearch.value)
+        handleSearch(inputSearch)
+    else
+        alert("Vui lòng nhập thông tin cần tìm kiếm!")
+}
+
+function handleSearch(element) {
+    const place = element.value;
+        localStorage.setItem("place", JSON.stringify(place));
+        fetch(`http://localhost:1234/api/v1/core/search_hotel_by_address_or_name/?q=${place}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.code === 200) {
+                    localStorage.setItem("hotels", JSON.stringify([...data.data]));
+                    window.location.href = "http://localhost:5500/FrontEnd/search/index.html";
+                }
+            });
+}
+
+
+
+
 function showAdress(list) {
   let listData;
   if (!list.length) {

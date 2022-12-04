@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -539,8 +540,10 @@ ul {
     justify-content: space-around;
     background-color: rgba(221, 221, 221, 0.5);
     padding: 14px 0;
-    width: 100%;
+    width: 60%;
     border-radius: 5px;
+    padding: 15px 20px;
+    margin: 0 auto;
 }
 
 .search-content-item {
@@ -551,6 +554,23 @@ ul {
     align-items: center;
     border-radius: 5px;
     position: relative;
+}
+
+.search-content-item:first-child {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.search-content-item:nth-child(2),
+.search-content-item:nth-child(3),
+.search-content-item:nth-child(4) {
+    display: none;
+}
+
+
+.search-content-item a {
+    color: white;
+    padding: 10px 25px;
 }
 
 .search-content-item input {

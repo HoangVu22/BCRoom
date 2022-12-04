@@ -1,247 +1,311 @@
 // ---------header------------
-var header = document.querySelector('header');
-var header_logo = document.querySelector('.header-logo h1');
-var headerNavIcon = document.querySelector('.header-nav-icon');
+var header = document.querySelector("header");
+var header_logo = document.querySelector(".header-logo h1");
+var headerNavIcon = document.querySelector(".header-nav-icon");
 window.onscroll = function () {
-    myFunction();
+  myFunction();
 };
 
-var navs = document.querySelectorAll('.list_city > li > a');
-function myFunction () {
-    var header = document.querySelector('header');
-    if (window.pageYOffset > 0) {
-        header_logo.style.color = '#f44336';
-        header.style.backgroundColor = '#fff';
-        navs.forEach((item, index) => {
-            if (index < navs.length) {
-                item.style.color = 'black';
-                headerNavIcon.style.color = 'black';
-                if (headerNavIcon.style.borderColor !== 'rgb(244, 67, 54)') {
-                    headerNavIcon.style.borderColor = 'black';
-                }
-                hoverEvent(item.style.color);
-            }
-        });
-    }
-    else {
-        header_logo.style.color = '#fff';
-        header.style.backgroundColor = 'transparent';
-        navs.forEach((item, index) => {
-            if (index < navs.length) {
-                item.style.color = 'white';
-                headerNavIcon.style.color = 'white';
-                if (headerNavIcon.style.borderColor !== 'rgb(244, 67, 54)') {
-                    headerNavIcon.style.borderColor = 'white';
-                }
-                hoverEvent(item.style.color);
-            }
-        });
-    }
-}
-function hoverEvent (color) {
+var navs = document.querySelectorAll(".list_city > li > a");
+function myFunction() {
+  var header = document.querySelector("header");
+  if (window.pageYOffset > 0) {
+    header_logo.style.color = "#f44336";
+    header.style.backgroundColor = "#fff";
     navs.forEach((item, index) => {
-        if (index < navs.length - 1) {
-            item.onmouseover = function () {
-                this.style.color = "#f44336";
-            };
-            item.onmouseleave = function () {
-                this.style.color = color;
-            };
+      if (index < navs.length) {
+        item.style.color = "black";
+        headerNavIcon.style.color = "black";
+        if (headerNavIcon.style.borderColor !== "rgb(244, 67, 54)") {
+          headerNavIcon.style.borderColor = "black";
         }
+        hoverEvent(item.style.color);
+      }
     });
+  } else {
+    header_logo.style.color = "#fff";
+    header.style.backgroundColor = "transparent";
+    navs.forEach((item, index) => {
+      if (index < navs.length) {
+        item.style.color = "white";
+        headerNavIcon.style.color = "white";
+        if (headerNavIcon.style.borderColor !== "rgb(244, 67, 54)") {
+          headerNavIcon.style.borderColor = "white";
+        }
+        hoverEvent(item.style.color);
+      }
+    });
+  }
+}
+function hoverEvent(color) {
+  navs.forEach((item, index) => {
+    if (index < navs.length - 1) {
+      item.onmouseover = function () {
+        this.style.color = "#f44336";
+      };
+      item.onmouseleave = function () {
+        this.style.color = color;
+      };
+    }
+  });
 }
 
 // -----------------------------
-var headerNavForm = document.querySelector('.header-nav-form');
-var headerForm = document.querySelector('.header-form');
-var headerFormLogin = headerNavForm.querySelector('.header-form-login');
-var headerFormLogout = document.querySelector('.header-form-logout');
+var headerNavForm = document.querySelector(".header-nav-form");
+var headerForm = document.querySelector(".header-form");
+var headerFormLogin = headerNavForm.querySelector(".header-form-login");
+var headerFormLogout = document.querySelector(".header-form-logout");
 var login = window.localStorage.getItem("login");
 
 headerNavForm.onclick = function () {
-    if (headerForm.style.display === "none") {
-        headerForm.style.display = "block";
-    }
-    else {
-        headerForm.style.display = "none";
-    }
+  if (headerForm.style.display === "none") {
+    headerForm.style.display = "block";
+  } else {
+    headerForm.style.display = "none";
+  }
 
-    handleIconLight();
+  handleIconLight();
 };
 
-function handleIconLight () {
-    var iconList = headerNavIcon.querySelectorAll('i');
-    iconList.forEach((item) => {
-        if (headerForm.style.display !== "none") {
-            item.style.color = "#f44336";
-            headerNavIcon.style.borderColor = "#f44336";
-        }
-        else {
-            item.style.color = "unset";
-            headerNavIcon.style.borderColor = "unset";
-        }
-    });
+function handleIconLight() {
+  var iconList = headerNavIcon.querySelectorAll("i");
+  iconList.forEach((item) => {
+    if (headerForm.style.display !== "none") {
+      item.style.color = "#f44336";
+      headerNavIcon.style.borderColor = "#f44336";
+    } else {
+      item.style.color = "unset";
+      headerNavIcon.style.borderColor = "unset";
+    }
+  });
 }
 
 // -------------Search-------------------
-const inputSearch = document.querySelector('.input-search');
-const searchBtn = document.querySelector('.search-btn')
-const autoBox = document.querySelector('.autobox');
+const inputSearch = document.querySelector(".input-search");
+const searchBtn = document.querySelector(".search-btn");
+const autoBox = document.querySelector(".autobox");
 inputSearch.onkeyup = (e) => {
-    if (e.key === "Enter" && e.keyCode === 13) {
-        if(e.target.value)
-            handleSearch(e.target)
-        else 
-            alert("Vui lòng nhập thông tin cần tìm kiếm!")
+  if (e.key === "Enter" && e.keyCode === 13) {
+    if (e.target.value) handleSearch(e.target);
+    else alert("Vui lòng nhập thông tin cần tìm kiếm!");
+  }
+  autoBox.style.paddingTop = "4px";
+  let checkData = e.target.value;
+  let dataArray = [];
+  if (checkData) {
+    dataArray = recomentList.filter((data) => {
+      return data.toLocaleLowerCase().startsWith(checkData.toLocaleLowerCase());
+    });
+    dataArray = dataArray.map((data) => {
+      return (data = "<li>" + data + "</li>");
+    });
+    autoBox.classList.add("active");
+    showAdress(dataArray);
+    let liItem = autoBox.querySelectorAll("li");
+    for (let i = 0; i < liItem.length; i++) {
+      liItem[i].addEventListener("click", function () {
+        inputSearch.value = liItem[i].innerHTML;
+        autoBox.classList.remove("active");
+      });
     }
-    autoBox.style.paddingTop = "4px";
-    let checkData = e.target.value;
-    let dataArray = [];
-    if (checkData) {
-        dataArray = recomentList.filter((data) => {
-            return data.toLocaleLowerCase().startsWith(checkData.toLocaleLowerCase());
-        });
-        dataArray = dataArray.map((data) => {
-            return data = '<li>' + data + '</li>';
-        });
-        autoBox.classList.add('active');
-        showAdress(dataArray);
-        let liItem = autoBox.querySelectorAll('li');
-        for (let i = 0; i < liItem.length; i++) {
-            liItem[i].addEventListener('click', function () {
-                inputSearch.value = liItem[i].innerHTML;
-                autoBox.classList.remove('active');
-            });
-        }
-    }
-    else {
-        autoBox.classList.remove('active');
-        autoBox.style.paddingTop = "0px";
-    }
+  } else {
+    autoBox.classList.remove("active");
+    autoBox.style.paddingTop = "0px";
+  }
 };
 searchBtn.onclick = () => {
-    if(inputSearch.value)
-        handleSearch(inputSearch)
-    else
-        alert("Vui lòng nhập thông tin cần tìm kiếm!")
-}
+  if (inputSearch.value) handleSearch(inputSearch);
+  else alert("Vui lòng nhập thông tin cần tìm kiếm!");
+};
 
 function handleSearch(element) {
-    const place = element.value;
-        localStorage.setItem("place", JSON.stringify(place));
-        fetch(`http://localhost:1234/api/v1/core/search_hotel_by_address_or_name/?q=${place}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data.code === 200) {
-                    localStorage.setItem("hotels", JSON.stringify([...data.data]));
-                    window.location.href = "http://localhost:5500/FrontEnd/search/index.html";
-                }
-            });
+  const place = element.value;
+  localStorage.setItem("place", JSON.stringify(place));
+  fetch(
+    `http://localhost:1234/api/v1/core/search_hotel_by_address_or_name/?q=${place}`
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.code === 200) {
+        localStorage.setItem("hotels", JSON.stringify([...data.data]));
+        window.location.href =
+          "http://localhost:5500/FrontEnd/search/index.html";
+      }
+    });
 }
 
+function renderStar(x) {
+  const listImg = [];
 
+  for (let i = 0; i < x; i++) {
+    listImg.push(`<i class="tab-rooms-star-rating fa-solid fa-star"></i>`);
+  }
+  return listImg;
+}
 
+function showRoomOutStanding() {
+  const outStanding = document.querySelector(".tabs-container .tabs-content");
+  fetch(`http://localhost:1234/api/v1/core/outstanding_hotels`)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.code === 200) {
+        const listHotel = data.data.map((item) => {
+          return `<div data-hotel=${item.hotelId} class="hotel_item" href="#">
+              <div class="tab-rooms">
+                  <div class="tab-rooms-img" style="background-image: url(${
+                    item.Images[0].url
+                  })">
+                  </div>
+                  <div class="tab-rooms-content">
+                  <h4 class="tab-rooms-name" title="${item.hotelName}">${item.hotelName}</h4>
+                  <div class="tab-rooms-star">
+                      ${renderStar(item.starNumber).join("")}
+                  </div>
+                  <div  class="tab-rooms-address">
+                      <div class="tab-rooms-address-icon">
+                          <i class="fa-solid fa-location-dot"></i>
+                      </div>
+                      <p title="${item.address}">${item.address}</p>
+                  </div>
+                  </div>
+              </div>
+          </div>`;
+        });
 
+        outStanding.innerHTML = listHotel.join("");
+        const listRoom = document.querySelectorAll(".hotel_item");
+        [...listRoom].forEach((value) => {
+          value.onclick = (e) => {
+            const login = JSON.parse(localStorage.getItem("login"));
+            fetch(
+              `http://localhost:1234/api/v1/rooms/by_hotel_id/${value.dataset.hotel}`,
+              {
+                method: "post",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ customerId: login.customerId }),
+              }
+            )
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.code === 200) {
+                  console.log(data);
+                  console.log(value.dataset.hotel);
+                  localStorage.setItem(
+                    "targetHotelId",
+                    JSON.stringify(value.dataset.hotel)
+                  );
+                  localStorage.setItem("rooms", JSON.stringify(data.data));
+                  localStorage.setItem(
+                    "hotelRoom",
+                    JSON.stringify(value.dataset.hotel)
+                  );
+                  window.location.href =
+                    "http://localhost:5500/FrontEnd/roomDetails/index.html";
+                }
+              });
+          };
+        });
+      }
+    });
+}
 
+showRoomOutStanding();
 
-function showAdress (list) {
-    let listData;
-    if (!list.length) {
-        listData = '<li>' + inputSearch.value + '</li>';
-    }
-    else {
-        listData = list.join('');
-    }
-    autoBox.innerHTML = listData;
+function showAdress(list) {
+  let listData;
+  if (!list.length) {
+    listData = "<li>" + inputSearch.value + "</li>";
+  } else {
+    listData = list.join("");
+  }
+  autoBox.innerHTML = listData;
 }
 let recomentList = [
-    'Sơn Trà',
-    'Ngũ Hành Sơn',
-    'Hải Châu',
-    'Thanh Khê',
-    'Liên Chiểu',
-    'Cẩm Lệ',
-    'Hòa Vang',
-    'Hoàng Sa',
+  "Sơn Trà",
+  "Ngũ Hành Sơn",
+  "Hải Châu",
+  "Thanh Khê",
+  "Liên Chiểu",
+  "Cẩm Lệ",
+  "Hòa Vang",
+  "Hoàng Sa",
 ];
 
 // -------------Number of peolpe-------------
-const inputNumber = document.querySelector('.number-people');
-const numberBox = document.querySelector('.number-box');
-const numberClose = document.querySelector('.number-close');
+const inputNumber = document.querySelector(".number-people");
+const numberBox = document.querySelector(".number-box");
+const numberClose = document.querySelector(".number-close");
 
-inputNumber.addEventListener('click', function () {
-    numberBox.classList.add('active');
+inputNumber.addEventListener("click", function () {
+  numberBox.classList.add("active");
 });
-numberClose.addEventListener('click', function () {
-    numberBox.classList.remove('active');
+numberClose.addEventListener("click", function () {
+  numberBox.classList.remove("active");
 });
 
-const adultPlus = document.querySelector('.adultPlus');
-const adultMinus = document.querySelector('.adultMinus');
-let adultValue = document.querySelector('.adult span');
+const adultPlus = document.querySelector(".adultPlus");
+const adultMinus = document.querySelector(".adultMinus");
+let adultValue = document.querySelector(".adult span");
 let i = 0;
-adultPlus.addEventListener('click', function () {
-    i = i + 1;
+adultPlus.addEventListener("click", function () {
+  i = i + 1;
+  adultValue.innerHTML = i;
+  totalNumber();
+});
+adultMinus.addEventListener("click", function () {
+  if (i <= 0) {
+    i = 0;
+  } else {
+    i = i - 1;
     adultValue.innerHTML = i;
     totalNumber();
-});
-adultMinus.addEventListener('click', function () {
-    if (i <= 0) {
-        i = 0;
-    }
-    else {
-        i = i - 1;
-        adultValue.innerHTML = i;
-        totalNumber();
-    }
+  }
 });
 
-const childPlus = document.querySelector('.childPlus');
-const childMinus = document.querySelector('.childMinus');
-let childValue = document.querySelector('.child span');
+const childPlus = document.querySelector(".childPlus");
+const childMinus = document.querySelector(".childMinus");
+let childValue = document.querySelector(".child span");
 let j = 0;
-childPlus.addEventListener('click', function () {
-    j = j + 1;
+childPlus.addEventListener("click", function () {
+  j = j + 1;
+  childValue.innerHTML = j;
+  totalNumber();
+});
+childMinus.addEventListener("click", function () {
+  if (j <= 0) {
+    j = 0;
+  } else {
+    j = j - 1;
     childValue.innerHTML = j;
     totalNumber();
-});
-childMinus.addEventListener('click', function () {
-    if (j <= 0) {
-        j = 0;
-    }
-    else {
-        j = j - 1;
-        childValue.innerHTML = j;
-        totalNumber();
-    }
+  }
 });
 
-const roomPlus = document.querySelector('.roomPlus');
-const roomMinus = document.querySelector('.roomMinus');
-let roomValue = document.querySelector('.room span');
+const roomPlus = document.querySelector(".roomPlus");
+const roomMinus = document.querySelector(".roomMinus");
+let roomValue = document.querySelector(".room span");
 let k = 0;
-roomPlus.addEventListener('click', function () {
-    k = k + 1;
+roomPlus.addEventListener("click", function () {
+  k = k + 1;
+  roomValue.innerHTML = k;
+  totalNumber();
+});
+roomMinus.addEventListener("click", function () {
+  if (k <= 0) {
+    k = 0;
+  } else {
+    k = k - 1;
     roomValue.innerHTML = k;
     totalNumber();
-});
-roomMinus.addEventListener('click', function () {
-    if (k <= 0) {
-        k = 0;
-    }
-    else {
-        k = k - 1;
-        roomValue.innerHTML = k;
-        totalNumber();
-    }
+  }
 });
 
-function totalNumber () {
-    total = i + j + k;
-    inputNumber.value = i + j + " Người, " + k + " phòng";
+function totalNumber() {
+  total = i + j + k;
+  inputNumber.value = i + j + " Người, " + k + " phòng";
 }
-
 
 // ---------------tabs-district------------
 // const tabItem = document.querySelectorAll('.tab-item');
@@ -271,18 +335,19 @@ function totalNumber () {
 // --------------------
 
 const items = document.querySelectorAll(".items > div");
-[...items].forEach(value => {
-    value.onclick = (e) => {
-        e.preventDefault();
-        const place = e.target.dataset.place;
-        localStorage.setItem("place", JSON.stringify(place));
-        fetch(`http://localhost:1234/api/v1/hotels/${place}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data.code === 200) {
-                    localStorage.setItem("hotels", JSON.stringify([...data.data]));
-                    window.location.href = "http://localhost:5500/FrontEnd/search/index.html";
-                }
-            });
-    };
+[...items].forEach((value) => {
+  value.onclick = (e) => {
+    e.preventDefault();
+    const place = e.target.dataset.place;
+    localStorage.setItem("place", JSON.stringify(place));
+    fetch(`http://localhost:1234/api/v1/hotels/${place}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.code === 200) {
+          localStorage.setItem("hotels", JSON.stringify([...data.data]));
+          window.location.href =
+            "http://localhost:5500/FrontEnd/search/index.html";
+        }
+      });
+  };
 });
