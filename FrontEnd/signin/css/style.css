@@ -378,6 +378,31 @@ ul {
     display: flex;
     justify-content: center;
 }
+
+.form-login {
+    display: flex;
+    align-items: center;
+}
+
+.form-login-img {
+    width: 50%;
+}
+
+.form-login-img p {
+    margin-top: 70px;
+    font-size: 35px;
+    font-weight: bold;
+    margin-left: 180px;
+    color: var(--main-color);
+    font-family: cursive;
+}
+
+.form-login-img img {
+    width: 70%;
+    margin-top: 20px;
+    margin-right: 200px;
+}
+
 .form {
     width: 360px;
     min-height: 100px;
