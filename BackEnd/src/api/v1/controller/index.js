@@ -33,5 +33,6 @@ module.exports = {
     resetPassword: require('./core/resetPassword'),
     getAllCustomers: require('./admin/getAllCustomers'),
     changeCustomerStatus: require('./admin/changeCustomerStatus'),
-    getAllCustomerWithName: require('./admin/getAllCustomerWithName')
+    getAllCustomerWithName: require('./admin/getAllCustomerWithName'),
+    searchHotelByAddressOrName: require('./core/searchHotelByAddressOrName')
 }
