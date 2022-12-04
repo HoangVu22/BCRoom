@@ -6,6 +6,7 @@ router.post('/new_room', isLogin, controllers.createNewRoomInHotel)
 router.post('/booking', isLogin, controllers.bookingRoom)
 router.get('/reset_password/:password/customer/:customerId', controllers.resetPassword)
 router.get('/search_hotel_by_address_or_name', controllers.searchHotelByAddressOrName)
+router.get('/outstanding_hotels', controllers.outStandingHotels)
 
 module.exports = {
     entry: '/core',
