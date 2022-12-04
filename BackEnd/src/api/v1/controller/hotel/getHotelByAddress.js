@@ -11,7 +11,7 @@ module.exports = async (request, response) => {
                 address: {
                     [Op.like]: '%' + address + '%'
                 },
-                status: true
+                status: true,
             },
             include: {
                 model: Image,
@@ -30,7 +30,8 @@ module.exports = async (request, response) => {
             const countRoomOfHotelNoBooking = await Room.count({
                 where: {
                     hotelId: hotel.hotelId,
-                    status: true
+                    status: true,
+                    isBooking: false 
                 }
             })
             return {

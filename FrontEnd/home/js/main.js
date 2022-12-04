@@ -344,9 +344,9 @@ const items = document.querySelectorAll(".items > div");
       .then((res) => res.json())
       .then((data) => {
         if (data.code === 200) {
+            console.log(data.data)
           localStorage.setItem("hotels", JSON.stringify([...data.data]));
-          window.location.href =
-            "http://localhost:5500/FrontEnd/search/index.html";
+          window.location.href = "http://localhost:5500/FrontEnd/search/index.html";
         }
       });
   };
