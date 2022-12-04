@@ -135,11 +135,14 @@ header {
 
 .header-logo {
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .header-logo p {
-    position: absolute;
+    /* position: absolute; */
     top: 80%;
+    padding-bottom: 5px;
 }
 
 .header-logo h1 {
@@ -149,7 +152,6 @@ header {
 .header-content {
     display: flex;
     justify-content: space-between;
-    padding: 12px 0;
     align-items: center;
 }
 
@@ -546,8 +548,10 @@ ul {
     justify-content: space-around;
     background-color: rgba(221, 221, 221, 0.5);
     padding: 14px 0;
-    width: 100%;
+    width: 60%;
     border-radius: 5px;
+    padding: 15px 20px;
+    margin: 0 auto;
 }
 
 .search-content-item {
@@ -559,6 +563,18 @@ ul {
     border-radius: 5px;
     position: relative;
 }
+
+.search-content-item:first-child {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.search-content-item:nth-child(2),
+.search-content-item:nth-child(3),
+.search-content-item:nth-child(4) {
+    display: none;
+}
+
 
 .search-content-item a {
     color: white;

@@ -85,8 +85,15 @@ function handleIconLight () {
 
 // -------------Search-------------------
 const inputSearch = document.querySelector('.input-search');
+const searchBtn = document.querySelector('.search-btn')
 const autoBox = document.querySelector('.autobox');
 inputSearch.onkeyup = (e) => {
+    if (e.key === "Enter" && e.keyCode === 13) {
+        if(e.target.value)
+            handleSearch(e.target)
+        else 
+            alert("Vui lòng nhập thông tin cần tìm kiếm!")
+    }
     autoBox.style.paddingTop = "4px";
     let checkData = e.target.value;
     let dataArray = [];
@@ -112,6 +119,31 @@ inputSearch.onkeyup = (e) => {
         autoBox.style.paddingTop = "0px";
     }
 };
+searchBtn.onclick = () => {
+    if(inputSearch.value)
+        handleSearch(inputSearch)
+    else
+        alert("Vui lòng nhập thông tin cần tìm kiếm!")
+}
+
+function handleSearch(element) {
+    const place = element.value;
+        localStorage.setItem("place", JSON.stringify(place));
+        fetch(`http://localhost:1234/api/v1/core/search_hotel_by_address_or_name/?q=${place}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.code === 200) {
+                    localStorage.setItem("hotels", JSON.stringify([...data.data]));
+                    window.location.href = "http://localhost:5500/FrontEnd/search/index.html";
+                }
+            });
+}
+
+
+
+
+
+
 function showAdress (list) {
     let listData;
     if (!list.length) {
@@ -212,30 +244,31 @@ function totalNumber () {
 
 
 // ---------------tabs-district------------
-const tabItem = document.querySelectorAll('.tab-item');
-const tabContainer = document.querySelectorAll('.tabs-container');
-const itemActive = document.querySelector('.tab-item.active');
-const line = document.querySelector('.tabs-district .line');
+// const tabItem = document.querySelectorAll('.tab-item');
+// const tabContainer = document.querySelectorAll('.tabs-container');
+// const itemActive = document.querySelector('.tab-item.active');
+// const line = document.querySelector('.tabs-district .line');
 
-requestIdleCallback(function () {
-    line.style.left = itemActive.offsetLeft + "px";
-    line.style.width = itemActive.offsetWidth + "px";
-});
+// requestIdleCallback(function () {
+//     line.style.left = itemActive.offsetLeft + "px";
+//     line.style.width = itemActive.offsetWidth + "px";
+// });
 
-tabItem.forEach((tab, index) => {
-    const room = tabContainer[index]; // mỗi lần click vào tab thì lấy ra thằng room tương ứng
+// tabItem.forEach((tab, index) => {
+//     const room = tabContainer[index]; // mỗi lần click vào tab thì lấy ra thằng room tương ứng
 
-    tab.onclick = function () {
-        document.querySelector('.tab-item.active').classList.remove("active");
-        document.querySelector('.tabs-container.active').classList.remove("active");
+//     tab.onclick = function () {
+//         document.querySelector('.tab-item.active').classList.remove("active");
+//         document.querySelector('.tabs-container.active').classList.remove("active");
 
-        line.style.left = this.offsetLeft + "px";
-        line.style.width = this.offsetWidth + "px";
+//         line.style.left = this.offsetLeft + "px";
+//         line.style.width = this.offsetWidth + "px";
 
-        this.classList.add("active");
-        room.classList.add("active");
-    };
-});
+//         this.classList.add("active");
+//         room.classList.add("active");
+//     };
+// });
+// --------------------
 
 const items = document.querySelectorAll(".items > div");
 [...items].forEach(value => {
