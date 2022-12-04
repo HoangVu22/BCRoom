@@ -35,5 +35,6 @@ module.exports = {
     changeCustomerStatus: require('./admin/changeCustomerStatus'),
     getAllCustomerWithName: require('./admin/getAllCustomerWithName'),
     searchHotelByAddressOrName: require('./core/searchHotelByAddressOrName'),
-    outStandingHotels: require('./core/outStandingHotels')
+    outStandingHotels: require('./core/outStandingHotels'),
+    bookingHistory: require('./customer/bookingHistory')
 }
