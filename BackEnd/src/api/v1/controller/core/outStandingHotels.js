@@ -1,4 +1,4 @@
-const { Hotel } = require('../../../../../models')
+const { Hotel, Image } = require('../../../../../models')
 
 module.exports = async (request, response) => {
     try {
@@ -9,7 +9,10 @@ module.exports = async (request, response) => {
             order: [
                 ['viewNumber', 'desc']
             ],
-            limit: 8 
+            limit: 8,
+            include: {
+                model: Image
+            }
         })
 
         return response.status(200).json({
