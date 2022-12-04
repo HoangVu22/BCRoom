@@ -85,8 +85,61 @@ accountsidebarlink.forEach((value, index) => {
             });
             profilegenaral[index].style.display = "block";
         }
+
+        if (value.classList.contains('booking-sidebar')) {
+            fetchBookingsHistory()
+        }
     };
 });
+
+function renderBooking(data) {
+    const dateFrom = new Date(data.dateFrom)
+    const dateTo = new Date(data.dateTo)
+
+    return `<tr data-booking="${data.bookingId}" class="list-residence">
+                                <td class="list-content list-status">
+                                    <span>${data.hotelName}</span> <br>
+                                    <span>${data.roomNumber}</span> <br>
+                                    <span>${data.roomType}</span>
+                                </td>
+                                <td class="list-content list-info"> 
+                                    <span>${dateFrom.getDate()}-${dateFrom.getMonth() + 1}-${dateFrom.getFullYear()}</span>
+                                </td>
+                                <td class="list-content list-id">
+                                    <span>${dateTo.getDate()}-${dateTo.getMonth() + 1}-${dateTo.getFullYear()}</span>
+                                </td>
+                                <td class="list-content list-price">
+                                    <span>${data.totalPrice} VNĐ</span>
+                                </td>
+                                <td class="list-content list-wait">
+                                    <span>${data.status ? 'Khả dụng' : 'Đã hủy'}</span>
+                                </td>
+                                <td class="list-content list-cancel">
+                                    <i data-booking="${data.bookingId}" class="fa-solid fa-trash-can"></i>
+                                </td>
+                            </tr>`
+}
+
+function fetchBookingsHistory() {
+    fetch('http://localhost:1234/api/v1/customers/booking_history', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ customerId: login.customerId })
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200) {
+                const bookingsHistoryContainer = document.querySelector('table.container-nav')
+                const bookingsResponse = data.data
+                
+                bookingsResponse.forEach(booking => {
+                    bookingsHistoryContainer.innerHTML += renderBooking(booking)
+                })
+            }
+        })
+}
 
 function autoLoad() {
     const login = JSON.parse(localStorage.getItem('login'))
@@ -340,6 +393,3 @@ function handleRenderVoucher () {
   <i class="fa-solid fa-xmark"></i>
 </div>`;
 }
-
-
-// ---------------------------------------------------
