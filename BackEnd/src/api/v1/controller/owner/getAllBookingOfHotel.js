@@ -50,7 +50,8 @@ module.exports = async (request, response) => {
                         address: room.Booking.Customer.address,
                         phone: room.Booking.Customer.phone,
                         billId: room.Booking.Bill.billId,
-                        totalPrice: room.Booking.Bill.totalPrice
+                        totalPrice: room.Booking.Bill.totalPrice,
+                        isPaid: room.Booking.isPaid
                     })
                 }
             })

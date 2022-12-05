@@ -32,7 +32,8 @@ module.exports = async (request, response) => {
                 dateTo: booking.dateTo,
                 status: booking.status,
                 totalPrice: booking.Bill.totalPrice,
-                roomType: booking.Room.RoomType.typeName
+                roomType: booking.Room.RoomType.typeName,
+                isPaid: booking.isPaid
             }
         })
 
