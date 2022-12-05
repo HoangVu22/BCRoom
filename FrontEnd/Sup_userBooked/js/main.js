@@ -3,97 +3,120 @@ var headerNavForm = document.querySelector(".header-nav-form");
 var headerForm = document.querySelector(".header-form");
 var headerFormLogin = headerNavForm.querySelector(".header-form-login");
 var headerFormLogout = document.querySelector(".header-form-logout");
-var headerNavIcon = document.querySelector('.header-nav-icon')
-var login = JSON.parse(localStorage.getItem('login')) 
+var headerNavIcon = document.querySelector('.header-nav-icon');
+var login = JSON.parse(localStorage.getItem('login'));
 
 headerNavForm.onclick = function () {
-  if (headerForm.style.display === "none") headerForm.style.display = "block";
-  else {
-    headerForm.style.display = "none";
-  }
+    if (headerForm.style.display === "none") headerForm.style.display = "block";
+    else {
+        headerForm.style.display = "none";
+    }
 
-  handleIconLight();
+    handleIconLight();
 };
 
-function handleIconLight() {
-  var iconList = headerNavIcon.querySelectorAll("i");
-  iconList.forEach((item) => {
-    if (
-      (headerFormLogout && headerFormLogout.style.display !== "none") ||
-      (headerFormLogin && headerFormLogin.style.display !== "none")
-    ) {
-      item.style.color = "#f44336";
-      headerNavIcon.style.borderColor = "#f44336";
-    } else {
-      item.style.color = "unset";
-      headerNavIcon.style.borderColor = "unset";
-    }
-  });
+function handleIconLight () {
+    var iconList = headerNavIcon.querySelectorAll("i");
+    iconList.forEach((item) => {
+        if (
+            (headerFormLogout && headerFormLogout.style.display !== "none") ||
+            (headerFormLogin && headerFormLogin.style.display !== "none")
+        ) {
+            item.style.color = "#f44336";
+            headerNavIcon.style.borderColor = "#f44336";
+        } else {
+            item.style.color = "unset";
+            headerNavIcon.style.borderColor = "unset";
+        }
+    });
 }
 
 // ----------------searchResidence-----------
 const searchResidence = () => {
-  const searchInput = document.getElementById('search').value.toUpperCase()
-  const table = document.querySelector('.container-nav')
-  const listResidence = document.querySelectorAll('.list-residence')
-  const nameResidence = table.querySelectorAll('.list-info h4')
+    const searchInput = document.getElementById('search').value.toUpperCase();
+    const table = document.querySelector('.container-nav');
+    const listResidence = document.querySelectorAll('.list-residence');
+    const nameResidence = table.querySelectorAll('.list-info h4');
 
-  for(var i=0; i<nameResidence.length; i++) {
-    let match = listResidence[i].querySelectorAll('.list-info h4')[0]
+    for (var i = 0; i < nameResidence.length; i++) {
+        let match = listResidence[i].querySelectorAll('.list-info h4')[0];
 
-    if(match) {
-      let textValue = match.textContent || match.innerHTML
-      if(textValue.toUpperCase().indexOf(searchInput) > -1) {
-        listResidence[i].style.display = ""
-      }
-      else {
-        listResidence[i].style.display = "none"
-      }
+        if (match) {
+            let textValue = match.textContent || match.innerHTML;
+            if (textValue.toUpperCase().indexOf(searchInput) > -1) {
+                listResidence[i].style.display = "";
+            }
+            else {
+                listResidence[i].style.display = "none";
+            }
+        }
     }
-  }
-}
+};
 
-function fetchBookingsOfHotel() {
+function fetchBookingsOfHotel () {
     fetch('http://localhost:1234/api/v1/owners/' + login.customerId + '/bookings_of_hotels')
         .then(response => response.json())
         .then(data => {
             if (data.code === 200) {
-                console.log(data)
-                const bookingResponse = data.data
-                const bookingContainer = document.querySelector('.container-nav')
+                console.log(data);
+                const bookingResponse = data.data;
+                const bookingContainer = document.querySelector('.container-nav');
 
                 bookingResponse.forEach(booking => {
-                    bookingContainer.innerHTML += renderBooking(booking)
-                })
+                    bookingContainer.innerHTML += renderBooking(booking);
+                });
 
-              const cancleBookingButton = document.querySelectorAll('.list-content.list-cancel i')
-                cancleBookingButton.forEach(button => {
-                  button.onclick = (e) => {
-                      fetch('http://localhost:1234/api/v1/owners/cancle_booking/' + e.target.dataset.value, {
-                        method: 'post',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }, 
-                        body: JSON.stringify({ customerId: login.customerId })
+                const changeIsPaidBookingButtons = document.querySelectorAll('.list-content.list-cancel i.check');
+                changeIsPaidBookingButtons.forEach(button => {
+                    button.onclick = (e) => {
+                        fetch('http://localhost:1234/api/v1/owners/change_is_paid_booking/' + e.target.dataset.value, {
+                            method: 'put',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ customerId: login.customerId })
                         })
                             .then(response => response.json())
-                        .then(data => {
-                              console.log(data)
+                            .then(data => {
+                                console.log(data)
                                 if (data.code === 200) {
                                     window.location.reload()
-                                    return false
+                                    return false;
+                                } else {
+                                    alert(data.message)
                                 }
                             })
                     }
                 })
-            }
-        })
-}
-fetchBookingsOfHotel()
 
-function renderBooking(data) {
-    const dateFrom = new Date(data.dateFrom)
-    const dateTo = new Date(data.dateTo)
+                const cancleBookingButtons = document.querySelectorAll('.list-content.list-cancel i.delete');
+                cancleBookingButtons.forEach(button => {
+                    button.onclick = (e) => {
+                        fetch('http://localhost:1234/api/v1/owners/cancle_booking/' + e.target.dataset.value, {
+                            method: 'post',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ customerId: login.customerId })
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log(data);
+                                if (data.code === 200) {
+                                    window.location.reload();
+                                    return false;
+                                }
+                            });
+                    };
+                });
+            }
+        });
+}
+fetchBookingsOfHotel();
+
+function renderBooking (data) {
+    const dateFrom = new Date(data.dateFrom);
+    const dateTo = new Date(data.dateTo);
 
     return `<tr data-value="${data.bookingId}" class="list-residence">
                     <td class="list-content list-status">
@@ -116,8 +139,12 @@ function renderBooking(data) {
                     <td class="list-content list-price">
                         <span>${data.totalPrice || 0} VNĐ</span>
                     </td>
-                    <td class="list-content list-cancel">
-                        <i data-value="${data.bookingId}" class="fa-solid fa-trash-can"></i>
+                    <td class="list-content list-ispaid">
+                        <span style="color: ${data.isPaid ? 'green' : 'red'}">${data.isPaid ? 'Đã thanh toán' : 'Chưa thanh toán'}</span> 
                     </td>
-                </tr>`
+                    <td class="list-content list-cancel">
+                        <i data-value="${data.bookingId}" class="fa-solid fa-trash-can delete"></i>
+                        <i data-value="${data.bookingId}" class="fa-solid fa-check check"></i>
+                    </td>
+                </tr>`;
 }

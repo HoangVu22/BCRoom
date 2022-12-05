@@ -112,7 +112,7 @@ function renderBooking(data) {
                                     <span>${data.totalPrice} VNĐ</span>
                                 </td>
                                 <td class="list-content list-wait">
-                                    <span>${data.status ? 'Khả dụng' : 'Đã hủy'}</span>
+                                    <span style="color: ${data.isPaid ? 'green' : 'red'}">${data.isPaid ? 'Đã thanh toán' : 'Chưa thanh toán'}</span>
                                 </td>
                                 <td class="list-content list-cancel">
                                     <i data-booking="${data.bookingId}" class="fa-solid fa-trash-can"></i>
