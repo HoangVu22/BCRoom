@@ -520,7 +520,7 @@ ul {
     margin-left: 12px;
 }
 
-.list-cancel i {
+.list-cancel i.delete {
     color: var(--main-color);
     font-weight: 600;
     padding: 12px 14px;
@@ -529,9 +529,23 @@ ul {
     cursor: pointer;
 }
 
-.list-cancel i:hover, .list-cancel span:hover {
+.list-cancel i.check {
+    color: green;
+    font-weight: 600;
+    padding: 12px 14px;
+    border: 1px solid green;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.list-cancel i.delete:hover, .list-cancel span:hover {
     color: #fff;
     background-color: var(--main-color);
+}
+
+.list-cancel i.check:hover {
+    color: #fff;
+    background-color: green;
 }
 
 .list-cancel span {
