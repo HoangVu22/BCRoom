@@ -38,6 +38,10 @@ module.exports = (sequelize, DataTypes) => {
     status: {
         type: DataTypes.BOOLEAN,
         defaultValue: true 
+    },
+    isPaid: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
   }, {
     sequelize,
