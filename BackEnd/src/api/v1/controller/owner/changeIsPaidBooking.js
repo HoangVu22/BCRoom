@@ -1,4 +1,4 @@
-const { Booking } = require('../../../../../models')
+const { Booking, Room } = require('../../../../../models')
 
 module.exports = async (request, response) => {
     try {
@@ -12,6 +12,14 @@ module.exports = async (request, response) => {
         }, {
             where: {
                 bookingId
+            }
+        })
+
+        await Room.update({
+            isBooking: !!booking.isPaid,
+        }, {
+            where: {
+                roomId: booking.roomId
             }
         })
 
