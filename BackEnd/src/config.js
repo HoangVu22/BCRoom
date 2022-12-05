@@ -11,6 +11,12 @@ const firebaseAdmin = {
   "client_x509_cert_url": process.env.FIREBASE_CLIENT_CERT_URL 
 }
 
+const twilioAdmin = {
+    "accountSid": process.env.TWILIO_ACCOUNT_SID,
+    "authToken": process.env.TWILIO_AUTH_TOKEN
+}
+
 module.exports = {
-    firebaseAdmin
+    firebaseAdmin,
+    twilioAdmin
 }
