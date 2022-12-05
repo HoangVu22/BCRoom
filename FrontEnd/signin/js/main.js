@@ -311,3 +311,15 @@ forgetPassword.onclick = function () {
 forgetClose.onclick = function () {
   modalForgetPassword.style.display = "none";
 };
+
+// ---------------
+var phoneBtn = document.querySelector('.phoneBtn')
+var otpBtn = document.querySelector('.otpBtn')
+var forgetPasswordSubmit = document.querySelector('.forget-password-submit')
+var forgetPasswordConfirm = document.querySelector('.forget-password-confirm')
+
+forgetPasswordSubmit.onclick = function () {
+  forgetPasswordSubmit.style.display = 'none'
+  otpBtn.style.display = 'block'
+  forgetPasswordConfirm.style.display = 'block'
+}

@@ -519,7 +519,6 @@ ul {
 .modal-forget-password {
     position: fixed;
     width: 29%;
-    height: 200px;
     background-color: #fff;
     top: 50%;
     z-index: 1000;
@@ -532,7 +531,6 @@ ul {
 
 .modal-forget-password h1 {
     margin-bottom: 20px;
-
 }
 
 .modal-forget-password input {
@@ -548,7 +546,7 @@ ul {
     box-shadow: 0px 0px 3px #0071c2;
 }
 
-.modal-forget-password button {
+.modal-forget-password button, .forget-password-confirm {
     padding: 8px 20px;
     background-color: var(--main-color);
     border: 1px solid var(--main-color);
@@ -557,9 +555,10 @@ ul {
     font-size: 17px;
     cursor: pointer;
     opacity: 1;
+    margin: 0 auto;
 }
 
-.modal-forget-password button:hover {
+.modal-forget-password button:hover, .forget-password-confirm:hover {
     opacity: 0.6;
 }
 

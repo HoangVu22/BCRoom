@@ -243,7 +243,7 @@ var estimateCostLable = document.querySelectorAll('.estimate-cost-lable');
 
 costBtn.onclick = function() {
     var html = '';
-    for (var i=0; i<5; i++) {
+    for (var i=0; i<3; i++) {
         html += `<div class="list-room">
             <div class="room-cart">
                 <div class="room-cart-img">
@@ -270,7 +270,7 @@ costBtn.onclick = function() {
                 <div class="room-cart-wrap">
                     <span class="room-cart-cash">đ ${Math.ceil(parseInt(estimateCostLable[1].value) / parseInt(estimateCostLable[0].value)) || "200,000"}</span>
                     <span class="room-cart-space">/</span>
-                    <span class="room-cart-night">đêm</span>
+                    <span class="room-cart-night">ngày</span>
                 </div>
                 <button class="room-cart-booked"><a href="../roomDetails/index.html">Đặt phòng</a></button>
             </div>
