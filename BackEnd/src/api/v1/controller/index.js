@@ -37,5 +37,7 @@ module.exports = {
     searchHotelByAddressOrName: require('./core/searchHotelByAddressOrName'),
     outStandingHotels: require('./core/outStandingHotels'),
     bookingHistory: require('./customer/bookingHistory'),
-    changeIsPaidBooking: require('./owner/changeIsPaidBooking')
+    changeIsPaidBooking: require('./owner/changeIsPaidBooking'),
+    passwordRecoveryWithOtp: require('./customer/passwordRecoveryWithOtp'),
+    confirmPasswordRecoveryWithOtp: require('./core/confirmPasswordRecoveryWithOtp')
 }

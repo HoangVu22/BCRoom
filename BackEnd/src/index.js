@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
+const mongodb = require('./connection/mongodb')
 
 const v1 = require('./api/v1')
 
@@ -33,6 +34,7 @@ app.all("*",  (req, res, next) =>{
 
 // connected app with api
 v1(app)
+mongodb()
 
 httpServer.listen(port, () => {
     console.log('Server is running at port ' + port)

@@ -17,7 +17,14 @@ const twilioAdmin = {
     "authToken": process.env.TWILIO_AUTH_TOKEN
 }
 
+const mongodb = {
+    'connectionString': process.env.MONGODB_CONNECTION_STRING,
+    'username': process.env.MONGODB_USERNAME,
+    'password': process.env.MONGODB_PASSWORD
+}
+
 module.exports = {
     firebaseAdmin,
-    twilioAdmin
+    twilioAdmin,
+    mongodb
 }
