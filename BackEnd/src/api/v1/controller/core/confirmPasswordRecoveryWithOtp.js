@@ -30,7 +30,7 @@ module.exports = async (request, response) => {
             return response.status(403).json({
                 code: 403,
                 status: 'failed',
-                message: 'otp is incorrect'
+                message: 'OTP đã hết hạn'
             })
         }
 
