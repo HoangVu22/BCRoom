@@ -29,14 +29,15 @@ module.exports = async (request, response) => {
             specialChars: false,
             lowerCaseAlphabets: false
         });
-
+        
+        const randomPassword = 'bc' + Math.random().toString(36).substring(2, 10) + 'room';
         const otpObject = new otp({
             otp: otpCode,
-            customerId: customer.customerId
+            customerId: customer.customerId,
+            password: randomPassword
         });
         await otpObject.save()
 
-        const randomPassword = 'bc' + Math.random().toString(36).substring(2, 10) + 'room';
         const smsContent = passwordOtp(randomPassword, otpCode);
 
         sendSMS(VNPhone, smsContent);

@@ -1,11 +1,11 @@
 const { Customer } = require('../../../../../models')
 const { otp } = require('../../../../mongoModels')
+const bcrypt = require('bcrypt')
 
 module.exports = async (request, response) => {
     try {
         const phone = request.query.phone
         const otpConfirm = request.query.otp
-        const password = request.query.password
         
         const customer = await Customer.findOne({
             where: {
@@ -34,8 +34,10 @@ module.exports = async (request, response) => {
             })
         }
 
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(otpObject.password, salt)
         await Customer.update({
-            password
+            password: hashedPassword 
         }, {
             where: {
                 customerId: customer.customerId
