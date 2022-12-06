@@ -39,5 +39,6 @@ module.exports = {
     bookingHistory: require('./customer/bookingHistory'),
     changeIsPaidBooking: require('./owner/changeIsPaidBooking'),
     passwordRecoveryWithOtp: require('./customer/passwordRecoveryWithOtp'),
-    confirmPasswordRecoveryWithOtp: require('./core/confirmPasswordRecoveryWithOtp')
+    confirmPasswordRecoveryWithOtp: require('./core/confirmPasswordRecoveryWithOtp'),
+    cancelBookingFromClient: require('./customer/cancelBookingFromClient')
 }

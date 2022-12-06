@@ -1,6 +1,6 @@
-const { Booking, Customer, Room, Bill } = require('../../../../../models')
+const { Customer, Booking, Bill, Room } = require('../../../../../models')
+const { cancelBillFromClient } = require('../../../../constant/mailContent')
 const sendMail = require('../../../../helper/sendMail')
-const { cancleBill } = require('../../../../constant/mailContent')
 
 module.exports = async (request, response) => {
     try {
@@ -11,23 +11,38 @@ module.exports = async (request, response) => {
             where: {
                 bookingId
             },
-            include: {
-                model: Customer
-            }
+            include: [
+                {
+                    model: Customer
+                },
+                {
+                    model: Bill
+                },
+                {
+                    model: Room
+                }
+            ]
         })
 
-        const roomInBooking = await Room.findByPk(booking.dataValues.roomId)
+        if (booking.isPaid) {
+            return response.status(403).json({
+                code: 403,
+                status: 'failed',
+                message: 'This book has been paid, you cant cancel it'
+            })
+        }
 
-        const mailContent = cancleBill(
-            booking.dataValues.Customer.username,
-            roomInBooking.dataValues.roomNumber,
-            booking.dataValues.hotelName,
-            booking.dataValues.dateFrom,
-            booking.dataValues.dateTo
+        const mailContent = cancelBillFromClient(
+            booking.Bill.billId, 
+            booking.Customer.username,
+            booking.Room.roomNumber,
+            booking.hotelName,
+            booking.dateFrom,
+            booking.dateTo
         )
 
-        await sendMail(booking.dataValues.Customer.email, 'Cancle Booking Bill', mailContent)
-        
+        await sendMail(booking.Customer.email, 'Khách hàng hủy đơn', mailContent)
+
         await Booking.update({
             status: false
         }, {
@@ -48,7 +63,7 @@ module.exports = async (request, response) => {
             isBooking: false
         }, {
             where: {
-                roomId: roomInBooking.roomId
+                roomId: booking.Room.roomId
             }
         })
 

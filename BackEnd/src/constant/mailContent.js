@@ -47,6 +47,27 @@ function cancleBill (
 	</div>`
 }
 
+function cancelBillFromClient (
+    billId,
+    customerName,
+    roomNumber,
+    hotelName,
+    dateFrom,
+    dateTo
+) {
+    return `<div>
+        <h3 style="text-align: center">Yêu cầu hủy đơn đặt phòng:</h3>
+        <p>Mã số: ${billId}</p>
+        <p>Của khách hàng: ${customerName}</p>
+        <div style="text-align: center">
+			<p style="font-weight: bold">Chi tiết đơn đặt: </p>
+			<p>Room number: <span>${roomNumber}</span></p>
+			<p>Hotel: <span>${hotelName}</span></p>
+			<p>From date: <span>${dateFrom}</span> To: <span>${dateTo}</span></p>
+		</div>
+    </div>`
+}
+
 function passwordRecovery (email, username, password, link) {
     return `<div>
         <h2>Tìm lại mật khẩu</h2>
@@ -61,5 +82,6 @@ function passwordRecovery (email, username, password, link) {
 module.exports = {
     bill,
     cancleBill,
-    passwordRecovery
+    passwordRecovery,
+    cancelBillFromClient
 }
