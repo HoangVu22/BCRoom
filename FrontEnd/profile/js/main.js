@@ -133,10 +133,12 @@ function fetchBookingsHistory() {
             if (data.code === 200) {
                 const bookingsHistoryContainer = document.querySelector('table.container-nav')
                 const bookingsResponse = data.data
+                const bookingElements = []
                 
                 bookingsResponse.forEach(booking => {
-                    bookingsHistoryContainer.innerHTML += renderBooking(booking)
+                    bookingElements.push(renderBooking(booking))
                 })
+                bookingsHistoryContainer.innerHTML = bookingElements.join("")
             }
         })
 }
