@@ -145,6 +145,23 @@ function fetchBookingsHistory() {
                 const cancelBookingButtons = document.querySelectorAll('.list-content.list-cancel i')
                 cancelBookingButtons.forEach(button => {
                     button.onclick = (e) => {
+                        fetch('http://localhost:1234/api/v1/customers/cancel_booking_from_client/' + e.target.dataset.booking, {
+                            method: 'post',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ customerId: login.customerId })
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.code === 200) {
+                                    alert(data.message)
+                                    window.location.reload()
+                                    return false
+                                } else {
+                                    alert(data.message)
+                                }
+                            })
                     }
                 })
             }

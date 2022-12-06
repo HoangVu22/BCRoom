@@ -6,7 +6,8 @@ module.exports = async (request, response) => {
 
         const bookings = await Booking.findAll({
             where: {
-                customerId
+                customerId,
+                status: true
             },
             include: [
                 {
