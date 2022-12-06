@@ -444,7 +444,7 @@ const namepersoncontact = document.querySelector(".name-person-contact");
 namepersoncontact.innerHTML = ` <p>Tên người liên hệ :  <span><b>${login.username}</b></span></p>`;
 
 
-let oldImagesRequestValue = []
+let oldImagesRequestValue = [];
 function updateHotel () {
     const steps = document.querySelectorAll(".step-item")[1];
     const hotelUpdate = JSON.parse(sessionStorage.getItem("hotelUpdate"));
@@ -469,19 +469,19 @@ function updateHotel () {
     }) : [];
     hotelPictures = [...hotelPictures, ...imagesHotels];
     picture.innerHTML += hotelPictures.join("");
-    const oldImagesOnUI = document.querySelectorAll('.image-detail')
+    const oldImagesOnUI = document.querySelectorAll('.image-detail');
     oldImagesRequestValue = [...oldImagesOnUI].map(picture => ({
         url: picture.dataset.url,
         imageName: picture.dataset.name
-    }))
+    }));
 
     update.onclick = () => {
-        const imagesOnUI = document.querySelectorAll('.image-detail')
+        const imagesOnUI = document.querySelectorAll('.image-detail');
         const imagesRequestValue = [...imagesOnUI].map(picture => ({
             url: picture.dataset.url,
             imageName: picture.dataset.name
-        }))
-        const finalImagesRequestValue = [...oldImagesRequestValue, ...imagesRequestValue]
+        }));
+        const finalImagesRequestValue = [...oldImagesRequestValue, ...imagesRequestValue];
 
         const basicInformationHotelComponent = document.querySelector('#basic-information-hotel');
         const requestInputs = basicInformationHotelComponent.querySelectorAll('input.request-value, select.request-value');
@@ -531,6 +531,7 @@ hotelUpdate && updateHotel();
 function updateRoom () {
     const steps = document.querySelectorAll(".step-item")[0];
     const updateRoomHotel = JSON.parse(sessionStorage.getItem("updateRoom"));
+    console.log(updateRoomHotel);
     const stepContent = document.querySelectorAll(".step-content");
     stepContent[0].classList.remove("active");
     stepContent[1].classList.add("active");
@@ -561,7 +562,27 @@ function updateRoom () {
             }
         });
     });
+    const imagesRoom = updateRoomHotel.Images ? updateRoomHotel.Images.map((value) => {
+        return `<div data-name="${value.imageName}" data-url="${value.url}" class="image-detail">
+                            <img src="${value.url}" alt="">
+                            <i data-name="${value.imageName}" data-fileurl="${value.url}" class="fa-solid fa-xmark remove_image"></i>
+                </div>`;
+    }) : [];
+    roomPictures = [...roomPictures, ...imagesRoom];
+    console.log(roomPictures)
+    image.innerHTML += roomPictures.join("");
+    const oldImagesOnUI = document.querySelectorAll('.image-detail');
+    oldImagesRequestValue = [...oldImagesOnUI].map(picture => ({
+        url: picture.dataset.url,
+        imageName: picture.dataset.name
+    }));
     nextButton.onclick = () => {
+        const imagesOnUI = document.querySelectorAll('.image-detail');
+        const imagesRequestValue = [...imagesOnUI].map(picture => ({
+            url: picture.dataset.url,
+            imageName: picture.dataset.name
+        }));
+        const finalImagesRequestValue = [...oldImagesRequestValue, ...imagesRequestValue];
 
         const basicInformationRoomComponent = document.querySelector(
             "#basic-information-room"
@@ -603,7 +624,7 @@ function updateRoom () {
             }
         });
 
-        const roomupt = { ...basicInformationRoom, typeId: roomType.value };
+        const roomupt = { ...basicInformationRoom, typeId: roomType.value, images: finalImagesRequestValue };
 
         console.log(roomupt);
         fetch(

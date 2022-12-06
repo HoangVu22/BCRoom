@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { Room, RoomRelatedService, Service, RoomType, Policy, CustomerViewedHotel, Hotel } = require('../../../../../models');
+const { Room, RoomRelatedService, Service, RoomType, Policy, CustomerViewedHotel, Hotel, Image } = require('../../../../../models');
 
 module.exports = async (request, response) => {
     try {
@@ -41,6 +41,9 @@ module.exports = async (request, response) => {
                 },
                 {
                     model: Policy
+                },
+                {
+                    model: Image
                 }
             ]
         });
