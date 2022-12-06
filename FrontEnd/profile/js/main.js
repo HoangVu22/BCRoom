@@ -114,9 +114,11 @@ function renderBooking(data) {
                                 <td class="list-content list-wait">
                                     <span style="color: ${data.isPaid ? 'green' : 'red'}">${data.isPaid ? 'Đã thanh toán' : 'Chưa thanh toán'}</span>
                                 </td>
-                                <td class="list-content list-cancel">
+                                ${
+                                    data.isPaid ? `<td></td>` : `<td class="list-content list-cancel">
                                     <i data-booking="${data.bookingId}" class="fa-solid fa-trash-can"></i>
-                                </td>
+                                </td>`
+                                }
                             </tr>`
 }
 
@@ -139,6 +141,12 @@ function fetchBookingsHistory() {
                     bookingElements.push(renderBooking(booking))
                 })
                 bookingsHistoryContainer.innerHTML = bookingElements.join("")
+
+                const cancelBookingButtons = document.querySelectorAll('.list-content.list-cancel i')
+                cancelBookingButtons.forEach(button => {
+                    button.onclick = (e) => {
+                    }
+                })
             }
         })
 }
