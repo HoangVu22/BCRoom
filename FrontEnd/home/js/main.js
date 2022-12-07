@@ -345,10 +345,30 @@ const items = document.querySelectorAll(".items > div");
       .then((res) => res.json())
       .then((data) => {
         if (data.code === 200) {
-            console.log(data.data)
           localStorage.setItem("hotels", JSON.stringify([...data.data]));
           window.location.href = "http://localhost:5500/FrontEnd/search/index.html";
         }
       });
   };
 });
+
+fetch('http://localhost:1234/api/v1/hotels/count', {
+    method: 'post',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ address: recomentList })
+})
+    .then(response => response.json())
+    .then(data => {
+        if (data.code === 200) {
+            const placesOnUI = document.querySelectorAll('.content .items .text p')
+            data.data.forEach(value => {
+                placesOnUI.forEach(place => {
+                    if (place.dataset.name === value.place) {
+                        place.innerText = `${value.count} khách sạn`
+                    }
+                })
+            })
+        }
+    })
