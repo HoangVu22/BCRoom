@@ -1,4 +1,4 @@
-const { Hotel, Image } = require('../../../../../models')
+const { Hotel, Image, Review } = require('../../../../../models')
 
 module.exports = async (request, response) => {
     try {
@@ -21,12 +21,23 @@ module.exports = async (request, response) => {
             attributes: ['url', 'imageName', 'hotelId', 'imageId']
         })
 
+        const reviews = await Review.findAll({
+            where: {
+                hotelId
+            }
+        })
+
+        const totalReviewStar = reviews.reduce((prev, next) => prev + next.starNumber, 0)
+        const averageReviewStar = (totalReviewStar / reviews.length).toFixed(2) || 0
+
         return response.status(200).json({
             code: 200,
             status: 'success',
             data: {
                 ...hotel.dataValues,
-                images
+                images,
+                totalReview: reviews.length,
+                averageReviewStar
             } 
         })
     } catch (error) {

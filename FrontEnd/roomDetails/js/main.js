@@ -746,6 +746,10 @@ fetch("http://localhost:1234/api/v1/hotels/get_by_id/" + hotelId)
             hotelNameMainTitle.innerText = data.data.hotelName
             const hotelAddressMainTitle = document.querySelector('.rooms-address p')
             hotelAddressMainTitle.innerText = data.data.address
+            const averageReviewStar = document.querySelector('.review-star1')
+            averageReviewStar.innerText = data.data.averageReviewStar
+            const totalReview = document.querySelector('.review-star3 span')
+            totalReview.innerText = data.data.totalReview
         }
     });
 
@@ -819,6 +823,11 @@ function commentsroom () {
         .then((res) => res.json())
         .then((data) => {
             if (data.code === 200) {
+                const totalReview = document.querySelector('.review-star3 span')
+                totalReview.innerText = data.data.length
+                const averageReviewStar = document.querySelector('.review-star1')
+                const avarageStar = data.data.reduce((prev, next) => prev + next.starNumber, 0) / data.data.length
+                averageReviewStar.innerText = avarageStar.toFixed(2)
                 data.data.sort((a, b) => {
                     const dataPrev = new Date(a.createdAt);
                     const dataNext = new Date(b.createdAt);
@@ -828,7 +837,7 @@ function commentsroom () {
                 const comment = data.data.reverse().map((e, index) => {
                     const date = new Date(e.createdAt);
                     return index < 6
-                        ? handleRenderCommentList(
+                    ? handleRenderCommentList(
                             e.reviewId,
                             e.Customer.Image.url,
                             e.Customer.username,
