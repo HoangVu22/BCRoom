@@ -23,7 +23,8 @@ module.exports = async (request, response) => {
         const result = await Promise.all(hotels.map(async hotel => {
             const countRoomOfHotel = await Room.count({
                 where: {
-                    hotelId: hotel.hotelId
+                    hotelId: hotel.hotelId,
+                    status: true
                 }
             })
 
@@ -34,6 +35,7 @@ module.exports = async (request, response) => {
                     isBooking: false 
                 }
             })
+
             return {
                 ...hotel.dataValues,
                 totalRoom: countRoomOfHotel,

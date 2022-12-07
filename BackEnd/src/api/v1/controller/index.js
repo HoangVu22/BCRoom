@@ -40,5 +40,6 @@ module.exports = {
     changeIsPaidBooking: require('./owner/changeIsPaidBooking'),
     passwordRecoveryWithOtp: require('./customer/passwordRecoveryWithOtp'),
     confirmPasswordRecoveryWithOtp: require('./core/confirmPasswordRecoveryWithOtp'),
-    cancelBookingFromClient: require('./customer/cancelBookingFromClient')
+    cancelBookingFromClient: require('./customer/cancelBookingFromClient'),
+    estimateCost: require('./core/estimateCost')
 }
