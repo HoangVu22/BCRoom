@@ -909,12 +909,9 @@ ul {
     margin-top: 20px;
 }
 
-
-
-
-
-
-
+.list-room:hover {
+    cursor: pointer;
+}
 
 /* -------------footer--------- */
 .footer {
