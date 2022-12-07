@@ -731,6 +731,7 @@ fetch("http://localhost:1234/api/v1/hotels/get_by_id/" + hotelId)
     .then((response) => response.json())
     .then((data) => {
         if (data.code === 200) {
+            console.log(data.data)
             const headerPath = document.querySelector(".header-path");
             headerPath.innerHTML = `<li><a href="../home/index.html">Trang chủ</a></li>
                             <li><a href="">${place.replaceAll(
@@ -741,6 +742,10 @@ fetch("http://localhost:1234/api/v1/hotels/get_by_id/" + hotelId)
                                 <div class="header-path-name">Đặt phòng Khách Sạn > ${data.data.hotelName
                 }</div>
                             </p>`;
+            const hotelNameMainTitle = document.querySelector('.room-name span')
+            hotelNameMainTitle.innerText = data.data.hotelName
+            const hotelAddressMainTitle = document.querySelector('.rooms-address p')
+            hotelAddressMainTitle.innerText = data.data.address
         }
     });
 
