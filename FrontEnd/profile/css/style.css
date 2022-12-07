@@ -718,6 +718,70 @@ td {
     padding: 20px 0;
 }
 
+.form-reason-cancel {
+    position: fixed;
+    width: 50%;
+    background-color: #fff;
+    top: 54%;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    padding: 40px 20px 20px 20px;
+    left: 50%;
+    border-radius: 10px;
+    box-shadow: 2px 4px 20px #0003;
+}
+
+.form-reason-cancel p {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--main-color);
+    margin-bottom: 20px;
+}
+
+.reason-cancel {
+    background-color: #fbd4d1;
+    padding: 25px 20px;
+    line-height: 30px;
+    margin-bottom: 20px;
+}
+
+.reason-cancel h1 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.reasons span {
+    font-size: 17px;
+}
+
+.reasons input {
+    margin-right: 10px;
+    width: 14px;
+    height: 14px;
+}
+
+.cancel-btn {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.cancel-no, .cancel-yes {
+    padding: 10px 20px;
+    background-color: var(--main-color);
+    color: #fff;
+    border: 1px solid var(--main-color);
+    font-size: 15px;
+    border-radius: 7px;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.cancel-no:hover, .cancel-yes:hover {
+    opacity: 0.8;
+}
+
 /* --------------my coupon------------ */
 .profile-right-coupon h2 {
     margin-bottom: 35px;

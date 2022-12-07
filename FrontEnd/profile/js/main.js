@@ -140,30 +140,37 @@ function fetchBookingsHistory() {
                 bookingsResponse.forEach(booking => {
                     bookingElements.push(renderBooking(booking))
                 })
-                bookingsHistoryContainer.innerHTML = bookingElements.join("")
+                bookingsHistoryContainer.innerHTML = `<tr>
+                <th>KHÁCH SẠN</th>
+                <th>NGÀY ĐẶT</th>
+                <th>NGÀY TRẢ</th>
+                <th>TỔNG TIỀN</th>
+                <th>TRẠNG THÁI</th>
+                <th>TÙY CHỌN</th>
+            </tr>` + bookingElements.join("")
 
-                const cancelBookingButtons = document.querySelectorAll('.list-content.list-cancel i')
-                cancelBookingButtons.forEach(button => {
-                    button.onclick = (e) => {
-                        fetch('http://localhost:1234/api/v1/customers/cancel_booking_from_client/' + e.target.dataset.booking, {
-                            method: 'post',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ customerId: login.customerId })
-                        })
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.code === 200) {
-                                    alert(data.message)
-                                    window.location.reload()
-                                    return false
-                                } else {
-                                    alert(data.message)
-                                }
-                            })
-                    }
-                })
+                // const cancelBookingButtons = document.querySelectorAll('.list-content.list-cancel i')
+                // cancelBookingButtons.forEach(button => {
+                //     button.onclick = (e) => {
+                //         fetch('http://localhost:1234/api/v1/customers/cancel_booking_from_client/' + e.target.dataset.booking, {
+                //             method: 'post',
+                //             headers: {
+                //                 'Content-Type': 'application/json'
+                //             },
+                //             body: JSON.stringify({ customerId: login.customerId })
+                //         })
+                //             .then(response => response.json())
+                //             .then(data => {
+                //                 if (data.code === 200) {
+                //                     alert(data.message)
+                //                     window.location.reload()
+                //                     return false
+                //                 } else {
+                //                     alert(data.message)
+                //                 }
+                //             })
+                //     }
+                // })
             }
         })
 }
