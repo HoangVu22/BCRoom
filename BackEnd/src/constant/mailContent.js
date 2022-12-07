@@ -53,18 +53,25 @@ function cancelBillFromClient (
     roomNumber,
     hotelName,
     dateFrom,
-    dateTo
+    dateTo,
+    reasons
 ) {
     return `<div>
         <h3 style="text-align: center">Yêu cầu hủy đơn đặt phòng:</h3>
-        <p>Mã số: ${billId}</p>
-        <p>Của khách hàng: ${customerName}</p>
+        <div style="text-align: center">
+            <p>Mã số: ${billId}</p>
+            <p>Của khách hàng: ${customerName}</p>
+        </div>
         <div style="text-align: center">
 			<p style="font-weight: bold">Chi tiết đơn đặt: </p>
 			<p>Room number: <span>${roomNumber}</span></p>
 			<p>Hotel: <span>${hotelName}</span></p>
 			<p>From date: <span>${dateFrom}</span> To: <span>${dateTo}</span></p>
 		</div>
+        <ul style="text-align: center">
+            <h4>Lý do: </h4>
+            ${reasons.map(reason => `<li>${reason}</li>`).join('')}    
+        </ul>
     </div>`
 }
 

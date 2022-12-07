@@ -147,33 +147,58 @@ function fetchBookingsHistory() {
                 <th>TỔNG TIỀN</th>
                 <th>TRẠNG THÁI</th>
                 <th>TÙY CHỌN</th>
-            </tr>` + bookingElements.join("")
-
-                // const cancelBookingButtons = document.querySelectorAll('.list-content.list-cancel i')
-                // cancelBookingButtons.forEach(button => {
-                //     button.onclick = (e) => {
-                //         fetch('http://localhost:1234/api/v1/customers/cancel_booking_from_client/' + e.target.dataset.booking, {
-                //             method: 'post',
-                //             headers: {
-                //                 'Content-Type': 'application/json'
-                //             },
-                //             body: JSON.stringify({ customerId: login.customerId })
-                //         })
-                //             .then(response => response.json())
-                //             .then(data => {
-                //                 if (data.code === 200) {
-                //                     alert(data.message)
-                //                     window.location.reload()
-                //                     return false
-                //                 } else {
-                //                     alert(data.message)
-                //                 }
-                //             })
-                //     }
-                // })
+                </tr>` + bookingElements.join("")
+                
+                const cancelBookingButtons = document.querySelectorAll('.list-content.list-cancel i')
+                cancelBookingButtons.forEach(button => {
+                    button.onclick = (e) => {
+                        const formReasonCancelPortal = document.querySelector('.form-reason-cancel-portal')
+                        formReasonCancelPortal.style.display = 'block'
+                        const cancelYesButton = document.querySelector('.cancel-yes')
+                        const cancelNoButton = document.querySelector('.cancel-no')
+                        cancelNoButton.onclick = () => {
+                            const formReasonCancelPortal = document.querySelector('.form-reason-cancel-portal')
+                            formReasonCancelPortal.style.display = 'none'
+                        }
+                        cancelYesButton.onclick = () => {
+                            const reason = document.querySelector('.reason-cancel .reasons input:checked')
+                            const otherReason = document.querySelector('.reason-cancel .reasons textarea')
+                            let reasonValues = [] 
+                            if (!reason && !otherReason.value) {
+                                alert('Vui lòng chọn lý do')
+                                return false
+                            } else {
+                                if (reason?.value) {
+                                    reasonValues.push(reason.value)
+                                }
+                                if (otherReason.value) {
+                                    reasonValues.push(otherReason.value)
+                                }
+                            }
+                            fetch('http://localhost:1234/api/v1/customers/cancel_booking_from_client/' + e.target.dataset.booking, {
+                                method: 'post',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ customerId: login.customerId, reasons: reasonValues })
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.code === 200) {
+                                        alert(data.message)
+                                        window.location.reload()
+                                        return false
+                                    } else {
+                                        alert(data.message)
+                                    }
+                                })
+                            }
+                        }
+                })
             }
         })
 }
+
 
 function autoLoad() {
     const login = JSON.parse(localStorage.getItem('login'))

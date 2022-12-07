@@ -1,4 +1,4 @@
-const { Customer, Booking, Bill, Room } = require('../../../../../models')
+const { Customer, Booking, Bill, Room, Hotel } = require('../../../../../models')
 const { cancelBillFromClient } = require('../../../../constant/mailContent')
 const sendMail = require('../../../../helper/sendMail')
 
@@ -6,6 +6,7 @@ module.exports = async (request, response) => {
     try {
         const customerId = request.body.customerId
         const bookingId = request.params.bookingId
+        const reasons = request.body.reasons
         
         const booking = await Booking.findOne({
             where: {
@@ -32,16 +33,31 @@ module.exports = async (request, response) => {
             })
         }
 
+        const roomOfHost = await Room.findOne({
+            where: {
+                roomId: booking.Room.roomId
+            },
+            include: {
+                model: Hotel,
+                include: {
+                    model: Customer
+                }
+            }
+        })
+
+        const hostEmail = roomOfHost.Hotel.Customer.email
+
         const mailContent = cancelBillFromClient(
             booking.Bill.billId, 
             booking.Customer.username,
             booking.Room.roomNumber,
             booking.hotelName,
             booking.dateFrom,
-            booking.dateTo
+            booking.dateTo,
+            reasons
         )
 
-        await sendMail(booking.Customer.email, 'Khách hàng hủy đơn', mailContent)
+        await sendMail(hostEmail, 'Khách hàng hủy đơn', mailContent)
 
         await Booking.update({
             status: false
@@ -70,7 +86,7 @@ module.exports = async (request, response) => {
         return response.status(200).json({
             code: 200,
             status: 'success',
-            message: 'Hủy đơn đặt thành công' 
+            message: 'Hủy đơn đặt thành công'
         })
     } catch (error) {
         console.log(error)
