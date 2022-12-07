@@ -53,7 +53,8 @@ function fetchImagesOfHotel () {
 }
 fetchImagesOfHotel();
 
-function modalRoom (roomNumber, arrimg, services) {
+function modalRoom(roomNumber, arrimg, services, servicesInRoom) {
+    console.log(services);
     return `<div class="show-detail-room" style="display: flex;">
     <div class="detail-image-room">
         <div class="image-room-main">
@@ -76,7 +77,7 @@ function modalRoom (roomNumber, arrimg, services) {
     <div class="detail-content-room">
         <h1>${roomNumber}</h1>
         <div class="convenient">
-            ${[...services]
+            ${[...servicesInRoom]
             .map((service) => {
                 return `<div class="room-type">
                             <i class="${service.children[0].className}"></i>
@@ -88,13 +89,7 @@ function modalRoom (roomNumber, arrimg, services) {
         <div class="convenient-room">
             <h1>Tiện nghi phòng</h1>
             <ul>
-                <li>Điều hòa không khí</li>
-                <li>Hệ thống cách âm</li>
-                <li>Tivi</li>
-                <li>Tủ lạnh</li>
-                <li>Tủ quần áo</li>
-                <li>Bàn ăn</li>
-                <li>More...</li>
+                ${services.map(service => `<li>${service.serviceName}</li>`).join('')}
             </ul>
         </div>
         <div class="reserve">
@@ -176,23 +171,18 @@ const room = rooms.map((value) => {
                             <b class="name-room" data-idroom=${value.roomId
         }>Phòng ${value.roomNumber}</b>
                             <div class="convenient">
-                            ${value.services.length > 0 &&
-        value.services
-            .map((e) => {
-                return `<div class="room-type">
-                                <i class="${e.serviceName === "Wifi"
-                        ? "fa-solid fa-wifi"
-                        : e.serviceName === "Hệ thống cách âm"
-                            ? "fa-solid fa-ear-deaf"
-                            : e.serviceName === "Điều hòa không khí"
-                                ? "fa-regular fa-snowflake"
-                                : "fa-solid fa-bed"
-                    }"></i>
-                                <span>${e.serviceName}</span>
-                            </div>`;
-            })
-            .join("")
-        }
+                            <div class="room-type">
+                            <i class="fa-solid fa-bed"></i>
+                            <span>${value.roomType.typeName}</span>
+                            </div>
+                            <div class="room-type">
+                                <i class="fa-solid fa-wifi"></i>
+                                <span>Wifi miễn phí</span>
+                            </div>
+                            <div class="room-type">
+                                <i class="fa-solid fa-snowflake"></i>
+                                <span>Điều hòa không khí</span>
+                            </div>
                             </div>
                         </td>
                         <td class="list-content list-people">
@@ -225,11 +215,15 @@ var nameRooms = document.querySelectorAll(".name-room");
             .then((res) => res.json())
             .then((data) => {
                 if (data.code === 200) {
+                    console.log(data.data)
                     const modalContainer = document.querySelector(".modal-container");
                     modalContainer.style.display = "block";
+                    const services = JSON.parse(localStorage.getItem('rooms')).find(room => room.roomId === idroom).services
+                    console.log(services)
                     modalContainer.innerHTML = modalRoom(
                         roomNumber,
                         data.data,
+                        services,
                         servicesInRoom
                     );
                     const closeModalButton = document.querySelector(".room-close");
