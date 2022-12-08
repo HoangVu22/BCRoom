@@ -452,3 +452,41 @@ function handleRenderVoucher () {
   <i class="fa-solid fa-xmark"></i>
 </div>`;
 }
+
+// ----------------- update new password -------------
+const oldPasswordInput = document.querySelector('#old-password')
+const newPasswordInput = document.querySelector('#new-password')
+const verifyNewPasswordInput = document.querySelector('#verify-new-password')
+const submitUpdatePasswordInput = document.querySelector('#submit-update-password-button');
+
+new Array(oldPasswordInput, newPasswordInput, verifyNewPasswordInput).forEach(input => {
+    console.log(input)
+    input.onkeypress = (e) => {
+        console.log(e.target.value)
+        input.classList.remove('error')
+        input.style.border = '1px solid #d6d5d5'
+    }
+})
+
+submitUpdatePasswordInput.onclick = () => {
+    const customerId = login.customerId
+
+    if (!oldPasswordInput.value) {
+        oldPasswordInput.style.border = '1px solid red'
+        oldPasswordInput.placeholder = "Chưa nhập mật khẩu cũ"
+        oldPasswordInput.classList.add('error')
+    }
+
+    if (!newPasswordInput.value) {
+        newPasswordInput.style.border = '1px solid red'
+        newPasswordInput.placeholder = "Chưa nhập mật khẩu mới"
+        newPasswordInput.classList.add('error')
+    }
+
+    if (verifyNewPasswordInput.value !== newPasswordInput.value || !verifyNewPasswordInput.value) {
+        verifyNewPasswordInput.value = ""
+        verifyNewPasswordInput.style.border = '1px solid red'
+        verifyNewPasswordInput.placeholder = "Mật khẩu không hợp lệ"
+        verifyNewPasswordInput.classList.add('error')
+    }
+}

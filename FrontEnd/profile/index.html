@@ -100,6 +100,10 @@
                             <i style="pointer-events: none;" class="fa-regular fa-heart"></i>
                             <span>Danh sách yêu thích</span>
                         </div>
+                        <div class="interest-sidebar account-sidebar-link">
+                            <i style="pointer-events: none;" class="fa-solid fa-key"></i>
+                            <span>Thay đổi mật khẩu</span>
+                        </div>
                         <div class="form-line"></div>
                         <div class="account-sidebar-link">
                             <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -439,6 +443,27 @@
                 <img src="https://go2joy.vn/_nuxt/search-not-found.47b1f6f6.png" alt="">
                 <h3>Chưa có khách sạn yêu thích</h3>
                 <p>Khi bạn tìm thấy khách sạn ưng ý, hãy nhấp vào biểu tượng trái tim để lưu lại.</p>
+            </div>
+
+            <div class="profile-right-changePassword profile-genaral">
+                <h2>Thay đổi mật khẩu của bạn</h2>
+                <div style="display: flex; flex-direction: column; row-gap: 20px; margin-bottom: 20px">
+                    <div style="display: flex; width: 70%; align-items: center; column-gap: 20px;">
+                        <label style="flex: 1.5; font-size: 17px" for="old-password">Mật khẩu cũ:</label>
+                        <input placeholder="Nhập mật khẩu cũ" style="flex: 2; border-radius: 10px; font-size: 14px; padding: 8px 16px; border: 1px solid #d6d5d5" type="text" id="old-password" class="old-password">
+                    </div>
+                    <div style="display: flex; width: 70%; align-items: center; column-gap: 20px;">
+                        <label style="flex: 1.5; font-size: 17px" for="new-password">Mật khẩu mới:</label>
+                        <input placeholder="Nhập mật khẩu mới" style="flex: 2; border-radius: 10px; font-size: 14px; padding: 8px 16px; border: 1px solid #d6d5d5" type="text" id="new-password">
+                    </div>
+                    <div style="display: flex; width: 70%; align-items: center; column-gap: 20px;">
+                        <label style="flex: 1.5; font-size: 17px" for="verify-new-password">Xác nhận mật khẩu mới:</label>
+                        <input placeholder="Xác nhận mật khẩu mới" style="flex: 2; border-radius: 10px; font-size: 14px; padding: 8px 16px; border: 1px solid #d6d5d5" type="text" id="verify-new-password">
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center; width: 70%;">
+                    <button id="submit-update-password-button" style="padding: 12px 15px; border-radius: 10px; color: #fff; background-color: var(--main-color); border: none; font-size: 16px">Lưu thay đổi</button>
+                </div>
             </div>
 
         </div>
