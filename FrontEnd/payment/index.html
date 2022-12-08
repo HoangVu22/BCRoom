@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCRoom</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <div class="main">
+        <header>
+            <div class="wraper">
+                <div class="header-content row">
+                    <div class="header-logo">
+                        <!-- <img src="./image/logo.png" alt=""> -->
+                        <h1 style="font-size: 40px; color: #f44336">BCRoom</h1>
+                    </div>
+                    <div class="header-nav">
+                        <ul class="list_city">
+                            <li><a href="../home/index.html">Home</a></li>
+                            <li><a href="">Dịch vụ</a></li>
+                            <li><a href="">Liên hệ</a></li>
+                            <li><a href="../Sup_home/index.html">Trở thành nhà cung cấp</a></li>
+                            <div class="header-nav-form">
+                                <div class="header-nav-icon">
+                                    <i class="fa-solid fa-user user-icon"></i>
+                                    <i class="fa-solid fa-bars"></i>
+                                </div>
+                                <div style="display: none" class="header-form">
+                                    <div class="header-form-login">
+                                        <ul>
+                                            <li><a href="../signin/index.html">Đăng nhập</a></li>
+                                            <li><a href="../register/index.html">Đăng ký</a></li>
+                                        </ul>
+                                    </div>
+                                    <div style="display: none" class="header-form-logout">
+                                        <div class="content-logout">
+                                            <a href="../profile/index.html" class="avatar-login">
+                                                <div class="header-form-avatar">
+                                                    <!-- <i class="fa-solid fa-circle-user"></i> -->
+                                                    <img src="../image/avatars/avatar_1.jpg" alt="">
+                                                    <div class="header-name">
+                                                        <span>NguyenHoangVu</span>
+                                                        <p>Xem hồ sơ</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <span class="drop-line"></span>
+                                            <div class="header-form-booked">
+                                                <i class="fa-sharp fa-solid fa-clock-rotate-left"></i>
+                                                <span>Đặt phòng của tôi</span>
+                                            </div>
+                                            <div class="header-form-loved">
+                                                <i class="fa-regular fa-heart"></i>
+                                                <span>Danh sách yêu thích</span>
+                                            </div>
+                                            <div class="form-logout">Đăng xuất</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <span class="drop-line1"></span>
+        </header>
+
+        <div class="payment wraper1">
+            <h1>Thanh toán đặt phòng</h1>
+            <div class="form-payment">
+                <div class="payment-text">
+                    <label for="payment-money">Số tiền</label>
+                    <input type="number" id="payment-money" placeholder="Nhập số tiền">
+                </div>
+                <div class="payment-text">
+                    <label for="payment-content">Nội dung thanh toán</label>
+                    <textarea name="" id="" cols="80" rows="3"></textarea>
+                </div>
+                <div class="payment-text">
+                    <label for="bankcode">Ngân hàng</label>
+                    <select name="bankcode" id="bankcode" class="form-control">
+                        <option value="">Không chọn </option><option value="MBAPP">Ung dung MobileBanking</option>			
+                        <option value="VNPAYQR">VNPAYQR</option>
+                        <option value="VNBANK">LOCAL BANK</option>
+                        <option value="IB">INTERNET BANKING</option>
+                        <option value="ATM">ATM CARD</option>
+                        <option value="INTCARD">INTERNATIONAL CARD</option>
+                        <option value="VISA">VISA</option>
+                        <option value="MASTERCARD"> MASTERCARD</option>
+                        <option value="JCB">JCB</option>
+                        <option value="UPI">UPI</option>
+                        <option value="VIB">VIB</option>
+                         <option value="VIETCAPITALBANK">VIETCAPITALBANK</option>
+                        <option value="SCB">Ngan hang SCB</option>
+                        <option value="NCB">Ngan hang NCB</option>
+                        <option value="SACOMBANK">Ngan hang SacomBank  </option>
+                        <option value="EXIMBANK">Ngan hang EximBank </option>
+                        <option value="MSBANK">Ngan hang MSBANK </option>
+                        <option value="NAMABANK">Ngan hang NamABank </option>
+                        <option value="VNMART"> Vi dien tu VnMart</option>
+                        <option value="VIETINBANK">Ngan hang Vietinbank  </option>
+                        <option value="VIETCOMBANK">Ngan hang VCB </option>
+                        <option value="HDBANK">Ngan hang HDBank</option>
+                        <option value="DONGABANK">Ngan hang Dong A</option>
+                        <option value="TPBANK">Ngân hàng TPBank </option>
+                        <option value="OJB">Ngân hàng OceanBank</option>
+                        <option value="BIDV">Ngân hàng BIDV </option>
+                        <option value="TECHCOMBANK">Ngân hàng Techcombank </option>
+                        <option value="VPBANK">Ngan hang VPBank </option>
+                        <option value="AGRIBANK">Ngan hang Agribank </option>
+                        <option value="MBBANK">Ngan hang MBBank </option>
+                        <option value="ACB">Ngan hang ACB </option>
+                        <option value="OCB">Ngan hang OCB </option>
+                        <option value="IVB">Ngan hang IVB </option>
+                        <option value="SHB">Ngan hang SHB </option>
+                    </select>
+                </div>
+                <div class="payment-text">
+                    <label for="payment-languages">Ngôn ngữ</label>
+                    <select name="" id="">
+                        <option value="0">Tiếng Việt</option>
+                        <option value="1">English</option>
+                    </select>
+                </div>
+                <button class="payment-btn">Tiếp tục thanh toán</button>
+            </div>
+
+        </div>
+    </div>
+
+
+    
+
+    <script src="./js/main.js"></script>
+    <script src="../commonJS/header.js"></script>
+</body>
+
+</html>

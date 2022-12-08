@@ -130,8 +130,7 @@ header {
 }
 
 .header-logo img {
-  /* position: absolute; */
-  width: 85px;
+  width: 200px;
 }
 
 .header-logo {
