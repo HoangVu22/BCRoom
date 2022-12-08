@@ -822,7 +822,7 @@ function commentsroom () {
     fetch(`http://localhost:1234/api/v1/reviews/reviews_of_hotel/${hotelId}`)
         .then((res) => res.json())
         .then((data) => {
-            if (data.code === 200) {
+            if (data.code === 200) { 
                 const totalReview = document.querySelector('.review-star3 span')
                 totalReview.innerText = data.data.length
                 const averageReviewStar = document.querySelector('.review-star1')
