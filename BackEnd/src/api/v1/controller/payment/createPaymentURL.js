@@ -25,7 +25,7 @@ module.exports = async (request, response) => {
         }
         
         const currCode = "VND"
-        const vnp_Params = {}
+        let vnp_Params = {}
         vnp_Params['vnp_Version'] = '2.1.0'
         vnp_Params['vnp_Command'] = 'pay'
         vnp_Params['vnp_TmnCode'] = tmnCode
@@ -33,7 +33,7 @@ module.exports = async (request, response) => {
         vnp_Params['vnp_Locale'] = locale
         vnp_Params['vnp_CurrCode'] = currCode
         vnp_Params['vnp_TxnRef'] = orderId
-        vnp_Params['vnp_OrderInfo'] = orderInfo
+        vnp_Params['vnp_OrderInfo'] = orderInfo.replaceAll(' ', '+')
         vnp_Params['vnp_OrderType'] = orderType
         vnp_Params['vnp_Amount'] = amount * 100
         vnp_Params['vnp_ReturnUrl'] = returnUrl
@@ -43,13 +43,23 @@ module.exports = async (request, response) => {
             vnp_Params['vnp_BankCode'] = bankCode
         }
 
+        vnp_Params = Object.keys(vnp_Params).sort().reduce((prev, next) => {
+            prev[next] = vnp_Params[next]
+            return prev
+        }, {})
+
         const signData = querystring.stringify(vnp_Params, { encode: false })
         const hmac = crypto.createHmac('sha512', secretKey)
         const signed = hmac.update(Buffer.from(signData, 'utf-8')).digest('hex')
         vnp_Params['vnp_SecureHash'] = signed
         vnpUrl += '?' + querystring.stringify(vnp_Params, { encode: false })
 
-        return response.redirect(vnpUrl)
+        // return response.redirect(vnpUrl)
+        return response.status(200).json({
+            code: 200,
+            status: 'success',
+            data: vnpUrl
+        })
     } catch (error) {
         console.log(error)
         return response.status(500).json({

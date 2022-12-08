@@ -41,3 +41,25 @@ function handleIconLight () {
         }
     });
 }
+
+const continuePayment = document.querySelector('.payment-btn')
+continuePayment.onclick = () => {
+    const amountMoney = document.getElementById('payment-money')
+    const orderDescription = document.getElementById('payment-content')
+    const bankCode = document.getElementById('bankcode')
+    const language = document.getElementById('payment-language')
+
+    fetch('http://localhost:1234/api/v1/payment/create_payment_url', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ amount: amountMoney.value, orderDescription: orderDescription.value, bankCode: bankCode.value, language: language.value })
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200) {
+                window.open(data.data)
+            }
+        })
+}
