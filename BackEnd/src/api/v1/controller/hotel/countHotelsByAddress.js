@@ -13,7 +13,8 @@ module.exports = async (request, response) => {
                     where: {
                         address: {
                             [Op.like]: '%' + place + '%'
-                        }
+                        },
+                        status: true
                     }
                 })
 
