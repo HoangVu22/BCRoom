@@ -41,5 +41,8 @@ module.exports = {
     passwordRecoveryWithOtp: require('./customer/passwordRecoveryWithOtp'),
     confirmPasswordRecoveryWithOtp: require('./core/confirmPasswordRecoveryWithOtp'),
     cancelBookingFromClient: require('./customer/cancelBookingFromClient'),
-    estimateCost: require('./core/estimateCost')
+    estimateCost: require('./core/estimateCost'),
+    createPaymentURL: require('./payment/createPaymentURL'),
+    vnpayIpn: require('./payment/vnpayIpn'),
+    vnpayReturn: require('./payment/vnpayReturn')
 }

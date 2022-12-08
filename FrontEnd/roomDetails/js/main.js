@@ -839,7 +839,7 @@ function commentsroom () {
                     return index < 6
                     ? handleRenderCommentList(
                             e.reviewId,
-                            e.Customer.Image.url,
+                            e.Customer.Image?.url,
                             e.Customer.username,
                             date.getDate(),
                             date.getMonth() + 1,
@@ -884,7 +884,7 @@ function newReview (data) {
                                     const date = new Date(e.createdAt);
                                     return handleRenderCommentList(
                                         e.reviewId,
-                                        e.Customer.Image.url,
+                                        e.Customer.Image?.url,
                                         e.Customer.username,
                                         date.getDate(),
                                         date.getMonth() + 1,
@@ -935,7 +935,7 @@ fetch(`http://localhost:1234/api/v1/reviews/reviews_of_hotel/${hotelId}`)
                         const date = new Date(e.createdAt);
                         return handleRenderCommentList(
                             e.reviewId,
-                            e.Customer.Image.url,
+                            e.Customer.Image?.url,
                             e.Customer.username,
                             date.getDate(),
                             date.getMonth() + 1,
