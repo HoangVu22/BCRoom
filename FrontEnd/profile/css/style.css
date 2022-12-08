@@ -616,7 +616,8 @@ ul {
 }
 
 .profile-right-booked h2,
-.profile-right-loved h2 {
+.profile-right-loved h2,
+.profile-right-changePassword h2 {
     margin-bottom: 35px;
     color: #333;
     font-size: 40px;
@@ -637,6 +638,20 @@ ul {
 .profile-right-loved p {
     color: rgb(99 99 102);
 }
+/* ----------change password----------- */
+.change-password label {
+    font-size: 18px;
+    margin-right: 50px;
+    line-height: 50px;
+}
+
+.change-password input {
+    padding: 10px 20px;
+    width: 50%;
+    border-radius: 10px;
+    border: 1px solid #b4b2b2;
+}
+
 
 /* -----------------phòng đã đặt------------ */
 .container-residence h2 {
