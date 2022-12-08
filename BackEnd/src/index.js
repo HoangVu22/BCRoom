@@ -13,6 +13,10 @@ const app = express()
 const httpServer = http.createServer(app)
 const port = process.env.SERVER_PORT || 1234
 
+// view engine
+app.set('view engine', 'ejs')
+app.set('views', process.cwd() + '/views')
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(cors({ credentials: true }))
@@ -34,6 +38,9 @@ app.all("*",  (req, res, next) =>{
 
 // connected app with api
 v1(app)
+app.get('/views', (request, response) => {
+    response.render('success')
+})
 mongodb()
 
 httpServer.listen(port, () => {
