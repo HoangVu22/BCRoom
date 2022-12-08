@@ -652,6 +652,10 @@ ul {
     border: 1px solid #b4b2b2;
 }
 
+.error::placeholder {
+    color: red;
+}
+
 
 /* -----------------phòng đã đặt------------ */
 .container-residence h2 {
