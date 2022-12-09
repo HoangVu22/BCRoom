@@ -62,3 +62,9 @@ continuePayment.onclick = () => {
             window.location.href = data.data
         })
 }
+
+const cancelPayment = document.querySelector('.payment-cancel')
+cancelPayment.onclick = () => {
+    localStorage.removeItem('targetBookingIdForPayment')
+    window.location.href = 'http://localhost:5500/FrontEnd/home/index.html'
+}

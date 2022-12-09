@@ -331,8 +331,12 @@ function fetchBooking (data) {
     })
         .then((response) => response.json())
         .then((data) => {
-            if (data.code === 200 || data.code === 403) {
+            if (data.code === 200) {
                 alert(data.message);
+                localStorage.setItem('targetBookingIdForPayment', data.data)
+                window.location.href = 'http://localhost:5500/FrontEnd/payment/index.html'
+            } else {
+                alert(data.message)
             }
         });
 }
