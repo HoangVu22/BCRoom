@@ -1,6 +1,6 @@
 const crypto = require("crypto");
 const querystring = require('qs');
-const sortObject = require('../../../../helper/sortObject')
+const sortObject = require('../../../../helper/sortObject');
 const config = require('config');
 const dateFormat = require('dateformat');
 
@@ -47,11 +47,12 @@ module.exports = (req, res) => {
         vnp_Params['vnp_BankCode'] = bankCode;
     }
 
-    vnp_Params = sortObject(vnp_Params)
+    vnp_Params = sortObject(vnp_Params);
 
     const signData = querystring.stringify(vnp_Params, { encode: false });
     const hmac = crypto.createHmac("sha512", secretKey);
     const signed = hmac.update(Buffer.from(signData, 'utf-8')).digest("hex");
+
     vnp_Params['vnp_SecureHash'] = signed;
     vnpUrl += '?' + querystring.stringify(vnp_Params, { encode: false });
 
@@ -60,5 +61,5 @@ module.exports = (req, res) => {
         code: 200,
         status: 'success',
         data: vnpUrl
-    })
+    });
 };

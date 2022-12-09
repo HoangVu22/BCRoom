@@ -23,8 +23,10 @@ module.exports = (req, res) => {
     if (secureHash === signed) {
         //Kiem tra xem du lieu trong db co hop le hay khong va thong bao ket qua
 
-        res.render('success', { code: vnp_Params['vnp_ResponseCode'] });
+        // res.render('success', { code: vnp_Params['vnp_ResponseCode'] });
+        res.redirect('http://localhost:5500/FrontEnd/payment/index.html')
     } else {
-        res.render('success', { code: '97' });
+        // res.render('success', { code: '97' });
+        res.redirect('http://localhost:5500/FrontEnd/payment/index.html')
     }
 };

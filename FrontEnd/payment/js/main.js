@@ -52,7 +52,9 @@ continuePayment.onclick = () => {
     fetch(`http://localhost:1234/api/v1/payment/create_payment_url?amount=${amountMoney.value}&orderDescription=${orderDescription.value}&bankCode=${bankCode.value}&language=${language.value}`, {
         method: 'post',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'booking': "adfadfadsf",
+            'customer': login.customerId
         },
     })
         .then(response => response.json())
