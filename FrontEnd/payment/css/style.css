@@ -412,7 +412,7 @@ ul {
     outline: #0071c2;
 }
 
-.payment-btn {
+.payment-btn, .payment-cancel {
     padding: 8px 20px;
     font-size: 14.5px;
     background-color: var(--main-color);
@@ -423,6 +423,10 @@ ul {
     opacity: 1;
 }
 
-.payment-btn:hover {
+.payment-cancel {
+    margin-left: 20px;
+}
+
+.payment-btn:hover, .payment-cancel:hover {
     opacity: 0.8;
 }
