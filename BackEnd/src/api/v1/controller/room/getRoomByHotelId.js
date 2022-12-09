@@ -33,7 +33,8 @@ module.exports = async (request, response) => {
         const rooms = await Room.findAll({
             where: {
                 hotelId,
-                status: true
+                status: true,
+                isBooking: false
             },
             include: [
                 {
