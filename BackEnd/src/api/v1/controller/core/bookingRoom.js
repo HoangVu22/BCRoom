@@ -85,7 +85,8 @@ module.exports = async (request, response) => {
         return response.status(200).json({
             code: 200,
             status: 'success',
-            message: 'Thank for your booking, please check mail to know more'
+            message: 'Thank for your booking, please check mail to know more',
+            data: booking.bookingId
         });
     } catch (error) {
         console.log(error);
