@@ -20,6 +20,9 @@ module.exports = (sequelize, DataTypes) => {
       this.hasOne(models.Bill, {
         foreignKey: 'bookingId'
       })
+      this.hasOne(models.Transaction, {
+        foreignKey: 'bookingId'
+      })
     }
   }
   Booking.init({

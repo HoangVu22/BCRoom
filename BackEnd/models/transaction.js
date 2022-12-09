@@ -11,6 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+        this.belongsTo(models.Booking, {
+            foreignKey: 'bookingId'
+        })
+        this.belongsTo(models.Customer, {
+            foreignKey: 'customerId'
+        })
     }
   }
   Transaction.init({
@@ -19,6 +25,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4
     },
+    bookingId: DataTypes.UUID,
+    customerId: DataTypes.UUID,
     amount: {
         type: DataTypes.DECIMAL(15, 2),
         allowNull: false
