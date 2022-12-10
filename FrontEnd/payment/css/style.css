@@ -400,7 +400,7 @@ ul {
 
 .payment-text input, .payment-text textarea, .payment-text select {
     width: 100%;
-    padding: 7px;
+    padding: 7px;   
     border-radius: 6px;
     border: 1px solid #b4b2b2;
     margin-bottom: 20px;

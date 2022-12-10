@@ -37,6 +37,7 @@ function renderTableColumnName() {
                         <th>CHỖ NGHỈ</th>
                         <th>CHỦ</th>
                         <th>SỐ LƯỢNG PHÒNG</th>
+                        <th>LƯỢT XEM</th>
                         <th>HÀNH ĐỘNG</th>
                     </tr>`
 }

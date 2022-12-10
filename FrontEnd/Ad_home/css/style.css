@@ -441,6 +441,72 @@ ul {
     border-radius: 5px;
 }
 
+.create-new-users {
+    position: fixed;
+    width: 30%;
+    background-color: #fff;
+    top: 54%;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    padding: 40px 20px 20px 20px;
+    left: 50%;
+    border-radius: 10px;
+    box-shadow: 2px 4px 20px #0003;
+}
+
+.create-new-users h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.new-account label {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.new-account input, .new-account select {
+    width: 100%;
+    padding: 7px;
+    border-radius: 6px;
+    border: 1px solid #b4b2b2;
+    margin-bottom: 10px;
+}
+
+.new-account input:focus, .new-account select:focus {
+    border: 1px solid #0071c2;
+    box-shadow: 0px 0px 3px #0071c2;
+    outline: #0071c2;
+}
+
+.new-register {
+    padding: 8px 10px;
+    background-color: var(--main-color);
+    border: 1px solid var(--main-color);
+    color: #fff;
+    border-radius: 6px;
+    margin-left: 132px;
+    margin-top: 10px;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.new-register:hover {
+    opacity: 0.8;
+}
+
+.new-close {
+    position: absolute;
+    top: 12px;
+    right: 6%;
+    color: #333;
+    font-size: 22px;
+    cursor: pointer;
+    opacity: 1;
+}
+
 .postNew-residence {
     display: flex;
     align-items: center;

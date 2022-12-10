@@ -201,3 +201,17 @@ searchInput.addEventListener('keypress', (e) => {
 // updateClose.onclick = function () {
 //     updateAccount.style.display = 'none'
 // }
+
+// ------------create new account-------
+const postNewResidence = document.querySelector('.postNew-residence')
+const createNewUsers = document.querySelector('.create-new-users')
+const newClose = document.querySelector('.new-close')
+
+postNewResidence.onclick = function (e) {
+    e.preventDefault();
+    createNewUsers.style.display = 'block'
+}
+
+newClose.onclick = function () {
+    createNewUsers.style.display = 'none'
+}
