@@ -44,5 +44,6 @@ module.exports = {
     estimateCost: require('./core/estimateCost'),
     createPaymentURL: require('./payment/createPaymentURL'),
     vnpayIpn: require('./payment/vnpayIpn'),
-    vnpayReturn: require('./payment/vnpayReturn')
+    vnpayReturn: require('./payment/vnpayReturn'),
+    getAllHotels: require('./admin/getAllHotels')
 }
