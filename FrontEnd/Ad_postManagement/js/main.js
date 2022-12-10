@@ -47,16 +47,19 @@ function renderHotel (data) {
                             <span style="background-color: ${data.status ? 'green' : 'red'}">${data.status ? 'Khả dụng' : 'Vô hiệu'}</span>
                         </td>
                         <td class="list-content list-info"> 
-                            <a href="../Sup_myRoom/index.html">
-                                <h4>${data.hotelName}</h4>
-                                <span>${data.address}</span>
-                            </a>
+                            <div data-hotel="${data.hotelId}">
+                                <h4 data-hotel="${data.hotelId}">${data.hotelName}</h4>
+                                <span data-hotel="${data.hotelId}">${data.address}</span>
+                            </div>
                         </td>
                         <td class="list-content list-id">
                             <p>${data.hostName}</p>
                         </td>
                         <td class="list-content list-view">
-                            <span>${data.viewNumber}</span>
+                            <span>${data.roomCount}</span>
+                        </td>
+                        <td class="list-content">
+                            <span>${data.viewNumber}</span> 
                         </td>
                         <td class="list-content list-action">
                             <a href="../Sup_postHotel/index.html">
@@ -84,5 +87,13 @@ fetch('http://localhost:1234/api/v1/admin/all_hotels', {
                 hotelElements.push(renderHotel(hotel))
             })
             hotelContainer.innerHTML = `${renderTableColumnName()}${hotelElements.join('')}`
+            
+            const hotelNames = document.querySelectorAll('.list-residence .list-info > div')
+            hotelNames.forEach(hotel => {
+                hotel.onclick = (e) => {
+                    localStorage.setItem('targetHotelId', e.target.dataset.hotel)
+                    window.location.href = 'http://localhost:5500/FrontEnd/Sup_myRoom/index.html'
+                }
+            })
         }
     })
