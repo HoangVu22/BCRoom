@@ -60,7 +60,7 @@ fetchRooms()
 function renderRoom(data) {
     return `<tr data-value="${data.roomId}" class="list-residence">
                     <td class="list-content list-status">
-                        <span>BẢN TẠM</span>
+                        <span style="background-color: ${data.isBooking ? 'red' : 'green'}">${data.isBooking ? 'Đã được đặt' : 'Chưa được đặt'}</span>
                     </td>
                     <td class="list-content list-info"> 
                         <h4>${data.roomNumber}</h4>

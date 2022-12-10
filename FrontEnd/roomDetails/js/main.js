@@ -166,6 +166,7 @@ function modalRoom(roomNumber, arrimg, services, servicesInRoom) {
 }
 const rooms = JSON.parse(localStorage.getItem("rooms"));
 const room = rooms.map((value) => {
+    console.log(value)
     return ` <tr class="list-residence">
                         <td class="list-content list-status">
                             <b class="name-room" data-idroom=${value.roomId
@@ -192,6 +193,9 @@ const room = rooms.map((value) => {
                         <td class="list-content list-info">
                             <span>${value.price} VNĐ</span>
                         </td>
+                        <td class="list-content">
+                            <span style="color: ${value.isBooking ? 'red' : 'green'}">${value.isBooking ? 'Đã được đặt' : 'Chưa được đặt'}</span> 
+                        </td>
                         <td class="list-content list-id">
                             <button data-idroom = ${value.roomId
         } class="booking_room">Đặt phòng</button>
@@ -200,7 +204,7 @@ const room = rooms.map((value) => {
 });
 const containernav = document.querySelector(".conatiner_rooms");
 containernav.innerHTML = `
-<tr> <th>SỐ PHÒNG</th><th>PHÙ HỢP CHO</th><th>GIÁ MỖI ĐÊM</th><th>ĐẶT PHÒNG</th> </tr>
+<tr> <th>SỐ PHÒNG</th><th>PHÙ HỢP CHO</th><th>GIÁ MỖI ĐÊM</th><th>TRẠNG THÁI</th><th>ĐẶT PHÒNG</th> </tr>
 ${room.join("")}`;
 var nameRooms = document.querySelectorAll(".name-room");
 
