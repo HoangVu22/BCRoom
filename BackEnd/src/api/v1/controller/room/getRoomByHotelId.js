@@ -34,7 +34,6 @@ module.exports = async (request, response) => {
             where: {
                 hotelId,
                 status: true,
-                isBooking: false
             },
             include: [
                 {
