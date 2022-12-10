@@ -580,6 +580,39 @@ ul {
     width: 100%;
 }
 
+.form-profile-otp {
+    margin-top: 8px;
+    margin-left: 240px;
+    width: 53%;
+}
+
+.form-profile-submit{
+    padding: 0 20px;
+    background: #fff;
+    color: var(--main-color);
+    font-weight: bold;
+    border-radius: 8px;
+    border: 2px solid var(--main-color);
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.form-profile-submit:hover, .form-profile-confirm:hover {
+    background: var(--main-color);
+    color: #fff;
+}
+
+.form-profile-confirm {
+    padding: 8px 10px;
+    background: #fff;
+    color: var(--main-color);
+    font-weight: bold;
+    border-radius: 8px;
+    border: 2px solid var(--main-color);
+    cursor: pointer;
+    margin-left: 10px;
+}
+
 .form-profile-text:hover {
     border: 1px solid var(--main-color);
 }

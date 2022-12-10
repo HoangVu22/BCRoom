@@ -313,9 +313,15 @@ function profileUpdatefn (obj) {
   <label for="">Số điện thoại</label>
   <div class="form-profile-input">
       <input class="form-profile-text"  type="number" placeholder="Nhập số điện thoại của bạn" value="${obj && obj.phone || login.phone}">
+      <button class="form-profile-submit">Gửi</button>
   </div>
 </div>
+<div style="display: none;" class="form-profile-codeOTP">
+      <input class="form-profile-text form-profile-otp" type="text" placeholder="Nhập mã OTP">
+      <button class="form-profile-confirm">Xác nhận</button>
+  </div>
 <div class="form-line"></div>
+
 <div class="form-profile-info">
   <label for="">Họ và tên</label>
   <div class="form-profile-input">
@@ -489,4 +495,14 @@ submitUpdatePasswordInput.onclick = () => {
         verifyNewPasswordInput.placeholder = "Mật khẩu không hợp lệ"
         verifyNewPasswordInput.classList.add('error')
     }
+}
+
+// ---------OTP----------
+const formProfileSubmit = document.querySelector('.form-profile-submit')
+const formProfileCodeOTP = document.querySelector('.form-profile-codeOTP')
+
+formProfileSubmit.onclick = function (e) {
+    e.preventDefault();
+    formProfileCodeOTP.style.display = 'block'
+    formProfileSubmit.style.display = 'none'
 }
