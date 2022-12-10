@@ -202,10 +202,24 @@ searchInput.addEventListener('keypress', (e) => {
 //     updateAccount.style.display = 'none'
 // }
 
+fetch('http://localhost:1234/api/v1/roles/all_roles')
+    .then(response => response.json())
+    .then(data => {
+        if (data.code === 200) {
+            const selectRoleElement = document.querySelector('.roles')
+            const roleOptions = []
+            data.data.forEach(role => {
+                roleOptions.push(`<option value="${role.roleId}">${role.roleName}</option>`)
+            })
+            selectRoleElement.innerHTML = roleOptions.join('')
+        }
+    })
+
 // ------------create new account-------
 const postNewResidence = document.querySelector('.postNew-residence')
 const createNewUsers = document.querySelector('.create-new-users')
 const newClose = document.querySelector('.new-close')
+const newRegisterButton = document.querySelector('.new-register')
 
 postNewResidence.onclick = function (e) {
     e.preventDefault();
@@ -214,4 +228,30 @@ postNewResidence.onclick = function (e) {
 
 newClose.onclick = function () {
     createNewUsers.style.display = 'none'
+}
+
+newRegisterButton.onclick = () => {
+    const newUserRequestValues = document.querySelectorAll('.new-user-request')
+    const requestValues = [...newUserRequestValues].reduce((prev, next)=> {
+        return {
+            ...prev,
+            [next.dataset.request]: next.value
+        } 
+    }, {})
+    fetch('http://localhost:1234/api/v1/auth/register', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestValues)
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.code === 200) {
+                window.location.reload()
+                return false
+            } else {
+                alert(data.message)
+            }
+        })
 }

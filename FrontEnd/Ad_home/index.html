@@ -90,25 +90,25 @@
                     <h1>Thêm người dùng mới</h1>
                     <div class="new-account">
                         <label for="">Tên người dùng</label>
-                        <input type="text" placeholder="Nhập tên người dùng">
+                        <input data-request="name" class="new-user-request" type="text" placeholder="Nhập tên người dùng">
                     </div>
                     <div class="new-account">
                         <label for="">Email</label>
-                        <input type="text" placeholder="Nhập email">
+                        <input data-request="email" class="new-user-request"type="email" placeholder="Nhập email">
                     </div>
                     <div class="new-account">
                         <label for="">Mật khẩu</label>
-                        <input type="text" placeholder="Nhập mật khẩu">
+                        <input data-request="password" class="new-user-request"type="text" placeholder="Nhập mật khẩu">
                     </div>
                     <div class="new-account">
                         <label for="">Địa chỉ</label>
-                        <input type="text" placeholder="Nhập điaj chỉ">
+                        <input data-request="address" class="new-user-request"type="text" placeholder="Nhập điaj chỉ">
                     </div>
                     <div class="new-account">
                         <label for="">Role</label>
-                        <select name="" id="">
-                            <option value="">customer</option>
-                            <option value="">admin</option>
+                        <select data-request="roleId" class="new-user-request roles"name="" id="">
+                            <!-- <option value="">customer</option>
+                            <option value="">admin</option> -->
                         </select>
                     </div>
                     <button class="new-register">Đăng ký</button>
