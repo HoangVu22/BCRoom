@@ -126,14 +126,19 @@ header {
     display: flex;
 }
 
+.header-logo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
 .header-logo img {
-    width: 85px;
+    width: 200px !important;
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
-    padding: 12px 0;
     align-items: center;
 }
 

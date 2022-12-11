@@ -249,3 +249,9 @@ Validator.isConfirmed = function (selector, getConfirmValue, message) {
         }
     }
 }
+
+// ---------
+var headerLogoIMG = document.querySelector('.header-logo img')
+headerLogoIMG.onclick = function () {
+  location.href = 'http://localhost:5500/FrontEnd/home/index.html#'
+}

@@ -1,10 +1,9 @@
 // ---------header------------
 var header = document.querySelector('header')
-var header_logo = document.querySelector('.header-logo h1')
+// var header_logo = document.querySelector('.header-logo h1')
 var headerNavIcon = document.querySelector('.header-nav-icon')
 window.onscroll = function () { 
     myFunction() 
-    console.log(window.pageYOffset);
 };
 
 var navs = document.querySelectorAll('.list_city > li > a')
@@ -13,7 +12,7 @@ function myFunction() {
     var header = document.querySelector('header')
     console.log(headerNavIcon.style.borderColor);
     if (window.pageYOffset > 0) {
-        header_logo.style.color = '#f44336'
+        // header_logo.style.color = '#f44336'
         header.style.backgroundColor='#fff'
         navs.forEach((item, index) => {
             if(index < navs.length){
@@ -27,7 +26,7 @@ function myFunction() {
         })
     }
     else {
-        header_logo.style.color = '#fff'
+        // header_logo.style.color = '#fff'
         header.style.backgroundColor='transparent'
         navs.forEach((item, index) => {
             if(index < navs.length){
@@ -112,3 +111,9 @@ const key = 'Xx2LVdpWdk1UyVYRKzN0';
     //     .setLngLat(userLngLat)
     //     .addTo(map);
     // });
+
+// ---------
+var headerLogoIMG = document.querySelector('.header-logo img')
+headerLogoIMG.onclick = function () {
+  location.href = 'http://localhost:5500/FrontEnd/home/index.html#'
+}

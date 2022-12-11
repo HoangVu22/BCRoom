@@ -506,3 +506,9 @@ formProfileSubmit.onclick = function (e) {
     formProfileCodeOTP.style.display = 'block'
     formProfileSubmit.style.display = 'none'
 }
+
+// ---------
+var headerLogoIMG = document.querySelector('.header-logo img')
+headerLogoIMG.onclick = function () {
+  location.href = 'http://localhost:5500/FrontEnd/home/index.html#'
+}

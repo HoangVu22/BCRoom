@@ -1,6 +1,6 @@
 // ---------header------------
 var header = document.querySelector("header");
-var header_logo = document.querySelector(".header-logo h1");
+// var header_logo = document.querySelector(".header-logo h1");
 var headerNavIcon = document.querySelector(".header-nav-icon");
 window.onscroll = function () {
   myFunction();
@@ -10,7 +10,7 @@ var navs = document.querySelectorAll(".list_city > li > a");
 function myFunction() {
   var header = document.querySelector("header");
   if (window.pageYOffset > 0) {
-    header_logo.style.color = "#f44336";
+    // header_logo.style.color = "#f44336";
     header.style.backgroundColor = "#fff";
     navs.forEach((item, index) => {
       if (index < navs.length) {
@@ -23,7 +23,7 @@ function myFunction() {
       }
     });
   } else {
-    header_logo.style.color = "#fff";
+    // header_logo.style.color = "#fff";
     header.style.backgroundColor = "transparent";
     navs.forEach((item, index) => {
       if (index < navs.length) {
@@ -380,3 +380,9 @@ function renderHotel() {
 }
 
 renderHotel();
+
+// ---------
+var headerLogoIMG = document.querySelector('.header-logo img')
+headerLogoIMG.onclick = function () {
+  location.href = 'http://localhost:5500/FrontEnd/home/index.html#'
+}

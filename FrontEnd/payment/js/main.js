@@ -68,3 +68,9 @@ cancelPayment.onclick = () => {
     localStorage.removeItem('targetBookingIdForPayment')
     window.location.href = 'http://localhost:5500/FrontEnd/home/index.html'
 }
+
+// ---------
+var headerLogoIMG = document.querySelector('.header-logo img')
+headerLogoIMG.onclick = function () {
+  location.href = 'http://localhost:5500/FrontEnd/home/index.html#'
+}
