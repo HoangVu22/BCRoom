@@ -9,7 +9,7 @@
 */
 
 
-const hotelId = localStorage.getItem("targetHotelId");
+const hotelId = JSON.parse(localStorage.getItem("targetHotelId"));
 const reviewButton = document.querySelector("button.btn-cmt");
 console.log(hotelId);
 // ---------header------------
@@ -756,7 +756,8 @@ fetch("http://localhost:1234/api/v1/hotels/get_by_id/" + hotelId)
             const hotelAddressMainTitle = document.querySelector('.rooms-address p')
             hotelAddressMainTitle.innerText = data.data.address
             const averageReviewStar = document.querySelector('.review-star1')
-            averageReviewStar.innerText = data.data.averageReviewStar
+            console.log(data.data.averageReviewStar)
+            averageReviewStar.innerText = isNaN(data.data.averageReviewStar) ? "0" : data.data.averageReviewStar.toFixed(1)
             const totalReview = document.querySelector('.review-star3 span')
             totalReview.innerText = data.data.totalReview
         }
@@ -836,7 +837,7 @@ function commentsroom () {
                 totalReview.innerText = data.data.length
                 const averageReviewStar = document.querySelector('.review-star1')
                 const avarageStar = data.data.reduce((prev, next) => prev + next.starNumber, 0) / data.data.length
-                averageReviewStar.innerText = avarageStar.toFixed(2)
+                averageReviewStar.innerText = isNaN(avarageStar) ? "0" : avarageStar.toFixed(1)
                 data.data.sort((a, b) => {
                     const dataPrev = new Date(a.createdAt);
                     const dataNext = new Date(b.createdAt);

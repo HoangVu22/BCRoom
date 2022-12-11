@@ -28,7 +28,7 @@ module.exports = async (request, response) => {
         })
 
         const totalReviewStar = reviews.reduce((prev, next) => prev + next.starNumber, 0)
-        const averageReviewStar = (totalReviewStar / reviews.length).toFixed(2) || 0
+        const averageReviewStar = (totalReviewStar / reviews.length) || 0
 
         return response.status(200).json({
             code: 200,

@@ -308,11 +308,11 @@ function formProfilefn (obj) {
 formProfile.innerHTML = formProfilefn();
 
 const formprofileedit = document.querySelector(".form-profile-edit");
-function profileUpdatefn (obj) {
+function profileUpdatefn(obj) {
     return `<div class="form-profile-info">
   <label for="">Số điện thoại</label>
   <div class="form-profile-input">
-      <input class="form-profile-text"  type="number" placeholder="Nhập số điện thoại của bạn" value="${obj && obj.phone || login.phone}">
+      <input class="form-profile-text update-request"  type="number" placeholder="Nhập số điện thoại của bạn" value="${obj && obj.phone || login.phone}">
       <button class="form-profile-submit">Gửi</button>
   </div>
 </div>
@@ -325,21 +325,21 @@ function profileUpdatefn (obj) {
 <div class="form-profile-info">
   <label for="">Họ và tên</label>
   <div class="form-profile-input">
-      <input class="form-profile-text"  value="${obj && obj.username || login.username}"  type="text" placeholder="Nhập họ tên của bạn">
+      <input class="form-profile-text update-request"  value="${obj && obj.username || login.username}"  type="text" placeholder="Nhập họ tên của bạn">
   </div>
 </div>
 <div class="form-line"></div>
 <div class="form-profile-info">
   <label for="">Email</label>
   <div class="form-profile-input">
-      <input class="form-profile-text" disabled value=${obj && obj.email || login.email} type="text" placeholder="Nhập email của bạn">
+      <input class="form-profile-text update-request" disabled value=${obj && obj.email || login.email} type="text" placeholder="Nhập email của bạn">
   </div>
 </div>
 <div class="form-line"></div>
 <div class="form-profile-info">
   <label for="">Địa chỉ</label>
   <div class="form-profile-input">
-      <input class="form-profile-text" type="text" placeholder="Nhập địa chỉ của bạn" value="${obj && obj.address || login.address}">
+      <input class="form-profile-text update-request" type="text" placeholder="Nhập địa chỉ của bạn" value="${obj && obj.address || login.address}">
   </div>
 </div>
 <div class="form-line"></div>
@@ -385,7 +385,7 @@ autoLoad();
 
 const profileUpdate = document.querySelector(".profile_update");
 profileSaveBtn.onclick = () => {
-    const inputChange = formprofileedit.querySelectorAll("input");
+    const inputChange = formprofileedit.querySelectorAll("input.update-request");
     const objProfile = {
         "phone": inputChange[0].value,
         "username": inputChange[1].value,
@@ -410,6 +410,8 @@ profileSaveBtn.onclick = () => {
                 accountinfo.innerHTML = accountInfomation(profile);
                 userName(profile);
                 edit();
+                window.location.reload()
+                return false
             }
         });
 };
