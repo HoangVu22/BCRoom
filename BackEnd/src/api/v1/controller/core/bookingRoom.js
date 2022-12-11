@@ -8,6 +8,14 @@ module.exports = async (request, response) => {
         const customerId = request.body.customerId
         const { roomId, dateFrom, dateTo, kidNumber, adultNumber } = request.body;
 
+        if (!roomId || !dateFrom || !dateTo || !kidNumber || !adultNumber) {
+            return response.status(400).json({
+                code: 400,
+                status: 'failed',
+                message: 'Request bị thiếu dữ liệu'
+            })
+        }
+
         if (Date.parse(dateTo) - Date.parse(dateFrom) < 0) {
             return response.status(422).json({
                 code: 422,
