@@ -410,6 +410,8 @@ profileSaveBtn.onclick = () => {
                 accountinfo.innerHTML = accountInfomation(profile);
                 userName(profile);
                 edit();
+                window.location.reload()
+                return false
             }
         });
 };
