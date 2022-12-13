@@ -150,7 +150,6 @@ function showRoomOutStanding() {
     .then((data) => {
       if (data.code === 200) {
         const listHotel = data.data.map((item) => {
-            console.log(item)
           return `<div data-hotel=${item.hotelId} class="hotel_item" href="#">
               <div class="tab-rooms">
                   <div class="tab-rooms-img" style="background-image: url(${

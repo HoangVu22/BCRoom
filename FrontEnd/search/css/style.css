@@ -866,7 +866,7 @@ select {
     border-right: 1px solid #d6d5d5;
 }
 
-.room-cart-content a {
+.room-cart-content h3 {
     color: #333;
     font-weight: bold;
     line-height: 24px;
@@ -895,7 +895,22 @@ select {
 
 .room-cart-money{
     width: 22%;
-    padding: 18px;
+    padding: 20px 11px;
+    line-height: 20px;
+}
+
+.room-cart-money div {
+    color: #333;
+    border: 2px solid var(--main-color);
+    font-weight: bold;
+    font-size: 14px;
+    padding: 6px 20px;
+    border-radius: 15px;
+}
+
+.room-cart-money div:hover {
+    color: #fff;
+    background-color: var(--main-color);
 }
 
 .room-cart-wrap {

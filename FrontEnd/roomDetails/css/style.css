@@ -937,7 +937,7 @@ ul {
 .rooms-address {
     display: flex;
     font-size: 15px;
-    /* color: #5392f9; */
+    color: #5392f9;
     margin: 10px 0;
 }
 

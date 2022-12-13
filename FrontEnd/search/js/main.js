@@ -285,7 +285,7 @@ function renderHotel() {
                         </div>
                     </div>
                     <div class="room-cart-content">
-                        <p>${value.hotelName}</p>
+                        <h3>${value.hotelName}</h3>
                         <div class="room-cart-contentareacity">
                             <div class="rooms-cart-star">
                             ${
@@ -328,7 +328,7 @@ function renderHotel() {
                         </div>
                     </div>
                     <div class="room-cart-money">
-                        <div>Số phòng còn khả dụng: ${value.totalNoBookingRoom} / ${value.totalRoom}</div>
+                        <div>Số phòng còn trống: ${value.totalNoBookingRoom} / ${value.totalRoom}</div>
                     </div>
                 </div>`;
   });
