@@ -86,9 +86,19 @@ function passwordRecovery (email, username, password, link) {
     </div>`
 }
 
+function paymentConfirmation (email, username, bookingId) {
+    return `<div>
+        <h1>Xác nhận thanh toán</h1>
+        <h3>Người dùng: ${username}</h3>
+        <h4>Email: ${email}</h4>
+        <h5>Đã thanh toán thành công cho đơn đặt ${bookingId}</h5>
+    <div>`
+}
+
 module.exports = {
     bill,
     cancleBill,
     passwordRecovery,
-    cancelBillFromClient
+    cancelBillFromClient,
+    paymentConfirmation
 }
