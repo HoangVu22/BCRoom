@@ -17,7 +17,8 @@ module.exports = (req, res) => {
 
     const date = new Date();
 
-    const createDate = dateFormat(date, 'yyyymmddHHmmss');
+    // const createDate = dateFormat(date, 'yyyymmddHHmmss');
+    const createDate = date.getFullYear() + ("0" + (date.getMonth() + 1)).slice(-2) + ("0" + date.getDate()).slice(-2) + ("0" + date.getHours()).slice(-2) + ("0" + date.getMinutes()).slice(-2) + ("0" + date.getSeconds()).slice(-2)
     const orderId = dateFormat(date, 'HHmmss');
     const amount = req.query.amount;
     const bankCode = req.query.bankCode;
