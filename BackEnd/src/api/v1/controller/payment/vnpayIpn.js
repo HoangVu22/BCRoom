@@ -11,6 +11,7 @@ module.exports = async (req, res) => {
     const secureHash = vnp_Params['vnp_SecureHash'];
     const bookingId = vnp_Params['bookingId']
     const customerId = vnp_Params['customerId']
+    const amount = vnp_Params['vnp_Amount'] / 100
 
     delete vnp_Params['vnp_SecureHash'];
     delete vnp_Params['vnp_SecureHashType'];
@@ -81,7 +82,7 @@ module.exports = async (req, res) => {
             })
         }
 
-        const paymentConfirmationContent = paymentConfirmation(customer.email, customer.username, bookingId)
+        const paymentConfirmationContent = paymentConfirmation(customer.email, customer.username, bookingId, amount)
         await sendMail(customer.email, 'Xác nhận thanh toán', paymentConfirmationContent)
 
         res.status(200).json({RspCode: '00', Message: 'success'})

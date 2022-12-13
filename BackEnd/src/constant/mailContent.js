@@ -86,11 +86,12 @@ function passwordRecovery (email, username, password, link) {
     </div>`
 }
 
-function paymentConfirmation (email, username, bookingId) {
+function paymentConfirmation (email, username, bookingId, amount) {
     return `<div>
         <h1>Xác nhận thanh toán</h1>
         <h3>Người dùng: ${username}</h3>
         <h4>Email: ${email}</h4>
+        <h4>Số tiền đã thanh toán: ${amount} VND</h4>
         <h5>Đã thanh toán thành công cho đơn đặt ${bookingId}</h5>
     <div>`
 }
