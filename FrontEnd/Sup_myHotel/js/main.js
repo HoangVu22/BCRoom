@@ -5,6 +5,7 @@ var headerFormLogin = headerNavForm.querySelector(".header-form-login");
 var headerFormLogout = document.querySelector(".header-form-logout");
 var headerNavIcon = document.querySelector('.header-nav-icon')
 var login = JSON.parse(localStorage.getItem('login')) 
+const loader = document.getElementById('loading')
 
 headerNavForm.onclick = function () {
   if (headerForm.style.display === "none") headerForm.style.display = "block";
@@ -54,9 +55,11 @@ const searchResidence = () => {
 }
 
 function fetchHotels() {
+    loader.style.display = 'grid'
     fetch('http://localhost:1234/api/v1/owners/' + login.customerId + '/hotels')
         .then(response => response.json())
         .then(data => {
+            loader.style.display = 'none'
             if (data.code === 200) {
                 const hotelsResponse = data.data
                 const hotelsContainer = document.querySelector('.container-nav')
@@ -85,11 +88,13 @@ function fetchHotels() {
                         window.location.href = 'http://localhost:5500/FrontEnd/Sup_myRoom/index.html'
                     }
                     deleteHotelButton.onclick = (e) => {
+                        loader.style.display = 'grid'
                         fetch('http://localhost:1234/api/v1/hotels/change_status/' + e.target.dataset.value, {
                             method: 'post'
                         })
                             .then(response => response.json())
                             .then(data => {
+                                loader.style.display = 'none'
                               if (data.code === 200) {
                                     window.location.reload()
                                     return false
