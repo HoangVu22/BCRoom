@@ -43,6 +43,28 @@ function handleIconLight () {
 }
 
 const continuePayment = document.querySelector('.payment-btn')
+const cancelPayment = document.querySelector('.payment-cancel')
+const targetBookingIdForPayment = localStorage.getItem('targetBookingIdForPayment')
+
+fetch('http://localhost:1234/api/v1/customers/your_booking_price/' + targetBookingIdForPayment, {
+    method: 'post',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ customerId: login.customerId })
+})
+    .then(response => response.json())
+    .then(data => {
+        if (data.code === 200) {
+            continuePayment.style.display = 'block'
+            cancelPayment.style.display = 'block'
+            const amountMoney = document.getElementById('payment-money')
+            amountMoney.value = data.data.slice(-data.data.length, -3) 
+        } else {
+            alert(data.message)
+        }
+    })
+    
 continuePayment.onclick = () => {
     const amountMoney = document.getElementById('payment-money')
     const orderDescription = document.getElementById('payment-content')
@@ -63,7 +85,6 @@ continuePayment.onclick = () => {
         })
 }
 
-const cancelPayment = document.querySelector('.payment-cancel')
 cancelPayment.onclick = () => {
     localStorage.removeItem('targetBookingIdForPayment')
     window.location.href = 'http://localhost:5500/FrontEnd/home/index.html'

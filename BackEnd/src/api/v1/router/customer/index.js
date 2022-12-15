@@ -20,6 +20,9 @@ router.post('/booking_history', isLogin, controllers.bookingHistory)
 // người dùng hủy booking
 router.post('/cancel_booking_from_client/:bookingId', isLogin, isBookingClient, controllers.cancelBookingFromClient)
 
+// lấy giá của booking của người dùng thông qua id
+router.post('/your_booking_price/:bookingId', isBookingClient, controllers.getYourBookingPrice)
+
 module.exports = {
     entry: '/customers',
     router

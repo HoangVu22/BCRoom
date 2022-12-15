@@ -46,5 +46,6 @@ module.exports = {
     vnpayIpn: require('./payment/vnpayIpn'),
     vnpayReturn: require('./payment/vnpayReturn'),
     getAllHotels: require('./admin/getAllHotels'),
-    getAllRoles: require('./role/getAllRoles')
+    getAllRoles: require('./role/getAllRoles'),
+    getYourBookingPrice: require('./customer/getYourBookingPrice')
 }

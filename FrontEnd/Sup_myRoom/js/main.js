@@ -5,8 +5,10 @@ var headerFormLogin = headerNavForm.querySelector(".header-form-login");
 var headerFormLogout = document.querySelector(".header-form-logout");
 var headerNavIcon = document.querySelector('.header-nav-icon')
 var login = JSON.parse(localStorage.getItem('login'))
+const loader = document.getElementById('loading')
 
 function fetchRooms() {
+    loader.style.display = 'grid'
     const targetHotelId = localStorage.getItem('targetHotelId')
     fetch('http://localhost:1234/api/v1/rooms/by_hotel_id/' + targetHotelId, {
         method: 'post',
@@ -17,6 +19,7 @@ function fetchRooms() {
     })
         .then(response => response.json())
         .then(data => {
+            loader.style.display = 'none'
             if (data.code === 200) {
                 const roomsResponse = data.data
                 const roomsContainer = document.querySelector('table.container-nav')
@@ -36,15 +39,16 @@ function fetchRooms() {
                     window.location.href = "http://localhost:5500/FrontEnd/Sup_postHotel/index.html"
                   })
                 })  
-                console.log(countModify);
                 const deleteRoomButton = document.querySelectorAll('.list-content.list-action div i.delete')
                 deleteRoomButton.forEach(button => {
                     button.onclick = (e) => {
+                        loader.style.display = 'grid'
                         fetch('http://localhost:1234/api/v1/rooms/change_status/' + e.target.dataset.value, {
                             method: 'post'
                         })
                             .then(response => response.json())
                             .then(data => {
+                                loader.style.display = 'none'
                                 if (data.code === 200) {
                                     window.location.reload()
                                     return false

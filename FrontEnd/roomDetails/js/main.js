@@ -16,6 +16,7 @@ console.log(hotelId);
 var header = document.querySelector("header");
 // var header_logo = document.querySelector(".header-logo h1");
 var headerNavIcon = document.querySelector(".header-nav-icon");
+const loader = document.getElementById('loading')
 
 window.onscroll = function () {
     myFunction();
@@ -325,6 +326,7 @@ bookingRooms.forEach(bookingRoom => {
 })
 
 function fetchBooking (data) {
+    loader.style.display = 'grid'
     fetch("http://localhost:1234/api/v1/core/booking", {
         method: "post",
         headers: {
@@ -332,8 +334,11 @@ function fetchBooking (data) {
         },
         body: JSON.stringify(data),
     })
-        .then((response) => response.json())
+        .then((response) => {
+            return response.json()
+        })
         .then((data) => {
+            loader.style.display = 'none'
             if (data.code === 200) {
                 alert(data.message);
                 localStorage.setItem('targetBookingIdForPayment', data.data)
