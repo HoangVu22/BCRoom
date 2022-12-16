@@ -94,9 +94,7 @@ function modalRoom(roomNumber, arrimg, services, servicesInRoom) {
                 ${services.map(service => `<li>${service.serviceName}</li>`).join('')}
             </ul>
         </div>
-        <div class="reserve">
-            <button>Thanh toán</button>
-        </div>
+        
     </div>
     <div class="room-close">
         <i class="fa-solid fa-xmark"></i>

@@ -131,6 +131,7 @@ header {
 
 .header-logo img {
   width: 200px;
+  cursor: pointer;
 }
 
 .header-logo {
