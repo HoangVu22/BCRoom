@@ -23,6 +23,9 @@ router.post('/cancel_booking_from_client/:bookingId', isLogin, isBookingClient, 
 // lấy giá của booking của người dùng thông qua id
 router.post('/your_booking_price/:bookingId', isBookingClient, controllers.getYourBookingPrice)
 
+// thay đổi mật khẩu
+router.put('/change_password', isLogin, controllers.changePassword)
+
 module.exports = {
     entry: '/customers',
     router

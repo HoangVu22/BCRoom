@@ -479,16 +479,20 @@ new Array(oldPasswordInput, newPasswordInput, verifyNewPasswordInput).forEach(in
 submitUpdatePasswordInput.onclick = () => {
     const customerId = login.customerId
 
+    let requestDenied = false
+
     if (!oldPasswordInput.value) {
         oldPasswordInput.style.border = '1px solid red'
         oldPasswordInput.placeholder = "Chưa nhập mật khẩu cũ"
         oldPasswordInput.classList.add('error')
+        requestDenied = true
     }
 
     if (!newPasswordInput.value) {
         newPasswordInput.style.border = '1px solid red'
         newPasswordInput.placeholder = "Chưa nhập mật khẩu mới"
         newPasswordInput.classList.add('error')
+        requestDenied = true
     }
 
     if (verifyNewPasswordInput.value !== newPasswordInput.value || !verifyNewPasswordInput.value) {
@@ -496,6 +500,21 @@ submitUpdatePasswordInput.onclick = () => {
         verifyNewPasswordInput.style.border = '1px solid red'
         verifyNewPasswordInput.placeholder = "Mật khẩu không hợp lệ"
         verifyNewPasswordInput.classList.add('error')
+        requestDenied = true
+    }
+
+    if (!requestDenied) {
+        fetch('http://localhost:1234/api/v1/customers/change_password', {
+            method: 'put',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ customerId, password: newPasswordInput.value, oldPassword: oldPasswordInput.value})
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message)
+            })
     }
 }
 
