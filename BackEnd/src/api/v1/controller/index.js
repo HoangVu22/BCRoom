@@ -50,5 +50,6 @@ module.exports = {
     getYourBookingPrice: require('./customer/getYourBookingPrice'),
     changePassword: require('./customer/changePassword'),
     phoneVerification: require('./customer/phoneVerification'),
-    confirmPhoneVerification: require('./core/confirmPhoneVerification')
+    confirmPhoneVerification: require('./core/confirmPhoneVerification'),
+    getHotelsByStar: require('./hotel/getHotelsByStar')
 }

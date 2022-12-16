@@ -16,6 +16,9 @@ router.delete('/single/:hotelId', controllers.deleteHotel)
 // thay đổi trạng thái của khách sạn theo id
 router.post('/change_status/:hotelId', controllers.changeStatusHotel)
 
+// lấy dữ liệu tất cả khách sạn theo star number
+router.get('', controllers.getHotelsByStar)
+
 module.exports = {
     entry: '/hotels',
     router
