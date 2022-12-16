@@ -289,12 +289,6 @@ function renderHotel (value) {
                     </div>
                     <div class="room-cart-money">
                         <div>Số phòng còn khả dụng: ${value.totalNoBookingRoom} / ${value.totalRoom}</div>
-                        <div class="room-cart-wrap">
-                            <span class="room-cart-cash">đ 200,000</span>
-                            <span class="room-cart-space">/</span>
-                            <span class="room-cart-night">ngày</span>
-                        </div>
-                        <button class="room-cart-booked"><a href="../roomDetails/index.html">Đặt phòng</a></button>
                     </div>
                 </div>`;
 }
