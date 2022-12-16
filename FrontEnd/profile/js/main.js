@@ -559,6 +559,7 @@ formProfileSubmit.onclick = function (e) {
                         .then(response => response.json())
                         .then(data => {
                             loader.style.display = 'none'
+                            localStorage.setItem('login', JSON.stringify({ ...login, phone: phone.value }))
                             alert(data.message)
                         })
                 }
