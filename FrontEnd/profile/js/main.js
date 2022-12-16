@@ -527,6 +527,7 @@ formProfileSubmit.onclick = function (e) {
     const customerId = login.customerId;
     const phone = document.querySelector('.phone-verification');
     loader.style.display = 'grid'
+    console.log(phone.value)
     fetch('http://localhost:1234/api/v1/customers/phone_verification', {
         method: 'put',
         headers: {
@@ -551,7 +552,7 @@ formProfileSubmit.onclick = function (e) {
                         },
                         body: JSON.stringify({
                             customerId,
-                            phone,
+                            phone: phone.value,
                             otp: otpInput.value
                         })
                     })
