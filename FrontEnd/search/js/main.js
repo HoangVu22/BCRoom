@@ -125,9 +125,9 @@ searchBtn.onclick = () => {
 };
 
 function handleSearch (element) {
-    const place = element.value;
-    localStorage.setItem("place", JSON.stringify(place));
-    fetch(`http://localhost:1234/api/v1/core/search_hotel_by_address_or_name/?q=${place}`)
+    const value = element.value;
+    localStorage.setItem("searchValue", JSON.stringify(value));
+    fetch(`http://localhost:1234/api/v1/core/search_hotel_by_address_or_name/?q=${value}`)
         .then(res => res.json())
         .then(data => {
             if (data.code === 200) {
@@ -136,9 +136,6 @@ function handleSearch (element) {
             }
         });
 }
-
-
-
 
 function showAdress (list) {
     let listData;

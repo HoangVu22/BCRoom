@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { Hotel } = require('../../../../../models');
+const { Hotel, Image, Room } = require('../../../../../models');
 
 module.exports = async (request, response) => {
     try {
@@ -19,13 +19,41 @@ module.exports = async (request, response) => {
                         }
                     }
                 ]
+            },
+            include: {
+                model: Image,
+                limit: 1,
+                attributes: ['url', 'imageName', 'hotelId', 'imageId']
             }
         });
+
+        const result = await Promise.all(hotels.map(async hotel => {
+            const countRoomOfHotel = await Room.count({
+                where: {
+                    hotelId: hotel.hotelId,
+                    status: true
+                }
+            })
+
+            const countRoomOfHotelNoBooking = await Room.count({
+                where: {
+                    hotelId: hotel.hotelId,
+                    status: true,
+                    isBooking: false 
+                }
+            })
+
+            return {
+                ...hotel.dataValues,
+                totalRoom: countRoomOfHotel,
+                totalNoBookingRoom: countRoomOfHotelNoBooking
+            }
+        }))
 
         return response.status(200).json({
             code: 200,
             status: 'success',
-            data: hotels
+            data: result
         })
     } catch (error) {
         console.log(error);
