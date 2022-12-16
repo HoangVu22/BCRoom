@@ -48,5 +48,7 @@ module.exports = {
     getAllHotels: require('./admin/getAllHotels'),
     getAllRoles: require('./role/getAllRoles'),
     getYourBookingPrice: require('./customer/getYourBookingPrice'),
-    changePassword: require('./customer/changePassword')
+    changePassword: require('./customer/changePassword'),
+    phoneVerification: require('./customer/phoneVerification'),
+    confirmPhoneVerification: require('./core/confirmPhoneVerification')
 }

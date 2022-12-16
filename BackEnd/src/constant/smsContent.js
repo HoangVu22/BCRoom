@@ -3,6 +3,11 @@ function passwordOtp (password, otp) {
     Và đây là OTP: ${otp}`
 }
 
+function phoneVerification (otp) {
+    return `Xác thực số điện thoại. Đây là mã otp: ${otp}`
+}
+
 module.exports = {
-    passwordOtp
+    passwordOtp,
+    phoneVerification
 }

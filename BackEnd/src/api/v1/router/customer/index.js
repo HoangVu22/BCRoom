@@ -26,6 +26,9 @@ router.post('/your_booking_price/:bookingId', isBookingClient, controllers.getYo
 // thay đổi mật khẩu
 router.put('/change_password', isLogin, controllers.changePassword)
 
+// xác thực số điện thoại để liên kết với tài khoản
+router.put('/phone_verification', isLogin, controllers.phoneVerification)
+
 module.exports = {
     entry: '/customers',
     router

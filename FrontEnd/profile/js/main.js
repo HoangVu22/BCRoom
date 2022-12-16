@@ -5,6 +5,7 @@ var headerFormLogin = headerNavForm.querySelector(".header-form-login");
 var headerFormLogout = document.querySelector(".header-form-logout");
 const accountinfo = document.querySelector(".account-info");
 const formProfile = document.querySelector(".form-profile");
+const loader = document.getElementById('loading')
 
 const login = JSON.parse(localStorage.getItem("login"));
 
@@ -12,10 +13,10 @@ fetch('http://localhost:1234/api/v1/images/avatar_of_customer/' + login.customer
     .then(response => response.json())
     .then(data => {
         if (data.code === 200) {
-            const avatarImg = document.querySelector('img.avatar-img')
-            avatarImg.src = data.data ? data.data.url : 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-avt-n%E1%BB%AF-t%C3%B3c-ng%E1%BA%AFn-%C4%91%E1%BA%B9p.jpg'
+            const avatarImg = document.querySelector('img.avatar-img');
+            avatarImg.src = data.data ? data.data.url : 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-avt-n%E1%BB%AF-t%C3%B3c-ng%E1%BA%AFn-%C4%91%E1%BA%B9p.jpg';
         }
-    })
+    });
 
 headerNavForm.onclick = function () {
     if (headerForm.style.display === "none") headerForm.style.display = "block";
@@ -25,7 +26,7 @@ headerNavForm.onclick = function () {
 
     handleIconLight();
 };
-const headerNavIcon = document.querySelector(".header-nav-icon")
+const headerNavIcon = document.querySelector(".header-nav-icon");
 function handleIconLight () {
     var iconList = headerNavIcon.querySelectorAll("i");
     iconList.forEach((item) => {
@@ -87,14 +88,14 @@ accountsidebarlink.forEach((value, index) => {
         }
 
         if (value.classList.contains('booking-sidebar')) {
-            fetchBookingsHistory()
+            fetchBookingsHistory();
         }
     };
 });
 
-function renderBooking(data) {
-    const dateFrom = new Date(data.dateFrom)
-    const dateTo = new Date(data.dateTo)
+function renderBooking (data) {
+    const dateFrom = new Date(data.dateFrom);
+    const dateTo = new Date(data.dateTo);
 
     return `<tr data-booking="${data.bookingId}" class="list-residence">
                                 <td class="list-content list-status">
@@ -114,15 +115,14 @@ function renderBooking(data) {
                                 <td class="list-content list-wait">
                                     <span style="color: ${data.isPaid ? 'green' : 'red'}">${data.isPaid ? 'Đã thanh toán' : 'Chưa thanh toán'}</span>
                                 </td>
-                                ${
-                                    data.isPaid ? `<td></td>` : `<td class="list-content list-cancel">
+                                ${data.isPaid ? `<td></td>` : `<td class="list-content list-cancel">
                                     <i data-booking="${data.bookingId}" class="fa-solid fa-trash-can"></i>
                                 </td>`
-                                }
-                            </tr>`
+        }
+                            </tr>`;
 }
 
-function fetchBookingsHistory() {
+function fetchBookingsHistory () {
     fetch('http://localhost:1234/api/v1/customers/booking_history', {
         method: 'post',
         headers: {
@@ -133,13 +133,13 @@ function fetchBookingsHistory() {
         .then(response => response.json())
         .then(data => {
             if (data.code === 200) {
-                const bookingsHistoryContainer = document.querySelector('table.container-nav')
-                const bookingsResponse = data.data
-                const bookingElements = []
-                
+                const bookingsHistoryContainer = document.querySelector('table.container-nav');
+                const bookingsResponse = data.data;
+                const bookingElements = [];
+
                 bookingsResponse.forEach(booking => {
-                    bookingElements.push(renderBooking(booking))
-                })
+                    bookingElements.push(renderBooking(booking));
+                });
                 bookingsHistoryContainer.innerHTML = `<tr>
                 <th>KHÁCH SẠN</th>
                 <th>NGÀY ĐẶT</th>
@@ -147,32 +147,32 @@ function fetchBookingsHistory() {
                 <th>TỔNG TIỀN</th>
                 <th>TRẠNG THÁI</th>
                 <th>TÙY CHỌN</th>
-                </tr>` + bookingElements.join("")
-                
-                const cancelBookingButtons = document.querySelectorAll('.list-content.list-cancel i')
+                </tr>` + bookingElements.join("");
+
+                const cancelBookingButtons = document.querySelectorAll('.list-content.list-cancel i');
                 cancelBookingButtons.forEach(button => {
                     button.onclick = (e) => {
-                        const formReasonCancelPortal = document.querySelector('.form-reason-cancel-portal')
-                        formReasonCancelPortal.style.display = 'block'
-                        const cancelYesButton = document.querySelector('.cancel-yes')
-                        const cancelNoButton = document.querySelector('.cancel-no')
+                        const formReasonCancelPortal = document.querySelector('.form-reason-cancel-portal');
+                        formReasonCancelPortal.style.display = 'block';
+                        const cancelYesButton = document.querySelector('.cancel-yes');
+                        const cancelNoButton = document.querySelector('.cancel-no');
                         cancelNoButton.onclick = () => {
-                            const formReasonCancelPortal = document.querySelector('.form-reason-cancel-portal')
-                            formReasonCancelPortal.style.display = 'none'
-                        }
+                            const formReasonCancelPortal = document.querySelector('.form-reason-cancel-portal');
+                            formReasonCancelPortal.style.display = 'none';
+                        };
                         cancelYesButton.onclick = () => {
-                            const reason = document.querySelector('.reason-cancel .reasons input:checked')
-                            const otherReason = document.querySelector('.reason-cancel .reasons textarea')
-                            let reasonValues = [] 
+                            const reason = document.querySelector('.reason-cancel .reasons input:checked');
+                            const otherReason = document.querySelector('.reason-cancel .reasons textarea');
+                            let reasonValues = [];
                             if (!reason && !otherReason.value) {
-                                alert('Vui lòng chọn lý do')
-                                return false
+                                alert('Vui lòng chọn lý do');
+                                return false;
                             } else {
                                 if (reason?.value) {
-                                    reasonValues.push(reason.value)
+                                    reasonValues.push(reason.value);
                                 }
                                 if (otherReason.value) {
-                                    reasonValues.push(otherReason.value)
+                                    reasonValues.push(otherReason.value);
                                 }
                             }
                             fetch('http://localhost:1234/api/v1/customers/cancel_booking_from_client/' + e.target.dataset.booking, {
@@ -185,31 +185,31 @@ function fetchBookingsHistory() {
                                 .then(response => response.json())
                                 .then(data => {
                                     if (data.code === 200) {
-                                        alert(data.message)
-                                        window.location.reload()
-                                        return false
+                                        alert(data.message);
+                                        window.location.reload();
+                                        return false;
                                     } else {
-                                        alert(data.message)
+                                        alert(data.message);
                                     }
-                                })
-                            }
-                        }
-                })
+                                });
+                        };
+                    };
+                });
             }
-        })
+        });
 }
 
 
-function autoLoad() {
-    const login = JSON.parse(localStorage.getItem('login'))
+function autoLoad () {
+    const login = JSON.parse(localStorage.getItem('login'));
     var changeAvatar = document.querySelector(".change-avatar");
     var avatarImg = document.querySelector(".avatar-img");
     function handleChangeAvatar () {
         changeAvatar.click();
         changeAvatar.onchange = (e) => {
-            const formData = new FormData()
-            formData.append('avatar', e.target.files[0])
-            formData.append('directory', 'avatars')
+            const formData = new FormData();
+            formData.append('avatar', e.target.files[0]);
+            formData.append('directory', 'avatars');
             fetch('http://localhost:1234/api/v1/upload/upload_avatar', {
                 method: 'post',
                 body: formData
@@ -227,19 +227,19 @@ function autoLoad() {
                             .then(response => response.json())
                             .then(data => {
                                 if (data.code === 200) {
-                                    const avatarImg = document.querySelector('img.avatar-img')
-                                    avatarImg.src = data.data.url
+                                    const avatarImg = document.querySelector('img.avatar-img');
+                                    avatarImg.src = data.data.url;
                                     const objAvatar = {
                                         ...login,
                                         avatarUrl: data.data.url,
                                         avatarName: data.data.imageName
-                                    }
-                                    localStorage.setItem("login", JSON.stringify(objAvatar))
-                                    userName(objAvatar)
+                                    };
+                                    localStorage.setItem("login", JSON.stringify(objAvatar));
+                                    userName(objAvatar);
                                 }
-                            })
+                            });
                     }
-                })
+                });
         };
     }
     var avatarRef = document.querySelector(".fa-solid.fa-camera");
@@ -308,11 +308,11 @@ function formProfilefn (obj) {
 formProfile.innerHTML = formProfilefn();
 
 const formprofileedit = document.querySelector(".form-profile-edit");
-function profileUpdatefn(obj) {
+function profileUpdatefn (obj) {
     return `<div class="form-profile-info">
   <label for="">Số điện thoại</label>
   <div class="form-profile-input">
-      <input class="form-profile-text update-request"  type="number" placeholder="Nhập số điện thoại của bạn" value="${obj && obj.phone || login.phone}">
+      <input class="form-profile-text update-request phone-verification"  type="number" placeholder="Nhập số điện thoại của bạn" value="${obj && obj.phone || login.phone}">
       <button class="form-profile-submit">Gửi</button>
   </div>
 </div>
@@ -367,14 +367,14 @@ function profileUpdatefn(obj) {
   </div>
 </div>`;
 }
-function userName(obj) {
+function userName (obj) {
     const user = JSON.parse(localStorage.getItem("login"));
     const headerName = document.querySelector(".avatar-login");
     headerName.innerHTML = `  <div class="header-form-avatar">
     <!-- <i class="fa-solid fa-circle-user"></i> -->
     <img src="${(obj && obj.avatarUrl) || user.avatarUrl}" alt="">
     <div class="header-name">
-        <span>${(obj&& obj.userName) || user.username}</span>
+        <span>${(obj && obj.userName) || user.username}</span>
         <p>Xem hồ sơ</p>
     </div>
 </div>`;
@@ -387,7 +387,7 @@ const profileUpdate = document.querySelector(".profile_update");
 profileSaveBtn.onclick = () => {
     const inputChange = formprofileedit.querySelectorAll("input.update-request");
     const objProfile = {
-        "phone": inputChange[0].value,
+        // "phone": inputChange[0].value,
         "username": inputChange[1].value,
         "email": inputChange[2].value,
         "address": inputChange[3].value,
@@ -410,8 +410,8 @@ profileSaveBtn.onclick = () => {
                 accountinfo.innerHTML = accountInfomation(profile);
                 userName(profile);
                 edit();
-                window.location.reload()
-                return false
+                window.location.reload();
+                return false;
             }
         });
 };
@@ -462,45 +462,45 @@ function handleRenderVoucher () {
 }
 
 // ----------------- update new password -------------
-const oldPasswordInput = document.querySelector('#old-password')
-const newPasswordInput = document.querySelector('#new-password')
-const verifyNewPasswordInput = document.querySelector('#verify-new-password')
+const oldPasswordInput = document.querySelector('#old-password');
+const newPasswordInput = document.querySelector('#new-password');
+const verifyNewPasswordInput = document.querySelector('#verify-new-password');
 const submitUpdatePasswordInput = document.querySelector('#submit-update-password-button');
 
 new Array(oldPasswordInput, newPasswordInput, verifyNewPasswordInput).forEach(input => {
-    console.log(input)
+    console.log(input);
     input.onkeypress = (e) => {
-        console.log(e.target.value)
-        input.classList.remove('error')
-        input.style.border = '1px solid #d6d5d5'
-    }
-})
+        console.log(e.target.value);
+        input.classList.remove('error');
+        input.style.border = '1px solid #d6d5d5';
+    };
+});
 
 submitUpdatePasswordInput.onclick = () => {
-    const customerId = login.customerId
+    const customerId = login.customerId;
 
-    let requestDenied = false
+    let requestDenied = false;
 
     if (!oldPasswordInput.value) {
-        oldPasswordInput.style.border = '1px solid red'
-        oldPasswordInput.placeholder = "Chưa nhập mật khẩu cũ"
-        oldPasswordInput.classList.add('error')
-        requestDenied = true
+        oldPasswordInput.style.border = '1px solid red';
+        oldPasswordInput.placeholder = "Chưa nhập mật khẩu cũ";
+        oldPasswordInput.classList.add('error');
+        requestDenied = true;
     }
 
     if (!newPasswordInput.value) {
-        newPasswordInput.style.border = '1px solid red'
-        newPasswordInput.placeholder = "Chưa nhập mật khẩu mới"
-        newPasswordInput.classList.add('error')
-        requestDenied = true
+        newPasswordInput.style.border = '1px solid red';
+        newPasswordInput.placeholder = "Chưa nhập mật khẩu mới";
+        newPasswordInput.classList.add('error');
+        requestDenied = true;
     }
 
     if (verifyNewPasswordInput.value !== newPasswordInput.value || !verifyNewPasswordInput.value) {
-        verifyNewPasswordInput.value = ""
-        verifyNewPasswordInput.style.border = '1px solid red'
-        verifyNewPasswordInput.placeholder = "Mật khẩu không hợp lệ"
-        verifyNewPasswordInput.classList.add('error')
-        requestDenied = true
+        verifyNewPasswordInput.value = "";
+        verifyNewPasswordInput.style.border = '1px solid red';
+        verifyNewPasswordInput.placeholder = "Mật khẩu không hợp lệ";
+        verifyNewPasswordInput.classList.add('error');
+        requestDenied = true;
     }
 
     if (!requestDenied) {
@@ -509,27 +509,64 @@ submitUpdatePasswordInput.onclick = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ customerId, password: newPasswordInput.value, oldPassword: oldPasswordInput.value})
+            body: JSON.stringify({ customerId, password: newPasswordInput.value, oldPassword: oldPasswordInput.value })
         })
             .then(response => response.json())
             .then(data => {
-                alert(data.message)
-            })
+                alert(data.message);
+            });
     }
-}
+};
 
 // ---------OTP----------
-const formProfileSubmit = document.querySelector('.form-profile-submit')
-const formProfileCodeOTP = document.querySelector('.form-profile-codeOTP')
+const formProfileSubmit = document.querySelector('.form-profile-submit');
+const formProfileCodeOTP = document.querySelector('.form-profile-codeOTP');
 
 formProfileSubmit.onclick = function (e) {
     e.preventDefault();
-    formProfileCodeOTP.style.display = 'block'
-    formProfileSubmit.style.display = 'none'
-}
+    const customerId = login.customerId;
+    const phone = document.querySelector('.phone-verification');
+    loader.style.display = 'grid'
+    fetch('http://localhost:1234/api/v1/customers/phone_verification', {
+        method: 'put',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ customerId, phone: phone.value })
+    })
+        .then(response => response.json())
+        .then(data => {
+            loader.style.display = 'none'
+            if (data.code === 200) {
+                formProfileCodeOTP.style.display = 'block';
+                formProfileSubmit.style.display = 'none';
+                const formProfileConfirm = document.querySelector('.form-profile-confirm')
+                formProfileConfirm.onclick = () => {
+                    const otpInput = document.querySelector('.form-profile-otp')
+                    loader.style.display = 'grid'
+                    fetch('http://localhost:1234/api/v1/core/confirm_phone_verification', {
+                        method: 'put',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            customerId,
+                            phone,
+                            otp: otpInput.value
+                        })
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            loader.style.display = 'none'
+                            alert(data.message)
+                        })
+                }
+            }
+        });
+};
 
 // ---------
-var headerLogoIMG = document.querySelector('.header-logo img')
+var headerLogoIMG = document.querySelector('.header-logo img');
 headerLogoIMG.onclick = function () {
-  location.href = 'http://localhost:5500/FrontEnd/home/index.html#'
-}
+    location.href = 'http://localhost:5500/FrontEnd/home/index.html#';
+};

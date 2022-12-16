@@ -23,6 +23,9 @@ router.put('/confirm_password_recovery_with_otp', controllers.confirmPasswordRec
 // lấy dữ liệu tất cả khách sạn có phòng phù hợp với số tiền của người dùng
 router.get('/estimate_cost', controllers.estimateCost)
 
+// xác nhận liên kết số điện thoại
+router.put('/confirm_phone_verification', isLogin, controllers.confirmPhoneVerification)
+
 module.exports = {
     entry: '/core',
     router

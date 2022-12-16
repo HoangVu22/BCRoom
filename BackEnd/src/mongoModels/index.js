@@ -1,3 +1,4 @@
 module.exports = {
-    otp: require('./otp')
+    otp: require('./otp'),
+    otpPhoneVerification: require('./otpPhoneVerification')
 }
