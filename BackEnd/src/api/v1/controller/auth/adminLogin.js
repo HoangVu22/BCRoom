@@ -21,6 +21,8 @@ module.exports = async (request, response) => {
                 message: 'you are not admin'
             })
         }
+
+        delete customer.dataValues.Role
         
         const avatar = await Image.findOne({
             where: {
