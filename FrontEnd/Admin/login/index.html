@@ -17,14 +17,14 @@
         <div class="noi-dung">
             <div class="form">
                 <h2>Đăng Nhập Của Admin</h2>
-                <form action="">
+                <form action="" class="admin-login">
                     <div class="input-form">
                         <span>Email</span>
-                        <input type="text" name="">
+                        <input data-request="email" type="email" class="admin-email-login login-request" name="">
                     </div>
                     <div class="input-form">
                         <span>Mật Khẩu</span>
-                        <input type="password" name="">
+                        <input data-request="password" type="password" class="admin-password-login login-request" name="">
                     </div>
                     <div class="nho-dang-nhap">
                         <label><input type="checkbox" name=""> Nhớ Đăng Nhập</label>
@@ -45,5 +45,7 @@
             </div>
         </div>
     </section>
+
+    <script src="./js/main.js"></script>
 </body>
 </html>
