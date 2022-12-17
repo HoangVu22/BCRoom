@@ -5,7 +5,7 @@ module.exports = async (request, response) => {
     try {
         const targetCustomer = request.query.target
         const customerId = request.body.customerId
-        const { username, roleId, password } = request.body
+        const { username, roleId, password, address } = request.body
 
         const target = await Customer.findByPk(targetCustomer)
 
@@ -31,6 +31,10 @@ module.exports = async (request, response) => {
             const salt = await bcrypt.genSalt(10)
             const hashedPassword = await bcrypt.hash(password, salt)
             updateValues.password = hashedPassword
+        }
+
+        if (address) {
+            updateValues.address = address
         }
 
         await Customer.update(updateValues, {

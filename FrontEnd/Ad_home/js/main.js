@@ -51,6 +51,44 @@ function fetchCustomers () {
                 });
 
                 const deleteAndActiveButtons = customersContainer.querySelectorAll('.list-content.list-action > i');
+                const updateButtons = customersContainer.querySelectorAll('.list-content.list-action div i')
+                updateButtons.forEach(button => {
+                    button.onclick = (e) => {
+                        const updateModal = document.querySelector('.update-user-modal')
+                        updateModal.style.display = 'block'
+                        const updateCloseButtons = document.querySelectorAll('.update-close')
+                        updateCloseButtons.forEach(closeButton => {
+                            closeButton.onclick = () => {
+                                updateModal.style.display = 'none'
+                            }
+                        })
+                        const updateSubmitButton = document.querySelector('button.update-user')
+                        updateSubmitButton.onclick = () => {
+                            const updateRequests = document.querySelectorAll('.update-user-request')
+                            const updateRequestValue = [...updateRequests].reduce((prev, next) => {
+                                if (next.value) {
+                                    return {
+                                        ...prev,
+                                        [next.dataset.request]: next.value
+                                    }
+                                }
+                                return prev
+                            }, {})
+                            fetch('http://localhost:1234/api/v1/admin/update_information?target=' + e.target.parentElement.parentElement.dataset.customer, {
+                                method: 'put',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ customerId: login.customerId, ...updateRequestValue })
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    alert(data.message)
+                                    window.location.reload()
+                                })
+                        }
+                    }
+                })
                 deleteAndActiveButtons.forEach(button => {
                     button.onclick = (e) => {
                         const targetCustomerId = e.target.parentElement.dataset.customer;
@@ -111,9 +149,9 @@ function renderCustomer (customerId, status, username, email, roleName, image) {
                         <img src="${image || 'https://scr.vn/wp-content/uploads/2020/07/%E1%BA%A2nh-avt-n%E1%BB%AF-t%C3%B3c-ng%E1%BA%AFn-%C4%91%E1%BA%B9p.jpg'}" alt="">
                     </td>
                     <td data-customer="${customerId}" class="list-content list-action">
-                        <a href="">
+                        <div style="display: inline-block">
                             <i class="fa-solid fa-pencil"></i>
-                        </a>
+                        </div>
                         ${status ? '<i class="delete fa-solid fa-trash-can"></i>' : '<i style="color: green"class="active fa fa-check"></i>'}
                     </td>
                 </tr>`;
@@ -207,10 +245,12 @@ fetch('http://localhost:1234/api/v1/roles/all_roles')
     .then(data => {
         if (data.code === 200) {
             const selectRoleElement = document.querySelector('.roles')
+            const selectRoleElementInUpdateModal = document.querySelector('.update-user-request.roles')
             const roleOptions = []
             data.data.forEach(role => {
                 roleOptions.push(`<option value="${role.roleId}">${role.roleName}</option>`)
             })
+            selectRoleElementInUpdateModal.innerHTML = roleOptions.join('')
             selectRoleElement.innerHTML = roleOptions.join('')
         }
     })

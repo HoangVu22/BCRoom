@@ -605,7 +605,7 @@ ul {
     cursor: pointer;
 }
 
-.list-action a i {
+.list-action div i {
     color: #0071c2;
     margin-right: 10px;
 }
@@ -734,4 +734,70 @@ td {
 
 .role-customer input, .role-admin input {
     margin-right: 10px;
+}
+
+/* ---------update account----- */
+.update-user-modal {
+    position: fixed;
+    width: 40%;
+    background-color: #fff;
+    top: 54%;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    padding: 40px 20px 20px 20px;
+    left: 50%;
+    border-radius: 10px;
+    box-shadow: 2px 4px 20px #0003;
+}
+
+.update-user-modal h1 {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.update-customer label {
+    font-size: 14px;
+}
+
+.update-customer input, .update-customer select {
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 8px;
+    border: 1px solid #b4b2b2;
+    border-radius: 5px;
+    padding: 8px 20px;
+    font-size: 14px;
+}
+
+.update-customer input:focus, .update-customer select {
+    border: 1px solid #0071c2;
+    box-shadow: 0px 0px 3px #0071c2;
+}
+
+.update-user {
+    padding: 8px 20px;
+    font-size: 16px;
+    background-color: var(--main-color);
+    color: #fff;
+    opacity: 1;
+    border: 1px solid var(--main-color);
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.update-user:hover {
+    opacity: 0.8;
+}
+
+.update-close {
+    position: absolute;
+    top: 16px;
+    right: 5%;
+    color: #333;
+    font-size: 22px;
+    cursor: pointer;
+    opacity: 1;
 }
