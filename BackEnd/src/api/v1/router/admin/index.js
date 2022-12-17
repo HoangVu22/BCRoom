@@ -20,6 +20,9 @@ router.post('/all_customers/by_name/:nameLike', isAdmin, controllers.getAllCusto
 // lấy dữ liệu tất cả khách sạn có trong hệ thống
 router.post('/all_hotels', isAdmin, controllers.getAllHotels)
 
+// cập nhật thông tin người dùng từ admin
+router.put('/update_information', isAdmin, controllers.updateCustomerFromAdmin)
+
 module.exports = {
     entry: '/admin',
     router
