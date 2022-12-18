@@ -26,7 +26,7 @@ module.exports = async (request, response) => {
             return response.status(409).json({
                 code: 409,
                 status: 'failed',
-                message: 'This email is already being used by another'
+                message: 'Email đã tồn tại'
             });
         }
 

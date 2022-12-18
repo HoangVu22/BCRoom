@@ -35,6 +35,8 @@ registerButton.addEventListener('click', () => {
         .then(data => {
             if (data.code === 200) {
                 window.location.href = 'http://localhost:5500/FrontEnd/signin/index.html'
+            } else {
+                alert(data.message)
             }
         }) 
 })
