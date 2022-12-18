@@ -13,8 +13,8 @@ module.exports = async (request, response) => {
                 message: 'no bookings found'
             })
         }
-
-        const currentYear = new Date().getFullYear()
+        const currentYear = request.body.year
+        // const currentYear = new Date().getFullYear()
 
         const bookingsInCurrentYear = bookings.filter(booking => new Date(booking.dataValues.createdAt).getFullYear() === currentYear)
 

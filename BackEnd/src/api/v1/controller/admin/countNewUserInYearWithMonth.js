@@ -13,8 +13,9 @@ module.exports = async (request, response) => {
                 message: 'no customers found'
             })
         }
-
-        const currentYear = new Date().getFullYear()
+        
+        const currentYear = request.body.year
+        // const currentYear = new Date().getFullYear()
 
         const customersRegistedInCurrentYear = customers.filter(customer => new Date(customer.dataValues.createdAt).getFullYear() === currentYear)
 
