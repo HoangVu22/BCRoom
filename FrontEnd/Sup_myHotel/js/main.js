@@ -90,7 +90,11 @@ function fetchHotels() {
                     deleteHotelButton.onclick = (e) => {
                         loader.style.display = 'grid'
                         fetch('http://localhost:1234/api/v1/hotels/change_status/' + e.target.dataset.value, {
-                            method: 'post'
+                            method: 'post',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ status: false })
                         })
                             .then(response => response.json())
                             .then(data => {
@@ -108,6 +112,7 @@ function fetchHotels() {
 fetchHotels()
 
 function renderHotel(data) {
+    console.log(data)
     return `<tr data-value="${data.hotelId}" class="list-residence">
                     <td class="list-content list-status">
                         <span>BẢN TẠM</span>
