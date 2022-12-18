@@ -93,11 +93,11 @@ accountsidebarlink.forEach((value, index) => {
     };
 });
 
-function renderBooking (data) {
+function renderBooking (data, index) {
     const dateFrom = new Date(data.dateFrom);
     const dateTo = new Date(data.dateTo);
 
-    return `<tr data-booking="${data.bookingId}" class="list-residence">
+    return `<tr ${index % 2 === 0 && 'style="background-color: #F1F5F9"'} data-booking="${data.bookingId}" class="list-residence">
                                 <td class="list-content list-status">
                                     <span>${data.hotelName}</span> <br>
                                     <span>${data.roomNumber}</span> <br>
@@ -137,8 +137,8 @@ function fetchBookingsHistory () {
                 const bookingsResponse = data.data;
                 const bookingElements = [];
 
-                bookingsResponse.forEach(booking => {
-                    bookingElements.push(renderBooking(booking));
+                bookingsResponse.forEach((booking, index) => {
+                    bookingElements.push(renderBooking(booking, index));
                 });
                 bookingsHistoryContainer.innerHTML = `<tr>
                 <th>KHÁCH SẠN</th>

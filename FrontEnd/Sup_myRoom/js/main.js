@@ -23,8 +23,8 @@ function fetchRooms() {
             if (data.code === 200) {
                 const roomsResponse = data.data
                 const roomsContainer = document.querySelector('table.container-nav')
-                roomsResponse.forEach(room => {
-                    roomsContainer.innerHTML += renderRoom(room)
+                roomsResponse.forEach((room, index) => {
+                    roomsContainer.innerHTML += renderRoom(room, index)
                 })
               // ----------------------
                 const countModify = document.querySelectorAll(".modify")
@@ -65,8 +65,8 @@ function fetchRooms() {
 }
 fetchRooms()
 
-function renderRoom(data) {
-    return `<tr data-value="${data.roomId}" class="list-residence">
+function renderRoom(data, index) {
+    return `<tr ${index % 2 === 0 && 'style="background-color: #F1F5F9"'} data-value="${data.roomId}" class="list-residence">
                     <td class="list-content list-status">
                         <span style="background-color: ${data.isBooking ? 'red' : 'green'}">${data.isBooking ? 'Đã được đặt' : 'Chưa được đặt'}</span>
                     </td>
