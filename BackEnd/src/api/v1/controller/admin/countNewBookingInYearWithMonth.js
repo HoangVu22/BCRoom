@@ -4,7 +4,11 @@ module.exports = async (request, response) => {
     try {
         const customerId = request.body.customerId
 
-        const bookings = await Booking.findAll()
+        const bookings = await Booking.findAll({
+            where: {
+                status: true
+            }
+        })
 
         if (!bookings) {
             return response.status(404).json({
