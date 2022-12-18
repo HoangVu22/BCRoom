@@ -62,8 +62,8 @@ function fetchBookingsOfHotel () {
                 const bookingResponse = data.data;
                 const bookingContainer = document.querySelector('.container-nav');
 
-                bookingResponse.forEach(booking => {
-                    bookingContainer.innerHTML += renderBooking(booking);
+                bookingResponse.forEach((booking, index) => {
+                    bookingContainer.innerHTML += renderBooking(booking, index);
                 });
 
                 const changeIsPaidBookingButtons = document.querySelectorAll('.list-content.list-cancel i.check');
@@ -114,11 +114,11 @@ function fetchBookingsOfHotel () {
 }
 fetchBookingsOfHotel();
 
-function renderBooking (data) {
+function renderBooking (data, index) {
     const dateFrom = new Date(data.dateFrom);
     const dateTo = new Date(data.dateTo);
 
-    return `<tr data-value="${data.bookingId}" class="list-residence">
+    return `<tr ${index % 2 === 0 && 'style="background-color: #F1F5F9"'} data-value="${data.bookingId}" class="list-residence">
                     <td class="list-content list-status">
                         <span>${data.hotelName}</span> <br>
                         <span>${data.roomNumber}</span> <br>
@@ -143,8 +143,7 @@ function renderBooking (data) {
                         <span style="color: ${data.isPaid ? 'green' : 'red'}">${data.isPaid ? 'Đã thanh toán' : 'Chưa thanh toán'}</span> 
                     </td>
                     <td class="list-content list-cancel">
-                        <i data-value="${data.bookingId}" class="fa-solid fa-trash-can delete"></i>
-                        <i data-value="${data.bookingId}" class="fa-solid fa-check check"></i>
+                        ${!data.isPaid ? `<i data-value="${data.bookingId}" class="fa-solid fa-trash-can delete"></i><i data-value="${data.bookingId}" class="fa-solid fa-check check"></i>` : ''}
                     </td>
                 </tr>`;
 }

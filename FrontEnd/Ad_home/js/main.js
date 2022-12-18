@@ -47,8 +47,8 @@ function fetchCustomers () {
                 const customersContainer = document.querySelector('table.container-nav');
                 const responseCustomers = data.data;
 
-                responseCustomers.forEach(customer => {
-                    customersContainer.innerHTML += renderCustomer(customer.customerId, customer.status, customer.username, customer.email, customer.Role.roleName, customer.Image);
+                responseCustomers.forEach((customer, index) => {
+                    customersContainer.innerHTML += renderCustomer(customer.customerId, customer.status, customer.username, customer.email, customer.Role.roleName, customer.Image, index);
                 });
 
                 const deleteAndActiveButtons = customersContainer.querySelectorAll('.list-content.list-action > i');
@@ -132,8 +132,8 @@ function fetchCustomers () {
 }
 fetchCustomers();
 
-function renderCustomer (customerId, status, username, email, roleName, image) {
-    return `<tr class="list-residence">
+function renderCustomer (customerId, status, username, email, roleName, image, index) {
+    return `<tr ${index % 2 === 0 && 'style="background-color: #F1F5F9"' } class="list-residence">
                     <td class="list-content list-status">
                         <span style="color: ${status ? 'green' : 'red'}">${status ? 'Khả dụng' : 'Vô hiệu'}</span>
                     </td>
@@ -180,9 +180,8 @@ searchInput.addEventListener('keypress', (e) => {
                     oldDatasOnUI.forEach(item => {
                         item.parentNode.removeChild(item)
                     })
-
-                    responseCustomers.forEach(customer => {
-                        customersContainer.innerHTML += renderCustomer(customer.customerId, customer.status, customer.username, customer.email, customer.Role.roleName, customer.Image);
+                    responseCustomers.forEach((customer, index) => {
+                        customersContainer.innerHTML += renderCustomer(customer.customerId, customer.status, customer.username, customer.email, customer.Role.roleName, customer.Image, index);
                     });
 
                     const deleteAndActiveButtons = customersContainer.querySelectorAll('.list-content.list-action > i');

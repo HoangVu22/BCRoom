@@ -43,8 +43,8 @@ function renderTableColumnName() {
                     </tr>`
 }
 
-function renderHotel (data) {
-    return `<tr data-hotel="${data.hotelId}" class="list-residence">
+function renderHotel (data, index) {
+    return `<tr ${index % 2 === 0 && 'style="background-color: #F1F5F9"'} data-hotel="${data.hotelId}" class="list-residence">
                         <td class="list-content list-status">
                             <span style="background-color: ${data.status ? 'green' : 'red'}">${data.status ? 'Khả dụng' : 'Vô hiệu'}</span>
                         </td>
@@ -85,8 +85,8 @@ fetch('http://localhost:1234/api/v1/admin/all_hotels', {
             const hotelContainer = document.querySelector('.container-nav')
             const hotelsResponse = data.data
             let hotelElements = []
-            hotelsResponse.forEach(hotel => {
-                hotelElements.push(renderHotel(hotel))
+            hotelsResponse.forEach((hotel, index) => {
+                hotelElements.push(renderHotel(hotel, index))
             })
             hotelContainer.innerHTML = `${renderTableColumnName()}${hotelElements.join('')}`
             

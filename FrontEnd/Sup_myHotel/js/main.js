@@ -65,8 +65,8 @@ function fetchHotels() {
                 const hotelsContainer = document.querySelector('.container-nav')
                 const numberOfRoomsTitle = document.querySelector('.container-header h1')
                 numberOfRoomsTitle.innerText = `${hotelsResponse.length} khách sạn`
-                hotelsResponse.forEach(hotel => {
-                    hotelsContainer.innerHTML += renderHotel(hotel)
+                hotelsResponse.forEach((hotel, index) => {
+                    hotelsContainer.innerHTML += renderHotel(hotel, index)
                 })
               // --------------------
               const countModify = document.querySelectorAll(".modify")
@@ -111,9 +111,8 @@ function fetchHotels() {
 }
 fetchHotels()
 
-function renderHotel(data) {
-    console.log(data)
-    return `<tr data-value="${data.hotelId}" class="list-residence">
+function renderHotel(data, index) {
+    return `<tr ${index % 2 === 0 && 'style="background-color: #F1F5F9"'} data-value="${data.hotelId}" class="list-residence">
                     <td class="list-content list-status">
                         <span>BẢN TẠM</span>
                     </td>
