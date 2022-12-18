@@ -2,6 +2,9 @@
 var header = document.querySelector("header");
 // var header_logo = document.querySelector(".header-logo h1");
 var headerNavIcon = document.querySelector(".header-nav-icon");
+
+const specialCharacterRegex = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
+
 window.onscroll = function () {
     myFunction();
 };
@@ -126,6 +129,11 @@ searchBtn.onclick = () => {
 
 function handleSearch (element) {
     const value = element.value;
+    if (specialCharacterRegex.test(element.value)) {
+        alert('Địa điểm không hợp lệ')
+        element.value = ""
+        return false
+    }
     localStorage.setItem("searchValue", JSON.stringify(value));
     fetch(`http://localhost:1234/api/v1/core/search_hotel_by_address_or_name/?q=${value}`)
         .then(res => res.json())
