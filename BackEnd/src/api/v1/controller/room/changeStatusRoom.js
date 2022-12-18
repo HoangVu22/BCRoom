@@ -3,6 +3,15 @@ const { Room, Booking, Bill } = require('../../../../../models');
 module.exports = async (request, response) => {
     try {
         const roomId = request.params.roomId;
+        const statusRequest = request.body.status
+
+        if (statusRequest === null) {
+            return response.status(400).json({
+                code: 400,
+                status: 'failed',
+                message: 'missing request value'
+            })
+        }
 
         const room = await Room.findByPk(roomId);
 
@@ -14,7 +23,7 @@ module.exports = async (request, response) => {
 
         if (booking) {
             await Booking.update({
-                status: !booking.dataValues.status
+                status: statusRequest 
             }, {
                 where: {
                     bookingId: booking.dataValues.bookingId
@@ -28,7 +37,7 @@ module.exports = async (request, response) => {
             });
 
             await Bill.update({
-                status: !bill.dataValues.status
+                status: statusRequest 
             }, {
                 where: {
                     billId: bill.dataValues.billId
@@ -37,7 +46,7 @@ module.exports = async (request, response) => {
         }
 
         await Room.update({
-            status: !room.dataValues.status
+            status: statusRequest 
         }, {
             where: {
                 roomId

@@ -44,7 +44,11 @@ function fetchRooms() {
                     button.onclick = (e) => {
                         loader.style.display = 'grid'
                         fetch('http://localhost:1234/api/v1/rooms/change_status/' + e.target.dataset.value, {
-                            method: 'post'
+                            method: 'post',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ status: false })
                         })
                             .then(response => response.json())
                             .then(data => {
