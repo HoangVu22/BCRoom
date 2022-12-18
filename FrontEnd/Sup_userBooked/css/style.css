@@ -507,9 +507,10 @@ ul {
     line-height: 30px;
 }
 
-.list-status span:first-child {
+.list-status h4{
     font-weight: bold;
     font-size: 16px;
+    margin-bottom: 5px;
 }
 
 .list-wait span {

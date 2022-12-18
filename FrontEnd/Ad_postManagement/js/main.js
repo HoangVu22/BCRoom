@@ -118,3 +118,25 @@ fetch('http://localhost:1234/api/v1/admin/all_hotels', {
             })
         }
     })
+
+// ----------------searchResidence-----------
+const searchResidence = () => {
+    const searchInput = document.getElementById('search').value.toUpperCase();
+    const table = document.querySelector('.container-nav');
+    const listResidence = document.querySelectorAll('.list-residence');
+    const nameResidence = table.querySelectorAll('.list-info h4');
+
+    for (var i = 0; i < nameResidence.length; i++) {
+        let match = listResidence[i].querySelectorAll('.list-info h4')[0];
+
+        if (match) {
+            let textValue = match.textContent || match.innerHTML;
+            if (textValue.toUpperCase().indexOf(searchInput) > -1) {
+                listResidence[i].style.display = "";
+            }
+            else {
+                listResidence[i].style.display = "none";
+            }
+        }
+    }
+};

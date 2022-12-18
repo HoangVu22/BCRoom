@@ -36,10 +36,10 @@ const searchResidence = () => {
     const searchInput = document.getElementById('search').value.toUpperCase();
     const table = document.querySelector('.container-nav');
     const listResidence = document.querySelectorAll('.list-residence');
-    const nameResidence = table.querySelectorAll('.list-info h4');
+    const nameResidence = table.querySelectorAll('.list-status h4');
 
     for (var i = 0; i < nameResidence.length; i++) {
-        let match = listResidence[i].querySelectorAll('.list-info h4')[0];
+        let match = listResidence[i].querySelectorAll('.list-status h4')[0];
 
         if (match) {
             let textValue = match.textContent || match.innerHTML;
@@ -125,7 +125,7 @@ function renderBooking (data, index) {
                         <span>${data.typeName}</span>
                     </td>
                     <td class="list-content list-status">
-                        <span>${data.username}</span> <br>
+                        <h4>${data.username}</h4>
                         <span>${data.email}</span> <br>
                         <span>${data.phone || ''}</span> <br>
                         <span>${data.address || ''}</span>
@@ -153,3 +153,5 @@ var headerLogoIMG = document.querySelector('.header-logo img')
 headerLogoIMG.onclick = function () {
   location.href = 'http://localhost:5500/FrontEnd/home/index.html#'
 }
+
+// --------function search-------
