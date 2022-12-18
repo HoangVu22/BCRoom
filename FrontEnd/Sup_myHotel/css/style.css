@@ -525,7 +525,7 @@ ul {
 }
 
 .list-view span {
-    margin-left: 50%;
+    /* margin-left: 50%; */
 }
 
 .list-action {
@@ -547,19 +547,20 @@ table {
 }
 
 table tr th {
-    text-align: start;
+    /* text-align: start; */
+    text-align: center;
 }
 
 th {
     border-bottom: 1px solid black;
 }
 
-th:not(th:nth-child(2)){
-    width: 15%;
+th:not(th:nth-child(1)){
+    width: 10%;
 }
 
-th:nth-child(2) {
-    width: 40%;
+th:nth-child(1) {
+    width: 30%;
 }
 
 th, td {
@@ -569,6 +570,7 @@ th, td {
 td {
     border-bottom: 1px solid #b4b2b2;
     padding: 20px 0;
+    text-align: center;
 }
 
 /* ---------------pagination------------ */

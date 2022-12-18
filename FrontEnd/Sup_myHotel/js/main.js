@@ -112,10 +112,8 @@ function fetchHotels() {
 fetchHotels()
 
 function renderHotel(data, index) {
+    console.log(data)
     return `<tr ${index % 2 === 0 && 'style="background-color: #F1F5F9"'} data-value="${data.hotelId}" class="list-residence">
-                    <td class="list-content list-status">
-                        <span>BẢN TẠM</span>
-                    </td>
                     <td class="list-content list-info"> 
                         <div href="../Sup_myRoom/index.html">
                             <h4 data-value="${data.hotelId}">${data.hotelName}</h4>
@@ -125,10 +123,13 @@ function renderHotel(data, index) {
                     <td class="list-content list-id">
                         <p>${data.hotelId}</p>
                     </td>
-                    <td class="list-content list-view">
+                    <td class="list-content list-room-count">
                         <span>${data.roomCount}</span>
                     </td>
-                    <td style="display: flex" class="list-content list-action">
+                    <td class="list-content list-view">
+                        <i class="fa-solid fa-eye"></i> <span>${data.viewNumber}</span> 
+                    </td>
+                    <td style="display: flex; justify-content: center" class="list-content list-action">
                         <div>
                             <i data-value="${data.hotelId}" class="fa-solid fa-pencil modify"></i>
                         </div>
