@@ -3,5 +3,6 @@ module.exports = {
     isAdmin: require('./isAdmin'),
     viewHotel: require('./viewHotel'),
     isBookingHost: require('./isBookingHost'),
-    isBookingClient: require('./isBookingClient')
+    isBookingClient: require('./isBookingClient'),
+    isActiveCustomer: require('./isActiveCustomer')
 }
