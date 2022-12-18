@@ -6,6 +6,7 @@ const headerFormLogout = document.querySelector(".header-form-logout");
 const headerNavIcon = document.querySelector('.header-nav-icon');
 const searchInput = document.querySelector('.search-input input');
 const login = JSON.parse(localStorage.getItem('login'));
+const loader = document.getElementById('loading')
 
 headerNavForm.onclick = function () {
     if (headerForm.style.display === "none") headerForm.style.display = "block";
@@ -188,7 +189,7 @@ searchInput.addEventListener('keypress', (e) => {
                     deleteAndActiveButtons.forEach(button => {
                         button.onclick = (e) => {
                             const targetCustomerId = e.target.parentElement.dataset.customer;
-
+                            loader.style.display = 'grid'
                             if (button.classList.contains('delete')) {
                                 fetch('http://localhost:1234/api/v1/admin/change_customer_status', {
                                     method: 'put',
@@ -199,6 +200,7 @@ searchInput.addEventListener('keypress', (e) => {
                                 })
                                     .then(response => response.json())
                                     .then(data => {
+                                        loader.style.display = 'none'
                                         if (data.code === 200) {
                                             window.location.reload();
                                             return false;

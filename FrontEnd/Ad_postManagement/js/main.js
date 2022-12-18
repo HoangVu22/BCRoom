@@ -5,6 +5,7 @@ var headerFormLogin = headerNavForm.querySelector(".header-form-login");
 var headerFormLogout = document.querySelector(".header-form-logout");
 var headerNavIcon = document.querySelector('.header-nav-icon')
 var login = JSON.parse(localStorage.getItem("login"))
+const loader = document.getElementById('loading')
 
 headerNavForm.onclick = function () {
   if (headerForm.style.display === "none") headerForm.style.display = "block";
@@ -62,11 +63,11 @@ function renderHotel (data) {
                         <td class="list-content">
                             <span>${data.viewNumber}</span> 
                         </td>
-                        <td class="list-content list-action">
+                        <td data-status="${data.status ? "1" : ""}" data-hotel="${data.hotelId}" class="list-content list-action">
                             <a href="../Sup_postHotel/index.html">
                                 <i class="fa-solid fa-pencil"></i>
                             </a>
-                            <i class="fa-solid fa-trash-can"></i>
+                            ${data.status ? '<i class="fa-solid fa-trash-can"></i>' : '<i style="color: green" class="active fa fa-check"></i>'}
                         </td>
                     </tr>`
 }
@@ -94,6 +95,25 @@ fetch('http://localhost:1234/api/v1/admin/all_hotels', {
                 hotel.onclick = (e) => {
                     localStorage.setItem('targetHotelId', e.target.dataset.hotel)
                     window.location.href = 'http://localhost:5500/FrontEnd/Sup_myRoom/index.html'
+                }
+            })
+            const actionButtons = document.querySelectorAll('.list-residence .list-action > i')
+            actionButtons.forEach(actionButton => {
+                actionButton.onclick = (e) => {
+                    loader.style.display = 'grid'
+                    fetch('http://localhost:1234/api/v1/admin/change_hotel_status/' + e.target.parentElement.dataset.hotel, {
+                        method: 'put',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ customerId: login.customerId, status: !Boolean(e.target.parentElement.dataset.status) })
+                    })
+                        .then(response => response.json())
+                        .then(_data => {
+                            loader.style.display = 'none'
+                            window.location.reload()
+                            return false
+                        })
                 }
             })
         }

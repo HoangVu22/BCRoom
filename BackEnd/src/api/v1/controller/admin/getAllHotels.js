@@ -3,9 +3,6 @@ const { Hotel, Room, Customer } = require('../../../../../models')
 module.exports = async (request, response) => {
     try {
         const hotels = await Hotel.findAll({
-            where: {
-                status: true
-            },
             include: {
                 model: Customer
             }
