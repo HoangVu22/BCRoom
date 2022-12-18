@@ -23,6 +23,9 @@ router.post('/all_hotels', isAdmin, controllers.getAllHotels)
 // cập nhật thông tin người dùng từ admin
 router.put('/update_information', isAdmin, controllers.updateCustomerFromAdmin)
 
+// thay đổi trạng thái của khách sạn, có thể disable hoặc active hotel
+router.put('/change_hotel_status/:hotelId', isAdmin, controllers.changeStatusHotel)
+
 module.exports = {
     entry: '/admin',
     router
