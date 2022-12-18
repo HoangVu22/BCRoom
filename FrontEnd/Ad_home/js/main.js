@@ -298,23 +298,23 @@ newRegisterButton.onclick = () => {
 }
 
 // ----------------searchResidence-----------
-const searchResidence = () => {
-    const searchInput = document.getElementById('search').value.toUpperCase();
-    const table = document.querySelector('.container-nav');
-    const listResidence = document.querySelectorAll('.list-residence');
-    const nameResidence = table.querySelectorAll('.list-status h4');
+// const searchResidence = () => {
+//     const searchInput = document.getElementById('search').value.toUpperCase();
+//     const table = document.querySelector('.container-nav');
+//     const listResidence = document.querySelectorAll('.list-residence');
+//     const nameResidence = table.querySelectorAll('.list-status h4');
 
-    for (var i = 0; i < nameResidence.length; i++) {
-        let match = listResidence[i].querySelectorAll('.list-status h4')[0];
+//     for (var i = 0; i < nameResidence.length; i++) {
+//         let match = listResidence[i].querySelectorAll('.list-status h4')[0];
 
-        if (match) {
-            let textValue = match.textContent || match.innerHTML;
-            if (textValue.toUpperCase().indexOf(searchInput) > -1) {
-                listResidence[i].style.display = "";
-            }
-            else {
-                listResidence[i].style.display = "none";
-            }
-        }
-    }
-};
+//         if (match) {
+//             let textValue = match.textContent || match.innerHTML;
+//             if (textValue.toUpperCase().indexOf(searchInput) > -1) {
+//                 listResidence[i].style.display = "";
+//             }
+//             else {
+//                 listResidence[i].style.display = "none";
+//             }
+//         }
+//     }
+// };

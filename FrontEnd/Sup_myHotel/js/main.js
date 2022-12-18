@@ -117,7 +117,7 @@ function renderHotel(data, index) {
                     <td class="list-content list-info"> 
                         <div href="../Sup_myRoom/index.html">
                             <h4 data-value="${data.hotelId}">${data.hotelName}</h4>
-                            <span>${data.address}</span>
+                            <span title="${data.address}">${data.address}</span>
                         </div>
                     </td>
                     <td class="list-content list-id">
