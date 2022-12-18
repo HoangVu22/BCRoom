@@ -404,7 +404,11 @@ ul {
 }
 
 .navigate-left ul {
-    padding: 40px 30px;
+  padding-top: 40px;
+}
+
+.navigate-left ul li {
+  padding: 5px 30px;
 }
 
 .navigate-left ul li a {
@@ -414,8 +418,12 @@ ul {
     line-height: 50px;
 }
 
-.navigate-left ul li a:hover {
+.navigate-left ul li a:hover, .navigate-left ul li:hover {
     color: var(--main-color);
+}
+
+.list_nav li:hover {
+  background-color: #e3e0e077;
 }
 
 /* --------------------- */
@@ -880,3 +888,18 @@ td {
     cursor: pointer;
     border-radius: 5px;
   }
+
+/* ---------choose years */
+.choose-years select {
+  width: 20%;
+  padding: 7px;
+  border-radius: 6px;
+  border: 1px solid #b4b2b2;
+  margin: 40px 40px 0px 40px;
+}
+
+.choose-years select:focus {
+  border: 1px solid #0071c2;
+  box-shadow: 0px 0px 3px #0071c2;
+  outline: #0071c2;
+}

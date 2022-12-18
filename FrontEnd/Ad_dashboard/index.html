@@ -79,16 +79,31 @@
     <div class="navigate-left">
       <ul class="list_nav">
         <!-- <li><a href="#">Home</a></li> -->
-        <li><a href="../Ad_home/index.html">Quản lý tài khoản</a></li>
-        <li><a href="../Ad_postManagement/index.html">Quản lý khách sạn</a></li>
-        <li><a href="../Ad_dashboard/index.html">Dashboard</a></li>
+        <li>
+          <i class="fa-solid fa-users" style="margin-right: 6px;"></i>
+          <a href="../Ad_home/index.html">Quản lý tài khoản</a></li>
+        <li>
+          <i class="fa-solid fa-people-roof" style="margin-right: 6px;"></i>
+          <a href="../Ad_postManagement/index.html">Quản lý khách sạn</a></li>
+        <li>
+          <i class="fa-solid fa-chart-line" style="margin-right: 6px;"></i>
+          <a href="../Ad_dashboard/index.html">Dashboard</a></li>
       </ul>
     </div>
     <div style="flex: 1;">
+      <div class="choose-years">
+        <select name="" id="">
+          <option value="1">Chọn năm</option>
+          <option value="2">2022</option>
+          <option value="3">2023</option>
+          <option value="4">2024</option>
+          <option value="5">2025</option>
+        </select>
+      </div>
       <div >
-        <div class="accountDashboard" style="width:60%; display: flex;padding-left: 23px;padding-top: 23px;">
+        <div class="accountDashboard" style="width:80%; display: flex;padding-left: 23px;padding-top: 23px;">
           <canvas id="manageruser"></canvas>
-          <div class="column is-4">
+          <!-- <div class="column is-4">
             <div class="calendar">
               <div class="calendar-nav">
                 <div class="calendar-nav-left">
@@ -154,11 +169,12 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
-        <div class="bookingDashboard" style="width:60%; display: none;padding-left: 23px;padding-top: 23px;">
+        <div class="bookingDashboard" style="width:80%; display: none;padding-left: 23px;padding-top: 23px;">
           <canvas width="600px" height="300px" id="countBooking"></canvas>
-          <div class="column is-4">
+          
+          <!-- <div class="column is-4">
             <div class="calendar">
               <div class="calendar-nav">
                 <div class="calendar-nav-left">
@@ -224,7 +240,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="dashboardBtn">
