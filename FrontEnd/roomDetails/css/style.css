@@ -1212,7 +1212,7 @@ ul {
 }
 
 .comments {
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 .cmt-icon {
@@ -1258,6 +1258,30 @@ ul {
 
 .icon-upload-img:hover {
     opacity: 0.8;
+}
+
+.upload-img-review {
+    width: 50%;
+    margin-bottom: 50px;
+    display: grid;
+    column-gap: 1.5ch;
+    row-gap: 1.5ch;
+    grid-template-columns: repeat( auto-fill, minmax(90px, 1fr) );
+}
+
+.upload-img-review div img {
+    border-radius: 5px;
+}
+
+.img-review-close {
+    position: absolute;
+    top: 4px;
+    right: 8%;
+    color: #333;
+    font-size: 22px;
+    cursor: pointer;
+    opacity: 1;
+    font-size: 16px;
 }
 
 .btn-cmt {
