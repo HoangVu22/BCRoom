@@ -3,7 +3,7 @@ var header = document.querySelector("header");
 // var header_logo = document.querySelector(".header-logo h1");
 var headerNavIcon = document.querySelector(".header-nav-icon");
 
-const specialCharacterRegex = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
+const specialCharacterRegex = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
 
 window.onscroll = function () {
   myFunction();
