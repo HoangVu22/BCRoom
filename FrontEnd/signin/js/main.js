@@ -262,6 +262,9 @@ loginButton.onclick = () => {
                 window.localStorage.setItem("login", JSON.stringify(data.data));
                 window.location.href = 'http://localhost:5500/FrontEnd/home/index.html';
             }
+            else {
+                alert(data.message)
+            }
         });
 };
 
