@@ -1,14 +1,3 @@
-/*
-*main.js
-*
-*v3.1
-*
-*11/28/2022
-*
-*Nguyen Hoang Vu, Huynh Van Tien Phong
-*/
-
-
 const hotelId = JSON.parse(localStorage.getItem("targetHotelId"));
 const reviewButton = document.querySelector("button.btn-cmt");
 console.log(hotelId);
@@ -1012,3 +1001,11 @@ var headerLogoIMG = document.querySelector('.header-logo img')
 headerLogoIMG.onclick = function () {
   location.href = 'http://localhost:5500/FrontEnd/home/index.html#'
 }
+
+// -------upload file img------
+const iconUploadImg = document.querySelector('.icon-upload-img')
+const inputImgReview = document.querySelector('.input-img-review')
+
+iconUploadImg.addEventListener("click", function () {
+    inputImgReview.click();
+})

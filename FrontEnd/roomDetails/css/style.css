@@ -1245,6 +1245,21 @@ ul {
     border: 1px solid var(--main-color);
 }
 
+.icon-upload-img {
+    background-color: var(--main-color);
+    color: #fff;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 50%;
+    margin-right: 5px;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.icon-upload-img:hover {
+    opacity: 0.8;
+}
+
 .btn-cmt {
     padding: 8px 20px;
     border-radius: 6px;
@@ -1815,3 +1830,4 @@ td {
     top: 74px;
     z-index: 100;
 }
+
