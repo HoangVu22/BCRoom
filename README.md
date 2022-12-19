@@ -24,6 +24,15 @@
     CREATE DATABASE bcroom_dev;
 `
 
+## MAKE SURE INSTALLED PACKAGES IN BACKEND
+`
+    cd BackEnd
+`
+
+`
+    npm install
+`
+
 ## Running Migrations
 
 `
@@ -41,6 +50,11 @@ if already run this command 1 time, use:
 `
     npx sequelize-cli db:seed --seed <newest file's name>
 `
+
+## TO START TESTING FRONTEND
+
+- Install extension `Live Server` for VSCode
+- Open a file .html and right click on it, choose `Open With Live Server`
 
 ## TO START TESTING API
 
