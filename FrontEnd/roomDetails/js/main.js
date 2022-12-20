@@ -1,14 +1,63 @@
 const hotelId = JSON.parse(localStorage.getItem("targetHotelId"));
 const reviewButton = document.querySelector("button.btn-cmt");
-console.log(hotelId);
 // ---------header------------
 var header = document.querySelector("header");
 // var header_logo = document.querySelector(".header-logo h1");
 var headerNavIcon = document.querySelector(".header-nav-icon");
-const loader = document.getElementById('loading')
+const loader = document.getElementById('loading');
 
 window.onscroll = function () {
     myFunction();
+};
+
+// upload images for review
+const uploadImageForReview = document.querySelector('.input-img-review');
+const uploadImageReviewContainer = document.querySelector('.upload-img-review');
+let reviewImages = []
+uploadImageForReview.onchange = (e) => {
+    if (e.target.files[0].type.includes('image')) {
+        const formData = new FormData();
+        formData.append('thumbnail', e.target.files[0]);
+        formData.append('directory', 'thumbnails');
+
+        fetch('http://localhost:1234/api/v1/upload/upload_thumbnail', {
+            method: 'post',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.code === 200) {
+                    const html = `<div class="img-review-item">
+                        <img src="${data.data.fileUrl}" alt="">
+                            <div class="img-review-close">
+                                <i data-name="${data.data.filename}" data-fileurl="${data.data.fileUrl}" class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>`;
+                    uploadImageReviewContainer.innerHTML += html
+                    reviewImages.push({ url: data.data.fileUrl, name: data.data.filename })
+
+                    const deleteReviewImageButtons = document.querySelectorAll('.img-review-item div i')
+                    deleteReviewImageButtons.forEach(deleteButton => {
+                        deleteButton.onclick = (e) => {
+                            fetch('http://localhost:1234/api/v1/upload/remove_thumbnail', {
+                                method: 'post',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ filename: e.target.dataset.name })
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.code === 200) {
+                                        uploadImageReviewContainer.removeChild(e.target.parentNode.parentNode)
+                                        reviewImages = reviewImages.filter(image => image.name !== e.target.dataset.name)
+                                    }
+                                })
+                        }
+                    })
+                }
+            });
+    }
 };
 
 // ---------- hotel's images -------------
@@ -44,7 +93,7 @@ function fetchImagesOfHotel () {
 }
 fetchImagesOfHotel();
 
-function modalRoom(roomNumber, arrimg, services, servicesInRoom) {
+function modalRoom (roomNumber, arrimg, services, servicesInRoom) {
     console.log(services);
     return `<div class="show-detail-room" style="display: flex;">
     <div class="detail-image-room">
@@ -155,7 +204,7 @@ function modalRoom(roomNumber, arrimg, services, servicesInRoom) {
 }
 const rooms = JSON.parse(localStorage.getItem("rooms"));
 const room = rooms.map((value) => {
-    console.log(value)
+    console.log(value);
     return ` <tr class="list-residence">
                         <td class="list-content list-status">
                             <b class="name-room" data-idroom=${value.roomId
@@ -208,11 +257,11 @@ var nameRooms = document.querySelectorAll(".name-room");
             .then((res) => res.json())
             .then((data) => {
                 if (data.code === 200) {
-                    console.log(data.data)
+                    console.log(data.data);
                     const modalContainer = document.querySelector(".modal-container");
                     modalContainer.style.display = "block";
-                    const services = JSON.parse(localStorage.getItem('rooms')).find(room => room.roomId === idroom).services
-                    console.log(services)
+                    const services = JSON.parse(localStorage.getItem('rooms')).find(room => room.roomId === idroom).services;
+                    console.log(services);
                     modalContainer.innerHTML = modalRoom(
                         roomNumber,
                         data.data,
@@ -307,15 +356,15 @@ bookingRooms.forEach(bookingRoom => {
                 [next.dataset.request]: value,
             };
         }, {});
-    
+
         request.customerId = JSON.parse(localStorage.getItem("login")).customerId;
         request.roomId = roomId;
         fetchBooking(request);
     };
-})
+});
 
 function fetchBooking (data) {
-    loader.style.display = 'grid'
+    loader.style.display = 'grid';
     fetch("http://localhost:1234/api/v1/core/booking", {
         method: "post",
         headers: {
@@ -324,16 +373,16 @@ function fetchBooking (data) {
         body: JSON.stringify(data),
     })
         .then((response) => {
-            return response.json()
+            return response.json();
         })
         .then((data) => {
-            loader.style.display = 'none'
+            loader.style.display = 'none';
             if (data.code === 200) {
                 alert(data.message);
-                localStorage.setItem('targetBookingIdForPayment', data.data)
-                window.location.href = 'http://localhost:5500/FrontEnd/payment/index.html'
+                localStorage.setItem('targetBookingIdForPayment', data.data);
+                window.location.href = 'http://localhost:5500/FrontEnd/payment/index.html';
             } else {
-                alert(data.message)
+                alert(data.message);
             }
         });
 }
@@ -732,7 +781,7 @@ fetch("http://localhost:1234/api/v1/hotels/get_by_id/" + hotelId)
     .then((response) => response.json())
     .then((data) => {
         if (data.code === 200) {
-            console.log(data.data)
+            console.log(data.data);
             const headerPath = document.querySelector(".header-path");
             headerPath.innerHTML = `<li><a href="../home/index.html">Trang chủ</a></li>
                             <li><a href="">${place.replaceAll(
@@ -743,15 +792,15 @@ fetch("http://localhost:1234/api/v1/hotels/get_by_id/" + hotelId)
                                 <div class="header-path-name">Đặt phòng Khách Sạn > ${data.data.hotelName
                 }</div>
                             </p>`;
-            const hotelNameMainTitle = document.querySelector('.room-name span')
-            hotelNameMainTitle.innerText = data.data.hotelName
-            const hotelAddressMainTitle = document.querySelector('.rooms-address p')
-            hotelAddressMainTitle.innerText = data.data.address
-            const averageReviewStar = document.querySelector('.review-star1')
-            console.log(data.data.averageReviewStar)
-            averageReviewStar.innerText = isNaN(data.data.averageReviewStar) ? "0" : data.data.averageReviewStar.toFixed(1)
-            const totalReview = document.querySelector('.review-star3 span')
-            totalReview.innerText = data.data.totalReview
+            const hotelNameMainTitle = document.querySelector('.room-name span');
+            hotelNameMainTitle.innerText = data.data.hotelName;
+            const hotelAddressMainTitle = document.querySelector('.rooms-address p');
+            hotelAddressMainTitle.innerText = data.data.address;
+            const averageReviewStar = document.querySelector('.review-star1');
+            console.log(data.data.averageReviewStar);
+            averageReviewStar.innerText = isNaN(data.data.averageReviewStar) ? "0" : data.data.averageReviewStar.toFixed(1);
+            const totalReview = document.querySelector('.review-star3 span');
+            totalReview.innerText = data.data.totalReview;
         }
     });
 
@@ -810,7 +859,10 @@ reviewButton.onclick = (e) => {
         hotelId,
         content: reviewContent,
         starNumber: ratingcount,
+        images: reviewImages
     });
+    uploadImageReviewContainer.innerHTML = [].join('')
+    reviewImages = []
     cmt = [{
         customerId,
         hotelId,
@@ -824,12 +876,12 @@ function commentsroom () {
     fetch(`http://localhost:1234/api/v1/reviews/reviews_of_hotel/${hotelId}`)
         .then((res) => res.json())
         .then((data) => {
-            if (data.code === 200) { 
-                const totalReview = document.querySelector('.review-star3 span')
-                totalReview.innerText = data.data.length
-                const averageReviewStar = document.querySelector('.review-star1')
-                const avarageStar = data.data.reduce((prev, next) => prev + next.starNumber, 0) / data.data.length
-                averageReviewStar.innerText = isNaN(avarageStar) ? "0" : avarageStar.toFixed(1)
+            if (data.code === 200) {
+                const totalReview = document.querySelector('.review-star3 span');
+                totalReview.innerText = data.data.length;
+                const averageReviewStar = document.querySelector('.review-star1');
+                const avarageStar = data.data.reduce((prev, next) => prev + next.starNumber, 0) / data.data.length;
+                averageReviewStar.innerText = isNaN(avarageStar) ? "0" : avarageStar.toFixed(1);
                 data.data.sort((a, b) => {
                     const dataPrev = new Date(a.createdAt);
                     const dataNext = new Date(b.createdAt);
@@ -839,7 +891,7 @@ function commentsroom () {
                 const comment = data.data.reverse().map((e, index) => {
                     const date = new Date(e.createdAt);
                     return index < 6
-                    ? handleRenderCommentList(
+                        ? handleRenderCommentList(
                             e.reviewId,
                             e.Customer.Image?.url,
                             e.Customer.username,
@@ -910,7 +962,7 @@ function newReview (data) {
                         }
                     }
                 });
-                commentsroom();
+            commentsroom();
         });
 }
 
@@ -961,12 +1013,12 @@ fetch(`http://localhost:1234/api/v1/reviews/reviews_of_hotel/${hotelId}`)
             }
         }
     });
-function starPoint(stars) {
-    let star = []
+function starPoint (stars) {
+    let star = [];
     for (let i = 0; i < stars; i++) {
-        star.push(`<i class="fa-solid fa-star"></i>`)
+        star.push(`<i class="fa-solid fa-star"></i>`);
     }
-    return star.join("")
+    return star.join("");
 }
 function handleRenderCommentList (
     reviewid,
@@ -997,15 +1049,15 @@ function handleRenderCommentList (
 }
 
 // ---------
-var headerLogoIMG = document.querySelector('.header-logo img')
+var headerLogoIMG = document.querySelector('.header-logo img');
 headerLogoIMG.onclick = function () {
-  location.href = 'http://localhost:5500/FrontEnd/home/index.html#'
-}
+    location.href = 'http://localhost:5500/FrontEnd/home/index.html#';
+};
 
 // -------upload file img------
-const iconUploadImg = document.querySelector('.icon-upload-img')
-const inputImgReview = document.querySelector('.input-img-review')
+const iconUploadImg = document.querySelector('.icon-upload-img');
+const inputImgReview = document.querySelector('.input-img-review');
 
 iconUploadImg.addEventListener("click", function () {
     inputImgReview.click();
-})
+});
