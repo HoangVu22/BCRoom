@@ -1050,6 +1050,10 @@ function handleRenderCommentList (
             <img src="../image/avatars/avatar_1.jpg" alt="">
             <img src="../image/avatars/avatar_1.jpg" alt="">
             <img src="../image/avatars/avatar_1.jpg" alt="">
+            <img src="../image/avatars/avatar_1.jpg" alt="">
+            <img src="../image/avatars/avatar_1.jpg" alt="">
+            <img src="../image/avatars/avatar_1.jpg" alt="">
+            <img src="../image/avatars/avatar_1.jpg" alt="">
         </div>
     </div>`;
 }

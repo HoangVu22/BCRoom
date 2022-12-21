@@ -1309,19 +1309,39 @@ ul {
 }
 
 .show-img-review {
-    width: 100%;
+    width: 50%;
     /* height: 79px; */
     object-fit: contain;
     display: flex;
     column-gap: 1.5ch;
     row-gap: 1.5ch;
     margin-bottom: 50px;
-    /* grid-template-columns: repeat( auto-fill, minmax(90px, 1fr) ); */
+    overflow-x: auto;
+    /* scrollbar-width: 5px; */
+    /* grid-auto-flow: column;
+    grid-auto-columns: auto; */
 }
+/* 
+.show-img-review::-webkit-scrollbar {
+    width: 5px;
+  } */
+  
+  /* .show-img-review::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .show-img-review::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  .show-img-review::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  } */
 
 .show-img-review img {
-    width: 10%;
+    width: 20%;
     border-radius: 5px;
+    flex-shrink: 0;
 }
 
 .form-show-more h3 {
