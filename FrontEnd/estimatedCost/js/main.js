@@ -293,7 +293,34 @@ function renderHotel (value) {
                 </div>`;
 }
 
+[wantedCost, wantedDate].forEach(input => {
+    input.onchange = (e) => {
+        let hasInvalid = false
+        if (e.target.classList.contains('date') && parseInt(e.target.value) < 0) {
+            hasInvalid = true
+            alert('Số ngày không hợp lệ')
+        }
+        if (e.target.classList.contains('cost') && parseFloat(e.target.value) < 0) {
+            hasInvalid = true
+            alert('Số tiền phải lớn hơn 0')
+        }
+        if (hasInvalid) {
+            e.target.value = ""
+            input.focus()
+        }
+    }
+})
+
 costBtn.onclick = function () {
+    if (!wantedCost.value) {
+        alert('Vui lòng nhập số tiền')
+        return false
+    }
+    if (!wantedDate.value) {
+        alert('Vui lòng nhập số ngày')
+        return false
+    }
+
     if (wantedCost.value && wantedDate.value) {
         const estimatedCost = parseFloat(wantedCost.value) / parseFloat(wantedDate.value);
         fetch('http://localhost:1234/api/v1/core/estimate_cost?cost=' + estimatedCost)
