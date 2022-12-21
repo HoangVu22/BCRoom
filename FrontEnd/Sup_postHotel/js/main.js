@@ -9,6 +9,31 @@ const targetHotelId = localStorage.getItem('targetHotelId');
 const newHotelButton = document.querySelector('.new-hotel-btn');
 const hotelUpdate = JSON.parse(sessionStorage.getItem("hotelUpdate"));
 const updateRoomHotel = JSON.parse(sessionStorage.getItem("updateRoom"));
+const specialCharacterRegex = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
+const addressSpecialCharacterRegex = /[`!@#$%^&*()_+\=\[\]{};':"\\|.<>?~]/
+const hotelValueInputs = document.querySelectorAll('.request-value')
+hotelValueInputs.forEach(input => {
+    input.onchange = (e) => {
+        let hasInvalid = false
+        if ((e.target.dataset.request === 'nameHotel' || e.target.dataset.request === 'phone') && specialCharacterRegex.test(e.target.value)) {
+            hasInvalid = true
+            if (e.target.dataset.request === 'nameHotel') {
+                alert("Tên khách sạn không hợp lệ")
+            }
+            if (e.target.dataset.request === 'phone') {
+                alert("Số điện thoại không đúng định dạng")
+            }
+        }
+        if (e.target.dataset.request === 'address' && addressSpecialCharacterRegex.test(e.target.value)) {
+            hasInvalid = true
+            alert("Địa chỉ không đúng định dạng")
+        }
+
+        if (hasInvalid) {
+            e.target.value = ""
+        }
+    }
+})
 let images = [];
 function loadPage () {
     const targetHotelIdSpan = document.querySelector('.target-hotel-id');
@@ -240,6 +265,20 @@ var goToNext = document.querySelector('.go-to-next button');
 var finish = document.querySelector('.finish button');
 
 goToNext.onclick = function () {
+    if (hotelPictures.length === 0) {
+        alert('Hãy cho chúng tôi biết hình ảnh khách sạn của bạn')
+        return false
+    }
+    const hotelDescription = document.querySelector('.description-input')
+    if (hotelDescription.value === "") {
+        alert('Nhập mô tả khách sạn của bạn')
+        return false
+    }
+    const hotelAddress = document.querySelector('.input-address')
+    if (hotelAddress.value === "") {
+        alert('Nhập địa chỉ khách sạn của bạn')
+        return false
+    }
     preBtn.style.display = "block";
     finish.style.display = "none";
     count = count + 1;
@@ -288,8 +327,11 @@ let basicInformationRoom = {};
 
 goToNext.addEventListener('click', (e) => {
     e.preventDefault();
+    if (hotelPictures.length === 0) {
+        return false
+    }
     const basicInformationHotelComponent = document.querySelector('#basic-information-hotel');
-    const requestInputs = basicInformationHotelComponent.querySelectorAll('input.request-value, select.request-value');
+    const requestInputs = basicInformationHotelComponent.querySelectorAll('input.request-value, select.request-value, textarea.request-value');
     basicInformationHotel = [...requestInputs].reduce((prev, next) => {
         let value = next.value;
 
