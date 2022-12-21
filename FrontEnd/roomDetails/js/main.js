@@ -6,6 +6,8 @@ var header = document.querySelector("header");
 var headerNavIcon = document.querySelector(".header-nav-icon");
 const loader = document.getElementById('loading');
 
+const reviewImageModal = document.getElementById('review-img-modal');
+
 window.onscroll = function () {
     myFunction();
 };
@@ -13,7 +15,7 @@ window.onscroll = function () {
 // upload images for review
 const uploadImageForReview = document.querySelector('.input-img-review');
 const uploadImageReviewContainer = document.querySelector('.upload-img-review');
-let reviewImages = []
+let reviewImages = [];
 uploadImageForReview.onchange = (e) => {
     if (e.target.files[0].type.includes('image')) {
         const formData = new FormData();
@@ -33,10 +35,10 @@ uploadImageForReview.onchange = (e) => {
                                 <i data-name="${data.data.filename}" data-fileurl="${data.data.fileUrl}" class="fa-solid fa-xmark"></i>
                             </div>
                         </div>`;
-                    uploadImageReviewContainer.innerHTML += html
-                    reviewImages.push({ url: data.data.fileUrl, name: data.data.filename })
+                    uploadImageReviewContainer.innerHTML += html;
+                    reviewImages.push({ url: data.data.fileUrl, name: data.data.filename });
 
-                    const deleteReviewImageButtons = document.querySelectorAll('.img-review-item div i')
+                    const deleteReviewImageButtons = document.querySelectorAll('.img-review-item div i');
                     deleteReviewImageButtons.forEach(deleteButton => {
                         deleteButton.onclick = (e) => {
                             fetch('http://localhost:1234/api/v1/upload/remove_thumbnail', {
@@ -49,12 +51,12 @@ uploadImageForReview.onchange = (e) => {
                                 .then(response => response.json())
                                 .then(data => {
                                     if (data.code === 200) {
-                                        uploadImageReviewContainer.removeChild(e.target.parentNode.parentNode)
-                                        reviewImages = reviewImages.filter(image => image.name !== e.target.dataset.name)
+                                        uploadImageReviewContainer.removeChild(e.target.parentNode.parentNode);
+                                        reviewImages = reviewImages.filter(image => image.name !== e.target.dataset.name);
                                     }
-                                })
-                        }
-                    })
+                                });
+                        };
+                    });
                 }
             });
     }
@@ -861,8 +863,8 @@ reviewButton.onclick = (e) => {
         starNumber: ratingcount,
         images: reviewImages
     });
-    uploadImageReviewContainer.innerHTML = [].join('')
-    reviewImages = []
+    uploadImageReviewContainer.innerHTML = [].join('');
+    reviewImages = [];
     cmt = [{
         customerId,
         hotelId,
@@ -899,11 +901,20 @@ function commentsroom () {
                             date.getMonth() + 1,
                             date.getFullYear(),
                             e.content,
-                            e.starNumber
+                            e.starNumber,
+                            e.Images
                         )
                         : "";
                 });
                 formReviews.innerHTML = comment.join("");
+                const reviewImages = document.querySelectorAll('.review-image');
+                reviewImages.forEach(image => {
+                    image.onclick = (e) => {
+                        reviewImageModal.style.display = 'block';
+                        const reviewImageModalContent = document.querySelector('#review-img-modal div img');
+                        reviewImageModalContent.src = e.target.src;
+                    };
+                });
             }
         });
 }
@@ -944,7 +955,8 @@ function newReview (data) {
                                         date.getMonth() + 1,
                                         date.getFullYear(),
                                         e.content,
-                                        e.starNumber
+                                        e.starNumber,
+                                        e.Images
                                     );
                                 });
                                 formShowMore.innerHTML =
@@ -958,6 +970,15 @@ function newReview (data) {
                                     formShowMore.innerHTML = "";
                                     formShowMore.style.display = "none";
                                 };
+
+                                const reviewImages = document.querySelectorAll('.review-image');
+                                reviewImages.forEach(image => {
+                                    image.onclick = (e) => {
+                                        reviewImageModal.style.display = 'block';
+                                        const reviewImageModalContent = document.querySelector('#review-img-modal div img');
+                                        reviewImageModalContent.src = e.target.src;
+                                    };
+                                });
                             };
                         }
                     }
@@ -1009,6 +1030,15 @@ fetch(`http://localhost:1234/api/v1/reviews/reviews_of_hotel/${hotelId}`)
                         formShowMore.innerHTML = "";
                         formShowMore.style.display = "none";
                     };
+
+                    const reviewImages = document.querySelectorAll('.review-image');
+                    reviewImages.forEach(image => {
+                        image.onclick = (e) => {
+                            reviewImageModal.style.display = 'block';
+                            const reviewImageModalContent = document.querySelector('#review-img-modal div img');
+                            reviewImageModalContent.src = e.target.src;
+                        };
+                    });
                 };
             }
         }
@@ -1028,7 +1058,8 @@ function handleRenderCommentList (
     month,
     year,
     content,
-    star
+    star,
+    images
 ) {
     return `
     <div id=${reviewid} class="wrap-reviews">
@@ -1045,15 +1076,8 @@ function handleRenderCommentList (
             </div>
         </div>
         <div class="wrap-reviews-bottom">${content}</div>
-        <div class="show-img-review">
-            <img src="../image/avatars/avatar_1.jpg" alt="">
-            <img src="../image/avatars/avatar_1.jpg" alt="">
-            <img src="../image/avatars/avatar_1.jpg" alt="">
-            <img src="../image/avatars/avatar_1.jpg" alt="">
-            <img src="../image/avatars/avatar_1.jpg" alt="">
-            <img src="../image/avatars/avatar_1.jpg" alt="">
-            <img src="../image/avatars/avatar_1.jpg" alt="">
-            <img src="../image/avatars/avatar_1.jpg" alt="">
+        <div ${images.length === 0 && 'style="display: none"'} class="show-img-review">
+            ${images.map(image => `<img class="review-image" src="${image.url}">`).join('')}
         </div>
     </div>`;
 }
@@ -1071,3 +1095,9 @@ const inputImgReview = document.querySelector('.input-img-review');
 iconUploadImg.addEventListener("click", function () {
     inputImgReview.click();
 });
+
+// ------ review image modal --------
+const closeReviewImageModalButton = document.querySelector('#review-img-modal div .close');
+closeReviewImageModalButton.onclick = () => {
+    reviewImageModal.style.display = 'none';
+};

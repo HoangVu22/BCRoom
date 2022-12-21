@@ -1321,6 +1321,17 @@ ul {
     /* grid-auto-flow: column;
     grid-auto-columns: auto; */
 }
+
+.show-img-review img:hover {
+    cursor: pointer;
+}
+
+#review-img-modal div i {
+   cursor: pointer;
+   position: absolute;
+   top: 5%;
+   right: 5%;
+}
 /* 
 .show-img-review::-webkit-scrollbar {
     width: 5px;
