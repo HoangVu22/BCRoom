@@ -1045,6 +1045,12 @@ function handleRenderCommentList (
             </div>
         </div>
         <div class="wrap-reviews-bottom">${content}</div>
+        <div class="show-img-review">
+            <img src="../image/avatars/avatar_1.jpg" alt="">
+            <img src="../image/avatars/avatar_1.jpg" alt="">
+            <img src="../image/avatars/avatar_1.jpg" alt="">
+            <img src="../image/avatars/avatar_1.jpg" alt="">
+        </div>
     </div>`;
 }
 

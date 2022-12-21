@@ -1156,6 +1156,10 @@ ul {
     line-height: 20px;
 }
 
+.wrap-reviews {
+    margin-bottom: 30px;
+}
+
 .review-avatar {
     width: 50px;
     height: 50px;
@@ -1187,7 +1191,7 @@ ul {
     color: #34495E;
     font-size: 14px;
     line-height: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 
 .show-more {
@@ -1302,6 +1306,22 @@ ul {
 
 .btn-cmt:hover {
     background: var(--main-color);
+}
+
+.show-img-review {
+    width: 100%;
+    /* height: 79px; */
+    object-fit: contain;
+    display: flex;
+    column-gap: 1.5ch;
+    row-gap: 1.5ch;
+    margin-bottom: 50px;
+    /* grid-template-columns: repeat( auto-fill, minmax(90px, 1fr) ); */
+}
+
+.show-img-review img {
+    width: 10%;
+    border-radius: 5px;
 }
 
 .form-show-more h3 {
