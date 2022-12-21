@@ -6,6 +6,7 @@ var headerFormLogout = document.querySelector(".header-form-logout");
 const accountinfo = document.querySelector(".account-info");
 const formProfile = document.querySelector(".form-profile");
 const loader = document.getElementById('loading')
+const specialCharacterRegex = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
 
 const login = JSON.parse(localStorage.getItem("login"));
 
@@ -526,8 +527,12 @@ formProfileSubmit.onclick = function (e) {
     e.preventDefault();
     const customerId = login.customerId;
     const phone = document.querySelector('.phone-verification');
+    if (specialCharacterRegex.test(phone.value)) {
+        alert('Vui lòng nhập số điện thoại')
+        phone.value = login.phone 
+        return false
+    }
     loader.style.display = 'grid'
-    console.log(phone.value)
     fetch('http://localhost:1234/api/v1/customers/phone_verification', {
         method: 'put',
         headers: {
