@@ -9,7 +9,7 @@ module.exports = async (request, response) => {
             return response.status(422).json({
                 code: 422,
                 status: 'failed',
-                message: 'Invalid input'
+                message: 'Thiếu giá trị bắt buộc'
             });
         }
 

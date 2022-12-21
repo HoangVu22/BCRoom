@@ -11,6 +11,8 @@ const notificationModal = document.getElementById('notification-modal');
 const notificationModalMessage = notificationModal.querySelector('.form-confirm .form-confirm-top p span');
 const notificationModalYesButton = notificationModal.querySelector('.yes');
 const notificationModalNoButton = notificationModal.querySelector('.no');
+const specialCharacterRegex = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 notificationModalNoButton.onclick = () => {
     notificationModal.style.display = 'none';
@@ -302,6 +304,39 @@ newClose.onclick = function () {
     createNewUsers.style.display = 'none';
 };
 
+const updateRequestInputs = document.querySelectorAll('.update-user-request');
+updateRequestInputs.forEach(input => {
+    input.onchange = (e) => {
+        let hasInvalid = false;
+        if ((e.target.dataset.request === 'username' && (specialCharacterRegex.test(e.target.value) || e.target.value === " "))
+            || ((e.target.dataset.request === 'password' || e.target.dataset.request === 'address') && e.target.value === " ")) {
+            hasInvalid = true;
+            alert('Đầu vào không hợp lệ');
+        }
+        if (e.target.dataset.request === 'password' && e.target.value !== " " && e.target.value && e.target.value.length < 6) {
+            hasInvalid = true;
+            alert('Vui lòng nhập mật khẩu tối thiểu 6 ký tự');
+        }
+        if (hasInvalid) {
+            e.target.value = "";
+        }
+    };
+});
+
+const newRequestInputs = document.querySelectorAll('.new-user-request');
+newRequestInputs.forEach(input => {
+    input.onchange = (e) => {
+        let hasInvalid = false;
+        if (e.target.dataset.request === 'email' && !emailRegex.test(e.target.value)) {
+            hasInvalid = true;
+            alert('Trường này không phải là email');
+        }
+
+        if (hasInvalid) {
+            e.target.value = "";
+        }
+    };
+});
 newRegisterButton.onclick = () => {
     const newUserRequestValues = document.querySelectorAll('.new-user-request');
     const requestValues = [...newUserRequestValues].reduce((prev, next) => {
