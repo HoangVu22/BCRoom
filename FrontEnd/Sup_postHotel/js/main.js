@@ -11,8 +11,8 @@ const hotelUpdate = JSON.parse(sessionStorage.getItem("hotelUpdate"));
 const updateRoomHotel = JSON.parse(sessionStorage.getItem("updateRoom"));
 const specialCharacterRegex = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
 const addressSpecialCharacterRegex = /[`!@#$%^&*()_+\=\[\]{};':"\\|.<>?~]/
-const hotelValueInputs = document.querySelectorAll('.request-value')
-hotelValueInputs.forEach(input => {
+const valueInputs = document.querySelectorAll('.request-value')
+valueInputs.forEach(input => {
     input.onchange = (e) => {
         let hasInvalid = false
         if ((e.target.dataset.request === 'nameHotel' || e.target.dataset.request === 'phone') && specialCharacterRegex.test(e.target.value)) {
@@ -28,7 +28,17 @@ hotelValueInputs.forEach(input => {
             hasInvalid = true
             alert("Địa chỉ không đúng định dạng")
         }
-
+        if (e.target.dataset.request === 'price') {
+            if (parseFloat(e.target.value) < 0) {
+                hasInvalid = true
+                alert('Số tiền không hợp lệ')
+            }
+        }
+        if ((e.target.dataset.request === 'adultNumber' || e.target.dataset.request === 'kidNumber') && parseInt(e.target.value) < 0) {
+            hasInvalid = true
+            alert('Số người không hợp lệ')
+        }
+        
         if (hasInvalid) {
             e.target.value = ""
         }
@@ -99,7 +109,6 @@ stepItem.forEach((tab, index) => {
             preBtn.style.display = "none";
             goToNext.style.display = "block";
             finish.style.display = "none";
-
         } else
             if (count === 1) {
                 preBtn.style.display = "block";
@@ -354,6 +363,26 @@ goToNext.addEventListener('click', (e) => {
 });
 
 finish.addEventListener('click', (e) => {
+    const adultNumber = document.querySelector('.request-value.adultNumber')
+    const kidNumber = document.querySelector('.request-value.kidNumber')
+    const roomNumber = document.querySelector('.request-value.room-input')
+    const priceNumber = document.querySelector('.request-value.price')
+    if (!priceNumber.value) {
+        alert('Vui lòng nhập giá phòng')
+        return false
+    }
+    if (roomPictures.length === 0) {
+        alert('Hãy cho chúng tôi biết hình ảnh phòng của bạn')
+        return false
+    }
+    if (!adultNumber.value || !kidNumber.value) {
+        alert('Vui lòng nhập số người')
+        return false
+    }
+    if (!roomNumber.value) {
+        alert('Hãy nhập số phòng')
+        return false
+    }
     e.preventDefault();
     const basicInformationRoomComponent = document.querySelector('#basic-information-room');
     const requestInputs = basicInformationRoomComponent.querySelectorAll('input.request-value, select.request-value');
