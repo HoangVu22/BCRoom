@@ -6,6 +6,14 @@ var headerFormLogout = document.querySelector(".header-form-logout");
 var headerNavIcon = document.querySelector('.header-nav-icon')
 var login = JSON.parse(localStorage.getItem("login"))
 const loader = document.getElementById('loading')
+const notificationModal = document.getElementById('notification-modal');
+const notificationModalMessage = notificationModal.querySelector('.form-confirm .form-confirm-top p span');
+const notificationModalYesButton = notificationModal.querySelector('.yes');
+const notificationModalNoButton = notificationModal.querySelector('.no');
+
+notificationModalNoButton.onclick = () => {
+    notificationModal.style.display = 'none';
+};
 
 headerNavForm.onclick = function () {
   if (headerForm.style.display === "none") headerForm.style.display = "block";
@@ -100,20 +108,29 @@ fetch('http://localhost:1234/api/v1/admin/all_hotels', {
             const actionButtons = document.querySelectorAll('.list-residence .list-action > i')
             actionButtons.forEach(actionButton => {
                 actionButton.onclick = (e) => {
-                    loader.style.display = 'grid'
-                    fetch('http://localhost:1234/api/v1/admin/change_hotel_status/' + e.target.parentElement.dataset.hotel, {
-                        method: 'put',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ customerId: login.customerId, status: !Boolean(e.target.parentElement.dataset.status) })
-                    })
-                        .then(response => response.json())
-                        .then(_data => {
-                            loader.style.display = 'none'
-                            window.location.reload()
-                            return false
+                    notificationModal.style.display = 'block'
+                    if (e.target.classList.contains('active')) {
+                        notificationModalMessage.innerText = 'mở khóa'
+                    } else {
+                        notificationModalMessage.innerText = 'xóa'
+                    }
+
+                    notificationModalYesButton.onclick = () => {
+                        loader.style.display = 'grid'
+                        fetch('http://localhost:1234/api/v1/admin/change_hotel_status/' + e.target.parentElement.dataset.hotel, {
+                            method: 'put',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ customerId: login.customerId, status: !Boolean(e.target.parentElement.dataset.status) })
                         })
+                            .then(response => response.json())
+                            .then(_data => {
+                                loader.style.display = 'none'
+                                window.location.reload()
+                                return false
+                            })
+                    }
                 }
             })
         }
