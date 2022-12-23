@@ -1027,7 +1027,8 @@ fetch(`http://localhost:1234/api/v1/reviews/reviews_of_hotel/${hotelId}`)
                             date.getMonth() + 1,
                             date.getFullYear(),
                             e.content,
-                            e.starNumber
+                            e.starNumber,
+                            e.Images
                         );
                     });
                     formShowMore.innerHTML =
