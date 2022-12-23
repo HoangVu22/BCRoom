@@ -1323,6 +1323,11 @@ ul {
     grid-auto-columns: auto; */
 }
 
+.show-img-review img {
+    width: 20%;
+    height: 70px;
+}
+
 .show-img-review img:hover {
     cursor: pointer;
 }
