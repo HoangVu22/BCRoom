@@ -8,6 +8,7 @@ const loader = document.getElementById('loading');
 
 const reviewImageModal = document.getElementById('review-img-modal');
 
+
 window.onscroll = function () {
     myFunction();
 };
@@ -783,7 +784,17 @@ fetch("http://localhost:1234/api/v1/hotels/get_by_id/" + hotelId)
     .then((response) => response.json())
     .then((data) => {
         if (data.code === 200) {
-            console.log(data.data);
+            console.log(data.data)
+            let stars = []
+            const starNumbers = document.querySelector('.rooms-star')
+            for (let i = 0; i < data.data.starNumber;i++) {
+                stars.push('<i class="rooms-star-rating fa-solid fa-star"></i>')
+            }
+            starNumbers.innerHTML = stars.join('')
+
+            const description = document.querySelector('.info-container-content')
+            description.innerText = data.data.description
+
             const headerPath = document.querySelector(".header-path");
             headerPath.innerHTML = `<li><a href="../home/index.html">Trang chủ</a></li>
                             <li><a href="">${place.replaceAll(
