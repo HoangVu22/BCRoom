@@ -7,7 +7,6 @@ const accountinfo = document.querySelector(".account-info");
 const formProfile = document.querySelector(".form-profile");
 const loader = document.getElementById('loading')
 const specialCharacterRegex = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
-
 const login = JSON.parse(localStorage.getItem("login"));
 
 fetch('http://localhost:1234/api/v1/images/avatar_of_customer/' + login.customerId)
@@ -119,7 +118,7 @@ function renderBooking (data, index) {
                                 ${data.isPaid ? `<td></td>` : `<td class="list-content list-cancel">
                                     <i data-booking="${data.bookingId}" class="fa-solid fa-trash-can"></i>
                                 </td>`
-        }
+                                }
                             </tr>`;
 }
 
@@ -162,6 +161,8 @@ function fetchBookingsHistory () {
                             formReasonCancelPortal.style.display = 'none';
                         };
                         cancelYesButton.onclick = () => {
+                            loader.style.display = 'grid'
+                            formReasonCancelPortal.style.display = 'none'
                             const reason = document.querySelector('.reason-cancel .reasons input:checked');
                             const otherReason = document.querySelector('.reason-cancel .reasons textarea');
                             let reasonValues = [];
@@ -187,10 +188,12 @@ function fetchBookingsHistory () {
                                 .then(data => {
                                     if (data.code === 200) {
                                         alert(data.message);
+                                        loader.style.display = 'none'
                                         window.location.reload();
                                         return false;
                                     } else {
                                         alert(data.message);
+                                        loader.style.display = 'none'
                                     }
                                 });
                         };

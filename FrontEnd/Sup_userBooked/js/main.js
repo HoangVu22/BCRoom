@@ -5,6 +5,15 @@ var headerFormLogin = headerNavForm.querySelector(".header-form-login");
 var headerFormLogout = document.querySelector(".header-form-logout");
 var headerNavIcon = document.querySelector('.header-nav-icon');
 var login = JSON.parse(localStorage.getItem('login'));
+const loader = document.getElementById('loading')
+const notificationModal = document.getElementById('notification-modal');
+const notificationModalMessage = notificationModal.querySelector('.form-confirm .form-confirm-top p span');
+const notificationModalYesButton = notificationModal.querySelector('.yes');
+const notificationModalNoButton = notificationModal.querySelector('.no');
+
+notificationModalNoButton.onclick = () => {
+    notificationModal.style.display = 'none';
+};
 
 headerNavForm.onclick = function () {
     if (headerForm.style.display === "none") headerForm.style.display = "block";
@@ -92,21 +101,26 @@ function fetchBookingsOfHotel () {
                 const cancleBookingButtons = document.querySelectorAll('.list-content.list-cancel i.delete');
                 cancleBookingButtons.forEach(button => {
                     button.onclick = (e) => {
-                        fetch('http://localhost:1234/api/v1/owners/cancle_booking/' + e.target.dataset.value, {
-                            method: 'post',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ customerId: login.customerId })
-                        })
-                            .then(response => response.json())
-                            .then(data => {
-                                console.log(data);
-                                if (data.code === 200) {
-                                    window.location.reload();
-                                    return false;
-                                }
-                            });
+                        notificationModal.style.display = 'block'
+                        notificationModalMessage.innerText = 'hủy'
+                        notificationModalYesButton.onclick = () => {
+                            loader.style.display = 'grid'
+                            fetch('http://localhost:1234/api/v1/owners/cancle_booking/' + e.target.dataset.value, {
+                                method: 'post',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ customerId: login.customerId })
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    console.log(data);
+                                    if (data.code === 200) {
+                                        window.location.reload();
+                                        return false;
+                                    }
+                                });
+                        }
                     };
                 });
             }

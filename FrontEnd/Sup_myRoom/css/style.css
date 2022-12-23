@@ -673,5 +673,51 @@ td {
     margin-right: 12px;
 }
 
+.form-confirm {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 4px 20px #0003;
+    width: 30%;
+    background-color: #fff;
+}
 
+.form-confirm-top {
+    text-align: center;
+    padding: 30px 20px;
+    color: #34495E;
+}
 
+.form-confirm-bottom {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.form-confirm-left {
+    flex: 1;
+    text-align: center;
+    padding: 12px 10px;
+    background: linear-gradient(#f4685e,#f44336);
+    color: #fff;
+    opacity: 1;
+}
+
+.form-confirm-left:hover {
+    opacity: 0.8;
+}
+
+.form-confirm-right {
+    flex: 1;
+    text-align: center;
+    padding: 12px 10px;
+    background: linear-gradient(#5e6f81,#34495E);
+    color: #fff;
+    opacity: 1;
+}
+
+.form-confirm-right:hover {
+    opacity: 0.8;
+}

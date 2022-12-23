@@ -6,6 +6,14 @@ var headerFormLogout = document.querySelector(".header-form-logout");
 var headerNavIcon = document.querySelector('.header-nav-icon')
 var login = JSON.parse(localStorage.getItem('login'))
 const loader = document.getElementById('loading')
+const notificationModal = document.getElementById('notification-modal');
+const notificationModalMessage = notificationModal.querySelector('.form-confirm .form-confirm-top p span');
+const notificationModalYesButton = notificationModal.querySelector('.yes');
+const notificationModalNoButton = notificationModal.querySelector('.no');
+
+notificationModalNoButton.onclick = () => {
+    notificationModal.style.display = 'none';
+};
 
 function fetchRooms() {
     loader.style.display = 'grid'
@@ -42,22 +50,26 @@ function fetchRooms() {
                 const deleteRoomButton = document.querySelectorAll('.list-content.list-action div i.delete')
                 deleteRoomButton.forEach(button => {
                     button.onclick = (e) => {
-                        loader.style.display = 'grid'
-                        fetch('http://localhost:1234/api/v1/rooms/change_status/' + e.target.dataset.value, {
-                            method: 'post',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ status: false })
-                        })
-                            .then(response => response.json())
-                            .then(data => {
-                                loader.style.display = 'none'
-                                if (data.code === 200) {
-                                    window.location.reload()
-                                    return false
-                                }
+                        notificationModal.style.display = 'block'
+                        notificationModalMessage.innerText = 'xóa'
+                        notificationModalYesButton.onclick = () => {
+                            loader.style.display = 'grid'
+                            fetch('http://localhost:1234/api/v1/rooms/change_status/' + e.target.dataset.value, {
+                                method: 'post',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ status: false })
                             })
+                                .then(response => response.json())
+                                .then(data => {
+                                    loader.style.display = 'none'
+                                    if (data.code === 200) {
+                                        window.location.reload()
+                                        return false
+                                    }
+                                })
+                        }
                     }
                 })
             }
