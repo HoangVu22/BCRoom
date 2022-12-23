@@ -438,7 +438,7 @@ var headerNavForm = document.querySelector(".header-nav-form");
 var headerForm = document.querySelector(".header-form");
 var headerFormLogin = headerNavForm.querySelector(".header-form-login");
 var headerFormLogout = document.querySelector(".header-form-logout");
-var login = window.localStorage.getItem("login");
+var login = JSON.parse(localStorage.getItem("login"));
 
 headerNavForm.onclick = function () {
     if (headerForm.style.display === "none") headerForm.style.display = "block";
@@ -1112,3 +1112,14 @@ const closeReviewImageModalButton = document.querySelector('#review-img-modal di
 closeReviewImageModalButton.onclick = () => {
     reviewImageModal.style.display = 'none';
 };
+
+fetch(`http://localhost:1234/api/v1/customers/has_booking_room_of_hotel?customerId=${login.customerId}&hotelId=${hotelId}`)
+    .then(response => response.json())
+    .then(data => {
+        if (data.code === 200) {
+            const commentInputContainer = document.querySelector('.comments')
+            commentInputContainer.style.display = data.data ? 'block' : 'none'
+        } else {
+            alert(data.message)
+        }
+    })

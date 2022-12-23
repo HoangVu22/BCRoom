@@ -1,14 +1,15 @@
-const { Booking, Room } = require('../../../../../models')
+const { Booking, Room, Bill } = require('../../../../../models')
 
 module.exports = async (request, response) => {
     try {
         const customerId = request.body.customerId
         const bookingId = request.params.bookingId
+        const isPaid = request.body.isPaid
 
         const booking = await Booking.findByPk(bookingId)
 
         await Booking.update({
-            isPaid: !booking.isPaid
+            isPaid 
         }, {
             where: {
                 bookingId
@@ -16,7 +17,7 @@ module.exports = async (request, response) => {
         })
 
         await Room.update({
-            isBooking: !!booking.isPaid,
+            isBooking: isPaid 
         }, {
             where: {
                 roomId: booking.roomId

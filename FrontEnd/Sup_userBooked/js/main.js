@@ -83,7 +83,7 @@ function fetchBookingsOfHotel () {
                             headers: {
                                 'Content-Type': 'application/json'
                             },
-                            body: JSON.stringify({ customerId: login.customerId })
+                            body: JSON.stringify({ customerId: login.customerId, isPaid: !Boolean(e.target.parentElement.dataset.paid) })
                         })
                             .then(response => response.json())
                             .then(data => {
@@ -156,7 +156,7 @@ function renderBooking (data, index) {
                     <td class="list-content list-ispaid">
                         <span style="color: ${data.isPaid ? 'green' : 'red'}">${data.isPaid ? 'Đã thanh toán' : 'Chưa thanh toán'}</span> 
                     </td>
-                    <td class="list-content list-cancel">
+                    <td data-paid="${data.isPaid ? '1' : ''}" class="list-content list-cancel">
                         ${!data.isPaid ? `<i data-value="${data.bookingId}" class="fa-solid fa-trash-can delete"></i><i data-value="${data.bookingId}" class="fa-solid fa-check check"></i>` : ''}
                     </td>
                 </tr>`;

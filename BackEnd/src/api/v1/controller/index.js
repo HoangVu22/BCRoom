@@ -53,5 +53,6 @@ module.exports = {
     confirmPhoneVerification: require('./core/confirmPhoneVerification'),
     getHotelsByStar: require('./hotel/getHotelsByStar'),
     updateCustomerFromAdmin: require('./admin/updateCustomerFromAdmin'),
-    adminLogin: require('./auth/adminLogin')
+    adminLogin: require('./auth/adminLogin'),
+    hasBookingARoom: require('./customer/hasBookingARoom')
 }

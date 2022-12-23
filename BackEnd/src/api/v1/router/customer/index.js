@@ -29,6 +29,9 @@ router.put('/change_password', isLogin, controllers.changePassword)
 // xác thực số điện thoại để liên kết với tài khoản
 router.put('/phone_verification', isLogin, controllers.phoneVerification)
 
+// kiểm tra người dùng đã đặt phòng của khách sạn hay chưa
+router.get('/has_booking_room_of_hotel', controllers.hasBookingARoom)
+
 module.exports = {
     entry: '/customers',
     router
