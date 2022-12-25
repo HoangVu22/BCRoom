@@ -16,6 +16,16 @@ module.exports = async (request, response) => {
             })
         }
 
+        const now = new Date()
+        const nowDateFormat = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`
+        if (Date.parse(nowDateFormat) > Date.parse(dateTo) || Date.parse(nowDateFormat) > Date.parse(dateFrom)) {
+            return response.status(422).json({
+                code: 422,
+                status: 'failed',
+                message: 'Ngày đặt hoặc ngày trả không hợp lệ'
+            })
+        }
+
         if (Date.parse(dateTo) - Date.parse(dateFrom) < 0) {
             return response.status(422).json({
                 code: 422,
