@@ -3,6 +3,10 @@ var headerNavForm = document.querySelector('.header-nav-form');
 var headerForm = document.querySelector('.header-form');
 var headerFormLogin = headerNavForm.querySelector('.header-form-login');
 var headerFormLogout = document.querySelector('.header-form-logout');
+const loginAccount = localStorage.getItem('login')
+if (loginAccount) {
+    window.location.href = 'http://localhost:5500/FrontEnd/home/index.html'
+}
 
 headerNavForm.onclick = function () {
     if (headerForm.style.display === "none")

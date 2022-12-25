@@ -5,6 +5,9 @@ var headerFormLogin = headerNavForm.querySelector('.header-form-login')
 var headerFormLogout = document.querySelector('.header-form-logout');
 var login = window.localStorage.getItem("login")
 const registerButton = document.querySelector('.form-submit.register')
+if (login) {
+    window.location.href = 'http://localhost:5500/FrontEnd/home/index.html'
+}
 
 // check emoji
 function removeInvalidChars(text) {
