@@ -17,6 +17,7 @@ if(headerFormLogout) {
     formLogout.onclick = () => {
         localStorage.removeItem('login')
         handleLogin()
+        window.location.reload()
     }
 }
 
