@@ -12,6 +12,7 @@ const updateRoomHotel = JSON.parse(sessionStorage.getItem("updateRoom"));
 const specialCharacterRegex = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
 const addressSpecialCharacterRegex = /[`!@#$%^&*()_+\=\[\]{};':"\\|.<>?~]/
 const valueInputs = document.querySelectorAll('.request-value')
+const loader = document.getElementById('loading')
 valueInputs.forEach(input => {
     input.onchange = (e) => {
         let hasInvalid = false
@@ -429,6 +430,7 @@ finish.addEventListener('click', (e) => {
 });
 
 function sendRequestToCreatRoomHotel (data) {
+    loader.style.display = 'grid'
     fetch("http://localhost:1234/api/v1/core/new_room", {
         method: "post",
         headers: {
@@ -438,7 +440,11 @@ function sendRequestToCreatRoomHotel (data) {
     })
         .then((response) => response.json())
         .then((data) => {
-            if (data.code === 200) alert("Đăng ký phòng thành công !!!");
+            loader.style.display = 'none'
+            if (data.code === 200) {
+                alert("Đăng ký phòng thành công !!!");
+                window.location.href = 'http://localhost:5500/FrontEnd/Sup_myHotel/index.html'
+            }
         })
         .catch((error) => {
             console.log(error);
