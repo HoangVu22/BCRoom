@@ -974,7 +974,7 @@ ul {
 
 .image,
 .text {
-  pointer-events: none;
+  pointer-events: none ;
 }
 
 .tab-rooms-address p {
