@@ -7,6 +7,13 @@ var headerFormLogout = document.querySelector(".header-form-logout");
 var headerNavIcon = document.querySelector('.header-nav-icon');
 var login = JSON.parse(localStorage.getItem("login"));
 const yearSelection = document.getElementById('year-selection');
+const logedUsername = document.querySelector('.loged-username')
+const logoutButton = document.querySelector('.logout-button')
+logedUsername.innerText = login.username
+logoutButton.onclick = () => {
+    localStorage.removeItem('login')
+    window.location.href = 'http://localhost:5500/FrontEnd/Admin/login/index.html'
+}
 
 headerNavForm.onclick = function () {
     if (headerForm.style.display === "none") headerForm.style.display = "block";

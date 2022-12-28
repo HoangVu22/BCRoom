@@ -13,6 +13,13 @@ const notificationModalYesButton = notificationModal.querySelector('.yes');
 const notificationModalNoButton = notificationModal.querySelector('.no');
 const specialCharacterRegex = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const logedUsername = document.querySelector('.loged-username')
+const logoutButton = document.querySelector('.logout-button')
+logedUsername.innerText = login.username
+logoutButton.onclick = () => {
+    localStorage.removeItem('login')
+    window.location.href = 'http://localhost:5500/FrontEnd/Admin/login/index.html'
+}
 
 notificationModalNoButton.onclick = () => {
     notificationModal.style.display = 'none';
