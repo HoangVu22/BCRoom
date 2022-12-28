@@ -274,7 +274,6 @@ checkLogin();
 function renderHotel () {
     const listhotels = document.querySelector(".list_hotels");
     let hotels = JSON.parse(localStorage.getItem("hotels"));
-    console.log(hotels);
     const place = JSON.parse(localStorage.getItem("place"));
     const result = document.querySelector(".result.wraper2");
     const hotelsRender = hotels.map((value, index) => {
@@ -343,7 +342,6 @@ function renderHotel () {
     const listRoom = document.querySelectorAll(".list-room");
     [...listRoom].forEach((value) => {
         value.onclick = (e) => {
-            console.log(e.target.dataset.hotel);
             const login = JSON.parse(localStorage.getItem("login"));
             fetch(
                 `http://localhost:1234/api/v1/rooms/by_hotel_id/${e.target.dataset.hotel}`,
@@ -367,7 +365,6 @@ function renderHotel () {
                             "hotelRoom",
                             JSON.stringify(e.target.dataset.hotel)
                         );
-                        console.log(2);
                         window.location.href =
                             "http://localhost:5500/FrontEnd/roomDetails/index.html";
                     }
