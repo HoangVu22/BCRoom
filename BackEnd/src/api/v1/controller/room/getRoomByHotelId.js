@@ -6,27 +6,29 @@ module.exports = async (request, response) => {
         const { hotelId } = request.params;
         const customerId = request.body.customerId;
 
-        const viewed = await CustomerViewedHotel.findOne({
-            where: {
-                hotelId,
-                customerId 
-            }
-        });
-
-        if (!viewed) {
-            if (customerId) {
-                const hotel = await Hotel.findByPk(hotelId);
-                await CustomerViewedHotel.create({
-                    customerId,
-                    hotelId
-                })
-                await Hotel.update({
-                    viewNumber: parseInt(hotel.dataValues.viewNumber) + 1
-                }, {
-                    where: {
+        if (customerId) {
+            const viewed = await CustomerViewedHotel.findOne({
+                where: {
+                    hotelId,
+                    customerId 
+                }
+            });
+    
+            if (!viewed) {
+                if (customerId) {
+                    const hotel = await Hotel.findByPk(hotelId);
+                    await CustomerViewedHotel.create({
+                        customerId,
                         hotelId
-                    }
-                });
+                    })
+                    await Hotel.update({
+                        viewNumber: parseInt(hotel.dataValues.viewNumber) + 1
+                    }, {
+                        where: {
+                            hotelId
+                        }
+                    });
+                }
             }
         }
 

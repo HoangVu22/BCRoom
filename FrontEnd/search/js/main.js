@@ -352,7 +352,7 @@ function renderHotel () {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({ customerId: login.customerId }),
+                    body: JSON.stringify({ customerId: login?.customerId || '' }),
                 }
             )
                 .then((res) => res.json())
@@ -474,7 +474,7 @@ starRankings.forEach(radio => {
                                         headers: {
                                             "Content-Type": "application/json",
                                         },
-                                        body: JSON.stringify({ customerId: login.customerId }),
+                                        body: JSON.stringify({ customerId: login?.customerId || '' }),
                                     }
                                 )
                                     .then((res) => res.json())

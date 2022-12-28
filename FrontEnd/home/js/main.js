@@ -193,7 +193,7 @@ function showRoomOutStanding() {
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ customerId: login.customerId }),
+                body: JSON.stringify({ customerId: login?.customerId || '' }),
               }
             )
               .then((res) => res.json())
