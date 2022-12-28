@@ -199,8 +199,6 @@ function showRoomOutStanding() {
               .then((res) => res.json())
               .then((data) => {
                 if (data.code === 200) {
-                  console.log(data);
-                  console.log(value.dataset.hotel);
                   localStorage.setItem(
                     "targetHotelId",
                     JSON.stringify(value.dataset.hotel)
