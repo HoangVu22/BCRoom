@@ -1,5 +1,10 @@
 # GUIDE LINE
 
+## DOWNLOAD PROJECT
+`
+    git clone https://github.com/HoangVu22/BCRoom.git
+`
+
 ## CREATE NEW MYSQL USER
 
 - Open Mysql Workbench Or Mysql Command:
