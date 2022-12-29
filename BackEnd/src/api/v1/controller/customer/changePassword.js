@@ -18,6 +18,16 @@ module.exports = async (request, response) => {
                 message: 'Mật khẩu cũ không chính xác'
             })
         }
+
+        const compareNewVsOldPassword = await bcrypt.compare(password, customer.password)
+
+        if (compareNewVsOldPassword) {
+            return response.status(403).json({
+                code: 403,
+                status: 'failed',
+                message: 'Mật khẩu này đang được sử dụng'
+            })
+        }
         
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(password, salt)
