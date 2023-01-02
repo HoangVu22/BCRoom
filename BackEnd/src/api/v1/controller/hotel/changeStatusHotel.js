@@ -9,7 +9,7 @@ module.exports = async (request, response) => {
             return response.status(400).json({
                 code: 400,
                 status: 'failed',
-                message: 'missing value in request'
+                message: 'Thiếu giá trị'
             })
         }
 

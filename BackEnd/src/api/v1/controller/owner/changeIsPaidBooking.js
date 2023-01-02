@@ -27,7 +27,7 @@ module.exports = async (request, response) => {
         return response.status(200).json({
             code: 200,
             status: 'success',
-            message: 'changed is paid of booking'
+            message: 'Thay đổi trạng thái đặt hàng của đơn đặt phòng'
         })
     } catch (error) {
         console.log(error)

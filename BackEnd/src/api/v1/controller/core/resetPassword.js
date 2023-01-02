@@ -33,7 +33,7 @@ module.exports = async (request, response) => {
         return response.status(200).json({
             code: 200,
             status: 'success',
-            message: 'Confirm to reset password'
+            message: 'Xác nhận đặt lại mật khẩu'
         })
     } catch (error) {
         console.log(error)

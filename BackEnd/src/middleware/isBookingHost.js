@@ -29,7 +29,7 @@ module.exports = async (request, response, next) => {
             return response.status(405).json({
                 code: 405,
                 status: 'failed',
-                message: 'you are not host'
+                message: 'Bạn không phải là chủ khách sạn'
             })
         }
 

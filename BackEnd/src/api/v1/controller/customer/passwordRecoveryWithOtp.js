@@ -20,7 +20,7 @@ module.exports = async (request, response) => {
             return response.status(404).json({
                 code: 404,
                 status: 'failed',
-                message: 'customer with this phone number not found'
+                message: 'Không tìm thấy người dùng với số điện thoại này'
             });
         }
 

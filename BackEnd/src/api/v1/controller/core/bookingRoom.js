@@ -30,7 +30,7 @@ module.exports = async (request, response) => {
             return response.status(422).json({
                 code: 422,
                 status: 'failed',
-                message: 'dateTo must be greater than or equal to dateFrom'
+                message: 'Ngày trả phòng phải lớn hơn ngày đặt phòng'
             });
         }
 
@@ -48,7 +48,7 @@ module.exports = async (request, response) => {
             return response.status(403).json({
                 code: 403,
                 status: 'failed',
-                message: 'This room is already booking by another'
+                message: 'Phòng này đã được đặt bởi người khác'
             });
         }
 
@@ -103,7 +103,7 @@ module.exports = async (request, response) => {
         return response.status(200).json({
             code: 200,
             status: 'success',
-            message: 'Thank for your booking, please check mail to know more',
+            message: 'Cảm ơn đã đặt phòng, Làm ơn hãy kiểm tra mail của bạn để biết thêm thông tin',
             data: booking.bookingId
         });
     } catch (error) {

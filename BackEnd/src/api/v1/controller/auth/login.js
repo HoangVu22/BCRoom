@@ -21,7 +21,7 @@ module.exports = async (request, response) => {
             return response.status(404).json({
                 code: 404,
                 status: 'failed',
-                message: 'email or password is incorrect'
+                message: 'email hoặc password không chính xác'
             })
         }
 
@@ -31,7 +31,7 @@ module.exports = async (request, response) => {
             return response.status(404).json({
                 code: 404,
                 status: 'failed',
-                message: 'email or password is incorrect'
+                message: 'email hoặc password không chính xác'
             })
         }
 

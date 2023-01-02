@@ -43,7 +43,7 @@ module.exports = async (request, response) => {
         return response.status(200).json({
             code: 200,
             status: 'success',
-            message: 'delete room successfully'
+            message: 'Xóa phòng thành công'
         })
     } catch (error) {
         console.log(error)

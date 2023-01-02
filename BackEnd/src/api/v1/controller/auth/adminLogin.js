@@ -18,7 +18,7 @@ module.exports = async (request, response) => {
             return response.status(403).json({
                 code: 403,
                 status: 'failed',
-                message: 'you are not admin'
+                message: 'Tài khoản không phải là admin'
             })
         }
 

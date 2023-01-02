@@ -29,7 +29,7 @@ module.exports = async (request, response) => {
             return response.status(403).json({
                 code: 403,
                 status: 'failed',
-                message: 'This book has been paid, you cant cancel it'
+                message: 'Đơn đặt đã được thanh toán, không thể hủy'
             })
         }
 

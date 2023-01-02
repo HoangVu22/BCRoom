@@ -12,7 +12,6 @@ async function viewHotel (request, response, next) {
         const hotel = await Hotel.findByPk(hotelId);
 
         if (!hotel) {
-            console.log('hotel not found')
             return response.status(404).json({
                 code: 404,
                 status: 'failed',
@@ -28,7 +27,6 @@ async function viewHotel (request, response, next) {
         });
 
         if (viewed) {
-            console.log('next')
             next();
         } else {
             console.log(next)

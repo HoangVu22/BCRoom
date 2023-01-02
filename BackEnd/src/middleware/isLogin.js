@@ -9,7 +9,7 @@ async function isLogin(request, response, next) {
             return response.status(401).json({
                 code: 401,
                 status: 'failed',
-                message: 'you are not logged in'
+                message: 'Chưa đăng nhập'
             })
         }
         
@@ -19,7 +19,7 @@ async function isLogin(request, response, next) {
             return response.status(404).json({
                 code: 404,
                 status: 'failed',
-                message: 'where did you get this id, no find customer with it'
+                message: 'Không tìm thấy tài khoản'
             })
         }
 

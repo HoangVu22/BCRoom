@@ -10,7 +10,7 @@ module.exports = async (request, response, next) => {
             return response.status(422).json({
                 code: 422,
                 status: 'failed',
-                message: 'Redundant request value'
+                message: 'Dư thừa giá trị'
             })
         }
 

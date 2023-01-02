@@ -46,7 +46,7 @@ module.exports = async (request, response) => {
         return response.status(200).json({
             code: 200,
             status: 'success',
-            message: 'updated customer with id ' + targetCustomer
+            message: 'Đã cập nhật thông tin của người dùng với id' + targetCustomer
         })
     } catch (error) {
         console.log(error)

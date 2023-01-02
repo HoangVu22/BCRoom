@@ -22,7 +22,7 @@ module.exports = async (request, response) => {
             code: 200,
             status: 'success',
             data: await Customer.findByPk(customerId),
-            message: 'Update customer profile successfully'
+            message: 'Cập nhật thông tin người dùng thành công'
         })
     } catch (error) {
         console.log(error)
