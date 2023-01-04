@@ -444,6 +444,8 @@ function sendRequestToCreatRoomHotel (data) {
             if (data.code === 200) {
                 alert("Đăng ký phòng thành công !!!");
                 window.location.href = 'http://localhost:5500/FrontEnd/Sup_myHotel/index.html'
+            } else {
+                alert(data.message)
             }
         })
         .catch((error) => {

@@ -25,12 +25,41 @@ module.exports = async (request, response) => {
             price
         } = request.body;
         // const userId = request.session.userId
-        const userId = request.body.customerId
+        const userId = request.body.customerId;
         let hotel;
+        let matchPriceWithStar = true;
+
+        function checkMatchPriceWithStar () {
+            if (starNumber === 1 && (price < 150000 || price > 250000)) {
+                matchPriceWithStar = false;
+            }
+            if (starNumber === 2 && (price < 250000 || price > 350000)) {
+                matchPriceWithStar = false;
+            }
+            if (starNumber === 3 && (price < 350000 || price > 500000)) {
+                matchPriceWithStar = false;
+            }
+        }
 
         if (hotelId) {
             hotel = await Hotel.findByPk(hotelId);
+            checkMatchPriceWithStar(hotel.starNumber, price);
+            if (!matchPriceWithStar) {
+                return response.status(422).json({
+                    code: 422,
+                    status: 'failed',
+                    message: 'Giá phòng không phù hợp'
+                });
+            }
         } else {
+            checkMatchPriceWithStar(starNumber, price);
+            if (!matchPriceWithStar) {
+                return response.status(422).json({
+                    code: 422,
+                    status: 'failed',
+                    message: 'Giá phòng không phù hợp'
+                });
+            }
             hotel = await Hotel.create({
                 customerId: userId,
                 hotelName: nameHotel,
