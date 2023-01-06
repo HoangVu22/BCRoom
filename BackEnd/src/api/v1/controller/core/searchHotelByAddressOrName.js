@@ -18,7 +18,8 @@ module.exports = async (request, response) => {
                             [Op.like]: '%' + value + '%'
                         }
                     }
-                ]
+                ],
+                status: true
             },
             include: {
                 model: Image,
