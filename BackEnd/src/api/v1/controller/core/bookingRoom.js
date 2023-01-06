@@ -52,6 +52,14 @@ module.exports = async (request, response) => {
             });
         }
 
+        if ((adultNumber + kidNumber) > (hotel.Rooms[0].adultNumber + hotel.Rooms[0].kidNumber)) {
+            return response.status(422).json({
+                code: 422,
+                status: 'failed',
+                message: 'Số người không phù hợp'
+            })
+        }
+
         const booking = await Booking.create({
             roomId,
             customerId,
